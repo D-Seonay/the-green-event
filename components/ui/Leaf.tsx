@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 
-const Leaf = ({ ...props }) => (
+export const Leaf = ({ ...props }) => (
   <motion.svg
     xmlns="http://www.w3.org/2000/svg"
     width="48"
