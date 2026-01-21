@@ -9,8 +9,8 @@ const InfosSection = () => {
     {
       icon: Calendar,
       title: "Dates",
-      detail: "Juin - Août 2026",
-      subtitle: "Plusieurs weekends tout l'été",
+      detail: "4 Juillet 2026",
+      subtitle: "🎶🌿The Green Fest – 3ᵉ édition 🎶🌿",
     },
     {
       icon: MapPin,
