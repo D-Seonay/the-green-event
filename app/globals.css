@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Nunito:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* The Green Event Color Palette */
+    --background: 150 63% 14%; /* Deep Forest Green #0a3f25 */
+    --foreground: 45 85% 94%; /* Creamy Beige #FEF7E0 */
+
+    --card: 150 63% 14%;
+    --card-foreground: 45 85% 94%;
+
+    --popover: 150 63% 14%;
+    --popover-foreground: 45 85% 94%;
+
+    --primary: 150 63% 14%; /* Deep Forest Green */
+    --primary-foreground: 45 85% 94%;
+
+    --secondary: 45 85% 94%; /* Creamy Beige */
+    --secondary-foreground: 150 63% 14%;
+
+    --muted: 150 40% 20%;
+    --muted-foreground: 45 60% 80%;
+
+    --accent: 145 100% 32%; /* Vibrant Leaf Green #00A651 */
+    --accent-foreground: 45 85% 94%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 150 40% 25%;
+    --input: 150 40% 25%;
+    --ring: 145 100% 32%;
+
+    --radius: 0.5rem;
+
+    /* Custom Festival Colors */
+    --forest: 150 63% 14%;
+    --cream: 45 85% 94%;
+    --leaf: 145 100% 32%;
+
+    /* Sidebar - keeping defaults */
+    --sidebar-background: 150 63% 14%;
+    --sidebar-foreground: 45 85% 94%;
+    --sidebar-primary: 145 100% 32%;
+    --sidebar-primary-foreground: 45 85% 94%;
+    --sidebar-accent: 150 40% 20%;
+    --sidebar-accent-foreground: 45 85% 94%;
+    --sidebar-border: 150 40% 25%;
+    --sidebar-ring: 145 100% 32%;
+  }
+
+  .dark {
+    --background: 150 63% 14%;
+    --foreground: 45 85% 94%;
+    --card: 150 63% 14%;
+    --card-foreground: 45 85% 94%;
+    --popover: 150 63% 14%;
+    --popover-foreground: 45 85% 94%;
+    --primary: 150 63% 14%;
+    --primary-foreground: 45 85% 94%;
+    --secondary: 45 85% 94%;
+    --secondary-foreground: 150 63% 14%;
+    --muted: 150 40% 20%;
+    --muted-foreground: 45 60% 80%;
+    --accent: 145 100% 32%;
+    --accent-foreground: 45 85% 94%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 45 85% 94%;
+    --border: 150 40% 25%;
+    --input: 150 40% 25%;
+    --ring: 145 100% 32%;
+    --sidebar-background: 150 63% 14%;
+    --sidebar-foreground: 45 85% 94%;
+    --sidebar-primary: 145 100% 32%;
+    --sidebar-primary-foreground: 45 85% 94%;
+    --sidebar-accent: 150 40% 20%;
+    --sidebar-accent-foreground: 45 85% 94%;
+    --sidebar-border: 150 40% 25%;
+    --sidebar-ring: 145 100% 32%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-black;
+  }
+}
+
+@layer utilities {
+  .text-shadow-lg {
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .bg-forest {
+    background-color: hsl(var(--forest));
+  }
+
+  .bg-cream {
+    background-color: hsl(var(--cream));
+  }
+
+  .bg-leaf {
+    background-color: hsl(var(--leaf));
+  }
+
+  .text-forest {
+    color: hsl(var(--forest));
+  }
+
+  .text-cream {
+    color: hsl(var(--cream));
+  }
+
+  .text-leaf {
+    color: hsl(var(--leaf));
+  }
+
+  .fill-forest {
+    fill: hsl(var(--forest));
+  }
+
+  .fill-cream {
+    fill: hsl(var(--cream));
+  }
+
+  .fill-leaf {
+    fill: hsl(var(--leaf));
+  }
+}
