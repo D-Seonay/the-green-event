@@ -7,14 +7,14 @@ import Image from 'next/image';
 import WaveDivider from '../WaveDivider';
 
 const sponsors = [
-  { id: 1, name: 'Sponsor 1', logoSrc: 'https://placehold.co/200x80/0a3f25/FEF7E0?text=LOGO+1' },
-  { id: 2, name: 'Sponsor 2', logoSrc: 'https://placehold.co/200x80/0a3f25/FEF7E0?text=LOGO+2' },
-  { id: 3, name: 'Sponsor 3', logoSrc: 'https://placehold.co/200x80/0a3f25/FEF7E0?text=LOGO+3' },
-  { id: 4, name: 'Sponsor 4', logoSrc: 'https://placehold.co/200x80/0a3f25/FEF7E0?text=LOGO+4' },
-  { id: 5, name: 'Sponsor 5', logoSrc: 'https://placehold.co/200x80/0a3f25/FEF7E0?text=LOGO+5' },
-  { id: 6, name: 'Sponsor 6', logoSrc: 'https://placehold.co/200x80/0a3f25/FEF7E0?text=LOGO+6' },
-  { id: 7, name: 'Sponsor 7', logoSrc: 'https://placehold.co/200x80/0a3f25/FEF7E0?text=LOGO+7' },
-  { id: 8, name: 'Sponsor 8', logoSrc: 'https://placehold.co/200x80/0a3f25/FEF7E0?text=LOGO+8' },
+  { id: 1, name: 'Sponsor 1', logoSrc: '/placeholder.svg' },
+  { id: 2, name: 'Sponsor 2', logoSrc: '/placeholder.svg' },
+  { id: 3, name: 'Sponsor 3', logoSrc: '/placeholder.svg' },
+  { id: 4, name: 'Sponsor 4', logoSrc: '/placeholder.svg' },
+  { id: 5, name: 'Sponsor 5', logoSrc: '/placeholder.svg' },
+  { id: 6, name: 'Sponsor 6', logoSrc: '/placeholder.svg' },
+  { id: 7, name: 'Sponsor 7', logoSrc: '/placeholder.svg' },
+  { id: 8, name: 'Sponsor 8', logoSrc: '/placeholder.svg' },
 ];
 
 const SponsorsSection = () => {
