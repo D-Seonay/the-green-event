@@ -8,10 +8,10 @@ import { motion } from 'framer-motion';
 
 // Images des artistes (Placeholders)
 const FLOATING_IMAGES = [
-  { src: "https://picsum.photos/200/200?random=1", top: "12%", left: "5%", rotate: -6 },
-  { src: "https://picsum.photos/200/200?random=2", top: "18%", right: "8%", rotate: 12 },
-  { src: "https://picsum.photos/200/200?random=3", bottom: "22%", left: "12%", rotate: -12 },
-  { src: "https://picsum.photos/200/200?random=4", bottom: "12%", right: "5%", rotate: 6 },
+  { src: "/placeholder.svg", top: "12%", left: "5%", rotate: -6 },
+  { src: "/placeholder.svg", top: "18%", right: "8%", rotate: 12 },
+  { src: "/placeholder.svg", bottom: "22%", left: "12%", rotate: -12 },
+  { src: "/placeholder.svg", bottom: "12%", right: "5%", rotate: 6 },
 ];
 
 // Petites icônes décoratives (Feuilles et Cubes)
