@@ -1,23 +1,75 @@
-import Header from "@/components/Header";
-import HeroSection from "@/components/HeroSection";
-import ConceptSection from "@/components/ConceptSection";
-import ProgrammationSection from "@/components/ProgrammationSection";
-import InfosSection from "@/components/InfosSection";
-import Footer from "@/components/Footer";
+'use client';
 
-const Index = () => {
+import Image from 'next/image';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
+import Cube from '@/components/ui/Cube';
+import Leaf from '@/components/ui/Leaf';
+import Navbar from '@/components/layout/Navbar';
+
+export default function Home() {
+  const targetRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+    offset: ['start start', 'end start'],
+  });
+
+  const y1 = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
+  const y2 = useTransform(scrollYProgress, [0, 1], ['0%', '200%']);
+  const y3 = useTransform(scrollYProgress, [0, 1], ['0%', '-100%']);
+  const x1 = useTransform(scrollYProgress, [0, 1], ['0%', '-50%']);
+  const x2 = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
+
   return (
-    <div className="min-h-screen bg-forest overflow-x-hidden">
-      <Header />
-      <main>
-        <HeroSection />
-        <ConceptSection />
-        <ProgrammationSection />
-        <InfosSection />
-      </main>
-      <Footer />
-    </div>
-  );
-};
+    <main ref={targetRef}>
+      <Navbar />
+      <section className="relative h-screen w-full">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute w-full h-full object-cover"
+        >
+          <source src="/theGreenEvent.MP4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-[#0a3f25]/60" />
 
-export default Index;
+        {/* Parallax Elements */}
+        <motion.div style={{ y: y1, x: x1 }} className="absolute top-1/4 left-1/4">
+          <Cube className="text-[#FEF7E0] opacity-20" />
+        </motion.div>
+        <motion.div style={{ y: y2, x: x2 }} className="absolute top-1/2 right-1/4">
+          <Leaf className="text-[#00A651] opacity-30" />
+        </motion.div>
+        <motion.div style={{ y: y3 }} className="absolute bottom-1/4 left-1/3">
+          <Cube className="text-[#FEF7E0] opacity-10" />
+        </motion.div>
+         <motion.div style={{ y: y1, x: x2 }} className="absolute bottom-1/2 right-1/3">
+          <Leaf className="text-[#00A651] opacity-50" />
+        </motion.div>
+
+        <div className="relative z-10 flex flex-col items-center justify-center h-full text-center">
+          <h1
+            className="text-8xl font-black text-[#FEF7E0] drop-shadow-lg"
+            style={{ fontFamily: 'Montserrat Black, sans-serif' }}
+          >
+            THE GREEN EVENT
+          </h1>
+          <h2 className="mt-4 text-2xl text-[#00A651] drop-shadow-md">
+            MUSIQUE ÉLECTRONIQUE & NATURE À VERTOU
+          </h2>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="mt-8 px-8 py-3 bg-[#00A651] text-[#FEF7E0] font-bold rounded-full"
+          >
+            BILLETTERIE
+          </motion.button>
+        </div>
+      </section>
+      {/* Add other sections here, giving space for scroll */}
+      <div className="h-[200vh] bg-[#0a3f25]"></div>
+    </main>
+  );
+}
