@@ -1,158 +1,152 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import WaveDivider from "./WaveDivider";
+import React from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { ArrowDown } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import Image from 'next/image';
+import { Cube } from '@/components/ui/Cube';
+import { Leaf } from '@/components/ui/Leaf';
 
-interface Artist {
-  name: string;
-  style: string;
-  imageUrl: string;
-  rotation: number;
-  offsetY: number;
-}
-
-const artists: Artist[] = [
-  {
-    name: "LUNA VERDE",
-    style: "House Lo-Fi",
-    imageUrl: "https://images.unsplash.com/photo-1571266028243-e4733b0f0bb0?w=400&h=500&fit=crop&auto=format",
-    rotation: -3,
-    offsetY: 0,
-  },
-  {
-    name: "FORÊT NOIRE",
-    style: "Techno Minimal",
-    imageUrl: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=500&fit=crop&auto=format",
-    rotation: 2,
-    offsetY: 40,
-  },
-  {
-    name: "ECHO VERT",
-    style: "Deep House",
-    imageUrl: "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=400&h=500&fit=crop&auto=format",
-    rotation: -2,
-    offsetY: -20,
-  },
-  {
-    name: "MYSTIC MOSS",
-    style: "Melodic Techno",
-    imageUrl: "https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=400&h=500&fit=crop&auto=format",
-    rotation: 3,
-    offsetY: 30,
-  },
-  {
-    name: "TERRA BEAT",
-    style: "Organic House",
-    imageUrl: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=400&h=500&fit=crop&auto=format",
-    rotation: -1,
-    offsetY: -10,
-  },
+const artists = [
+  { name: 'DIANA KRALL', image: '/placeholder.svg', rotation: -3 },
+  { name: 'GOGO PENGUIN', image: '/placeholder.svg', rotation: 2 },
+  { name: 'HIROMI\'S SONICWONDER', image: '/placeholder.svg', rotation: 4 },
+  { name: 'JALEN NGONDA', image: '/placeholder.svg', rotation: -2 },
+  { name: 'CHRISTONE "KINGFISH" INGRAM', image: '/placeholder.svg', rotation: 3 },
+  { name: 'LIZZ WRIGHT', image: '/placeholder.svg', rotation: -4 },
+  { name: 'YUSSEF DAYES', image: '/placeholder.svg', rotation: 2 },
+  { name: 'ROBERT GLASPER', image: '/placeholder.svg', rotation: -1 },
 ];
 
-const ArtistCard = ({ artist, index }: { artist: Artist; index: number }) => {
+const ArtistCard = ({ artist, index }) => {
+  const targetRef = React.useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+    offset: ['start end', 'end start'],
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [-100, 100 * (index % 2 === 0 ? -1 : 1)]);
+
   return (
     <motion.div
-      className="relative flex-shrink-0 w-[200px] md:w-[260px] group"
-      style={{
-        transform: `rotate(${artist.rotation}deg)`,
-        marginTop: artist.offsetY,
-      }}
-      initial={{ opacity: 0, y: 50, scale: 0.9 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true, margin: "-50px" }}
+      ref={targetRef}
+      style={{ y }}
+      className="relative group"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      whileHover={{ scale: 1.05, zIndex: 10 }}
+      viewport={{ once: true }}
     >
-      {/* Organic shape container */}
-      <div 
-        className="relative overflow-hidden shadow-2xl"
-        style={{
-          borderRadius: index % 2 === 0 
-            ? "60% 40% 50% 50% / 50% 60% 40% 50%" 
-            : "40% 60% 50% 50% / 60% 40% 50% 50%",
-        }}
+      <div
+        className="bg-[#FEF7E0] p-4 rounded-lg shadow-lg"
+        style={{ transform: `rotate(${artist.rotation}deg)` }}
       >
-        {/* Image with duotone effect */}
-        <div className="relative aspect-[4/5]">
-          <img
-            src={artist.imageUrl}
+        <div className="relative w-full h-56">
+          <Image
+            src={artist.image}
             alt={artist.name}
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover rounded-md filter grayscale" // duotone effect can be complex, using grayscale for now
           />
-          {/* Duotone overlay */}
-          <div className="absolute inset-0 bg-forest mix-blend-color opacity-60" />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-forest/90" />
         </div>
-
-        {/* Artist Info */}
-        <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6">
-          <h3 className="font-display font-black text-cream text-lg md:text-xl tracking-tight">
-            {artist.name}
-          </h3>
-          <p className="font-body text-cream/70 text-sm md:text-base uppercase tracking-wider">
-            {artist.style}
-          </p>
-        </div>
+        <h3 className="mt-4 text-center text-lg font-bold text-[#0a3f25]">
+          {artist.name}
+        </h3>
       </div>
     </motion.div>
   );
 };
 
-const ProgrammationSection = () => {
+const ConnectingLine = () => {
+    const targetRef = React.useRef(null);
+    const { scrollYProgress } = useScroll({
+      target: targetRef,
+      offset: ['start center', 'end center'],
+    });
+  
+    // This will animate the stroke-dashoffset to reveal the line
+    const pathLength = useTransform(scrollYProgress, [0, 0.8], [0, 1]);
+  
+    return (
+      <div ref={targetRef} className="absolute inset-0 w-full h-full overflow-hidden">
+        <svg width="100%" height="100%" viewBox="0 0 1200 800" preserveAspectRatio="none">
+          <motion.path
+            d="M -50,150 Q 150,50 300,150 T 600,150 T 900,150 T 1250,150 M -50,450 Q 150,350 300,450 T 600,450 T 900,450 T 1250,450"
+            fill="none"
+            stroke="#FEF7E0"
+            strokeWidth="3"
+            strokeDasharray="1"
+            strokeDashoffset="0"
+            style={{ pathLength }}
+          />
+        </svg>
+      </div>
+    );
+  };
+  
+
+const FloatingIcon = ({ children, x, y, className }) => {
+    const targetRef = React.useRef(null);
+    const { scrollYProgress } = useScroll({
+      target: targetRef,
+      offset: ['start end', 'end start'],
+    });
+  
+    const yValue = useTransform(scrollYProgress, [0, 1], y);
+    const xValue = useTransform(scrollYProgress, [0, 1], x);
+  
+    return (
+      <motion.div ref={targetRef} style={{ y: yValue, x: xValue }} className={`absolute ${className}`}>
+        {children}
+      </motion.div>
+    );
+  };
+
+export default function ProgrammationSection() {
+  const sectionRef = React.useRef(null);
+
   return (
-    <section id="programmation" className="relative">
-      {/* Wave Transition */}
-      <WaveDivider variant="forest-to-cream" className="-mt-1 bg-cream" />
+    <section ref={sectionRef} className="relative bg-[#0a3f25] py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <div className="absolute top-8 left-8 z-10">
+        <div className="relative">
+          <div className="absolute -inset-2 bg-[#FEF7E0] transform -rotate-3 rounded-lg"></div>
+          <h2 className="relative text-5xl md:text-6xl font-extrabold text-[#0a3f25] px-6 py-2">
+            ARTISTES
+          </h2>
+        </div>
+      </div>
+      
+      <ConnectingLine />
 
-      <div className="bg-forest py-16 md:py-24 overflow-hidden">
-        <div className="container mx-auto px-4 md:px-6">
-          <motion.div
-            className="text-center mb-12 md:mb-16"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="font-display font-black text-cream text-4xl md:text-6xl lg:text-7xl mb-4">
-              PROGRAMMATION
-            </h2>
-            <p className="font-body text-cream/70 text-lg md:text-xl">
-              Une sélection d'artistes uniques pour des nuits inoubliables
-            </p>
-          </motion.div>
+      <FloatingIcon x={[-100, 100]} y={[-50, 50]} className="top-1/4 left-1/4">
+        <Cube className="w-12 h-12 text-[#FEF7E0] opacity-30" />
+      </FloatingIcon>
+      <FloatingIcon x={[50, -50]} y={[20, -20]} className="top-1/2 right-1/4">
+        <Leaf className="w-16 h-16 text-[#FEF7E0] opacity-30" />
+      </FloatingIcon>
+       <FloatingIcon x={[-20, 20]} y={[50, -100]} className="bottom-1/4 left-1/3">
+        <Leaf className="w-10 h-10 text-[#FEF7E0] opacity-30" />
+      </FloatingIcon>
+      <FloatingIcon x={[100, -100]} y={[-30, 30]} className="top-1/3 right-1/3">
+        <Cube className="w-16 h-16 text-[#FEF7E0] opacity-30" />
+      </FloatingIcon>
 
-          {/* The Thread - Wavy connecting line */}
-          <div className="relative">
-            {/* SVG Thread */}
-            <svg
-              className="absolute top-1/2 left-0 w-full h-4 -translate-y-1/2 hidden md:block"
-              viewBox="0 0 1200 20"
-              preserveAspectRatio="none"
-            >
-              <motion.path
-                d="M0,10 Q150,0 300,10 T600,10 T900,10 T1200,10"
-                fill="none"
-                stroke="hsl(var(--cream))"
-                strokeWidth="2"
-                strokeDasharray="8 4"
-                initial={{ pathLength: 0, opacity: 0 }}
-                whileInView={{ pathLength: 1, opacity: 0.5 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1.5, ease: "easeInOut" }}
-              />
-            </svg>
 
-            {/* Artist Cards */}
-            <div className="flex flex-wrap md:flex-nowrap justify-center gap-4 md:gap-6 lg:gap-8 items-center">
-              {artists.map((artist, index) => (
-                <ArtistCard key={artist.name} artist={artist} index={index} />
-              ))}
-            </div>
-          </div>
+      <div className="relative max-w-7xl mx-auto z-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-24 mt-48">
+          {artists.map((artist, index) => (
+            <ArtistCard key={artist.name} artist={artist} index={index} />
+          ))}
+        </div>
+
+        <div className="mt-24 text-center">
+          <Button variant="outline" size="lg" className="bg-[#FEF7E0] text-[#0a3f25] hover:bg-[#e9e2cf] group">
+            VOIR PLUS
+            <ArrowDown className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
+          </Button>
         </div>
       </div>
     </section>
   );
-};
-
-export default ProgrammationSection;
+}
