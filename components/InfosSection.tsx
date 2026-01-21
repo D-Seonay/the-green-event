@@ -44,7 +44,7 @@ const InfosSection = () => {
               INFOS PRATIQUES
             </h2>
             <p className="font-body text-forest/70 text-lg md:text-xl">
-              Tout ce qu'il faut savoir pour profiter au maximum
+              Tout ce qu&apos;il faut savoir pour profiter au maximum
             </p>
           </motion.div>
 
