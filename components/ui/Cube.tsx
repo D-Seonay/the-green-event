@@ -1,6 +1,6 @@
-import { motion } from 'framer-motion';
+import { motion, SVGMotionProps } from 'framer-motion';
 
-const Cube = (props: React.SVGProps<SVGSVGElement>) => (
+const Cube = (props: SVGMotionProps<SVGSVGElement>) => (
   <motion.svg
     xmlns="http://www.w3.org/2000/svg"
     width="48"
