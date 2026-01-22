@@ -1,7 +1,8 @@
-import { motion, SVGMotionProps } from 'framer-motion';
+import { IconProps } from '@/types';
+import { SVGProps } from 'react';
 
-const Cube = (props: SVGMotionProps<SVGSVGElement>) => (
-  <motion.svg
+const Cube = (props: IconProps) => (
+  <svg
     xmlns="http://www.w3.org/2000/svg"
     width="48"
     height="48"
@@ -14,7 +15,7 @@ const Cube = (props: SVGMotionProps<SVGSVGElement>) => (
     {...props}
   >
     <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-  </motion.svg>
+  </svg>
 );
 
 export default Cube;

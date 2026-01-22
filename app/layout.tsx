@@ -9,6 +9,9 @@ import LoadingScreen from '@/components/LoadingScreen';
 
 const inter = Inter({ subsets: ["latin"] });
 
+// Removed metadata as it's not supported in a 'use client' component.
+// If metadata is required, it should be moved to a non-'use client' layout or separate file.
+
 export default function RootLayout({
   children,
 }: Readonly<{
