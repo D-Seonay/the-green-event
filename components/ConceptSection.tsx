@@ -39,7 +39,7 @@ const ConceptSection = () => {
             transition={{ duration: 0.6 }}
           >
             <h2 className="font-display font-black text-forest text-4xl md:text-6xl lg:text-7xl mb-6">
-              L'ÉLECTRO AU GRAND AIR
+              L&apos;ÉLECTRO AU GRAND AIR
             </h2>
             <p className="font-body text-forest/80 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
               The Green Event, c&apos;est bien plus qu&apos;un festival. C&apos;est une expérience unique qui marie 

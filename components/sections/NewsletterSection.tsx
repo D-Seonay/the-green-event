@@ -55,7 +55,7 @@ export default function NewsletterSection() {
             Restez branchés
           </h2>
           <p className="font-body mt-4 text-lg md:text-xl max-w-2xl mx-auto">
-            Inscrivez-vous pour connaître la programmation et l'ouverture de la billetterie en avant-première.
+            Inscrivez-vous pour connaître la programmation et l&apos;ouverture de la billetterie en avant-première.
           </p>
         </motion.div>
 
