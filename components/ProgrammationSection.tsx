@@ -5,8 +5,8 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
-import { Cube } from '@/components/ui/Cube';
-import { Leaf } from '@/components/ui/Leaf';
+import Cube from '@/components/ui/Cube';
+import Leaf from '@/components/ui/Leaf';
 
 const artists = [
   { name: 'DIANA KRALL', image: '/placeholder.svg', rotation: -3 },

@@ -1,18 +1,54 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Instagram, Facebook, Twitter, Mail, Send } from "lucide-react";
+import { Instagram, Facebook, Twitter, Mail, Send, Loader2, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import WaveDivider from "./WaveDivider";
 
+type FormState = 'idle' | 'loading' | 'success' | 'error';
+
 const Footer = () => {
+  const [email, setEmail] = useState('');
+  const [formState, setFormState] = useState<FormState>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+
   const socialLinks = [
     { icon: Instagram, href: "#", label: "Instagram" },
     { icon: Facebook, href: "#", label: "Facebook" },
-    { icon: Twitter, href: "#", label: "Twitter" },
+    // { icon: Tiktok, href: "#", label: "Twitter" },
   ];
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!email) {
+      setFormState('error');
+      setErrorMessage('Veuillez entrer une adresse email.');
+      return;
+    }
+    setFormState('loading');
+    setErrorMessage('');
+
+    try {
+      const response = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+
+      if (!response.ok) {
+        const { error } = await response.json();
+        throw new Error(error || 'Une erreur est survenue.');
+      }
+
+      setFormState('success');
+    } catch (error: any) {
+      setFormState('error');
+      setErrorMessage(error.message);
+    }
+  };
 
   return (
     <footer className="relative">
@@ -58,23 +94,37 @@ const Footer = () => {
               <p className="font-body text-cream/70 mb-4 text-sm">
                 Recevez en avant-première les annonces et les offres exclusives.
               </p>
-              <form 
-                className="flex gap-2 max-w-sm mx-auto md:mx-0"
-                onSubmit={(e) => e.preventDefault()}
-              >
-                <Input
-                  type="email"
-                  placeholder="votre@email.com"
-                  className="bg-cream/10 border-cream/20 text-cream placeholder:text-cream/50 focus:border-leaf"
-                />
-                <Button 
-                  type="submit" 
-                  size="icon"
-                  className="bg-leaf hover:bg-leaf/90 text-cream flex-shrink-0"
+              {formState === 'success' ? (
+                <div className="flex items-center gap-2 p-3 rounded-lg bg-leaf/20">
+                  <CheckCircle2 className="w-6 h-6 text-leaf" />
+                  <p className="font-body text-cream">Merci ! Vous êtes inscrit.</p>
+                </div>
+              ) : (
+                <form 
+                  className="flex gap-2 max-w-sm mx-auto md:mx-0"
+                  onSubmit={handleSubmit}
                 >
-                  <Send className="w-4 h-4" />
-                </Button>
-              </form>
+                  <Input
+                    type="email"
+                    placeholder="votre@email.com"
+                    className="bg-cream/10 border-cream/20 text-cream placeholder:text-cream/50 focus:border-leaf"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    disabled={formState === 'loading'}
+                  />
+                  <Button 
+                    type="submit" 
+                    size="icon"
+                    className="bg-leaf hover:bg-leaf/90 text-cream flex-shrink-0"
+                    disabled={formState === 'loading'}
+                  >
+                    {formState === 'loading' ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
+                  </Button>
+                </form>
+              )}
+               {formState === 'error' && (
+                <p className="text-red-500 mt-2 text-sm">{errorMessage}</p>
+              )}
             </motion.div>
 
             {/* Social & Contact */}
