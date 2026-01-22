@@ -1,84 +1,54 @@
 'use client';
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useMemo } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import WaveDivider from '@/components/WaveDivider';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/Footer';
+import { PRODUCTS } from '@/lib/data';
 
-const PRODUCTS = [
-  {
-    id: 1,
-    name: 'T-Shirt Green 2026',
-    price: '20€',
-    description: 'Coton bio, tout doux, tout vert.',
-    image: '/placeholder.svg',
-    rotation: -2.5,
-    helloAssoUrl: 'https://www.helloasso.com',
-  },
-  {
-    id: 2,
-    name: 'Eco-Cup Collector',
-    price: '2€',
-    description: 'Le gobelet réutilisable officiel.',
-    image: '/placeholder.svg',
-    rotation: 3,
-    helloAssoUrl: 'https://www.helloasso.com',
-  },
-  {
-    id: 3,
-    name: 'Tote Bag Nature',
-    price: '10€',
-    description: 'Fait en matériaux recyclés.',
-    image: '/placeholder.svg',
-    rotation: 1.5,
-    helloAssoUrl: 'https://www.helloasso.com',
-  },
-  {
-    id: 4,
-    name: 'Le Bob du Festival',
-    price: '15€',
-    description: 'Indispensable pour chiller au soleil.',
-    image: '/placeholder.svg',
-    rotation: -4,
-    helloAssoUrl: 'https://www.helloasso.com',
-  },
-    {
-    id: 5,
-    name: 'Affiche Officielle',
-    price: '12€',
-    description: 'Le visuel de l\'édition 2026.',
-    image: '/placeholder.svg',
-    rotation: 2,
-    helloAssoUrl: 'https://www.helloasso.com',
-  },
+type Category = 'all' | 'clothes' | 'accessories' | 'goodies';
+
+const categories: { label: string; value: Category }[] = [
+    { label: 'TOUT', value: 'all' },
+    { label: 'VÊTEMENTS', value: 'clothes' },
+    { label: 'ACCESSOIRES', value: 'accessories' },
+    { label: 'GOODIES', value: 'goodies' },
 ];
 
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
-
 const cardVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: {
-    opacity: 1,
+  hidden: { opacity: 0, y: 50, scale: 0.95 },
+  visible: { 
+    opacity: 1, 
     y: 0,
+    scale: 1,
     transition: {
         type: 'spring',
         stiffness: 100,
     }
-},
+  },
+  exit: {
+    opacity: 0,
+    scale: 0.9,
+    transition: {
+        duration: 0.2
+    }
+  }
 };
 
 const BoutiquePage = () => {
+  const [activeCategory, setActiveCategory] = useState<Category>('all');
+
+  const filteredProducts = useMemo(() => {
+    if (activeCategory === 'all') {
+      return PRODUCTS;
+    }
+    return PRODUCTS.filter(p => p.category === activeCategory);
+  }, [activeCategory]);
+
   return (
     <>
       <Navbar />
@@ -103,46 +73,74 @@ const BoutiquePage = () => {
               Soutenez le festival avec nos goodies éco-responsables.
             </motion.p>
           </header>
-
+          
           <WaveDivider variant="forest-to-cream" />
+          
+          {/* Filters */}
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="flex flex-wrap justify-center gap-2 md:gap-4 my-8"
+          >
+            {categories.map((cat) => (
+                <button
+                    key={cat.value}
+                    onClick={() => setActiveCategory(cat.value)}
+                    className={`px-4 py-2 rounded-full font-body font-bold text-sm uppercase tracking-wider transition-all duration-300
+                        ${activeCategory === cat.value 
+                            ? 'bg-[#00A651] text-white shadow-lg' 
+                            : 'bg-transparent border border-[#FEF7E0]/50 text-[#FEF7E0]/80 hover:bg-[#FEF7E0]/10 hover:text-white'
+                        }
+                    `}
+                >
+                    {cat.label}
+                </button>
+            ))}
+          </motion.div>
+
 
           {/* Products Grid */}
           <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
+            layout
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-16 mt-16"
           >
-            {PRODUCTS.map((product) => (
-              <motion.div
-                key={product.id}
-                variants={cardVariants}
-                style={{ rotate: product.rotation }}
-                whileHover={{ scale: 1.05, rotate: 0 }}
-                transition={{ type: 'spring', stiffness: 300 }}
-                className="bg-[#FEF7E0] rounded-2xl shadow-lg overflow-hidden text-[#052013]"
-              >
-                <div className="relative w-full h-64">
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    fill
-                    className="object-cover mix-blend-multiply"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="font-display text-2xl font-bold uppercase">{product.name}</h3>
-                  <p className="font-body text-3xl font-black text-[#00A651] my-2">{product.price}</p>
-                  <p className="font-body text-sm text-[#052013]/70 mb-4">{product.description}</p>
-                  <Button asChild className="w-full bg-[#0a3f25] text-white hover:bg-[#00A651] transition-colors font-bold uppercase tracking-wider">
-                    <Link href={product.helloAssoUrl} target="_blank" rel="noopener noreferrer">
-                      Acheter (HelloAsso)
-                    </Link>
-                  </Button>
-                </div>
-              </motion.div>
-            ))}
+            <AnimatePresence>
+              {filteredProducts.map((product) => (
+                <motion.div
+                  key={product.id}
+                  layout
+                  variants={cardVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  style={{ rotate: product.rotation }}
+                  whileHover={{ scale: 1.05, rotate: 0 }}
+                  transition={{ type: 'spring', stiffness: 300 }}
+                  className="bg-[#FEF7E0] rounded-2xl shadow-lg text-[#052013] overflow-hidden group"
+                >
+                  <Link href={`/boutique/${product.id}`} className="block">
+                    <div className="relative w-full h-64 overflow-hidden">
+                      <Image
+                        src={product.image}
+                        alt={product.name}
+                        fill
+                        className="object-cover mix-blend-multiply group-hover:scale-110 transition-transform duration-400"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      />
+                    </div>
+                    <div className="p-6">
+                      <h3 className="font-display text-2xl font-bold uppercase truncate">{product.name}</h3>
+                      <p className="font-body text-3xl font-black text-[#00A651] my-2">{product.price}</p>
+                      <p className="font-body text-sm text-[#052013]/70 mb-4 h-10">{product.description}</p>
+                       <Button asChild className="w-full bg-[#0a3f25] text-white hover:bg-[#00A651] transition-colors font-bold uppercase tracking-wider">
+                        <span>Voir détails</span>
+                      </Button>
+                    </div>
+                  </Link>
+                </motion.div>
+              ))}
+            </AnimatePresence>
           </motion.div>
         </div>
       </main>
