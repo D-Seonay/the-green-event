@@ -6,6 +6,7 @@ import ConceptSection from '@/components/ConceptSection';
 import ProgrammationSection from '@/components/ProgrammationSection';
 import InfosSection from '@/components/InfosSection';
 import SponsorsSection from '@/components/sections/Sponsors';
+import NewsletterSection from '@/components/sections/NewsletterSection';
 import Footer from '@/components/Footer';
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
       <ProgrammationSection />
       <InfosSection />
       <SponsorsSection />
+      <NewsletterSection />
       <Footer />
     </main>
   );
