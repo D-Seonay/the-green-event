@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Leaf, Headphones, Users } from "lucide-react";
-import WaveDivider from "./WaveDivider";
+import WaveDivider from '../ui/WaveDivider';
 
 const ConceptSection = () => {
   const values = [

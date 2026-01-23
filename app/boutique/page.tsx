@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import WaveDivider from '@/components/WaveDivider';
+import WaveDivider from '@/components/ui/WaveDivider';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/Footer';
 import { PRODUCTS } from '@/lib/data';

@@ -6,7 +6,7 @@ import Image from "next/image";
 import { Instagram, Facebook, Twitter, Mail, Send, Loader2, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import WaveDivider from "./ui/WaveDivider";
+import WaveDivider from "@/components/ui/WaveDivider";
 
 type FormState = 'idle' | 'loading' | 'success' | 'error';
 
