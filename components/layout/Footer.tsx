@@ -167,10 +167,10 @@ const Footer = () => {
                 © 2026 The Green Event. Tous droits réservés.
               </p>
               <div className="flex gap-6">
-                <a href="#" className="font-body text-cream/50 hover:text-cream text-sm transition-colors">
+                <a href="/mentions-legales" className="font-body text-cream/50 hover:text-cream text-sm transition-colors">
                   Mentions légales
                 </a>
-                <a href="#" className="font-body text-cream/50 hover:text-cream text-sm transition-colors">
+                <a href="/cgv" className="font-body text-cream/50 hover:text-cream text-sm transition-colors">
                   CGV
                 </a>
               </div>
