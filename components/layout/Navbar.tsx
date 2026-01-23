@@ -21,6 +21,7 @@ const Navbar = () => {
   const navLinks = [
     { href: "#concept", label: "Le Concept" },
     { href: "/programmation", label: "Programmation" },
+    { href: "/boutique", label: "Shop" },
     { href: "#infos", label: "Infos Pratiques" },
   ];
 

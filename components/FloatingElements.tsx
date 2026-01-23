@@ -1,22 +1,23 @@
-"use client";
-
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { IconProps, FloatingElement as FloatingElementInterface } from '@/types';
+import Cube from './ui/Cube';
+import Leaf from './ui/Leaf';
 
 interface FloatingElementProps {
   className?: string;
-  variant: "cube" | "leaf" | "circle";
   size?: "sm" | "md" | "lg" | "xl";
   blur?: boolean;
   style?: React.CSSProperties;
+  component: React.ComponentType<IconProps>;
 }
 
 const FloatingElement = ({ 
   className = "", 
-  variant, 
   size = "md", 
   blur = false,
-  style 
+  style,
+  component: Component,
 }: FloatingElementProps) => {
   const sizeClasses = {
     sm: "w-8 h-8 md:w-12 md:h-12",
@@ -26,40 +27,15 @@ const FloatingElement = ({
   };
 
   const blurClass = blur ? "blur-sm opacity-30" : "opacity-60";
-
-  if (variant === "cube") {
-    return (
-      <div 
-        className={`${sizeClasses[size]} ${blurClass} ${className}`}
-        style={style}
-      >
-        <svg viewBox="0 0 100 100" className="w-full h-full fill-cream">
-          <polygon points="50,5 95,27.5 95,72.5 50,95 5,72.5 5,27.5" />
-        </svg>
-      </div>
-    );
-  }
-
-  if (variant === "leaf") {
-    return (
-      <div 
-        className={`${sizeClasses[size]} ${blurClass} ${className}`}
-        style={style}
-      >
-        <svg viewBox="0 0 100 100" className="w-full h-full fill-cream">
-          <path d="M50 5 C80 20, 95 50, 80 80 C60 95, 40 95, 20 80 C5 50, 20 20, 50 5 Z" />
-          <path d="M50 20 L50 85 M35 40 L50 55 M65 40 L50 55" 
-                className="stroke-forest stroke-2 fill-none opacity-50" />
-        </svg>
-      </div>
-    );
-  }
+  const colorClass = "fill-cream stroke-forest"; // Added common color classes
 
   return (
     <div 
-      className={`${sizeClasses[size]} ${blurClass} rounded-full bg-cream ${className}`}
+      className={`${sizeClasses[size]} ${blurClass} ${className}`}
       style={style}
-    />
+    >
+      <Component className={`w-full h-full ${colorClass}`} />
+    </div>
   );
 };
 

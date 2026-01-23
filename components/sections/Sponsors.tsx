@@ -4,7 +4,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import WaveDivider from '../WaveDivider';
+import WaveDivider from '../ui/WaveDivider';
 
 const sponsors = [
   { id: 1, name: 'Sponsor 1', logoSrc: '/placeholder.svg' },

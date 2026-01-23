@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Calendar, MapPin, Car } from "lucide-react";
-import WaveDivider from "./WaveDivider";
+import WaveDivider from "../ui/WaveDivider";
 
 const InfosSection = () => {
   const infos = [

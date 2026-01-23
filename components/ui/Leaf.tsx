@@ -1,7 +1,8 @@
-import { motion, SVGMotionProps } from 'framer-motion';
+import { IconProps } from '@/types';
+import { SVGProps } from 'react';
 
-const Leaf = (props: SVGMotionProps<SVGSVGElement>) => (
-  <motion.svg
+const Leaf = (props: IconProps) => (
+  <svg
     xmlns="http://www.w3.org/2000/svg"
     width="48"
     height="48"
@@ -16,7 +17,7 @@ const Leaf = (props: SVGMotionProps<SVGSVGElement>) => (
     <path d="M2 22s1.5-2 5-2 5 2 5 2-1.5-2-5-2-5 2-5 2z" />
     <path d="M2 16s1.5-2 5-2 5 2 5 2-1.5-2-5-2-5 2-5 2z" />
     <path d="M14 22V10c0-2.2-1.8-4-4-4s-4 1.8-4 4v12" />
-  </motion.svg>
+  </svg>
 );
 
 export default Leaf;
