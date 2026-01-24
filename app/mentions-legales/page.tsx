@@ -18,9 +18,9 @@ export default function MentionsLegalesPage() {
         <WaveDivider variant="forest-to-cream" flip={false} className="mb-12" />
 
         <div className="prose prose-invert lg:prose-xl mx-auto">
-          <h2 className="text-leaf text-3xl font-display font-bold mb-4">1. Identité de l'association</h2>
+          <h2 className="text-leaf text-3xl font-display font-bold mb-4">1. Identité de l&apos;association</h2>
           <p>
-            <strong>Nom de l'association :</strong> The Green Event
+            <strong>Nom de l&apos;association :</strong> The Green Event
           </p>
           <p>
             <strong>Adresse :</strong> 44120 Vertou
@@ -31,7 +31,7 @@ export default function MentionsLegalesPage() {
 
           <h2 className="text-leaf text-3xl font-display font-bold mb-4 mt-8">2. Hébergement</h2>
           <p>
-            Le site internet "The Green Event" est hébergé par Vercel Inc., dont le siège social est situé :
+            Le site internet &quot;The Green Event&quot; est hébergé par Vercel Inc., dont le siège social est situé :
           </p>
           <p>
             340 S Lemon Ave #4133<br />
@@ -41,15 +41,15 @@ export default function MentionsLegalesPage() {
 
           <h2 className="text-leaf text-3xl font-display font-bold mb-4 mt-8">3. Propriété intellectuelle</h2>
           <p>
-            L'intégralité du site "The Green Event", y compris la conception, les textes, les images, les éléments graphiques, le logo et les animations, sont la propriété exclusive de l'association "The Green Event". Toute reproduction, représentation, modification, publication, adaptation de tout ou partie des éléments du site, quel que soit le moyen ou le procédé utilisé, est interdite, sauf autorisation écrite préalable de l'association.
+            L&apos;intégralité du site &quot;The Green Event&quot;, y compris la conception, les textes, les images, les éléments graphiques, le logo et les animations, sont la propriété exclusive de l&apos;association &quot;The Green Event&quot;. Toute reproduction, représentation, modification, publication, adaptation de tout ou partie des éléments du site, quel que soit le moyen ou le procédé utilisé, est interdite, sauf autorisation écrite préalable de l&apos;association.
           </p>
 
           <h2 className="text-leaf text-3xl font-display font-bold mb-4 mt-8">4. Politique de confidentialité (RGPD)</h2>
           <p>
-            L'association "The Green Event" s'engage à protéger la vie privée de ses utilisateurs. Les données personnelles collectées via le formulaire d'inscription à la newsletter ou le formulaire de contact (telles que nom, prénom, adresse email) sont uniquement utilisées pour l'envoi de communications relatives à l'événement et pour répondre aux demandes des utilisateurs.
+            L&apos;association &quot;The Green Event&quot; s&apos;engage à protéger la vie privée de ses utilisateurs. Les données personnelles collectées via le formulaire d&apos;inscription à la newsletter ou le formulaire de contact (telles que nom, prénom, adresse email) sont uniquement utilisées pour l&apos;envoi de communications relatives à l&apos;événement et pour répondre aux demandes des utilisateurs.
           </p>
           <p>
-            Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez d'un droit d'accès, de rectification, de suppression et d'opposition relatif à vos données personnelles. Pour exercer ces droits, veuillez nous contacter à <a href="mailto:contact@thegreenevent.com" className="text-leaf hover:underline">contact@thegreenevent.com</a>. Vos données ne seront en aucun cas cédées à des tiers.
+            Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez d&apos;un droit d&apos;accès, de rectification, de suppression et d&apos;opposition relatif à vos données personnelles. Pour exercer ces droits, veuillez nous contacter à &lt;a href=&quot;mailto:contact@thegreenevent.com&quot; className=&quot;text-leaf hover:underline&quot;&gt;contact@thegreenevent.com&lt;/a&gt;. Vos données ne seront en aucun cas cédées à des tiers.
           </p>
         </div>
       </div>
