@@ -18,7 +18,7 @@ export default function CgvPage() {
         <WaveDivider variant="forest-to-cream" flip={false} className="mb-12" />
 
         <div className="prose prose-invert lg:prose-xl mx-auto">
-          <h2 className="text-leaf text-3xl font-display font-bold mb-4">1. Objet et champ d'application</h2>
+          <h2 className="text-leaf text-3xl font-display font-bold mb-4">1. Objet et champ d&apos;application</h2>
           <p>
             Les présentes Conditions Générales de Vente (CGV) régissent l&apos;ensemble des ventes de produits (goodies éco-responsables) réalisées par l&apos;association &quot;The Green Event&quot; via son site internet. Toute commande implique l&apos;acceptation sans réserve par l&apos;acheteur des présentes CGV.
           </p>
