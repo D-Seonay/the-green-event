@@ -9,7 +9,7 @@ export default function MentionsLegalesPage() {
     <div className="min-h-screen bg-forest text-cream font-body pt-16">
       <div className="container mx-auto px-4 md:px-6 max-w-4xl py-12">
         <Button asChild variant="outline" className="mb-8 border-cream text-cream hover:bg-cream hover:text-forest">
-          <Link href="/">← Retour à l'accueil</Link>
+          <Link href="/">← Retour à l&apos;accueil</Link>
         </Button>
 
         <h1 className="text-cream text-5xl md:text-7xl font-display font-black mb-8 text-center uppercase leading-tight">
