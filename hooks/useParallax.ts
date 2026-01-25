@@ -1,13 +1,6 @@
-'use client';
-
 import { useScroll, useTransform, MotionValue } from 'framer-motion';
-import { RefObject } from 'react';
-
-interface UseParallaxOptions {
-  target?: RefObject<HTMLElement>;
-  offset?: string[];
-  speed: number;
-}
+import { RefObject, useState, useEffect } from 'react';
+import useMediaQuery from '../hooks/use-media-query';
 
 /**
  * A custom hook to create a parallax effect on the y-axis based on scroll progress.
@@ -21,6 +14,12 @@ export function useParallax(
   scrollYProgress: MotionValue<number>,
   speed: number,
 ): MotionValue<string> {
+  const isMobile = useMediaQuery('(max-width: 768px)'); // Tailwind's 'md' breakpoint
+
+  if (isMobile) {
+    return useTransform(scrollYProgress, [0, 1], ['0%', '0%']); // Disable parallax on mobile
+  }
+
   // The y-position will move from -speed% to +speed% of the element's height
   // as the scrollYProgress goes from 0 to 1.
   return useTransform(scrollYProgress, [0, 1], [`${-speed * 2}%`, `${speed * 2}%`]);

@@ -31,7 +31,7 @@ const InfosSection = () => {
       {/* Wave Transition */}
       <WaveDivider variant="cream-to-forest" className="-mt-1 bg-forest" />
 
-      <div className="bg-cream py-16 md:py-24">
+      <div className="bg-cream py-12 md:py-24">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div
             className="text-center mb-12 md:mb-16"
@@ -40,7 +40,7 @@ const InfosSection = () => {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="font-display font-black text-forest text-4xl md:text-6xl lg:text-7xl mb-4">
+            <h2 className="font-display font-black text-forest text-4xl md:text-6xl mb-4">
               INFOS PRATIQUES
             </h2>
             <p className="font-body text-forest/70 text-lg md:text-xl">
