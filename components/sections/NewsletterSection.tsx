@@ -44,14 +44,14 @@ export default function NewsletterSection() {
   return (
     <section className="relative bg-[#FEF7E0] text-[#052013]">
       <WaveDivider variant="forest-to-cream" />
-      <div className="container mx-auto max-w-4xl py-20 px-4 text-center">
+      <div className="container mx-auto max-w-4xl py-12 md:py-20 px-4 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-wider">
+          <h2 className="font-display text-4xl md:text-6xl font-bold uppercase tracking-wider">
             Restez branchés
           </h2>
           <p className="font-body mt-4 text-lg md:text-xl max-w-2xl mx-auto">
@@ -78,12 +78,12 @@ export default function NewsletterSection() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Votre adresse email..."
-                className="flex-grow px-6 py-4 rounded-full bg-[#0a3f25] text-[#FEF7E0] placeholder:text-[#FEF7E0]/70 border-none focus:ring-2 focus:ring-[#00A651] outline-none transition-shadow"
+                className="flex-grow px-6 py-4 rounded-full bg-[#0a3f25] text-[#FEF7E0] placeholder:text-[#FEF7E0]/70 border-none focus:ring-2 focus:ring-[#00A651] outline-none transition-shadow h-12"
                 disabled={formState === 'loading'}
               />
               <button
                 type="submit"
-                className="px-8 py-4 rounded-full bg-[#0a3f25] text-[#FEF7E0] font-bold uppercase tracking-widest hover:bg-[#00A651] transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+                className="px-8 py-4 rounded-full bg-[#0a3f25] text-[#FEF7E0] font-bold uppercase tracking-widest hover:bg-[#00A651] transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center h-12"
                 disabled={formState === 'loading'}
               >
                 {formState === 'loading' ? (

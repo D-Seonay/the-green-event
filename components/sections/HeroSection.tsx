@@ -45,20 +45,20 @@ const HeroSection = () => {
         <Leaf className="text-[#00A651] opacity-50" />
       </motion.div> */}
 
-      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center">
+      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center p-4">
         <h1
-          className="text-8xl font-black text-[#FEF7E0] drop-shadow-lg"
+          className="text-5xl md:text-8xl font-black text-[#FEF7E0] drop-shadow-lg leading-tight"
           style={{ fontFamily: 'Montserrat Black, sans-serif' }}
         >
           THE GREEN EVENT
         </h1>
-        <h2 className="mt-4 text-2xl text-[#00A651] drop-shadow-md">
+        <h2 className="mt-4 text-xl md:text-2xl text-[#00A651] drop-shadow-md">
           MUSIQUE ÉLECTRONIQUE & NATURE À VERTOU
         </h2>
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="mt-8 px-8 py-3 bg-[#00A651] text-[#FEF7E0] font-bold rounded-full"
+          className="mt-8 px-8 py-3 bg-[#00A651] text-[#FEF7E0] font-bold rounded-full h-12"
         >
           BILLETTERIE
         </motion.button>

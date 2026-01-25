@@ -35,11 +35,11 @@ const SponsorsSection = () => {
   };
 
   return (
-    <section id="sponsors" className="relative bg-[#0a3f25] py-20 overflow-hidden">
+    <section id="sponsors" className="relative bg-[#0a3f25] py-12 md:py-20 overflow-hidden">
       <WaveDivider variant="forest-to-cream" className="absolute top-0 w-full" />
       
       <div className="text-center mb-12">
-        <h2 className="text-4xl font-extrabold text-[#FEF7E0]" style={{ fontFamily: 'Montserrat Black, sans-serif' }}>
+        <h2 className="text-4xl md:text-6xl font-extrabold text-[#FEF7E0]" style={{ fontFamily: 'Montserrat Black, sans-serif' }}>
           NOS PARTENAIRES
         </h2>
       </div>

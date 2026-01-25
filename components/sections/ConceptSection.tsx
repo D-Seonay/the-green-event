@@ -29,7 +29,7 @@ const ConceptSection = () => {
       <WaveDivider variant="cream-to-forest" className="-mt-1 bg-forest" />
 
       {/* Content */}
-      <div className="bg-cream py-16 md:py-24">
+      <div className="bg-cream py-12 md:py-24">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div
             className="text-center mb-12 md:mb-16"
@@ -38,7 +38,7 @@ const ConceptSection = () => {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="font-display font-black text-forest text-4xl md:text-6xl lg:text-7xl mb-6">
+            <h2 className="font-display font-black text-forest text-4xl md:text-6xl mb-6">
               L&apos;ÉLECTRO AU GRAND AIR
             </h2>
             <p className="font-body text-forest/80 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">

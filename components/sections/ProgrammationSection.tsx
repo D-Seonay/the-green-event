@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import Cube from '@/components/ui/Cube';
 import Leaf from '@/components/ui/Leaf';
+import useMediaQuery from '@/hooks/use-media-query';
 
 const artists = [
   { name: 'DIANA KRALL', image: '/placeholder.svg', rotation: -3 },
@@ -26,12 +27,14 @@ const ArtistCard = ({ artist, index }) => {
     offset: ['start end', 'end start'],
   });
 
+  const isMobile = useMediaQuery('(max-width: 768px)'); // Tailwind's 'md' breakpoint
   const y = useTransform(scrollYProgress, [0, 1], [-100, 100 * (index % 2 === 0 ? -1 : 1)]);
+  const mobileRotation = isMobile ? artist.rotation > 0 ? 1 : -1 : artist.rotation; // Reduce tilt on mobile
 
   return (
     <motion.div
       ref={targetRef}
-      style={{ y }}
+      style={{ y: isMobile ? 0 : y }} // Disable vertical parallax on mobile
       className="relative group"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -40,7 +43,7 @@ const ArtistCard = ({ artist, index }) => {
     >
       <div
         className="bg-[#FEF7E0] p-4 rounded-lg shadow-lg"
-        style={{ transform: `rotate(${artist.rotation}deg)` }}
+        style={{ transform: `rotate(${mobileRotation}deg)` }}
       >
         <div className="relative w-full h-56">
           <Image
@@ -59,32 +62,45 @@ const ArtistCard = ({ artist, index }) => {
 };
 
 const ConnectingLine = () => {
-    const targetRef = React.useRef(null);
-    const { scrollYProgress } = useScroll({
-      target: targetRef,
-      offset: ['start center', 'end center'],
-    });
-  
-    // This will animate the stroke-dashoffset to reveal the line
-    const pathLength = useTransform(scrollYProgress, [0, 0.8], [0, 1]);
-  
+  const targetRef = React.useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+    offset: ['start center', 'end center'],
+  });
+
+  const isMobile = useMediaQuery('(max-width: 768px)'); // Tailwind's 'md' breakpoint
+
+  // This will animate the stroke-dashoffset to reveal the line
+  const pathLength = useTransform(scrollYProgress, [0, 0.8], [0, 1]);
+
+  if (isMobile) {
     return (
-      <div ref={targetRef} className="absolute inset-0 w-full h-full overflow-hidden">
-        <svg width="100%" height="100%" viewBox="0 0 1200 800" preserveAspectRatio="none">
-          <motion.path
-            d="M -50,150 Q 150,50 300,150 T 600,150 T 900,150 T 1250,150 M -50,450 Q 150,350 300,450 T 600,450 T 900,450 T 1250,450"
-            fill="none"
-            stroke="#FEF7E0"
-            strokeWidth="3"
-            strokeDasharray="1"
-            strokeDashoffset="0"
-            style={{ pathLength }}
-          />
-        </svg>
+      <div ref={targetRef} className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-px h-full overflow-hidden">
+        <motion.div
+          className="w-full bg-cream"
+          style={{ height: pathLength }} // Animate height for vertical line
+        />
       </div>
     );
-  };
-  
+  }
+
+  return (
+    <div ref={targetRef} className="absolute inset-0 w-full h-full overflow-hidden">
+      <svg width="100%" height="100%" viewBox="0 0 1200 800" preserveAspectRatio="none">
+        <motion.path
+          d="M -50,150 Q 150,50 300,150 T 600,150 T 900,150 T 1250,150 M -50,450 Q 150,350 300,450 T 600,450 T 900,450 T 1250,450"
+          fill="none"
+          stroke="#FEF7E0"
+          strokeWidth="3"
+          strokeDasharray="1"
+          strokeDashoffset="0"
+          style={{ pathLength }}
+        />
+      </svg>
+    </div>
+  );
+};
+
 
 const FloatingIcon = ({ children, x, y, className }) => {
     const targetRef = React.useRef(null);
@@ -93,11 +109,12 @@ const FloatingIcon = ({ children, x, y, className }) => {
       offset: ['start end', 'end start'],
     });
   
+    const isMobile = useMediaQuery('(max-width: 768px)'); // Tailwind's 'md' breakpoint
     const yValue = useTransform(scrollYProgress, [0, 1], y);
     const xValue = useTransform(scrollYProgress, [0, 1], x);
   
     return (
-      <motion.div ref={targetRef} style={{ y: yValue, x: xValue }} className={`absolute ${className}`}>
+      <motion.div ref={targetRef} style={{ y: isMobile ? 0 : yValue, x: isMobile ? 0 : xValue }} className={`absolute ${className} ${isMobile ? 'hidden' : ''}`}>
         {children}
       </motion.div>
     );
@@ -107,11 +124,11 @@ export default function ProgrammationSection() {
   const sectionRef = React.useRef(null);
 
   return (
-    <section ref={sectionRef} className="relative bg-[#0a3f25] py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <section ref={sectionRef} className="relative bg-[#0a3f25] py-12 px-4 md:py-20 md:px-8 overflow-hidden">
       <div className="absolute top-8 left-8 z-10">
         <div className="relative">
           <div className="absolute -inset-2 bg-[#FEF7E0] transform -rotate-3 rounded-lg"></div>
-          <h2 className="relative text-5xl md:text-6xl font-extrabold text-[#0a3f25] px-6 py-2">
+          <h2 className="relative text-4xl md:text-6xl font-extrabold text-[#0a3f25] px-6 py-2">
             ARTISTES
           </h2>
         </div>
@@ -134,14 +151,14 @@ export default function ProgrammationSection() {
 
 
       <div className="relative max-w-7xl mx-auto z-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-24 mt-48">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-24 mt-48">
           {artists.map((artist, index) => (
             <ArtistCard key={artist.name} artist={artist} index={index} />
           ))}
         </div>
 
         <div className="mt-24 text-center">
-          <Button variant="outline" size="lg" className="bg-[#FEF7E0] text-[#0a3f25] hover:bg-[#e9e2cf] group">
+          <Button variant="outline" size="lg" className="bg-[#FEF7E0] text-[#0a3f25] hover:bg-[#e9e2cf] group h-12">
             VOIR PLUS
             <ArrowDown className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
           </Button>

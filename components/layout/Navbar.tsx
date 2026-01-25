@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -100,41 +101,48 @@ const Navbar = () => {
           </button>
         </nav>
 
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-forest/98 backdrop-blur-md border-t border-cream/10">
-            <div className="container mx-auto px-4 py-6 flex flex-col gap-4">
-              {navLinks.map((link) =>
-                link.href.startsWith('/') ? (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className="text-cream font-body font-semibold text-lg py-2 text-left hover:text-leaf transition-colors"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {link.label}
-                  </Link>
-                ) : (
-                  <button
-                    key={link.href}
-                    onClick={() => scrollToSection(link.href)}
-                    className="text-cream font-body font-semibold text-lg py-2 text-left hover:text-leaf transition-colors"
-                  >
-                    {link.label}
-                  </button>
-                )
-              )}
-              <Button
-                asChild
-                className="bg-leaf hover:bg-leaf/90 text-cream font-display font-bold uppercase tracking-wide mt-2"
-              >
-                <a href="https://example.com/billetterie" target="_blank" rel="noopener noreferrer">
-                  Billetterie
-                </a>
-              </Button>
-            </div>
-          </div>
-        )}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.2 }}
+              className="md:hidden absolute top-full left-0 right-0 bg-forest/98 backdrop-blur-md border-t border-cream/10 z-40"
+            >
+              <div className="container mx-auto px-4 py-6 flex flex-col gap-4">
+                {navLinks.map((link) =>
+                  link.href.startsWith('/') ? (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="text-cream font-body font-semibold text-3xl py-2 text-left hover:text-leaf transition-colors"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {link.label}
+                    </Link>
+                  ) : (
+                    <button
+                      key={link.href}
+                      onClick={() => scrollToSection(link.href)}
+                      className="text-cream font-body font-semibold text-3xl py-2 text-left hover:text-leaf transition-colors"
+                    >
+                      {link.label}
+                    </button>
+                  )
+                )}
+                <Button
+                  asChild
+                  className="bg-leaf hover:bg-leaf/90 text-cream font-display font-bold uppercase tracking-wide mt-2 h-12 text-3xl"
+                >
+                  <a href="https://example.com/billetterie" target="_blank" rel="noopener noreferrer">
+                    Billetterie
+                  </a>
+                </Button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </header>
   );
