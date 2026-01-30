@@ -55,13 +55,6 @@ const HeroSection = () => {
         <h2 className="mt-4 text-xl md:text-2xl text-[#00A651] drop-shadow-md">
           MUSIQUE ÉLECTRONIQUE & NATURE À VERTOU
         </h2>
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="mt-8 px-8 py-3 bg-[#00A651] text-[#FEF7E0] font-bold rounded-full h-12"
-        >
-          BILLETTERIE
-        </motion.button>
       </div>
     </section>
   )

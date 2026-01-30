@@ -81,14 +81,6 @@ const Navbar = () => {
                 </button>
               )
             )}
-            <Button
-              asChild
-              className="bg-leaf hover:bg-leaf/90 text-cream font-display font-bold uppercase tracking-wide px-6"
-            >
-              <a href="https://example.com/billetterie" target="_blank" rel="noopener noreferrer">
-                Billetterie
-              </a>
-            </Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -131,14 +123,6 @@ const Navbar = () => {
                     </button>
                   )
                 )}
-                <Button
-                  asChild
-                  className="bg-leaf hover:bg-leaf/90 text-cream font-display font-bold uppercase tracking-wide mt-2 h-12 text-3xl"
-                >
-                  <a href="https://example.com/billetterie" target="_blank" rel="noopener noreferrer">
-                    Billetterie
-                  </a>
-                </Button>
               </div>
             </motion.div>
           )}
