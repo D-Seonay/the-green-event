@@ -1,6 +1,6 @@
+"use client";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-"use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
