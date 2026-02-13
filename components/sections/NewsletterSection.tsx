@@ -42,7 +42,7 @@ export default function NewsletterSection() {
   };
 
   return (
-    <section className="relative bg-[#FEF7E0] text-[#052013]">
+    <section className="relative bg-cream text-forest">
       <WaveDivider variant="forest-to-cream" />
       <div className="container mx-auto max-w-4xl py-12 md:py-20 px-4 text-center">
         <motion.div
@@ -68,7 +68,7 @@ export default function NewsletterSection() {
         >
           {formState === 'success' ? (
             <div className="flex flex-col items-center justify-center p-8 bg-white/20 rounded-lg">
-              <CheckCircle2 className="w-16 h-16 text-[#00A651]" />
+              <CheckCircle2 className="w-16 h-16 text-leaf" />
               <p className="font-display mt-4 text-2xl font-bold">Merci ! Vous êtes inscrit.</p>
             </div>
           ) : (
@@ -78,12 +78,12 @@ export default function NewsletterSection() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Votre adresse email..."
-                className="flex-grow px-6 py-4 rounded-full bg-[#0a3f25] text-[#FEF7E0] placeholder:text-[#FEF7E0]/70 border-none focus:ring-2 focus:ring-[#00A651] outline-none transition-shadow h-12"
+                className="flex-grow px-6 py-4 rounded-full bg-forest text-cream placeholder:text-cream/70 border-none focus:ring-2 focus:ring-leaf outline-none transition-shadow h-12"
                 disabled={formState === 'loading'}
               />
               <button
                 type="submit"
-                className="px-8 py-4 rounded-full bg-[#0a3f25] text-[#FEF7E0] font-bold uppercase tracking-widest hover:bg-[#00A651] transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center h-12"
+                className="px-8 py-4 rounded-full bg-forest text-cream font-bold uppercase tracking-widest hover:bg-leaf transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center h-12"
                 disabled={formState === 'loading'}
               >
                 {formState === 'loading' ? (

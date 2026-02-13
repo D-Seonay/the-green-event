@@ -8,6 +8,7 @@ import Image from 'next/image';
 import Cube from '@/components/ui/Cube';
 import Leaf from '@/components/ui/Leaf';
 import useMediaQuery from '@/hooks/use-media-query';
+import WaveDivider from '../ui/WaveDivider';
 
 const artists = [
   { name: 'DIANA KRALL', image: '/placeholder.svg', rotation: -3 },
@@ -42,7 +43,7 @@ const ArtistCard = ({ artist, index }) => {
       viewport={{ once: true }}
     >
       <div
-        className="bg-[#FEF7E0] p-4 rounded-lg shadow-lg"
+        className="p-4 rounded-lg shadow-lg bg-cream"
         style={{ transform: `rotate(${mobileRotation}deg)` }}
       >
         <div className="relative w-full h-56">
@@ -53,7 +54,7 @@ const ArtistCard = ({ artist, index }) => {
             className="object-cover rounded-md filter grayscale" // duotone effect can be complex, using grayscale for now
           />
         </div>
-        <h3 className="mt-4 text-center text-lg font-bold text-[#0a3f25]">
+        <h3 className="mt-4 text-center text-lg font-bold text-forest">
           {artist.name}
         </h3>
       </div>
@@ -90,7 +91,7 @@ const ConnectingLine = () => {
         <motion.path
           d="M -50,150 Q 150,50 300,150 T 600,150 T 900,150 T 1250,150 M -50,450 Q 150,350 300,450 T 600,450 T 900,450 T 1250,450"
           fill="none"
-          stroke="#FEF7E0"
+          stroke="hsl(var(--cream))"
           strokeWidth="3"
           strokeDasharray="1"
           strokeDashoffset="0"
@@ -124,11 +125,12 @@ export default function ProgrammationSection() {
   const sectionRef = React.useRef(null);
 
   return (
-    <section ref={sectionRef} className="relative bg-[#0a3f25] py-12 px-4 md:py-20 md:px-8 overflow-hidden">
+    <section ref={sectionRef} className="relative py-12 px-4 md:py-20 md:px-8 overflow-hidden bg-forest">
+      <WaveDivider variant="forest-to-cream" />
       <div className="absolute top-8 left-8 z-10">
         <div className="relative">
-          <div className="absolute -inset-2 bg-[#FEF7E0] transform -rotate-3 rounded-lg"></div>
-          <h2 className="relative text-4xl md:text-6xl font-extrabold text-[#0a3f25] px-6 py-2">
+          <div className="absolute -inset-2 transform -rotate-3 rounded-lg bg-cream"></div>
+          <h2 className="relative px-6 py-2 text-4xl font-extrabold md:text-6xl text-forest">
             ARTISTES
           </h2>
         </div>
@@ -137,20 +139,20 @@ export default function ProgrammationSection() {
       <ConnectingLine />
 
       <FloatingIcon x={[-100, 100]} y={[-50, 50]} className="top-1/4 left-1/4">
-        <Cube className="w-12 h-12 text-[#FEF7E0] opacity-30" />
+        <Cube className="w-12 h-12 opacity-30 text-cream" />
       </FloatingIcon>
       <FloatingIcon x={[50, -50]} y={[20, -20]} className="top-1/2 right-1/4">
-        <Leaf className="w-16 h-16 text-[#FEF7E0] opacity-30" />
+        <Leaf className="w-16 h-16 opacity-30 text-cream" />
       </FloatingIcon>
        <FloatingIcon x={[-20, 20]} y={[50, -100]} className="bottom-1/4 left-1/3">
-        <Leaf className="w-10 h-10 text-[#FEF7E0] opacity-30" />
+        <Leaf className="w-10 h-10 opacity-30 text-cream" />
       </FloatingIcon>
       <FloatingIcon x={[100, -100]} y={[-30, 30]} className="top-1/3 right-1/3">
-        <Cube className="w-16 h-16 text-[#FEF7E0] opacity-30" />
+        <Cube className="w-16 h-16 opacity-30 text-cream" />
       </FloatingIcon>
 
 
-      <div className="relative max-w-7xl mx-auto z-10">
+      <div className="relative z-10 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-24 mt-48">
           {artists.map((artist, index) => (
             <ArtistCard key={artist.name} artist={artist} index={index} />
@@ -158,7 +160,7 @@ export default function ProgrammationSection() {
         </div>
 
         <div className="mt-24 text-center">
-          <Button variant="outline" size="lg" className="bg-[#FEF7E0] text-[#0a3f25] hover:bg-[#e9e2cf] group h-12">
+          <Button variant="outline" size="lg" className="h-12 group bg-cream text-forest hover:bg-cream/90">
             VOIR PLUS
             <ArrowDown className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
           </Button>
