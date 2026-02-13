@@ -1,3 +1,5 @@
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -79,25 +81,25 @@ const FormSchema = z.object({
 const perks = [
   {
     title: "Accès Gratuit au Festival",
-    icon: <Ticket className="w-8 h-8 text-cream-sand" />,
+    icon: <Ticket className="w-8 h-8 text-cream" />,
     description:
       "Profitez de tous les concerts et de l'ambiance du festival sans dépenser un centime.",
   },
   {
     title: "Repas & Boissons offerts",
-    icon: <HandPlatter className="w-8 h-8 text-cream-sand" />,
+    icon: <HandPlatter className="w-8 h-8 text-cream" />,
     description:
       "Nous vous offrons les repas et les boissons pour que vous ne manquiez de rien.",
   },
   {
     title: "Goodies Exclusifs",
-    icon: <Shirt className="w-8 h-8 text-cream-sand" />,
+    icon: <Shirt className="w-8 h-8 text-cream" />,
     description:
       "Recevez un t-shirt et d'autres goodies uniques pour montrer que vous faites partie de la Green Team.",
   },
   {
     title: "Ambiance de folie",
-    icon: <HeartHandshake className="w-8 h-8 text-cream-sand" />,
+    icon: <HeartHandshake className="w-8 h-8 text-cream" />,
     description:
       "Rejoignez une équipe de passionnés et vivez des moments inoubliables.",
   },
@@ -175,7 +177,9 @@ const BenevolesPage = () => {
   };
 
   return (
-    <div className="bg-deep-forest text-cream-sand">
+    <main>
+    <Navbar />
+    <div className="bg-forest text-cream">
       <div className="container mx-auto px-4 md:px-6">
         <div className="py-24 text-center">
           <motion.h1
@@ -196,7 +200,7 @@ const BenevolesPage = () => {
             unique à Vertou.
           </motion.p>
         </div>
-        <WaveDivider />
+
 
         <div className="pb-24">
           <motion.div
@@ -216,7 +220,7 @@ const BenevolesPage = () => {
                   transform: `rotate(${index % 2 === 0 ? "2deg" : "-2deg"})`,
                 }}
               >
-                <div className="flex justify-center items-center h-16 w-16 bg-vibrant-green rounded-full mx-auto mb-4">
+                <div className="flex justify-center items-center h-16 w-16 bg-leaf rounded-full mx-auto mb-4">
                   {perk.icon}
                 </div>
                 <h3 className="text-xl font-bold">{perk.title}</h3>
@@ -232,7 +236,7 @@ const BenevolesPage = () => {
           transition={{ duration: 0.7, delay: 1 }}
           className="pb-24"
         >
-          <div className="bg-cream-sand text-deep-forest p-8 md:p-12 rounded-lg transform -rotate-1 shadow-lg">
+          <div className="bg-cream text-forest p-8 md:p-12 rounded-lg transform -rotate-1 shadow-lg">
             <h2 className="text-3xl font-bold text-center mb-8">
               Postule maintenant
             </h2>
@@ -252,7 +256,7 @@ const BenevolesPage = () => {
                           <Input
                             placeholder="Entrez votre nom"
                             {...field}
-                            className="bg-transparent border-deep-forest/50"
+                            className="bg-transparent border-forest/50"
                           />
                         </FormControl>
                         <FormMessage />
@@ -269,7 +273,7 @@ const BenevolesPage = () => {
                           <Input
                             placeholder="Entrez votre prénom"
                             {...field}
-                            className="bg-transparent border-deep-forest/50"
+                            className="bg-transparent border-forest/50"
                           />
                         </FormControl>
                         <FormMessage />
@@ -288,7 +292,7 @@ const BenevolesPage = () => {
                           <Input
                             placeholder="Entrez votre email"
                             {...field}
-                            className="bg-transparent border-deep-forest/50"
+                            className="bg-transparent border-forest/50"
                           />
                         </FormControl>
                         <FormMessage />
@@ -305,7 +309,7 @@ const BenevolesPage = () => {
                           <Input
                             placeholder="Entrez votre téléphone"
                             {...field}
-                            className="bg-transparent border-deep-forest/50"
+                            className="bg-transparent border-forest/50"
                           />
                         </FormControl>
                         <FormMessage />
@@ -324,7 +328,7 @@ const BenevolesPage = () => {
                         <Input
                           placeholder="Entrez votre âge"
                           {...field}
-                          className="bg-transparent border-deep-forest/50"
+                          className="bg-transparent border-forest/50"
                         />
                       </FormControl>
                       <FormMessage />
@@ -425,7 +429,7 @@ const BenevolesPage = () => {
                       <FormControl>
                         <Textarea
                           placeholder="Parlez-nous de votre motivation à rejoindre la Green Team..."
-                          className="resize-none bg-transparent border-deep-forest/50"
+                          className="resize-none bg-transparent border-forest/50"
                           {...field}
                         />
                       </FormControl>
@@ -436,7 +440,7 @@ const BenevolesPage = () => {
                 <div className="text-center">
                   <Button
                     type="submit"
-                    className="bg-vibrant-green hover:bg-vibrant-green/90 text-white font-bold py-3 px-8 rounded-full"
+                    className="bg-leaf hover:bg-leaf/90 text-cream font-bold py-3 px-8 rounded-full"
                   >
                     ENVOYER MA CANDIDATURE
                   </Button>
@@ -447,6 +451,8 @@ const BenevolesPage = () => {
         </motion.div>
       </div>
     </div>
+    <Footer />
+  </main>
   );
 };
 
