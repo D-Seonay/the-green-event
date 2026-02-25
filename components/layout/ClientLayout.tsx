@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import LoadingScreen from '@/components/LoadingScreen';
 import SmoothScroller from '@/components/SmoothScroller';
+import ScrollToTop from '@/components/ui/ScrollToTop';
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true);
@@ -27,6 +28,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
       <SmoothScroller>
         {children}
       </SmoothScroller>
+      <ScrollToTop />
     </>
   );
 }
