@@ -46,9 +46,9 @@ const Navbar = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-forest/95 backdrop-blur-md shadow-lg"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        isScrolled || isMobileMenuOpen
+          ? "bg-[#0a3f25] shadow-lg"
           : "bg-transparent"
       }`}
     >
@@ -66,7 +66,7 @@ const Navbar = () => {
               setIsMobileMenuOpen(false);
             }}
           >
-            <Image src="/logo.png" alt="The Green Event" width={48} height={48} className="h-10 md:h-12 w-auto border-2 border-cream rounded-full" />
+            <Image src="/logo.png" alt="The Green Event" width={48} height={48} className="h-10 md:h-12 w-auto border-2 border-cream/20 rounded-full" />
             <span className="font-display font-black text-cream text-sm md:text-lg tracking-tight hidden sm:block">
               THE GREEN EVENT
             </span>
@@ -89,33 +89,39 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-cream p-2"
+            className="md:hidden text-cream p-2 focus:outline-none rounded-lg bg-white/10 backdrop-blur-sm border border-white/10"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMobileMenuOpen ? <X size={28} strokeWidth={2.5} /> : <Menu size={28} strokeWidth={2.5} />}
           </button>
         </nav>
 
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.2 }}
-              className="md:hidden absolute top-full left-0 right-0 bg-forest/98 backdrop-blur-md border-t border-cream/10 z-40"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "100vh" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="md:hidden fixed top-0 left-0 right-0 bg-[#0a3f25] z-[-1] flex flex-col items-center justify-center"
             >
-              <div className="container mx-auto px-4 py-6 flex flex-col gap-4">
-                {navLinks.map((link) => (
-                  <Link
+              <div className="flex flex-col gap-8 items-center">
+                {navLinks.map((link, index) => (
+                  <motion.div
                     key={link.href}
-                    href={link.href}
-                    className="text-cream font-body font-semibold text-3xl py-2 text-left hover:text-leaf transition-colors"
-                    onClick={(e) => handleLinkClick(e, link.href, link.isAnchor)}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1 + index * 0.1 }}
                   >
-                    {link.label}
-                  </Link>
+                    <Link
+                      href={link.href}
+                      className="text-cream font-display font-black text-4xl uppercase tracking-tighter hover:text-leaf transition-colors"
+                      onClick={(e) => handleLinkClick(e, link.href, link.isAnchor)}
+                    >
+                      {link.label}
+                    </Link>
+                  </motion.div>
                 ))}
               </div>
             </motion.div>

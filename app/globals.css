@@ -123,40 +123,4 @@
   .text-shadow-lg {
     text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   }
-
-  .bg-forest {
-    background-color: hsl(var(--forest));
-  }
-
-  .bg-cream {
-    background-color: hsl(var(--cream));
-  }
-
-  .bg-leaf {
-    background-color: hsl(var(--leaf));
-  }
-
-  .text-forest {
-    color: hsl(var(--forest));
-  }
-
-  .text-cream {
-    color: hsl(var(--cream));
-  }
-
-  .text-leaf {
-    color: hsl(var(--leaf));
-  }
-
-  .fill-forest {
-    fill: hsl(var(--forest));
-  }
-
-  .fill-cream {
-    fill: hsl(var(--cream));
-  }
-
-  .fill-leaf {
-    fill: hsl(var(--leaf));
-  }
 }
