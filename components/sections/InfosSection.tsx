@@ -49,7 +49,7 @@ const InfosSection = () => {
           </motion.div>
 
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center max-w-6xl mx-auto">
-            {/* Stylized Map */}
+            {/* Real Google Map */}
             <motion.div
               className="relative"
               initial={{ opacity: 0, x: -50 }}
@@ -58,50 +58,22 @@ const InfosSection = () => {
               transition={{ duration: 0.6 }}
             >
               <div className="relative aspect-square max-w-md mx-auto">
-                {/* Map Background */}
-                <div className="absolute inset-0 bg-forest rounded-[40%_60%_60%_40%_/_60%_40%_60%_40%] overflow-hidden">
-                  {/* Stylized Map Pattern */}
-                  <svg className="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 200 200">
-                    {/* River/Path lines */}
-                    <path
-                      d="M20,100 Q50,80 80,100 T140,100 T200,80"
-                      fill="none"
-                      stroke="hsl(var(--cream))"
-                      strokeWidth="3"
-                    />
-                    <path
-                      d="M0,140 Q40,120 80,140 T160,130 T200,150"
-                      fill="none"
-                      stroke="hsl(var(--cream))"
-                      strokeWidth="2"
-                    />
-                    {/* Dots representing trees/nature */}
-                    {[...Array(12)].map((_, i) => (
-                      <circle
-                        key={i}
-                        cx={30 + (i % 4) * 45}
-                        cy={40 + Math.floor(i / 4) * 50}
-                        r="4"
-                        fill="hsl(var(--cream))"
-                      />
-                    ))}
-                  </svg>
-
-                  {/* Location Pin */}
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                    <motion.div
-                      className="relative"
-                      animate={{ y: [0, -10, 0] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                    >
-                      <MapPin className="w-12 h-12 md:w-16 md:h-16 text-leaf" fill="hsl(var(--leaf))" />
-                    </motion.div>
-                    <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-8 h-2 bg-forest/50 rounded-full blur-sm" />
-                  </div>
+                {/* Map Container with organic shape */}
+                <div className="absolute inset-0 bg-forest rounded-[40%_60%_60%_40%_/_60%_40%_60%_40%] overflow-hidden border-4 border-forest shadow-2xl">
+                  <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2712.151791606953!2d-1.4845670873775743!3d47.17446457103324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4805e900623215b5%3A0xcabb2b7c631ca41b!2sTHE%20GREEN%20EVENT!5e0!3m2!1sfr!2sfr!4v1772036758885!5m2!1sfr!2sfr" 
+                    width="100%" 
+                    height="100%" 
+                    style={{ border: 0, filter: 'grayscale(0.2) contrast(1.1) brightness(0.9)' }} 
+                    allowFullScreen={true} 
+                    loading="lazy" 
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Google Maps - The Green Event"
+                  />
                 </div>
 
                 {/* Location Label */}
-                <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-cream px-4 py-2 rounded-full shadow-lg border-2 border-forest">
+                <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-cream px-4 py-2 rounded-full shadow-lg border-2 border-forest z-10">
                   <p className="font-display font-bold text-forest text-sm whitespace-nowrap">
                     Vertou - Parc de la Sèvre
                   </p>
