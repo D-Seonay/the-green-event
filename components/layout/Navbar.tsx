@@ -5,11 +5,14 @@ import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,19 +23,25 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { href: "#concept", label: "Le Concept" },
-    { href: "/programmation", label: "Programmation" },
-    { href: "/boutique", label: "Shop" },
-    { href: "/benevoles", label: "Bénévoles" },
-    { href: "#infos", label: "Infos Pratiques" },
+    { href: "/#concept", label: "Le Concept", isAnchor: true },
+    { href: "/programmation", label: "Programmation", isAnchor: false },
+    { href: "/boutique", label: "Shop", isAnchor: false },
+    { href: "/benevoles", label: "Bénévoles", isAnchor: false },
+    { href: "/#infos", label: "Infos Pratiques", isAnchor: true },
   ];
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+  const handleLinkClick = (e: React.MouseEvent, href: string, isAnchor: boolean) => {
+    if (isAnchor && pathname === "/") {
+      e.preventDefault();
+      const id = href.replace("/#", "");
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+      setIsMobileMenuOpen(false);
+    } else {
+      setIsMobileMenuOpen(false);
     }
-    setIsMobileMenuOpen(false);
   };
 
   return (
@@ -46,42 +55,36 @@ const Navbar = () => {
       <div className="container mx-auto px-4 md:px-6">
         <nav className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <a
-            href="#"
+          <Link
+            href="/"
             className="flex items-center gap-2 md:gap-3"
             onClick={(e) => {
-              e.preventDefault();
-              window.scrollTo({ top: 0, behavior: "smooth" });
+              if (pathname === "/") {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
+              setIsMobileMenuOpen(false);
             }}
           >
             <Image src="/logo.png" alt="The Green Event" width={48} height={48} className="h-10 md:h-12 w-auto" />
             <span className="font-display font-black text-cream text-sm md:text-lg tracking-tight hidden sm:block">
               THE GREEN EVENT
             </span>
-          </a>
+          </Link>
+
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) =>
-              link.href.startsWith('/') ? (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="text-cream/80 hover:text-cream font-body font-semibold text-sm uppercase tracking-wider transition-colors relative group"
-                >
-                  {link.label}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-leaf transition-all duration-300 group-hover:w-full" />
-                </Link>
-              ) : (
-                <button
-                  key={link.href}
-                  onClick={() => scrollToSection(link.href)}
-                  className="text-cream/80 hover:text-cream font-body font-semibold text-sm uppercase tracking-wider transition-colors relative group"
-                >
-                  {link.label}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-leaf transition-all duration-300 group-hover:w-full" />
-                </button>
-              )
-            )}
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={(e) => handleLinkClick(e, link.href, link.isAnchor)}
+                className="text-cream/80 hover:text-cream font-body font-semibold text-sm uppercase tracking-wider transition-colors relative group"
+              >
+                {link.label}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-leaf transition-all duration-300 group-hover:w-full" />
+              </Link>
+            ))}
           </div>
 
           {/* Mobile Menu Button */}
@@ -104,26 +107,16 @@ const Navbar = () => {
               className="md:hidden absolute top-full left-0 right-0 bg-forest/98 backdrop-blur-md border-t border-cream/10 z-40"
             >
               <div className="container mx-auto px-4 py-6 flex flex-col gap-4">
-                {navLinks.map((link) =>
-                  link.href.startsWith('/') ? (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      className="text-cream font-body font-semibold text-3xl py-2 text-left hover:text-leaf transition-colors"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      {link.label}
-                    </Link>
-                  ) : (
-                    <button
-                      key={link.href}
-                      onClick={() => scrollToSection(link.href)}
-                      className="text-cream font-body font-semibold text-3xl py-2 text-left hover:text-leaf transition-colors"
-                    >
-                      {link.label}
-                    </button>
-                  )
-                )}
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="text-cream font-body font-semibold text-3xl py-2 text-left hover:text-leaf transition-colors"
+                    onClick={(e) => handleLinkClick(e, link.href, link.isAnchor)}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
               </div>
             </motion.div>
           )}

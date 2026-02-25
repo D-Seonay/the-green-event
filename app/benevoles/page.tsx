@@ -1,6 +1,4 @@
 "use client";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
@@ -38,9 +36,6 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/components/ui/use-toast";
-import WaveDivider from "@/components/ui/WaveDivider";
-
-const MAX_ISSUES = 3;
 
 const FormSchema = z.object({
   // Personal information
@@ -177,9 +172,7 @@ const BenevolesPage = () => {
   };
 
   return (
-    <main>
-    <Navbar />
-    <div className="bg-forest text-cream">
+    <main className="bg-forest text-cream pt-20">
       <div className="container mx-auto px-4 md:px-6">
         <div className="py-24 text-center">
           <motion.h1
@@ -450,9 +443,7 @@ const BenevolesPage = () => {
           </div>
         </motion.div>
       </div>
-    </div>
-    <Footer />
-  </main>
+    </main>
   );
 };
 
