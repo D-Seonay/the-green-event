@@ -23,6 +23,7 @@ const Navbar = () => {
     { href: "#concept", label: "Le Concept" },
     { href: "/programmation", label: "Programmation" },
     { href: "/boutique", label: "Shop" },
+    { href: "/benevoles", label: "Bénévoles" },
     { href: "#infos", label: "Infos Pratiques" },
   ];
 
