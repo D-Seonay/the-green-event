@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { useRef } from 'react';
 import Cube from '@/components/ui/Cube';
 import Leaf from '@/components/ui/Leaf';
@@ -12,11 +12,17 @@ const HeroSection = () => {
     offset: ['start start', 'end start'],
   });
 
-  const y1 = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
-  const y2 = useTransform(scrollYProgress, [0, 1], ['0%', '200%']);
-  const y3 = useTransform(scrollYProgress, [0, 1], ['0%', '-100%']);
-  const x1 = useTransform(scrollYProgress, [0, 1], ['0%', '-50%']);
-  const x2 = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
+  const y1 = useTransform(smoothProgress, [0, 1], ['0%', '50%']);
+  const y2 = useTransform(smoothProgress, [0, 1], ['0%', '200%']);
+  const y3 = useTransform(smoothProgress, [0, 1], ['0%', '-100%']);
+  const x1 = useTransform(smoothProgress, [0, 1], ['0%', '-50%']);
+  const x2 = useTransform(smoothProgress, [0, 1], ['0%', '50%']);
 
   return (
     <section ref={targetRef} className="relative h-screen w-full">
@@ -46,14 +52,22 @@ const HeroSection = () => {
       </motion.div>
 
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center p-4">
-        <h1
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           className="text-5xl md:text-8xl font-display font-black text-cream drop-shadow-lg leading-tight"
         >
           THE GREEN EVENT
-        </h1>
-        <h2 className="mt-4 text-xl md:text-2xl text-leaf drop-shadow-md">
+        </motion.h1>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-4 text-xl md:text-2xl text-leaf drop-shadow-md font-bold tracking-widest uppercase"
+        >
           MUSIQUE ÉLECTRONIQUE & NATURE À VERTOU
-        </h2>
+        </motion.h2>
       </div>
     </section>
   )

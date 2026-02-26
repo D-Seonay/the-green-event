@@ -46,12 +46,17 @@ const Navbar = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled || isMobileMenuOpen
-          ? "bg-[#0a3f25] shadow-lg"
-          : "bg-transparent"
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
     >
+      <motion.div
+        initial={false}
+        animate={{
+          backgroundColor: isScrolled || isMobileMenuOpen ? "rgba(10, 63, 37, 1)" : "rgba(10, 63, 37, 0)",
+          boxShadow: isScrolled || isMobileMenuOpen ? "0 10px 15px -3px rgba(0, 0, 0, 0.1)" : "0 0 0px 0px rgba(0, 0, 0, 0)",
+        }}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        className="absolute inset-0 z-[-1]"
+      />
       <div className="container mx-auto px-4 md:px-6">
         <nav className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
@@ -89,7 +94,7 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-cream p-2 focus:outline-none rounded-lg bg-white/10 backdrop-blur-sm border border-white/10"
+            className="md:hidden text-cream p-2 focus:outline-none rounded-lg bg-white/10 backdrop-blur-sm border border-white/10 z-50"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -100,23 +105,28 @@ const Navbar = () => {
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "100vh" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="md:hidden fixed top-0 left-0 right-0 bg-[#0a3f25] z-[-1] flex flex-col items-center justify-center"
+              initial={{ clipPath: "circle(0% at calc(100% - 40px) 40px)" }}
+              animate={{ clipPath: "circle(150% at calc(100% - 40px) 40px)" }}
+              exit={{ clipPath: "circle(0% at calc(100% - 40px) 40px)" }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="md:hidden fixed inset-0 bg-[#0a3f25] flex flex-col items-center justify-center p-6"
             >
               <div className="flex flex-col gap-8 items-center">
                 {navLinks.map((link, index) => (
                   <motion.div
                     key={link.href}
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.1 + index * 0.1 }}
+                    exit={{ opacity: 0, y: 20 }}
+                    transition={{
+                      delay: isMobileMenuOpen ? 0.2 + index * 0.1 : 0,
+                      duration: 0.5,
+                      ease: [0.16, 1, 0.3, 1]
+                    }}
                   >
                     <Link
                       href={link.href}
-                      className="text-cream font-display font-black text-4xl uppercase tracking-tighter hover:text-leaf transition-colors"
+                      className="text-cream font-display font-black text-4xl uppercase tracking-tighter hover:text-leaf transition-colors text-center block"
                       onClick={(e) => handleLinkClick(e, link.href, link.isAnchor)}
                     >
                       {link.label}

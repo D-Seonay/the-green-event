@@ -33,78 +33,87 @@ const LeafIcon = ({ className }: { className?: string }) => (
 );
 
 const CubeIcon = ({ className }: { className?: string }) => (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-        <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-        <line x1="12" y1="22.08" x2="12" y2="12"></line>
-    </svg>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+    <line x1="12" y1="22.08" x2="12" y2="12"></line>
+  </svg>
 );
 
 
 const LoadingScreen = () => {
   return (
     <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#0a3f25] overflow-hidden text-[#FEF7E0]">
-      
+
       {/* ================= ARRIÈRE-PLAN (Z-0) ================= */}
-      
+
       {/* 1. Blobs Flous */}
-      <motion.div 
-        animate={{ scale: [1, 1.2, 1], rotate: [0, 90, 0] }}
-        transition={{ duration: 10, repeat: Infinity, repeatType: "mirror" }}
-        className="absolute -top-20 -left-20 w-96 h-96 bg-[#00A651] rounded-full mix-blend-multiply filter blur-[100px] opacity-40 z-0 pointer-events-none"
+      <motion.div
+        animate={{
+          scale: [1, 1.4, 1.2, 1.5, 1],
+          rotate: [0, 90, 180, 270, 0],
+          x: [0, 100, -50, 80, 0],
+          y: [0, -50, 100, -20, 0]
+        }}
+        transition={{ duration: 25, repeat: Infinity, repeatType: "mirror", ease: "linear" }}
+        className="absolute -top-40 -left-40 w-[600px] h-[600px] bg-[#00A651] rounded-full mix-blend-multiply filter blur-[120px] opacity-20 z-0 pointer-events-none"
       />
-      <motion.div 
-        animate={{ scale: [1, 1.3, 1], x: [0, -50, 0] }}
-        transition={{ duration: 12, repeat: Infinity, repeatType: "mirror" }}
-        className="absolute -bottom-20 -right-20 w-[500px] h-[500px] bg-[#FEF7E0] rounded-full mix-blend-overlay filter blur-[120px] opacity-10 z-0 pointer-events-none"
+      <motion.div
+        animate={{
+          scale: [1, 1.5, 1.3, 1.6, 1],
+          x: [0, -150, 100, -80, 0],
+          y: [0, 100, -150, 60, 0]
+        }}
+        transition={{ duration: 30, repeat: Infinity, repeatType: "mirror", ease: "linear" }}
+        className="absolute -bottom-40 -right-40 w-[800px] h-[800px] bg-[#FEF7E0] rounded-full mix-blend-overlay filter blur-[150px] opacity-15 z-0 pointer-events-none"
       />
 
       {/* 2. Le Lien Serpentin (Wavy Line) */}
       <svg className="absolute top-0 left-0 w-full h-full z-0 opacity-50 pointer-events-none" viewBox="0 0 1440 800" fill="none" preserveAspectRatio="none">
         <motion.path
-            // Une grande courbe de Bézier qui traverse l'écran
-            d="M-100,400 C 300,100 800,700 1500,400"
-            stroke="#FEF7E0"
-            strokeWidth="4"
-            strokeDasharray="10 20" // Pointillés style "couture"
-            initial={{ pathLength: 0, opacity: 0 }}
-            animate={{ 
-                pathLength: 1, 
-                opacity: 1,
-                y: [-15, 15, -15] // Légère ondulation verticale
-            }}
-            transition={{ 
-                pathLength: { duration: 2, ease: "easeInOut" },
-                opacity: { duration: 1 },
-                y: { duration: 8, repeat: Infinity, ease: "easeInOut" }
-            }}
+          // Une grande courbe de Bézier qui traverse l'écran
+          d="M-100,400 C 300,100 800,700 1500,400"
+          stroke="#FEF7E0"
+          strokeWidth="4"
+          strokeDasharray="10 20" // Pointillés style "couture"
+          initial={{ pathLength: 0, opacity: 0 }}
+          animate={{
+            pathLength: 1,
+            opacity: 1,
+            y: [-15, 15, -15] // Légère ondulation verticale
+          }}
+          transition={{
+            pathLength: { duration: 2, ease: "easeInOut" },
+            opacity: { duration: 1 },
+            y: { duration: 8, repeat: Infinity, ease: "easeInOut" }
+          }}
         />
       </svg>
 
-       {/* 3. Petites Icônes Décoratives Flottantes */}
-       {FLOATING_ICONS.map((icon, index) => (
+      {/* 3. Petites Icônes Décoratives Flottantes */}
+      {FLOATING_ICONS.map((icon, index) => (
         <motion.div
-            key={`icon-${index}`}
-            className="absolute z-0 text-[#FEF7E0] opacity-60"
-            style={{ top: icon.top, left: icon.left, right: icon.right, bottom: icon.bottom }}
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ 
-                opacity: 0.6,
-                scale: icon.scale,
-                y: [0, -15, 0],
-                rotate: [icon.rotate, icon.rotate + 15, icon.rotate]
-            }}
-            transition={{
-                delay: index * 0.2,
-                duration: 5 + index,
-                repeat: Infinity,
-                repeatType: "mirror",
-                ease: "easeInOut"
-            }}
+          key={`icon-${index}`}
+          className="absolute z-0 text-[#FEF7E0] opacity-60"
+          style={{ top: icon.top, left: icon.left, right: icon.right, bottom: icon.bottom }}
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{
+            opacity: 0.6,
+            scale: icon.scale,
+            y: [0, -15, 0],
+            rotate: [icon.rotate, icon.rotate + 15, icon.rotate]
+          }}
+          transition={{
+            delay: index * 0.2,
+            duration: 5 + index,
+            repeat: Infinity,
+            repeatType: "mirror",
+            ease: "easeInOut"
+          }}
         >
-            {icon.type === 'leaf' ? <LeafIcon className="w-8 h-8" /> : <CubeIcon className="w-8 h-8" />}
+          {icon.type === 'leaf' ? <LeafIcon className="w-8 h-8" /> : <CubeIcon className="w-8 h-8" />}
         </motion.div>
-       ))}
+      ))}
 
       {/* 4. Images des Artistes */}
       {FLOATING_IMAGES.map((img, index) => (
@@ -113,7 +122,7 @@ const LoadingScreen = () => {
           className="absolute z-0 w-32 h-32 md:w-48 md:h-48 rounded-xl overflow-hidden shadow-2xl border-2 border-[#FEF7E0]/20"
           style={{ top: img.top, left: img.left, right: img.right, bottom: img.bottom, rotate: img.rotate }}
           initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ 
+          animate={{
             opacity: 0.3, // Subtil
             scale: 1,
             y: [0, -20, 0],
@@ -132,9 +141,9 @@ const LoadingScreen = () => {
       ))}
 
       {/* ================= CONTENU CENTRAL (Z-10) ================= */}
-      
+
       <div className="relative z-10 flex flex-col items-center text-center px-4">
-        <motion.h1 
+        <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -143,7 +152,7 @@ const LoadingScreen = () => {
           The Green <br /> Event
         </motion.h1>
 
-        <motion.p 
+        <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.8 }}

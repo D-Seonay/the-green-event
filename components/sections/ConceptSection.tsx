@@ -42,30 +42,34 @@ const ConceptSection = () => {
               L&apos;ÉLECTRO AU GRAND AIR
             </h2>
             <p className="font-body text-forest/80 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
-              The Green Event, c&apos;est bien plus qu&apos;un festival. C&apos;est une expérience unique qui marie 
-              les sonorités électroniques avec la beauté naturelle du Parc de la Sèvre à Vertou. 
+              The Green Event, c&apos;est bien plus qu&apos;un festival. C&apos;est une expérience unique qui marie
+              les sonorités électroniques avec la beauté naturelle du Parc de la Sèvre à Vertou.
               Un rendez-vous estival pour tous les amoureux de musique et de nature.
             </p>
           </motion.div>
 
           {/* Values Grid */}
-          <div className="grid md:grid-cols-3 gap-8 md:gap-12 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 md:gap-16 max-w-6xl mx-auto">
             {values.map((value, index) => (
               <motion.div
                 key={value.title}
                 className="text-center group"
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: index * 0.15 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{
+                  duration: 0.8,
+                  delay: index * 0.2,
+                  ease: [0.16, 1, 0.3, 1]
+                }}
               >
-                <div className="inline-flex items-center justify-center w-20 h-20 md:w-24 md:h-24 rounded-full bg-forest mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <value.icon className="w-10 h-10 md:w-12 md:h-12 text-cream" />
+                <div className="inline-flex items-center justify-center w-24 h-24 md:w-32 md:h-32 rounded-3xl bg-forest mb-8 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg group-hover:shadow-2xl">
+                  <value.icon className="w-12 h-12 md:w-16 md:h-16 text-cream" />
                 </div>
-                <h3 className="font-display font-bold text-forest text-xl md:text-2xl mb-3">
+                <h3 className="font-display font-black text-forest text-2xl md:text-3xl mb-4 uppercase tracking-tighter">
                   {value.title}
                 </h3>
-                <p className="font-body text-forest/70 leading-relaxed">
+                <p className="font-body text-forest/70 text-lg leading-relaxed">
                   {value.description}
                 </p>
               </motion.div>

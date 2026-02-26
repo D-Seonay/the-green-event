@@ -60,10 +60,10 @@ const Footer = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-8 items-start">
             {/* Logo & Description */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="text-center md:text-left"
             >
               <Image
@@ -71,90 +71,93 @@ const Footer = () => {
                 alt="The Green Event"
                 width={80}
                 height={80}
-                className="h-16 md:h-20 w-auto mx-auto md:mx-0 mb-4"
+                className="h-16 md:h-20 w-auto mx-auto md:mx-0 mb-6"
               />
-              <h3 className="font-display font-black text-cream text-xl md:text-2xl mb-2">
+              <h3 className="font-display font-black text-cream text-2xl md:text-3xl mb-3 tracking-tighter uppercase">
                 THE GREEN EVENT
               </h3>
-              <p className="font-body text-cream/70 max-w-xs mx-auto md:mx-0">
+              <p className="font-body text-cream/70 text-lg max-w-xs mx-auto md:mx-0 leading-relaxed">
                 Le festival électronique au cœur de la nature. Vertou, été 2026.
               </p>
             </motion.div>
+
             {/* Newsletter */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
+              transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="text-center md:text-left lg:mx-auto"
             >
-              <h4 className="font-display font-bold text-cream text-lg mb-4">
+              <h4 className="font-display font-black text-cream text-xl mb-6 uppercase tracking-tighter">
                 Newsletter
               </h4>
-              <p className="font-body text-cream/70 mb-4 text-sm">
+              <p className="font-body text-cream/70 mb-6 text-base leading-relaxed">
                 Recevez en avant-première les annonces et les offres exclusives.
               </p>
               {formState === 'success' ? (
-                <div className="flex items-center gap-2 p-3 rounded-lg bg-leaf/20">
+                <div className="flex items-center gap-3 p-4 rounded-xl bg-leaf/20 border border-leaf/30">
                   <CheckCircle2 className="w-6 h-6 text-leaf" />
-                  <p className="font-body text-cream">Merci ! Vous êtes inscrit.</p>
+                  <p className="font-body text-cream font-medium">Merci ! Vous êtes inscrit.</p>
                 </div>
               ) : (
-                <form 
+                <form
                   className="flex gap-2 max-w-sm mx-auto md:mx-0"
                   onSubmit={handleSubmit}
                 >
                   <Input
                     type="email"
                     placeholder="votre@email.com"
-                    className="bg-cream/10 border-cream/20 text-cream placeholder:text-cream/50 focus:border-leaf"
+                    className="h-12 bg-cream/10 border-cream/20 text-cream placeholder:text-cream/50 focus:border-leaf focus:ring-1 focus:ring-leaf rounded-xl"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     disabled={formState === 'loading'}
                   />
-                  <Button 
-                    type="submit" 
+                  <Button
+                    type="submit"
                     size="icon"
-                    className="bg-leaf hover:bg-leaf/90 text-cream flex-shrink-0"
+                    className="h-12 w-12 bg-leaf hover:bg-leaf/90 text-cream flex-shrink-0 rounded-xl transition-all duration-300 hover:scale-105"
                     disabled={formState === 'loading'}
                   >
-                    {formState === 'loading' ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
+                    {formState === 'loading' ? <Loader2 className="w-5 h-5 animate-spin" /> : <Send className="w-5 h-5" />}
                   </Button>
                 </form>
               )}
-               {formState === 'error' && (
-                <p className="text-red-500 mt-2 text-sm">{errorMessage}</p>
+              {formState === 'error' && (
+                <p className="text-red-400 mt-3 text-sm font-medium">{errorMessage}</p>
               )}
             </motion.div>
 
             {/* Social & Contact */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
               className="text-center md:text-left lg:text-right"
             >
-              <h4 className="font-display font-bold text-cream text-lg mb-4">
+              <h4 className="font-display font-black text-cream text-xl mb-6 uppercase tracking-tighter">
                 Suivez-nous
               </h4>
-              <div className="flex gap-4 justify-center md:justify-start lg:justify-end mb-6">
+              <div className="flex gap-4 justify-center md:justify-start lg:justify-end mb-8">
                 {socialLinks.map((social) => (
                   <a
                     key={social.label}
                     href={social.href}
                     aria-label={social.label}
-                    className="w-10 h-10 rounded-full bg-cream/10 hover:bg-leaf flex items-center justify-center transition-colors duration-300"
+                    className="w-12 h-12 rounded-xl bg-cream/10 hover:bg-leaf flex items-center justify-center transition-all duration-300 hover:scale-110 hover:rotate-6 group"
                   >
-                    <social.icon className="w-5 h-5 text-cream" />
+                    <social.icon className="w-6 h-6 text-cream group-hover:text-white" />
                   </a>
                 ))}
               </div>
               <a
                 href="mailto:contact@thegreenevent.fr"
-                className="inline-flex items-center gap-2 font-body text-cream/70 hover:text-leaf transition-colors"
+                className="inline-flex items-center gap-3 font-body text-cream/70 hover:text-leaf transition-all duration-300 text-lg group"
               >
-                <Mail className="w-4 h-4" />
+                <div className="w-10 h-10 rounded-xl bg-cream/5 flex items-center justify-center group-hover:bg-leaf/10 group-hover:scale-110 transition-all">
+                  <Mail className="w-5 h-5" />
+                </div>
                 contact@thegreenevent.fr
               </a>
             </motion.div>
