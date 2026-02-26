@@ -13,6 +13,39 @@ const nunito = Nunito({ subsets: ["latin"], variable: "--font-nunito" });
 export const metadata: Metadata = {
   title: "The Green Event | Festival Électro & Nature à Vertou",
   description: "Le festival électronique intergénérationnel et éco-responsable au cœur du parc de la Sèvre à Vertou. Musique, nature et partage.",
+  keywords: ["Festival", "Électro", "Vertou", "Musique", "Nature", "Éco-responsable", "Nantes", "Parc de la Sèvre"],
+  authors: [{ name: "The Green Event" }],
+  creator: "Seonay",
+  metadataBase: new URL('https://thegreenevent.fr'),
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: "The Green Event | Festival Électro & Nature à Vertou",
+    description: "Le festival électronique intergénérationnel et éco-responsable au cœur du parc de la Sèvre à Vertou.",
+    url: 'https://thegreenevent.fr',
+    siteName: 'The Green Event',
+    locale: 'fr_FR',
+    type: 'website',
+    images: [
+      {
+        url: '/logo.png', // Ideally a specific OG image
+        width: 800,
+        height: 600,
+        alt: 'The Green Event Logo',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "The Green Event | Festival Électro & Nature à Vertou",
+    description: "Le festival électronique intergénérationnel et éco-responsable au cœur du parc de la Sèvre à Vertou.",
+    images: ['/logo.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
