@@ -5,7 +5,7 @@ import { useParams, notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Instagram, Music2, Headphones } from 'lucide-react';
+import { ArrowLeft, Instagram, Music, Cloud } from 'lucide-react';
 import { ARTISTS } from '@/lib/data';
 import { Button } from '@/components/ui/button';
 import WaveDivider from '@/components/ui/WaveDivider';
@@ -124,7 +124,7 @@ const ArtistDetailPage = () => {
                     asChild
                   >
                     <a href={artist.socials.spotify} target="_blank" rel="noopener noreferrer" aria-label="Spotify">
-                      <Music2 className="w-6 h-6" />
+                      <Music className="w-6 h-6" />
                     </a>
                   </Button>
                 )}
@@ -136,7 +136,7 @@ const ArtistDetailPage = () => {
                     asChild
                   >
                     <a href={artist.socials.soundcloud} target="_blank" rel="noopener noreferrer" aria-label="SoundCloud">
-                      <Headphones className="w-6 h-6" />
+                      <Cloud className="w-6 h-6" />
                     </a>
                   </Button>
                 )}
