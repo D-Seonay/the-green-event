@@ -98,7 +98,7 @@ const ArtistDetailPage = () => {
               <div className="inline-block px-4 py-1 bg-leaf text-cream font-display font-black text-sm uppercase tracking-widest rounded-full mb-6 shadow-lg">
                 {artist.genre} • {artist.timeSlot}
               </div>
-              
+
               <h1 className="text-6xl md:text-8xl font-display font-black text-cream leading-none mb-8 uppercase tracking-tighter">
                 {artist.name}
               </h1>
@@ -108,11 +108,11 @@ const ArtistDetailPage = () => {
                   <Button
                     variant="outline"
                     size="lg"
-                    className="h-14 w-14 rounded-2xl border-cream/20 hover:border-leaf hover:bg-leaf hover:text-cream transition-all duration-300"
+                    className="h-12 w-12 rounded-full border-cream/20 hover:border-leaf hover:bg-leaf hover:text-cream transition-all duration-300 p-0"
                     asChild
                   >
                     <a href={artist.socials.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                      <Instagram className="w-6 h-6" />
+                      <Instagram className="w-5 h-5" />
                     </a>
                   </Button>
                 )}
@@ -120,11 +120,11 @@ const ArtistDetailPage = () => {
                   <Button
                     variant="outline"
                     size="lg"
-                    className="h-14 w-14 rounded-2xl border-cream/20 hover:border-leaf hover:bg-leaf hover:text-cream transition-all duration-300"
+                    className="h-12 w-12 rounded-full border-cream/20 hover:border-leaf hover:bg-leaf hover:text-cream transition-all duration-300 p-0"
                     asChild
                   >
                     <a href={artist.socials.spotify} target="_blank" rel="noopener noreferrer" aria-label="Spotify">
-                      <Music className="w-6 h-6" />
+                      <Music className="w-5 h-5" />
                     </a>
                   </Button>
                 )}
@@ -132,11 +132,11 @@ const ArtistDetailPage = () => {
                   <Button
                     variant="outline"
                     size="lg"
-                    className="h-14 w-14 rounded-2xl border-cream/20 hover:border-leaf hover:bg-leaf hover:text-cream transition-all duration-300"
+                    className="h-12 w-12 rounded-full border-cream/20 hover:border-leaf hover:bg-leaf hover:text-cream transition-all duration-300 p-0"
                     asChild
                   >
                     <a href={artist.socials.soundcloud} target="_blank" rel="noopener noreferrer" aria-label="SoundCloud">
-                      <Cloud className="w-6 h-6" />
+                      <Cloud className="w-5 h-5" />
                     </a>
                   </Button>
                 )}
@@ -164,21 +164,21 @@ const ArtistDetailPage = () => {
               <p className="font-body text-cream/80 leading-relaxed text-xl md:text-2xl italic border-l-4 border-leaf pl-8 mb-12">
                 &ldquo;{artist.bio}&rdquo;
               </p>
-              
+
               <div className="grid md:grid-cols-2 gap-12 mt-16">
                 <div>
                   <h3 className="font-display font-bold text-cream text-xl mb-4 uppercase">Le Style</h3>
                   <p className="text-cream/70 font-body leading-relaxed">
-                    Un mélange unique de sonorités organiques et de rythmes contemporains, 
-                    parfaitement adapté au cadre naturel du festival. Chaque performance est 
+                    Un mélange unique de sonorités organiques et de rythmes contemporains,
+                    parfaitement adapté au cadre naturel du festival. Chaque performance est
                     une exploration sonore qui dialogue avec l&apos;environnement.
                   </p>
                 </div>
                 <div>
                   <h3 className="font-display font-bold text-cream text-xl mb-4 uppercase">L&apos;Expérience</h3>
                   <p className="text-cream/70 font-body leading-relaxed">
-                    Attendez-vous à une immersion totale. Entre virtuosité technique et 
-                    émotion brute, cet artiste propose une vision moderne et respectueuse 
+                    Attendez-vous à une immersion totale. Entre virtuosité technique et
+                    émotion brute, cet artiste propose une vision moderne et respectueuse
                     des racines musicales, pour un moment de partage inoubliable.
                   </p>
                 </div>
