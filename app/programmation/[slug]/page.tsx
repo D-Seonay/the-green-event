@@ -4,7 +4,7 @@ import React from 'react';
 import { useParams, notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowLeft, Instagram, Music, Cloud } from 'lucide-react';
 import { ARTISTS } from '@/lib/data';
 import { Button } from '@/components/ui/button';
@@ -17,6 +17,10 @@ const ArtistDetailPage = () => {
   const slug = params.slug as string;
 
   const artist = ARTISTS.find((a) => a.slug === slug);
+
+  const { scrollY } = useScroll();
+  const opacity = useTransform(scrollY, [0, 100], [1, 0]);
+  const yTranslate = useTransform(scrollY, [0, 100], [0, 20]);
 
   if (!artist) {
     notFound();
@@ -147,16 +151,16 @@ const ArtistDetailPage = () => {
 
         {/* Scroll Indicator */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 1 }}
+          style={{ opacity, y: yTranslate }}
           className="hidden md:flex flex-col items-center gap-2 absolute bottom-8 left-1/2 -translate-x-1/2"
         >
-          <span className="text-cream/40 text-xs font-bold uppercase tracking-widest">Scroll</span>
+          <span className="text-cream/40 text-[10px] font-bold uppercase tracking-[0.2em] whitespace-nowrap">
+            Plus d&apos;informations
+          </span>
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="w-1 h-12 rounded-full bg-gradient-to-b from-leaf to-transparent"
+            className="w-px h-12 bg-gradient-to-b from-leaf to-transparent"
           />
         </motion.div>
       </div>
