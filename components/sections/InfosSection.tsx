@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Calendar, MapPin, Car } from "lucide-react";
+import { Calendar, MapPin, Bus, Car } from "lucide-react";
 import WaveDivider from "../ui/WaveDivider";
 
 const InfosSection = () => {
@@ -19,10 +19,16 @@ const InfosSection = () => {
       subtitle: "Parc de la Sèvre",
     },
     {
+      icon: Bus,
+      title: "Transports",
+      detail: "Bus 28",
+      subtitle: "Dépose à 3 minutes à pied",
+    },
+    {
       icon: Car,
       title: "Accès",
-      detail: "Pensez covoiturage !",
-      subtitle: "Navettes depuis Nantes",
+      detail: "Covoiturage",
+      subtitle: "💡 Pensez au covoiturage !",
     },
   ];
 
