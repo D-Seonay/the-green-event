@@ -5,11 +5,12 @@ import { ARTISTS } from '@/lib/data';
 import ArtistDetailClient from './ArtistDetailClient';
 
 interface Props {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const artist = ARTISTS.find((a) => a.slug === params.slug);
+  const { slug } = await params;
+  const artist = ARTISTS.find((a) => a.slug === slug);
   
   if (!artist) {
     return {
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: `${artist.name} | The Green Event`,
       description: artist.bio.substring(0, 160),
-      url: `https://thegreenevent.fr/programmation/${artist.slug}`,
+      url: `https://thegreenevent.fr/programmation/${slug}`,
       images: [
         {
           url: artist.image,
@@ -36,8 +37,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-const ArtistDetailPage = ({ params }: Props) => {
-  const artist = ARTISTS.find((a) => a.slug === params.slug);
+const ArtistDetailPage = async ({ params }: Props) => {
+  const { slug } = await params;
+  const artist = ARTISTS.find((a) => a.slug === slug);
 
   if (!artist) {
     notFound();
