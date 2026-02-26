@@ -15,8 +15,17 @@ export interface Product {
 
 export interface Artist {
   name: string;
+  slug: string;
   image: string;
   rotation: number;
+  bio: string;
+  genre: string;
+  timeSlot: string;
+  socials: {
+    instagram?: string;
+    spotify?: string;
+    soundcloud?: string;
+  };
 }
 
 export interface NavLink {
