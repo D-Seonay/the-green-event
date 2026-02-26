@@ -37,7 +37,7 @@ const Hero = () => {
         >
           THE GREEN EVENT
         </motion.h1>
-        
+
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -50,7 +50,7 @@ const Hero = () => {
         {/* Scroll Indicator */}
         <motion.div
           style={{ opacity, y: yTranslate }}
-          className="hidden md:flex flex-col items-center gap-2 absolute bottom-24 left-1/2 -translate-x-1/2"
+          className="hidden md:flex flex-col items-center gap-2 absolute bottom-24 left-1/2 -translate-x-1/2 z-20"
         >
           <span className="text-cream/40 text-[10px] font-bold uppercase tracking-[0.2em] whitespace-nowrap">
             Découvrir
@@ -66,7 +66,7 @@ const Hero = () => {
       </div>
 
       {/* Layer 3: Solid Mask for section transition */}
-      <div className="absolute bottom-0 left-0 w-full z-30 pointer-events-none">
+      <div className="absolute bottom-0 left-0 w-full z-15 pointer-events-none">
         <svg
           className="relative block w-full h-[120px] md:h-[180px]"
           viewBox="0 0 1440 180"

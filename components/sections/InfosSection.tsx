@@ -10,7 +10,6 @@ const InfosSection = () => {
       icon: Calendar,
       title: "Dates",
       detail: "4 Juillet 2026",
-      subtitle: "🎶🌿The Green Fest – 3ᵉ édition 🎶🌿",
     },
     {
       icon: MapPin,
@@ -66,13 +65,13 @@ const InfosSection = () => {
               <div className="relative aspect-square max-w-md mx-auto">
                 {/* Map Container with organic shape */}
                 <div className="absolute inset-0 bg-forest rounded-[40%_60%_60%_40%_/_60%_40%_60%_40%] overflow-hidden border-4 border-forest shadow-2xl">
-                  <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2712.151791606953!2d-1.4845670873775743!3d47.17446457103324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4805e900623215b5%3A0xcabb2b7c631ca41b!2sTHE%20GREEN%20EVENT!5e0!3m2!1sfr!2sfr!4v1772036758885!5m2!1sfr!2sfr" 
-                    width="100%" 
-                    height="100%" 
-                    style={{ border: 0, filter: 'grayscale(0.2) contrast(1.1) brightness(0.9)' }} 
-                    allowFullScreen={true} 
-                    loading="lazy" 
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2712.151791606953!2d-1.4845670873775743!3d47.17446457103324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4805e900623215b5%3A0xcabb2b7c631ca41b!2sTHE%20GREEN%20EVENT!5e0!3m2!1sfr!2sfr!4v1772036758885!5m2!1sfr!2sfr"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0, filter: 'grayscale(0.2) contrast(1.1) brightness(0.9)' }}
+                    allowFullScreen={true}
+                    loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
                     title="Google Maps - The Green Event"
                   />
