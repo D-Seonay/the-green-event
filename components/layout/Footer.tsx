@@ -165,10 +165,16 @@ const Footer = () => {
 
           {/* Bottom Bar */}
           <div className="mt-12 pt-8 border-t border-cream/10">
-            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-              <p className="font-body text-cream/50 text-sm">
-                © 2026 The Green Event. Tous droits réservés.
-              </p>
+            <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+              <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4">
+                <p className="font-body text-cream/50 text-sm">
+                  © 2026 The Green Event. Tous droits réservés.
+                </p>
+                <span className="hidden md:block text-cream/20">|</span>
+                <p className="font-body text-cream/50 text-sm">
+                  Réalisé par <a href="https://matheodelaunay.studio" target="_blank" rel="noopener noreferrer" className="text-leaf hover:text-cream transition-colors duration-300 font-bold">Seonay</a>
+                </p>
+              </div>
               <div className="flex gap-6">
                 <a href="/mentions-legales" className="font-body text-cream/50 hover:text-cream text-sm transition-colors">
                   Mentions légales
