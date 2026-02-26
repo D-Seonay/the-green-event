@@ -5,7 +5,7 @@ import { useParams, notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowLeft, Instagram, Music, Cloud } from 'lucide-react';
+import { ArrowLeft, Instagram, Music, Cloud, ArrowDown } from 'lucide-react';
 import { ARTISTS } from '@/lib/data';
 import { Button } from '@/components/ui/button';
 import WaveDivider from '@/components/ui/WaveDivider';
@@ -158,10 +158,12 @@ const ArtistDetailPage = () => {
             Plus d&apos;informations
           </span>
           <motion.div
-            animate={{ y: [0, 8, 0] }}
+            animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="w-px h-12 bg-gradient-to-b from-leaf to-transparent"
-          />
+            className="text-leaf"
+          >
+            <ArrowDown className="w-6 h-6" />
+          </motion.div>
         </motion.div>
       </div>
 
