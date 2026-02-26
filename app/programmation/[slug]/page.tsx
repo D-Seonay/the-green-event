@@ -144,6 +144,21 @@ const ArtistDetailPage = () => {
             </motion.div>
           </div>
         </div>
+
+        {/* Scroll Indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 1 }}
+          className="hidden md:flex flex-col items-center gap-2 absolute bottom-8 left-1/2 -translate-x-1/2"
+        >
+          <span className="text-cream/40 text-xs font-bold uppercase tracking-widest">Scroll</span>
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            className="w-1 h-12 rounded-full bg-gradient-to-b from-leaf to-transparent"
+          />
+        </motion.div>
       </div>
 
       <WaveDivider variant="forest-to-cream" className="mb-20" flip />
