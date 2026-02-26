@@ -1,9 +1,14 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { ArrowDown } from 'lucide-react';
 
 const Hero = () => {
+  const { scrollY } = useScroll();
+  const opacity = useTransform(scrollY, [0, 100], [1, 0]);
+  const yTranslate = useTransform(scrollY, [0, 100], [0, 20]);
+
   return (
     <section className="relative h-screen w-full overflow-hidden bg-[#0a3f25]">
       {/* Layer 0: Full-Screen Background Video */}
@@ -41,6 +46,23 @@ const Hero = () => {
         >
           L&apos;ÉLECTRO AU GRAND AIR
         </motion.h2>
+
+        {/* Scroll Indicator */}
+        <motion.div
+          style={{ opacity, y: yTranslate }}
+          className="hidden md:flex flex-col items-center gap-2 absolute bottom-24 left-1/2 -translate-x-1/2"
+        >
+          <span className="text-cream/40 text-[10px] font-bold uppercase tracking-[0.2em] whitespace-nowrap">
+            Découvrir
+          </span>
+          <motion.div
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            className="text-leaf"
+          >
+            <ArrowDown className="w-6 h-6" />
+          </motion.div>
+        </motion.div>
       </div>
 
       {/* Layer 3: Solid Mask for section transition */}
