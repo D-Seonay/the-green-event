@@ -197,6 +197,46 @@ export const ARTISTS: Artist[] = [
       soundcloud: 'https://soundcloud.com'
     }
   },
+  {
+    name: 'KAMAAL WILLIAMS',
+    slug: 'kamaal-williams',
+    image: '/placeholder.svg',
+    rotation: 3,
+    genre: '70s FUNK / JAZZ FUSION',
+    timeSlot: '19:00 - 20:30',
+    bio: "Kamaal Williams, également connu sous le nom de Henry Wu, est une figure centrale de la nouvelle scène jazz britannique. Son mélange de funk des années 70 et de jazz fusion moderne crée une énergie communicative.",
+    socials: {
+      instagram: 'https://instagram.com',
+      spotify: 'https://spotify.com'
+    }
+  },
+  {
+    name: 'NUBYA GARCIA',
+    slug: 'nubya-garcia',
+    image: '/placeholder.svg',
+    rotation: -2,
+    genre: 'MODERN JAZZ',
+    timeSlot: '17:30 - 18:45',
+    bio: "Saxophoniste et compositrice de talent, Nubya Garcia est l'une des voix les plus influentes du jazz contemporain. Son jeu puissant et lyrique capture l'essence du renouveau jazz londonien.",
+    socials: {
+      instagram: 'https://instagram.com',
+      spotify: 'https://spotify.com'
+    }
+  },
+  {
+    name: 'BADBADNOTGOOD',
+    slug: 'badbadnotgood',
+    image: '/placeholder.svg',
+    rotation: 4,
+    genre: 'EXPERIMENTAL JAZZ / HIP-HOP',
+    timeSlot: '23:30 - 01:00',
+    bio: "Ce collectif canadien redéfinit les frontières entre le jazz, le hip-hop et la musique électronique. Leurs collaborations légendaires et leur approche sans limites garantissent une performance mémorable.",
+    socials: {
+      instagram: 'https://instagram.com',
+      spotify: 'https://spotify.com',
+      soundcloud: 'https://soundcloud.com'
+    }
+  },
 ];
 
 export const FLOATING_ELEMENTS: FloatingElement[] = [
