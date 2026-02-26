@@ -85,14 +85,158 @@ export const PRODUCTS: Product[] = [
 ];
 
 export const ARTISTS: Artist[] = [
-  { name: 'DIANA KRALL', image: '/placeholder.svg', rotation: -3 },
-  { name: 'GOGO PENGUIN', image: '/placeholder.svg', rotation: 2 },
-  { name: "HIROMI'S SONICWONDER", image: '/placeholder.svg', rotation: 4 },
-  { name: 'JALEN NGONDA', image: '/placeholder.svg', rotation: -2 },
-  { name: 'CHRISTONE "KINGFISH" INGRAM', image: '/placeholder.svg', rotation: 3 },
-  { name: 'LIZZ WRIGHT', image: '/placeholder.svg', rotation: -4 },
-  { name: 'YUSSEF DAYES', image: '/placeholder.svg', rotation: 2 },
-  { name: 'ROBERT GLASPER', image: '/placeholder.svg', rotation: -1 },
+  {
+    name: 'DIANA KRALL',
+    slug: 'diana-krall',
+    image: '/placeholder.svg',
+    rotation: -3,
+    genre: 'JAZZ / PIANO',
+    timeSlot: '20:00 - 21:30',
+    bio: "Diana Krall est une pianiste et chanteuse de jazz canadienne dont la voix de contralto expressive et le jeu de piano sophistiqué ont fait d'elle l'une des artistes les plus populaires de sa génération. Avec plusieurs Grammy Awards à son actif, elle apporte une élégance intemporelle à la scène du Green Event.",
+    socials: {
+      instagram: 'https://instagram.com',
+      spotify: 'https://spotify.com',
+      soundcloud: 'https://soundcloud.com'
+    }
+  },
+  {
+    name: 'GOGO PENGUIN',
+    slug: 'gogo-penguin',
+    image: '/placeholder.svg',
+    rotation: 2,
+    genre: 'ACOUSTIC ELECTRONICA',
+    timeSlot: '18:30 - 19:45',
+    bio: "Originaire de Manchester, GoGo Penguin fusionne des influences de jazz, de minimalisme et de musique électronique pour créer un son unique et cinématique. Leur performance promet un voyage hypnotique au cœur du Parc de la Sèvre.",
+    socials: {
+      instagram: 'https://instagram.com',
+      spotify: 'https://spotify.com',
+      soundcloud: 'https://soundcloud.com'
+    }
+  },
+  {
+    name: "HIROMI'S SONICWONDER",
+    slug: 'hiromis-sonicwonder',
+    image: '/placeholder.svg',
+    rotation: 4,
+    genre: 'FUSION / JAZZ-ROCK',
+    timeSlot: '22:00 - 23:30',
+    bio: "La pianiste virtuose Hiromi Uehara repousse les limites du jazz avec son nouveau projet Sonicwonder. Une explosion d'énergie, de technique et de créativité qui va faire vibrer les arbres du festival.",
+    socials: {
+      instagram: 'https://instagram.com',
+      spotify: 'https://spotify.com',
+      soundcloud: 'https://soundcloud.com'
+    }
+  },
+  {
+    name: 'JALEN NGONDA',
+    slug: 'jalen-ngonda',
+    image: '/placeholder.svg',
+    rotation: -2,
+    genre: 'SOUL / R&B',
+    timeSlot: '17:00 - 18:00',
+    bio: "Avec une voix qui rappelle les légendes de la Motown, Jalen Ngonda apporte une soul authentique et chaleureuse. Son mélange de classicisme et de modernité est le parfait accompagnement pour un début de soirée ensoleillé.",
+    socials: {
+      instagram: 'https://instagram.com',
+      spotify: 'https://spotify.com',
+      soundcloud: 'https://soundcloud.com'
+    }
+  },
+  {
+    name: 'CHRISTONE "KINGFISH" INGRAM',
+    slug: 'christone-kingfish-ingram',
+    image: '/placeholder.svg',
+    rotation: 3,
+    genre: 'BLUES / ROCK',
+    timeSlot: '21:00 - 22:30',
+    bio: "À seulement 25 ans, Kingfish est déjà considéré comme l'un des plus grands guitaristes de blues de sa génération. Sa passion brute et son toucher exceptionnel promettent un moment d'intensité rare.",
+    socials: {
+      instagram: 'https://instagram.com',
+      spotify: 'https://spotify.com',
+      soundcloud: 'https://soundcloud.com'
+    }
+  },
+  {
+    name: 'LIZZ WRIGHT',
+    slug: 'lizz-wright',
+    image: '/placeholder.svg',
+    rotation: -4,
+    genre: 'VOCAL JAZZ / GOSPEL',
+    timeSlot: '19:00 - 20:15',
+    bio: "La voix de Lizz Wright est une force de la nature, profonde et apaisante. Son mélange de jazz, de folk et de gospel crée une atmosphère de recueillement et de beauté pure.",
+    socials: {
+      instagram: 'https://instagram.com',
+      spotify: 'https://spotify.com',
+      soundcloud: 'https://soundcloud.com'
+    }
+  },
+  {
+    name: 'YUSSEF DAYES',
+    slug: 'yussef-dayes',
+    image: '/placeholder.svg',
+    rotation: 2,
+    genre: 'CONTEMPORARY JAZZ',
+    timeSlot: '20:30 - 22:00',
+    bio: "Batteur et producteur de génie, Yussef Dayes est à l'avant-garde de la scène jazz londonienne. Son jeu polyrythmique et ses explorations sonores sont une invitation à la danse et à l'évasion.",
+    socials: {
+      instagram: 'https://instagram.com',
+      spotify: 'https://spotify.com',
+      soundcloud: 'https://soundcloud.com'
+    }
+  },
+  {
+    name: 'ROBERT GLASPER',
+    slug: 'robert-glasper',
+    image: '/placeholder.svg',
+    rotation: -1,
+    genre: 'JAZZ / HIP-HOP',
+    timeSlot: '22:30 - 00:00',
+    bio: "Robert Glasper est le pont entre le jazz traditionnel et la culture hip-hop moderne. Multi-récompensé aux Grammys, il clôturera la soirée avec un groove irrésistible et des invités surprises.",
+    socials: {
+      instagram: 'https://instagram.com',
+      spotify: 'https://spotify.com',
+      soundcloud: 'https://soundcloud.com'
+    }
+  },
+  {
+    name: 'KAMAAL WILLIAMS',
+    slug: 'kamaal-williams',
+    image: '/placeholder.svg',
+    rotation: 3,
+    genre: '70s FUNK / JAZZ FUSION',
+    timeSlot: '19:00 - 20:30',
+    bio: "Kamaal Williams, également connu sous le nom de Henry Wu, est une figure centrale de la nouvelle scène jazz britannique. Son mélange de funk des années 70 et de jazz fusion moderne crée une énergie communicative.",
+    socials: {
+      instagram: 'https://instagram.com',
+      spotify: 'https://spotify.com'
+    }
+  },
+  {
+    name: 'NUBYA GARCIA',
+    slug: 'nubya-garcia',
+    image: '/placeholder.svg',
+    rotation: -2,
+    genre: 'MODERN JAZZ',
+    timeSlot: '17:30 - 18:45',
+    bio: "Saxophoniste et compositrice de talent, Nubya Garcia est l'une des voix les plus influentes du jazz contemporain. Son jeu puissant et lyrique capture l'essence du renouveau jazz londonien.",
+    socials: {
+      instagram: 'https://instagram.com',
+      spotify: 'https://spotify.com'
+    }
+  },
+  {
+    name: 'BADBADNOTGOOD',
+    slug: 'badbadnotgood',
+    image: '/placeholder.svg',
+    rotation: 4,
+    genre: 'EXPERIMENTAL JAZZ / HIP-HOP',
+    timeSlot: '23:30 - 01:00',
+    bio: "Ce collectif canadien redéfinit les frontières entre le jazz, le hip-hop et la musique électronique. Leurs collaborations légendaires et leur approche sans limites garantissent une performance mémorable.",
+    socials: {
+      instagram: 'https://instagram.com',
+      spotify: 'https://spotify.com',
+      soundcloud: 'https://soundcloud.com'
+    }
+  },
 ];
 
 export const FLOATING_ELEMENTS: FloatingElement[] = [

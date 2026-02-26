@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import LoadingScreen from '@/components/LoadingScreen';
 import SmoothScroller from '@/components/SmoothScroller';
 import ScrollToTop from '@/components/ui/ScrollToTop';
+import ScrollToTopOnNavigation from '@/components/ScrollToTopOnNavigation';
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true);
@@ -25,6 +26,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
   return (
     <>
       {loading && <LoadingScreen />}
+      <ScrollToTopOnNavigation />
       <SmoothScroller>
         {children}
       </SmoothScroller>
