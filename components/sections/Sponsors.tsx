@@ -7,14 +7,18 @@ import Image from 'next/image';
 import WaveDivider from '../ui/WaveDivider';
 
 const sponsors = [
-  { id: 1, name: 'Sponsor 1', logoSrc: '/placeholder.svg' },
-  { id: 2, name: 'Sponsor 2', logoSrc: '/placeholder.svg' },
+  { id: 1, name: 'Sponsor 1', logoSrc: '/partners/laSoupape.png' },
+  { id: 2, name: 'Sponsor 2', logoSrc: '/partners/enc.png' },
   { id: 3, name: 'Sponsor 3', logoSrc: '/placeholder.svg' },
   { id: 4, name: 'Sponsor 4', logoSrc: '/placeholder.svg' },
   { id: 5, name: 'Sponsor 5', logoSrc: '/placeholder.svg' },
   { id: 6, name: 'Sponsor 6', logoSrc: '/placeholder.svg' },
   { id: 7, name: 'Sponsor 7', logoSrc: '/placeholder.svg' },
   { id: 8, name: 'Sponsor 8', logoSrc: '/placeholder.svg' },
+  { id: 9, name: 'Sponsor 9', logoSrc: '/placeholder.svg' },
+  { id: 10, name: 'Sponsor 10', logoSrc: '/placeholder.svg' },
+  { id: 11, name: 'Sponsor 11', logoSrc: '/placeholder.svg' },
+  { id: 12, name: 'Sponsor 12', logoSrc: '/placeholder.svg' },
 ];
 
 const SponsorsSection = () => {

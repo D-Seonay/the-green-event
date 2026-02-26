@@ -11,16 +11,9 @@ import useMediaQuery from '@/hooks/use-media-query';
 import WaveDivider from '../ui/WaveDivider';
 import ArtistCard from '@/components/cards/ArtistCard';
 
-const artists = [
-  { name: 'DIANA KRALL', image: '/placeholder.svg', rotation: -3 },
-  { name: 'GOGO PENGUIN', image: '/placeholder.svg', rotation: 2 },
-  { name: 'HIROMI\'S SONICWONDER', image: '/placeholder.svg', rotation: 4 },
-  { name: 'JALEN NGONDA', image: '/placeholder.svg', rotation: -2 },
-  { name: 'CHRISTONE "KINGFISH" INGRAM', image: '/placeholder.svg', rotation: 3 },
-  { name: 'LIZZ WRIGHT', image: '/placeholder.svg', rotation: -4 },
-  { name: 'YUSSEF DAYES', image: '/placeholder.svg', rotation: 2 },
-  { name: 'ROBERT GLASPER', image: '/placeholder.svg', rotation: -1 },
-];
+import { ARTISTS } from '@/lib/data';
+
+const featuredArtists = ARTISTS.slice(0, 8);
 
 const ConnectingLine = () => {
   const targetRef = React.useRef(null);
@@ -129,7 +122,7 @@ export default function ProgrammationSection() {
 
       <div className="relative z-10 max-w-7xl mx-auto mt-64">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-32">
-          {artists.map((artist, index) => (
+          {featuredArtists.map((artist, index) => (
             <ArtistCard key={artist.name} artist={artist} index={index} />
           ))}
         </div>
