@@ -1,4 +1,4 @@
-import HeroSection from '@/components/sections/HeroSection';
+import Hero from '@/components/sections/Hero';
 import ConceptSection from '@/components/sections/ConceptSection';
 import ProgrammationSection from '@/components/sections/ProgrammationSection';
 import InfosSection from '@/components/sections/InfosSection';
@@ -33,7 +33,7 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <HeroSection />
+      <Hero />
       <ConceptSection />
       <ProgrammationSection />
       <InfosSection />
