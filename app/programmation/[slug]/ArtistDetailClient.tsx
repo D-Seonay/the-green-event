@@ -146,7 +146,7 @@ const ArtistDetailClient = ({ artist }: Props) => {
         {/* Scroll Indicator */}
         <motion.div
           style={{ opacity, y: yTranslate }}
-          className="hidden md:flex flex-col items-center gap-2 absolute bottom-8 left-1/2 -translate-x-1/2"
+          className="hidden md:flex flex-col items-center gap-2 absolute bottom-18 left-1/2 -translate-x-1/2"
         >
           <span className="text-cream/40 text-[10px] font-bold uppercase tracking-[0.2em] whitespace-nowrap">
             Plus d&apos;informations

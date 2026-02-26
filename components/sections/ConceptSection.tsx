@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { Leaf, Headphones, Users } from "lucide-react";
-import WaveDivider from '../ui/WaveDivider';
 
 const ConceptSection = () => {
   const values = [
@@ -25,9 +24,6 @@ const ConceptSection = () => {
 
   return (
     <section id="concept" className="relative">
-      {/* Wave Transition */}
-      <WaveDivider variant="cream-to-forest" className="-mt-1 bg-forest" />
-
       {/* Content */}
       <div className="bg-cream py-12 md:py-24">
         <div className="container mx-auto px-4 md:px-6">
