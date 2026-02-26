@@ -152,13 +152,13 @@ const Footer = () => {
                 ))}
               </div>
               <a
-                href="mailto:contact@thegreenevent.fr"
+                href="mailto:thegreenevent.44@gmail.com"
                 className="inline-flex items-center gap-3 font-body text-cream/70 hover:text-leaf transition-all duration-300 text-lg group"
               >
                 <div className="w-10 h-10 rounded-xl bg-cream/5 flex items-center justify-center group-hover:bg-leaf/10 group-hover:scale-110 transition-all">
                   <Mail className="w-5 h-5" />
                 </div>
-                contact@thegreenevent.fr
+                thegreenevent.44@gmail.com
               </a>
             </motion.div>
           </div>
