@@ -121,7 +121,7 @@ export default function ProgrammationSection() {
 
 
       <div className="relative z-10 max-w-7xl mx-auto mt-64">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-32">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-16 md:gap-x-12 md:gap-y-32">
           {featuredArtists.map((artist, index) => (
             <ArtistCard key={artist.name} artist={artist} index={index} />
           ))}
