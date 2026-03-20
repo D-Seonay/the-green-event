@@ -4,7 +4,6 @@ import React from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import Image from 'next/image';
 import Cube from '@/components/ui/Cube';
 import Leaf from '@/components/ui/Leaf';
 import useMediaQuery from '@/hooks/use-media-query';

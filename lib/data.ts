@@ -86,6 +86,16 @@ export const PRODUCTS: Product[] = [
 
 export const ARTISTS: Artist[] = [
   {
+    name: 'LOOWS',
+    slug: 'loows',
+    image: '/placeholder.svg',
+    rotation: 2.5,
+    genre: 'HOUSE',
+    timeSlot: '17:15 - 19:00',
+    bio: "LOOWS, jeune DJ passionné de vinyles originaire de Vertou, fera son grand retour pour la deuxième édition de The Green Fest. Amoureux des sons dansants et des rythmes envoûtants, il vous embarquera dans un voyage musical vibrant, où les sonorités house réchaufferont l'atmosphère et feront rayonner l'esprit de l'été. Avec une sélection soigneusement élaborée, mêlant classiques intemporels et pépites ensoleillées, LOOWS promet une expérience immersive et festive, idéale pour célébrer la musique et la convivialité.",
+    socials: {}
+  },
+  {
     name: 'DIANA KRALL',
     slug: 'diana-krall',
     image: '/placeholder.svg',
@@ -120,7 +130,7 @@ export const ARTISTS: Artist[] = [
     rotation: 4,
     genre: 'FUSION / JAZZ-ROCK',
     timeSlot: '22:00 - 23:30',
-    bio: "La pianiste virtuose Hiromi Uehara repousse les limites du jazz avec son nouveau projet Sonicwonder. Une explosion d'énergie, de technique et de créativité qui va faire vibrer les arbres du festival.",
+    bio: "La pianiste virtuose Hiromi Uehara repousse les limites du jazz with son nouveau projet Sonicwonder. Une explosion d'énergie, de technique et de créativité qui va faire vibrer les arbres du festival.",
     socials: {
       instagram: 'https://instagram.com',
       spotify: 'https://spotify.com',
