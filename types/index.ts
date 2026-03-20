@@ -17,6 +17,8 @@ export interface Artist {
   name: string;
   image: string;
   rotation: number;
+  time?: string;
+  description?: string;
 }
 
 export interface NavLink {

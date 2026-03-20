@@ -47,6 +47,11 @@ const ArtistCard = ({ artist, index }: ArtistCardProps) => {
         <h3 className="mt-4 text-center text-lg font-bold text-forest">
           {artist.name}
         </h3>
+        {artist.time && (
+          <p className="mt-1 text-center text-sm font-medium text-forest/70 uppercase tracking-wider">
+            {artist.time}
+          </p>
+        )}
       </div>
     </motion.div>
   );

@@ -9,19 +9,10 @@ import Cube from '@/components/ui/Cube';
 import Leaf from '@/components/ui/Leaf';
 import useMediaQuery from '@/hooks/use-media-query';
 import WaveDivider from '../ui/WaveDivider';
+import { ARTISTS } from '@/lib/data';
+import type { Artist } from '@/types';
 
-const artists = [
-  { name: 'DIANA KRALL', image: '/placeholder.svg', rotation: -3 },
-  { name: 'GOGO PENGUIN', image: '/placeholder.svg', rotation: 2 },
-  { name: 'HIROMI\'S SONICWONDER', image: '/placeholder.svg', rotation: 4 },
-  { name: 'JALEN NGONDA', image: '/placeholder.svg', rotation: -2 },
-  { name: 'CHRISTONE "KINGFISH" INGRAM', image: '/placeholder.svg', rotation: 3 },
-  { name: 'LIZZ WRIGHT', image: '/placeholder.svg', rotation: -4 },
-  { name: 'YUSSEF DAYES', image: '/placeholder.svg', rotation: 2 },
-  { name: 'ROBERT GLASPER', image: '/placeholder.svg', rotation: -1 },
-];
-
-const ArtistCard = ({ artist, index }) => {
+const ArtistCard = ({ artist, index }: { artist: Artist; index: number }) => {
   const targetRef = React.useRef(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -57,6 +48,11 @@ const ArtistCard = ({ artist, index }) => {
         <h3 className="mt-4 text-center text-lg font-bold text-forest">
           {artist.name}
         </h3>
+        {artist.time && (
+          <p className="mt-1 text-center text-sm font-medium text-forest/70 uppercase tracking-wider">
+            {artist.time}
+          </p>
+        )}
       </div>
     </motion.div>
   );
@@ -154,7 +150,7 @@ export default function ProgrammationSection() {
 
       <div className="relative z-10 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-24 mt-48">
-          {artists.map((artist, index) => (
+          {ARTISTS.map((artist, index) => (
             <ArtistCard key={artist.name} artist={artist} index={index} />
           ))}
         </div>

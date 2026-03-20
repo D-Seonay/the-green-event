@@ -93,6 +93,13 @@ export const ARTISTS: Artist[] = [
   { name: 'LIZZ WRIGHT', image: '/placeholder.svg', rotation: -4 },
   { name: 'YUSSEF DAYES', image: '/placeholder.svg', rotation: 2 },
   { name: 'ROBERT GLASPER', image: '/placeholder.svg', rotation: -1 },
+  {
+    name: 'LOOWS',
+    image: '/placeholder.svg',
+    rotation: 2.5,
+    time: '17:15 - 19:00',
+    description: "LOOWS, jeune DJ passionné de vinyles originaire de Vertou, fera son grand retour pour la deuxième édition de The Green Fest. Amoureux des sons dansants et des rythmes envoûtants, il vous embarquera dans un voyage musical vibrant, où les sonorités house réchaufferont l'atmosphère et feront rayonner l'esprit de l'été. Avec une sélection soigneusement élaborée, mêlant classiques intemporels et pépites ensoleillées, LOOWS promet une expérience immersive et festive, idéale pour célébrer la musique et la convivialité."
+  },
 ];
 
 export const FLOATING_ELEMENTS: FloatingElement[] = [
