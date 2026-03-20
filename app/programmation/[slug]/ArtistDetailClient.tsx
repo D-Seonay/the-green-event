@@ -202,6 +202,40 @@ const ArtistDetailClient = ({ artist }: Props) => {
           </motion.div>
         </div>
       </section>
+
+      {/* Gallery Section */}
+      {artist.gallery && artist.gallery.length > 0 && (
+        <section className="container mx-auto px-4 py-20 border-t border-cream/5">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <h2 className="text-3xl md:text-4xl font-display font-black text-leaf mb-12 text-center uppercase tracking-tighter">
+              Galerie
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+              {artist.gallery.map((image, idx) => (
+                <motion.div
+                  key={idx}
+                  whileHover={{ scale: 1.02, rotate: idx % 2 === 0 ? 1 : -1 }}
+                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  className="relative aspect-square md:aspect-video rounded-2xl overflow-hidden shadow-2xl border border-cream/10"
+                >
+                  <Image
+                    src={image}
+                    alt={`${artist.name} gallery ${idx + 1}`}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </section>
+      )}
     </main>
   );
 };

@@ -21,6 +21,7 @@ export interface Artist {
   bio: string;
   genre: string;
   timeSlot: string;
+  gallery?: string[];
   socials: {
     instagram?: string;
     spotify?: string;
