@@ -4,6 +4,7 @@ import ProgrammationSection from '@/components/sections/ProgrammationSection';
 import InfosSection from '@/components/sections/InfosSection';
 import SponsorsSection from '@/components/sections/Sponsors';
 import NewsletterSection from '@/components/sections/NewsletterSection';
+import { ARTISTS } from '@/lib/data';
 
 export default function Home() {
   const jsonLd = {
@@ -25,6 +26,16 @@ export default function Home() {
     },
     'description': 'Le festival électronique intergénérationnel et éco-responsable au cœur du parc de la Sèvre à Vertou.',
     'image': 'https://thegreenevent.fr/logo.png',
+    'performer': ARTISTS.map(artist => ({
+      '@type': 'MusicGroup',
+      'name': artist.name,
+      'url': `https://thegreenevent.fr/programmation/${artist.slug}`
+    })),
+    'offers': {
+      '@type': 'Offer',
+      'url': 'https://thegreenevent.fr/boutique',
+      'availability': 'https://schema.org/InStock'
+    }
   };
 
   return (
