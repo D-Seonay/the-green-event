@@ -32,7 +32,7 @@ const ArtistDetailClient = ({ artist }: Props) => {
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
           className="absolute top-20 right-[10%] opacity-20"
         >
-          <Leaf className="w-24 h-24 text-leaf" />
+          <Leaf className="w-24 h-24 text-leaf" aria-hidden="true" />
         </motion.div>
         <motion.div
           animate={{
@@ -42,7 +42,7 @@ const ArtistDetailClient = ({ artist }: Props) => {
           transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
           className="absolute bottom-40 left-[5%] opacity-20"
         >
-          <Cube className="w-32 h-32 text-leaf" />
+          <Cube className="w-32 h-32 text-leaf" aria-hidden="true" />
         </motion.div>
       </div>
 

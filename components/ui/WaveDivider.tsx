@@ -8,7 +8,7 @@ const WaveDivider = ({ variant, className = "", flip = false }: WaveDividerProps
   const fillColor = variant === "cream-to-forest" ? "fill-cream" : "fill-forest";
   
   return (
-    <div className={`w-full overflow-hidden leading-[0] ${flip ? "rotate-180" : ""} ${className}`}>
+    <div className={`w-full overflow-hidden leading-[0] ${flip ? "rotate-180" : ""} ${className}`} aria-hidden="true">
       <svg
         className={`relative block w-full h-[80px] md:h-[120px] ${fillColor}`}
         xmlns="http://www.w3.org/2000/svg"

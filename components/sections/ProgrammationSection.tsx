@@ -106,16 +106,16 @@ export default function ProgrammationSection() {
       <ConnectingLine />
 
       <FloatingIcon x={[-100, 100]} y={[-50, 50]} className="top-1/4 left-1/4">
-        <Cube className="w-12 h-12 opacity-20 text-cream" />
+        <Cube className="w-12 h-12 opacity-20 text-cream" aria-hidden="true" />
       </FloatingIcon>
       <FloatingIcon x={[50, -50]} y={[20, -20]} className="top-1/2 right-1/4">
-        <Leaf className="w-16 h-16 opacity-20 text-cream" />
+        <Leaf className="w-16 h-16 opacity-20 text-cream" aria-hidden="true" />
       </FloatingIcon>
       <FloatingIcon x={[-20, 20]} y={[50, -100]} className="bottom-1/4 left-1/3">
-        <Leaf className="w-10 h-10 opacity-20 text-cream" />
+        <Leaf className="w-10 h-10 opacity-20 text-cream" aria-hidden="true" />
       </FloatingIcon>
       <FloatingIcon x={[100, -100]} y={[-30, 30]} className="top-1/3 right-1/3">
-        <Cube className="w-16 h-16 opacity-20 text-cream" />
+        <Cube className="w-16 h-16 opacity-20 text-cream" aria-hidden="true" />
       </FloatingIcon>
 
 

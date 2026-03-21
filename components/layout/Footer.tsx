@@ -153,6 +153,7 @@ const Footer = () => {
               </div>
               <a
                 href="mailto:thegreenevent.44@gmail.com"
+                aria-label="Envoyez-nous un email"
                 className="inline-flex items-center gap-3 font-body text-cream/70 hover:text-leaf transition-all duration-300 text-lg group"
               >
                 <div className="w-10 h-10 rounded-xl bg-cream/5 flex items-center justify-center group-hover:bg-leaf/10 group-hover:scale-110 transition-all">
