@@ -11,6 +11,8 @@ export interface Product {
   helloAssoUrl: string;
   category: 'clothes' | 'accessories' | 'goodies';
   ecoSpecs: string[];
+  keywords?: string[];
+  seoDescription?: string;
 }
 
 export interface Artist {
@@ -27,6 +29,8 @@ export interface Artist {
     spotify?: string;
     soundcloud?: string;
   };
+  keywords?: string[];
+  seoDescription?: string;
 }
 
 export interface NavLink {

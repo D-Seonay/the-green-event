@@ -21,7 +21,10 @@ export const PRODUCTS: Product[] = [
     helloAssoUrl: 'https://www.helloasso.com',
     category: 'clothes',
     ecoSpecs: ['100% Coton Bio', 'Fabriqué en France', 'Encres à base d\'eau'],
-  },
+    keywords: ['T-shirt', 'Coton Bio', 'Merchandising', 'Festival'],
+    seoDescription: 'Le t-shirt officiel du Green Event 2026 en coton 100% biologique et fabriqué en France.'
+    },
+
   {
     id: 2,
     name: 'Eco-Cup Collector',
@@ -94,7 +97,9 @@ export const ARTISTS: Artist[] = [
     timeSlot: '17:15 - 19:00',
     bio: "LOOWS, jeune DJ passionné de vinyles originaire de Vertou, fera son grand retour pour la deuxième édition de The Green Fest. Amoureux des sons dansants et des rythmes envoûtants, il vous embarquera dans un voyage musical vibrant, où les sonorités house réchaufferont l'atmosphère et feront rayonner l'esprit de l'été. Avec une sélection soigneusement élaborée, mêlant classiques intemporels et pépites ensoleillées, LOOWS promet une expérience immersive et festive, idéale pour célébrer la musique et la convivialité.",
     gallery: ['/artists/LOOWS/LOOWS-1.png', '/artists/LOOWS/LOOWS-2.png'],
-    socials: {}
+    socials: {},
+    keywords: ['LOOWS', 'House Music', 'DJ Vertou', 'Vinyl'],
+    seoDescription: 'Découvrez LOOWS, le DJ House de Vertou, pour une performance vinyle exclusive au Green Event 2026.'
   },
   {
     name: 'DIANA KRALL',
