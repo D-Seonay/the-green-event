@@ -17,6 +17,7 @@ const Hero = () => {
         muted
         loop
         playsInline
+        poster="/logo.png"
         className="absolute inset-0 w-full h-full object-cover z-0"
       >
         <source src="/theGreenEvent.MP4" type="video/mp4" />
