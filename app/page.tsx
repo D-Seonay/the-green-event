@@ -1,10 +1,12 @@
+import dynamic from 'next/dynamic';
 import Hero from '@/components/sections/Hero';
 import ConceptSection from '@/components/sections/ConceptSection';
 import ProgrammationSection from '@/components/sections/ProgrammationSection';
 import InfosSection from '@/components/sections/InfosSection';
-import SponsorsSection from '@/components/sections/Sponsors';
-import NewsletterSection from '@/components/sections/NewsletterSection';
 import { ARTISTS } from '@/lib/data';
+
+const SponsorsSection = dynamic(() => import('@/components/sections/Sponsors'));
+const NewsletterSection = dynamic(() => import('@/components/sections/NewsletterSection'));
 
 export default function Home() {
   const jsonLd = {
