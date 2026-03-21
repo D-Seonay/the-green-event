@@ -25,7 +25,7 @@
     --muted: 150 40% 20%;
     --muted-foreground: 45 60% 80%;
 
-    --accent: 145 100% 32%; /* Vibrant Leaf Green #00A651 */
+    --accent: 145 100% 45%; /* Brighter Vibrant Leaf Green */
     --accent-foreground: 45 85% 94%;
 
     --destructive: 0 84.2% 60.2%;
@@ -33,24 +33,24 @@
 
     --border: 150 40% 25%;
     --input: 150 40% 25%;
-    --ring: 145 100% 32%;
+    --ring: 145 100% 45%;
 
     --radius: 0.5rem;
 
     /* Custom Festival Colors */
     --forest: 150 63% 14%;
     --cream: 45 85% 94%;
-    --leaf: 145 100% 32%;
+    --leaf: 145 100% 45%; /* Brighter for better contrast on dark backgrounds */
 
     /* Sidebar - keeping defaults */
     --sidebar-background: 150 63% 14%;
     --sidebar-foreground: 45 85% 94%;
-    --sidebar-primary: 145 100% 32%;
+    --sidebar-primary: 145 100% 45%;
     --sidebar-primary-foreground: 45 85% 94%;
     --sidebar-accent: 150 40% 20%;
     --sidebar-accent-foreground: 45 85% 94%;
     --sidebar-border: 150 40% 25%;
-    --sidebar-ring: 145 100% 32%;
+    --sidebar-ring: 145 100% 45%;
   }
 
   .dark {
@@ -66,21 +66,21 @@
     --secondary-foreground: 150 63% 14%;
     --muted: 150 40% 20%;
     --muted-foreground: 45 60% 80%;
-    --accent: 145 100% 32%;
+    --accent: 145 100% 45%;
     --accent-foreground: 45 85% 94%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 45 85% 94%;
     --border: 150 40% 25%;
     --input: 150 40% 25%;
-    --ring: 145 100% 32%;
+    --ring: 145 100% 45%;
     --sidebar-background: 150 63% 14%;
     --sidebar-foreground: 45 85% 94%;
-    --sidebar-primary: 145 100% 32%;
+    --sidebar-primary: 145 100% 45%;
     --sidebar-primary-foreground: 45 85% 94%;
     --sidebar-accent: 150 40% 20%;
     --sidebar-accent-foreground: 45 85% 94%;
     --sidebar-border: 150 40% 25%;
-    --sidebar-ring: 145 100% 32%;
+    --sidebar-ring: 145 100% 45%;
   }
 }
 

@@ -116,6 +116,7 @@ const Footer = () => {
                   <Button
                     type="submit"
                     size="icon"
+                    aria-label="S'inscrire à la newsletter"
                     className="h-12 w-12 bg-leaf hover:bg-leaf/90 text-cream flex-shrink-0 rounded-xl transition-all duration-300 hover:scale-105"
                     disabled={formState === 'loading'}
                   >
@@ -168,20 +169,20 @@ const Footer = () => {
           <div className="mt-12 pt-8 border-t border-cream/10">
             <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4">
-              <span className="font-body text-cream/50 text-sm">
+              <span className="font-body text-cream/70 text-sm">
                 © 2026 The Green Event. Tous droits réservés.
               </span>
               <span className="hidden md:block text-cream/20">|</span>
-              <span className="font-body text-cream/50 text-sm">
-                Réalisé par <a href="https://matheodelaunay.studio" target="_blank" rel="noopener noreferrer" className="text-leaf hover:text-cream transition-colors duration-300 font-bold">Seonay</a>
+              <span className="font-body text-cream/70 text-sm">
+                Réalisé par <a href="https://matheodelaunay.studio" target="_blank" rel="noopener noreferrer" className="text-leaf hover:text-cream transition-colors duration-300 font-bold underline decoration-leaf/30 underline-offset-4">Seonay</a>
               </span>
             </div>
 
               <div className="flex gap-6">
-                <a href="/mentions-legales" className="font-body text-cream/50 hover:text-cream text-sm transition-colors">
+                <a href="/mentions-legales" className="font-body text-cream/70 hover:text-cream text-sm transition-colors">
                   Mentions légales
                 </a>
-                <a href="/cgv" className="font-body text-cream/50 hover:text-cream text-sm transition-colors">
+                <a href="/cgv" className="font-body text-cream/70 hover:text-cream text-sm transition-colors">
                   CGV
                 </a>
               </div>

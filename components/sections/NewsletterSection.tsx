@@ -83,6 +83,7 @@ export default function NewsletterSection() {
               />
               <button
                 type="submit"
+                aria-label="S'inscrire à la newsletter"
                 className="px-8 py-4 rounded-full bg-forest text-cream font-bold uppercase tracking-widest hover:bg-leaf transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center h-12"
                 disabled={formState === 'loading'}
               >
