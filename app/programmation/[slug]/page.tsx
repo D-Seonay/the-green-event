@@ -45,7 +45,43 @@ const ArtistDetailPage = async ({ params }: Props) => {
     notFound();
   }
 
-  return <ArtistDetailClient artist={artist} />;
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'MusicGroup',
+    'name': artist.name,
+    'description': artist.bio,
+    'genre': artist.genre,
+    'image': `https://thegreenevent.fr${artist.image}`,
+    'url': `https://thegreenevent.fr/programmation/${slug}`,
+    'sameAs': Object.values(artist.socials).filter(Boolean),
+    'event': {
+      '@type': 'Festival',
+      'name': 'The Green Event 2026',
+      'startDate': '2026-07-04T14:00:00+02:00',
+      'endDate': '2026-07-05T01:00:00+02:00',
+      'location': {
+        '@type': 'Place',
+        'name': 'Parc de la Sèvre',
+        'address': {
+          '@type': 'PostalAddress',
+          'addressLocality': 'Vertou',
+          'postalCode': '44120',
+          'addressRegion': 'Loire-Atlantique',
+          'addressCountry': 'FR'
+        }
+      }
+    }
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <ArtistDetailClient artist={artist} />
+    </>
+  );
 };
 
 export default ArtistDetailPage;
