@@ -7,9 +7,11 @@ import ScrollToTop from '@/components/ui/ScrollToTop';
 import ScrollToTopOnNavigation from '@/components/ScrollToTopOnNavigation';
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
+  const [mounted, setMounted] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setMounted(true);
     // Check if the page is already loaded
     if (document.readyState === 'complete') {
       const timer = setTimeout(() => setLoading(false), 500);
@@ -22,6 +24,8 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
       return () => window.removeEventListener('load', handleLoad);
     }
   }, []);
+
+  if (!mounted) return <div className="bg-forest min-h-screen" />;
 
   return (
     <>
