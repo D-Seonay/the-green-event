@@ -1,4 +1,4 @@
-import type { Product, Artist, NavLink, FloatingElement } from '@/types';
+import type { Product, Artist, NavLink, FloatingElement, GalleryImage } from '@/types';
 import Cube from '@/components/ui/Cube';
 import Leaf from '@/components/ui/Leaf';
 
@@ -260,4 +260,55 @@ export const FLOATING_ELEMENTS: FloatingElement[] = [
     { x: [50, -50], y: [20, -20], className: "top-1/2 right-1/4", component: Leaf },
     { x: [-20, 20], y: [50, -100], className: "bottom-1/4 left-1/3", component: Leaf },
     { x: [100, -100], y: [-30, 30], className: "top-1/3 right-1/3", component: Cube },
-];
+    ];
+
+    export const GALLERY_IMAGES: GalleryImage[] = [
+    {
+    id: '1',
+    src: '/artists/LOOWS/LOOWS-1.png',
+    alt: 'LOOWS Performance',
+    tilt: -4,
+    speed: 0.2,
+    depth: 1
+    },
+    {
+    id: '2',
+    src: '/placeholder.svg',
+    alt: 'Festival Vibe 1',
+    tilt: 3,
+    speed: 0.4,
+    depth: 2
+    },
+    {
+    id: '3',
+    src: '/artists/LOOWS/LOOWS-2.png',
+    alt: 'LOOWS Crowd',
+    tilt: -2,
+    speed: 0.15,
+    depth: 1
+    },
+    {
+    id: '4',
+    src: '/placeholder.svg',
+    alt: 'Festival Vibe 2',
+    tilt: 5,
+    speed: 0.3,
+    depth: 3
+    },
+    {
+    id: '5',
+    src: '/placeholder.svg',
+    alt: 'Nature meeting Electro',
+    tilt: -3,
+    speed: 0.25,
+    depth: 2
+    },
+    {
+    id: '6',
+    src: '/placeholder.svg',
+    alt: 'Green Event Decor',
+    tilt: 4,
+    speed: 0.35,
+    depth: 1
+    }
+    ];

@@ -33,6 +33,15 @@ export interface Artist {
   seoDescription?: string;
 }
 
+export interface GalleryImage {
+  id: string;
+  src: string;
+  alt: string;
+  tilt: number;
+  speed: number;
+  depth: number;
+}
+
 export interface NavLink {
   href: string;
   label: string;
