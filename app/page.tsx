@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic';
 import Hero from '@/components/sections/Hero';
 import ConceptSection from '@/components/sections/ConceptSection';
+import GallerySection from '@/components/sections/GallerySection';
 import ProgrammationSection from '@/components/sections/ProgrammationSection';
 import InfosSection from '@/components/sections/InfosSection';
 import { ARTISTS } from '@/lib/data';
@@ -48,6 +49,7 @@ export default function Home() {
       />
       <Hero />
       <ConceptSection />
+      <GallerySection />
       <ProgrammationSection />
       <InfosSection />
       <SponsorsSection />
