@@ -35,16 +35,20 @@ const CollageImage = ({ image, onClick, index, scrollYProgress, dragConstraints 
     <motion.div
       style={{ y, zIndex: image.depth }}
       className="relative group"
-      initial={{ opacity: 0, scale: 0.9 }}
-      whileInView={{ opacity: 1, scale: 1 }}
+      initial="initial"
+      whileHover="hover"
+      whileInView="visible"
       viewport={{ once: true }}
-      transition={{ 
-        duration: 0.8, 
-        delay: index * 0.1,
-        ease: [0.16, 1, 0.3, 1] 
-      }}
     >
       <motion.div
+        variants={{
+          initial: { opacity: 0, scale: 0.9 },
+          visible: { 
+            opacity: 1, 
+            scale: 1,
+            transition: { duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }
+          }
+        }}
         drag
         dragConstraints={dragConstraints}
         dragElastic={0.1}
@@ -81,9 +85,12 @@ const CollageImage = ({ image, onClick, index, scrollYProgress, dragConstraints 
 
         {/* Zoom Button */}
         <motion.button
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileHover={{ scale: 1.1 }}
-          className="absolute bottom-4 right-4 z-[60] p-3 rounded-full bg-forest/80 backdrop-blur-md border border-cream/20 text-cream opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-all duration-300 md:scale-100 scale-90"
+          variants={{
+            initial: { opacity: 0, scale: 0.8 },
+            hover: { opacity: 1, scale: 1 },
+            visible: { opacity: 0 } // Hidden until hovered on desktop
+          }}
+          className="absolute bottom-4 right-4 z-[60] p-3 rounded-full bg-forest/80 backdrop-blur-md border border-cream/20 text-cream transition-all duration-300 md:flex hidden items-center justify-center"
           onClick={(e) => { 
             e.stopPropagation(); 
             onClick(image); 
@@ -92,6 +99,18 @@ const CollageImage = ({ image, onClick, index, scrollYProgress, dragConstraints 
         >
           <Maximize2 size={20} />
         </motion.button>
+
+        {/* Mobile Zoom Button (Always visible) */}
+        <button
+          className="absolute bottom-3 right-3 z-[60] p-2 rounded-full bg-forest/90 backdrop-blur-md border border-cream/20 text-cream md:hidden flex items-center justify-center active:scale-95 transition-transform"
+          onClick={(e) => { 
+            e.stopPropagation(); 
+            onClick(image); 
+          }}
+          aria-label="Agrandir l'image"
+        >
+          <Maximize2 size={18} />
+        </button>
       </motion.div>
     </motion.div>
   );
