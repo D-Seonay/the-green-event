@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
 import Image from 'next/image';
+import { Maximize2 } from 'lucide-react';
 import { GalleryImage } from '@/types';
 
 interface CollageImageProps {
@@ -10,13 +11,13 @@ interface CollageImageProps {
   onClick: (image: GalleryImage) => void;
   index: number;
   scrollYProgress: any; // Passing the section scroll progress
+  dragConstraints?: React.RefObject<HTMLElement>;
 }
 
-const CollageImage = ({ image, onClick, index, scrollYProgress }: CollageImageProps) => {
+const CollageImage = ({ image, onClick, index, scrollYProgress, dragConstraints }: CollageImageProps) => {
   const shouldReduceMotion = useReducedMotion();
 
   // Parallax: Each image moves at a slightly different speed
-  // We use a range that feels natural as the user scrolls through the section
   const y = useTransform(
     scrollYProgress,
     [0, 1],
@@ -24,7 +25,6 @@ const CollageImage = ({ image, onClick, index, scrollYProgress }: CollageImagePr
   );
 
   // Depth of field: Blur reduces as image enters center view
-  // Note: This is an expensive effect, using it subtly
   const blur = useTransform(
     scrollYProgress,
     [0, 0.5, 1],
@@ -34,8 +34,7 @@ const CollageImage = ({ image, onClick, index, scrollYProgress }: CollageImagePr
   return (
     <motion.div
       style={{ y, zIndex: image.depth }}
-      className="relative cursor-pointer group"
-      onClick={() => onClick(image)}
+      className="relative group"
       initial={{ opacity: 0, scale: 0.9 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
@@ -46,19 +45,30 @@ const CollageImage = ({ image, onClick, index, scrollYProgress }: CollageImagePr
       }}
     >
       <motion.div
+        drag
+        dragConstraints={dragConstraints}
+        dragElastic={0.1}
+        dragMomentum={true}
+        whileDrag={{ 
+          scale: 1.1, 
+          zIndex: 100,
+          cursor: 'grabbing',
+          boxShadow: "0 20px 40px rgba(0,0,0,0.4)"
+        }}
         whileHover={{ 
           scale: 1.05, 
           rotate: 0, 
           zIndex: 50,
           transition: { duration: 0.4 }
         }}
+        onClick={() => onClick(image)}
         style={{ 
           rotate: image.tilt,
           filter: `blur(${blur}px)` 
         }}
-        className="relative overflow-hidden rounded-2xl shadow-2xl border-4 border-cream/10 bg-forest/50"
+        className="relative overflow-hidden rounded-2xl shadow-2xl border-4 border-cream/10 bg-forest/50 cursor-grab active:cursor-grabbing"
       >
-        <div className="relative aspect-[4/5] sm:aspect-square md:aspect-[3/4]">
+        <div className="relative aspect-[4/5] sm:aspect-square md:aspect-[3/4] pointer-events-none">
           <Image
             src={image.src}
             alt={image.alt}
@@ -68,6 +78,20 @@ const CollageImage = ({ image, onClick, index, scrollYProgress }: CollageImagePr
           />
           <div className="absolute inset-0 bg-forest/20 mix-blend-multiply transition-opacity group-hover:opacity-0" />
         </div>
+
+        {/* Zoom Button */}
+        <motion.button
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileHover={{ scale: 1.1 }}
+          className="absolute bottom-4 right-4 z-[60] p-3 rounded-full bg-forest/80 backdrop-blur-md border border-cream/20 text-cream opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-all duration-300 md:scale-100 scale-90"
+          onClick={(e) => { 
+            e.stopPropagation(); 
+            onClick(image); 
+          }}
+          aria-label="Agrandir l'image"
+        >
+          <Maximize2 size={20} />
+        </motion.button>
       </motion.div>
     </motion.div>
   );
