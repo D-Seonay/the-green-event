@@ -9,17 +9,18 @@ interface CollageImageProps {
   image: GalleryImage;
   onClick: (image: GalleryImage) => void;
   index: number;
+  scrollYProgress: any; // Passing the section scroll progress
 }
 
-const CollageImage = ({ image, onClick, index }: CollageImageProps) => {
+const CollageImage = ({ image, onClick, index, scrollYProgress }: CollageImageProps) => {
   const shouldReduceMotion = useReducedMotion();
-  const { scrollYProgress } = useScroll();
 
   // Parallax: Each image moves at a slightly different speed
+  // We use a range that feels natural as the user scrolls through the section
   const y = useTransform(
     scrollYProgress,
     [0, 1],
-    [0, shouldReduceMotion ? 0 : 500 * image.speed]
+    [shouldReduceMotion ? 0 : -100 * image.speed, shouldReduceMotion ? 0 : 100 * image.speed]
   );
 
   // Depth of field: Blur reduces as image enters center view

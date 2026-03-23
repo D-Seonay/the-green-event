@@ -63,7 +63,7 @@ const GallerySection = () => {
         </motion.div>
 
         {/* Collage Grid */}
-        <div className="relative min-h-[600px] md:min-h-[1000px]">
+        <div className="relative">
           {/* Decorative Thread (Desktop only) */}
           <div className="absolute inset-0 pointer-events-none hidden md:block">
             <svg width="100%" height="100%" viewBox="0 0 1200 1000" fill="none" preserveAspectRatio="none">
@@ -78,35 +78,24 @@ const GallerySection = () => {
             </svg>
           </div>
 
-          {/* Desktop Layout (Absolute Positioning for Collage feel) */}
-          <div className="hidden md:block">
+          {/* Desktop Layout (Grid with offsets for Collage feel) */}
+          <div className="hidden md:grid grid-cols-12 gap-8 items-start">
             {GALLERY_IMAGES.map((image, index) => {
-              // Map images to specific positions to create the collage feel
-              const positions = [
-                { top: '5%', left: '10%', width: '25%' },
-                { top: '15%', right: '15%', width: '20%' },
-                { top: '40%', left: '35%', width: '30%' },
-                { bottom: '10%', left: '5%', width: '22%' },
-                { bottom: '20%', right: '10%', width: '28%' },
-                { bottom: '5%', left: '45%', width: '18%' },
-              ];
-              const pos = positions[index % positions.length];
+              // Create a staggered grid effect
+              const colSpan = index % 3 === 0 ? 'col-span-4' : index % 3 === 1 ? 'col-span-3' : 'col-span-5';
+              const mt = index % 2 === 0 ? 'mt-0' : 'mt-32';
+              const offset = index % 4 === 0 ? 'ml-0' : index % 4 === 1 ? 'ml-12' : index % 4 === 2 ? '-ml-8' : 'ml-4';
 
               return (
                 <div 
                   key={image.id} 
-                  className="absolute" 
-                  style={{ 
-                    top: pos.top, 
-                    left: pos.left, 
-                    right: pos.right,
-                    width: pos.width 
-                  }}
+                  className={`${colSpan} ${mt} ${offset} relative z-10`}
                 >
                   <CollageImage 
                     image={image} 
                     onClick={setSelectedImage} 
-                    index={index} 
+                    index={index}
+                    scrollYProgress={scrollYProgress}
                   />
                 </div>
               );
@@ -121,6 +110,7 @@ const GallerySection = () => {
                 image={{...image, speed: 0.1}} // Reduced parallax for mobile
                 onClick={setSelectedImage} 
                 index={index} 
+                scrollYProgress={scrollYProgress}
               />
             ))}
           </div>
