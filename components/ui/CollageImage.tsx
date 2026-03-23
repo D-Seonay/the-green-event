@@ -34,9 +34,8 @@ const CollageImage = ({ image, onClick, index, scrollYProgress, dragConstraints 
   return (
     <motion.div
       style={{ y, zIndex: image.depth }}
-      className="relative group"
+      className="relative"
       initial="initial"
-      whileHover="hover"
       whileInView="visible"
       viewport={{ once: true }}
     >
@@ -59,17 +58,12 @@ const CollageImage = ({ image, onClick, index, scrollYProgress, dragConstraints 
           cursor: 'grabbing',
           boxShadow: "0 20px 40px rgba(0,0,0,0.4)"
         }}
-        whileHover={{ 
-          scale: 1.05, 
-          rotate: 0, 
-          zIndex: 50,
-          transition: { duration: 0.4 }
-        }}
+        whileHover="hover"
+        className="relative group overflow-hidden rounded-2xl shadow-2xl border-4 border-cream/10 bg-forest/50 cursor-grab active:cursor-grabbing"
         style={{ 
           rotate: image.tilt,
           filter: `blur(${blur}px)` 
         }}
-        className="relative overflow-hidden rounded-2xl shadow-2xl border-4 border-cream/10 bg-forest/50 cursor-grab active:cursor-grabbing"
       >
         <div className="relative aspect-[4/5] sm:aspect-square md:aspect-[3/4] pointer-events-none">
           <Image
