@@ -65,7 +65,6 @@ const CollageImage = ({ image, onClick, index, scrollYProgress, dragConstraints 
           zIndex: 50,
           transition: { duration: 0.4 }
         }}
-        onClick={() => onClick(image)}
         style={{ 
           rotate: image.tilt,
           filter: `blur(${blur}px)` 
