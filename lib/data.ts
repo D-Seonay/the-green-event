@@ -262,53 +262,53 @@ export const FLOATING_ELEMENTS: FloatingElement[] = [
     { x: [100, -100], y: [-30, 30], className: "top-1/3 right-1/3", component: Cube },
     ];
 
-    export const GALLERY_IMAGES: GalleryImage[] = [
-    {
+export const GALLERY_IMAGES: GalleryImage[] = [
+  {
     id: '1',
-    src: '/artists/LOOWS/LOOWS-1.png',
-    alt: 'LOOWS Performance',
+    src: '/img/Photo_1.jpg',
+    alt: 'Ambiance Festival',
     tilt: -4,
     speed: 0.2,
     depth: 1
-    },
-    {
+  },
+  {
     id: '2',
-    src: '/placeholder.svg',
-    alt: 'Festival Vibe 1',
+    src: '/img/3.jpg',
+    alt: 'Scène et Lumières',
     tilt: 3,
     speed: 0.4,
     depth: 2
-    },
-    {
+  },
+  {
     id: '3',
-    src: '/artists/LOOWS/LOOWS-2.png',
-    alt: 'LOOWS Crowd',
+    src: '/img/4.jpg',
+    alt: 'Public en feu',
     tilt: -2,
     speed: 0.15,
     depth: 1
-    },
-    {
+  },
+  {
     id: '4',
-    src: '/placeholder.svg',
-    alt: 'Festival Vibe 2',
+    src: '/img/21062025-IMG_0684.jpg',
+    alt: 'Moment suspendu',
     tilt: 5,
     speed: 0.3,
     depth: 3
-    },
-    {
+  },
+  {
     id: '5',
-    src: '/placeholder.svg',
+    src: '/img/image.jpg',
     alt: 'Nature meeting Electro',
     tilt: -3,
     speed: 0.25,
     depth: 2
-    },
-    {
+  },
+  {
     id: '6',
-    src: '/placeholder.svg',
-    alt: 'Green Event Decor',
+    src: '/artists/LOOWS/LOOWS-1.png',
+    alt: 'Performance LOOWS',
     tilt: 4,
     speed: 0.35,
     depth: 1
-    }
-    ];
+  }
+];
