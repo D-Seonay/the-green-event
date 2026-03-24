@@ -10,7 +10,17 @@ import { GalleryImage } from '@/types';
 
 const GallerySection = () => {
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
+  const [zIndices, setZIndices] = useState<Record<string, number>>(
+    Object.fromEntries(GALLERY_IMAGES.map(img => [img.id, img.depth]))
+  );
   const sectionRef = React.useRef<HTMLElement>(null);
+
+  const bringToFront = (id: string) => {
+    setZIndices(prev => {
+      const maxZ = Math.max(...Object.values(prev), 10);
+      return { ...prev, [id]: maxZ + 1 };
+    });
+  };
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -89,13 +99,17 @@ const GallerySection = () => {
               return (
                 <div 
                   key={image.id} 
-                  className={`${colSpan} ${mt} ${offset} relative z-10`}
+                  className={`${colSpan} ${mt} ${offset} relative`}
+                  style={{ zIndex: zIndices[image.id] || image.depth }}
+                  onMouseDown={() => bringToFront(image.id)}
+                  onTouchStart={() => bringToFront(image.id)}
                 >
                   <CollageImage 
                     image={image} 
                     onClick={setSelectedImage} 
                     index={index}
                     scrollYProgress={scrollYProgress}
+                    dragConstraints={sectionRef}
                   />
                 </div>
               );
@@ -105,13 +119,22 @@ const GallerySection = () => {
           {/* Mobile Layout (Simple 2-column grid) */}
           <div className="grid grid-cols-2 gap-4 md:hidden">
             {GALLERY_IMAGES.map((image, index) => (
-              <CollageImage 
+              <div 
                 key={image.id} 
-                image={{...image, speed: 0.1}} // Reduced parallax for mobile
-                onClick={setSelectedImage} 
-                index={index} 
-                scrollYProgress={scrollYProgress}
-              />
+                className="relative"
+                style={{ zIndex: zIndices[image.id] || image.depth }}
+                onMouseDown={() => bringToFront(image.id)}
+                onTouchStart={() => bringToFront(image.id)}
+              >
+                <CollageImage 
+                  key={image.id} 
+                  image={{...image, speed: 0.1}} // Reduced parallax for mobile
+                  onClick={setSelectedImage} 
+                  index={index} 
+                  scrollYProgress={scrollYProgress}
+                  dragConstraints={sectionRef}
+                />
+              </div>
             ))}
           </div>
         </div>
