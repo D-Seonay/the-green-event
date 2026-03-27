@@ -1,8 +1,9 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
-import { ArrowDown } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Cube from '@/components/ui/Cube';
 import Leaf from '@/components/ui/Leaf';
@@ -133,9 +134,11 @@ export default function ProgrammationSection() {
           transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           className="mt-32 text-center"
         >
-          <Button variant="outline" size="lg" className="h-16 px-10 text-xl font-display font-black group bg-cream text-forest hover:bg-cream/90 transition-all duration-500 hover:scale-110 border-0 shadow-2xl uppercase tracking-widest">
-            VOIR TOUTE LA PROG
-            <ArrowDown className="ml-3 h-6 w-6 transition-transform group-hover:translate-y-2" />
+          <Button asChild variant="outline" size="lg" className="h-16 px-10 text-xl font-display font-black group bg-cream text-forest hover:bg-cream/90 transition-all duration-500 hover:scale-110 border-0 shadow-2xl uppercase tracking-widest">
+            <Link href="/programmation">
+              VOIR TOUTE LA PROG
+              <ArrowRight className="ml-3 h-6 w-6 transition-transform group-hover:translate-x-2" />
+            </Link>
           </Button>
         </motion.div>
       </div>
