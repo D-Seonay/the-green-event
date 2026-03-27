@@ -10,6 +10,13 @@ import WaveDivider from '@/components/ui/WaveDivider';
 import Cube from '@/components/ui/Cube';
 import Leaf from '@/components/ui/Leaf';
 import { Artist } from '@/types';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '@/components/ui/carousel';
 
 interface Props {
   artist: Artist;
@@ -215,23 +222,37 @@ const ArtistDetailClient = ({ artist }: Props) => {
             <h2 className="text-3xl md:text-4xl font-display font-black text-leaf mb-12 text-center uppercase tracking-tighter">
               Galerie
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-              {artist.gallery.map((image, idx) => (
-                <motion.div
-                  key={idx}
-                  whileHover={{ scale: 1.02, rotate: idx % 2 === 0 ? 1 : -1 }}
-                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                  className="relative aspect-square md:aspect-video rounded-2xl overflow-hidden shadow-2xl border border-cream/10"
-                >
-                  <Image
-                    src={image}
-                    alt={`${artist.name} gallery ${idx + 1}`}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                </motion.div>
-              ))}
+            
+            <div className="max-w-5xl mx-auto px-12">
+              <Carousel
+                opts={{
+                  align: "start",
+                  loop: true,
+                }}
+                className="w-full"
+              >
+                <CarouselContent>
+                  {artist.gallery.map((image, idx) => (
+                    <CarouselItem key={idx} className="md:basis-1/2 lg:basis-1/2">
+                      <motion.div
+                        whileHover={{ scale: 1.02 }}
+                        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                        className="relative aspect-square md:aspect-video rounded-2xl overflow-hidden shadow-2xl border border-cream/10 m-2"
+                      >
+                        <Image
+                          src={image}
+                          alt={`${artist.name} gallery ${idx + 1}`}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                        />
+                      </motion.div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious className="bg-forest text-cream border-cream/20 hover:bg-leaf hover:text-forest -left-4 md:-left-12" />
+                <CarouselNext className="bg-forest text-cream border-cream/20 hover:bg-leaf hover:text-forest -right-4 md:-right-12" />
+              </Carousel>
             </div>
           </motion.div>
         </section>
