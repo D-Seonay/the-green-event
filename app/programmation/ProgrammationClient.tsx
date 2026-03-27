@@ -9,6 +9,9 @@ import ArtistCard from '@/components/cards/ArtistCard';
 import SectionTitle from '@/components/ui/SectionTitle';
 
 const ProgrammationClient = () => {
+  const [visibleCount, setVisibleCount] = React.useState(8);
+  const showMore = () => setVisibleCount(ARTISTS.length);
+
   return (
     <main className="bg-forest text-cream pt-20">
       <section className="relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
@@ -35,17 +38,24 @@ const ProgrammationClient = () => {
 
           <div className="relative max-w-7xl mx-auto z-10">
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-12 sm:gap-x-8 sm:gap-y-24">
-              {ARTISTS.map((artist, index) => (
+              {ARTISTS.slice(0, visibleCount).map((artist, index) => (
                 <ArtistCard key={artist.name} artist={artist} index={index} />
               ))}
             </div>
 
-            <div className="mt-24 text-center">
-              <Button variant="outline" size="lg" className="bg-cream text-forest hover:bg-cream/90 group">
-                VOIR PLUS
-                <ArrowDown className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
-              </Button>
-            </div>
+            {visibleCount < ARTISTS.length && (
+              <div className="mt-24 text-center">
+                <Button 
+                  onClick={showMore}
+                  variant="outline" 
+                  size="lg" 
+                  className="bg-cream text-forest hover:bg-cream/90 group"
+                >
+                  VOIR TOUT LE MONDE
+                  <ArrowDown className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
+                </Button>
+              </div>
+            )}
           </div>
         </div>
       </section>
