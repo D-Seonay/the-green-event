@@ -16,8 +16,8 @@ const Footer = () => {
   const [errorMessage, setErrorMessage] = useState('');
 
   const socialLinks = [
-    { icon: Instagram, href: "#", label: "Instagram" },
-    { icon: Facebook, href: "#", label: "Facebook" },
+    { icon: Instagram, href: "https://www.instagram.com/the_greenevents/", label: "Instagram" },
+    { icon: Facebook, href: "https://www.facebook.com/people/The-green-event/61557653626678/#", label: "Facebook" },
     // { icon: Tiktok, href: "#", label: "Twitter" },
   ];
 
@@ -145,6 +145,8 @@ const Footer = () => {
                   <a
                     key={social.label}
                     href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     aria-label={social.label}
                     className="w-12 h-12 rounded-xl bg-cream/10 hover:bg-leaf flex items-center justify-center transition-all duration-300 hover:scale-110 hover:rotate-6 group"
                   >
