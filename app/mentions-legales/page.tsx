@@ -26,7 +26,7 @@ export default function MentionsLegalesPage() {
             <strong>Adresse :</strong> 44120 Vertou
           </p>
           <p>
-            <strong>Contact :</strong> <a href="mailto:contact@thegreenevent.com" className="text-leaf hover:underline">contact@thegreenevent.com</a>
+            <strong>Contact :</strong> <a href="mailto:thegreenevent.44@gmail.com" className="text-leaf hover:underline">thegreenevent.44@gmail.com</a>
           </p>
 
           <h2 className="text-leaf text-3xl font-display font-bold mb-4 mt-8">2. Hébergement</h2>
@@ -49,7 +49,7 @@ export default function MentionsLegalesPage() {
             L&apos;association &quot;The Green Event&quot; s&apos;engage à protéger la vie privée de ses utilisateurs. Les données personnelles collectées via le formulaire d&apos;inscription à la newsletter ou le formulaire de contact (telles que nom, prénom, adresse email) sont uniquement utilisées pour l&apos;envoi de communications relatives à l&apos;événement et pour répondre aux demandes des utilisateurs.
           </p>
           <p>
-            Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez d&apos;un droit d&apos;accès, de rectification, de suppression et d&apos;opposition relatif à vos données personnelles. Pour exercer ces droits, veuillez nous contacter à &lt;a href=&quot;mailto:contact@thegreenevent.com&quot; className=&quot;text-leaf hover:underline&quot;&gt;contact@thegreenevent.com&lt;/a&gt;. Vos données ne seront en aucun cas cédées à des tiers.
+            Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez d&apos;un droit d&apos;accès, de rectification, de suppression et d&apos;opposition relatif à vos données personnelles. Pour exercer ces droits, veuillez nous contacter à &lt;a href=&quot;mailto:thegreenevent.44@gmail.com&quot; className=&quot;text-leaf hover:underline&quot;&gt;thegreenevent.44@gmail.com&lt;/a&gt;. Vos données ne seront en aucun cas cédées à des tiers.
           </p>
         </div>
       </div>

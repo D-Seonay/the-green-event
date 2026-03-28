@@ -16,8 +16,8 @@ const Footer = () => {
   const [errorMessage, setErrorMessage] = useState('');
 
   const socialLinks = [
-    { icon: Instagram, href: "#", label: "Instagram" },
-    { icon: Facebook, href: "#", label: "Facebook" },
+    { icon: Instagram, href: "https://www.instagram.com/the_greenevents/", label: "Instagram" },
+    { icon: Facebook, href: "https://www.facebook.com/people/The-green-event/61557653626678/#", label: "Facebook" },
     // { icon: Tiktok, href: "#", label: "Twitter" },
   ];
 
