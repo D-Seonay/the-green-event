@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import ClientLayout from "@/components/layout/ClientLayout";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import CookieBanner from "@/components/layout/CookieBanner";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const montserrat = Montserrat({ subsets: ["latin"], variable: "--font-montserrat" });
@@ -76,6 +77,7 @@ export default function RootLayout({
         <ClientLayout>
           <Navbar />
           {children}
+          <CookieBanner />
           <Footer />
         </ClientLayout>
       </body>
