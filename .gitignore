@@ -25,3 +25,6 @@ dist-ssr
 *.sw?
 GEMINI.md
 .next.worktrees/
+
+
+.env

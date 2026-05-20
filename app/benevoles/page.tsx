@@ -13,6 +13,8 @@ import {
   Wrench,
   ArrowRight,
   Info,
+  Loader2,
+  CheckCircle2,
 } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -100,7 +102,27 @@ const FloatingIcon = ({ children, x, y, className }: { children: React.ReactNode
   );
 };
 
+const availabilityLabels: Record<string, string> = {
+  montage: "Montage (Juin)",
+  samedi: "Samedi 4 Juillet",
+  dimanche: "Dimanche 5 Juillet",
+  demontage: "Démontage",
+};
+
+const assignmentLabels: Record<string, string> = {
+  bar: "Bar & Resto",
+  eco: "Éco-Brigade",
+  accueil: "Accueil",
+  technique: "Technique",
+  polyvalent: "Polyvalent",
+};
+
+type SubmissionState = "idle" | "submitting" | "success" | "error";
+
 const BenevolesPage = () => {
+  const [submissionState, setSubmissionState] = React.useState<SubmissionState>("idle");
+  const [errorMessage, setErrorMessage] = React.useState("");
+
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -115,12 +137,37 @@ const BenevolesPage = () => {
     },
   });
 
-  const onSubmit = (data: z.infer<typeof FormSchema>) => {
-    console.log("Form data", data);
-    toast({
-      title: "Candidature reçue !",
-      description: "Merci pour ton engagement ! On revient vers toi très vite.",
-    });
+  const onSubmit = async (data: z.infer<typeof FormSchema>) => {
+    setSubmissionState("submitting");
+    setErrorMessage("");
+    try {
+      const response = await fetch("/api/benevoles", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        const errData = await response.json();
+        throw new Error(errData.error || "Une erreur est survenue lors de l'envoi.");
+      }
+
+      setSubmissionState("success");
+      toast({
+        title: "Candidature reçue !",
+        description: "Merci pour ton engagement ! On revient vers toi très vite.",
+      });
+    } catch (err: any) {
+      setSubmissionState("error");
+      setErrorMessage(err.message || "Une erreur est survenue.");
+      toast({
+        variant: "destructive",
+        title: "Erreur lors de la soumission",
+        description: err.message || "Impossible d'envoyer la candidature.",
+      });
+    }
   };
 
   return (
@@ -206,214 +253,268 @@ const BenevolesPage = () => {
               viewport={{ once: true }}
               className="relative bg-cream text-forest p-8 md:p-16 rounded-[2rem] shadow-2xl border-4 border-forest transform -rotate-1"
             >
-              <div className="text-center mb-16">
-                <h2 className="text-4xl md:text-6xl font-display font-black uppercase tracking-tighter mb-4">
-                  REJOINDRE L&apos;ÉQUIPE
-                </h2>
-                <div className="flex items-center justify-center gap-2 text-forest/60 font-mono uppercase tracking-widest text-sm">
-                  <Info className="w-4 h-4" />
-                  Formulaire de candidature
-                </div>
-              </div>
-
-              <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-12">
-                  {/* Identity */}
-                  <div className="space-y-8">
-                    <h3 className="text-xl font-display font-black uppercase tracking-widest border-b-2 border-forest/10 pb-2">
-                      01. Identité
+              {submissionState === "success" ? (
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="text-center py-12"
+                >
+                  <div className="w-24 h-24 bg-leaf rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-lg shadow-leaf/20 transform rotate-3">
+                    <CheckCircle2 className="w-12 h-12 text-cream" />
+                  </div>
+                  <h2 className="text-4xl md:text-6xl font-display font-black uppercase tracking-tighter mb-6">
+                    BIENVENUE DANS LA TEAM !
+                  </h2>
+                  <p className="max-w-xl mx-auto font-body text-lg md:text-xl text-forest/80 leading-relaxed mb-10">
+                    Ta candidature a bien été transmise à notre coordinateur. Un e-mail de confirmation récapitulant tes préférences vient de t'être envoyé !
+                  </p>
+                  
+                  <div className="max-w-md mx-auto bg-forest text-cream p-8 rounded-2xl text-left border-2 border-forest shadow-xl mb-10 transform -rotate-1">
+                    <h3 className="font-display font-bold text-lg uppercase tracking-wider border-b border-cream/20 pb-3 mb-4">
+                      Récapitulatif de tes choix
                     </h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                      <FormField
-                        control={form.control}
-                        name="firstname"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="font-bold uppercase tracking-wider text-xs">Prénom</FormLabel>
-                            <FormControl>
-                              <Input placeholder="Jean" {...field} className="bg-transparent border-forest/20 focus:border-leaf rounded-xl h-12" />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                      <FormField
-                        control={form.control}
-                        name="name"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="font-bold uppercase tracking-wider text-xs">Nom</FormLabel>
-                            <FormControl>
-                              <Input placeholder="Dupont" {...field} className="bg-transparent border-forest/20 focus:border-leaf rounded-xl h-12" />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
+                    <div className="space-y-3 font-body text-sm">
+                      <p><span className="text-leaf font-bold uppercase tracking-wider text-xs block mb-1">Candidat</span>{form.getValues("firstname")} {form.getValues("name")}</p>
+                      <p><span className="text-leaf font-bold uppercase tracking-wider text-xs block mb-1">Poste</span>{assignmentLabels[form.getValues("assignement")] || form.getValues("assignement")}</p>
+                      <p><span className="text-leaf font-bold uppercase tracking-wider text-xs block mb-1">Créneaux</span>{form.getValues("availabilities")?.map(av => availabilityLabels[av] || av).join(", ")}</p>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                      <FormField
-                        control={form.control}
-                        name="email"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="font-bold uppercase tracking-wider text-xs">Email</FormLabel>
-                            <FormControl>
-                              <Input placeholder="jean@mail.com" {...field} className="bg-transparent border-forest/20 focus:border-leaf rounded-xl h-12" />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                      <FormField
-                        control={form.control}
-                        name="phone"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="font-bold uppercase tracking-wider text-xs">Téléphone</FormLabel>
-                            <FormControl>
-                              <Input placeholder="06 00 00 00 00" {...field} className="bg-transparent border-forest/20 focus:border-leaf rounded-xl h-12" />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
+                  </div>
+
+                  <Button
+                    onClick={() => {
+                      form.reset();
+                      setSubmissionState("idle");
+                    }}
+                    className="bg-forest text-cream hover:bg-leaf hover:text-forest h-14 px-8 rounded-xl text-sm font-display font-bold uppercase tracking-wider transition-all duration-300"
+                  >
+                    Soumettre une autre candidature
+                  </Button>
+                </motion.div>
+              ) : (
+                <>
+                  <div className="text-center mb-16">
+                    <h2 className="text-4xl md:text-6xl font-display font-black uppercase tracking-tighter mb-4">
+                      REJOINDRE L&apos;ÉQUIPE
+                    </h2>
+                    <div className="flex items-center justify-center gap-2 text-forest/60 font-mono uppercase tracking-widest text-sm">
+                      <Info className="w-4 h-4" />
+                      Formulaire de candidature
                     </div>
-                    <FormField
-                      control={form.control}
-                      name="age"
-                      render={({ field }) => (
-                        <FormItem className="max-w-[200px]">
-                          <FormLabel className="font-bold uppercase tracking-wider text-xs">Âge</FormLabel>
-                          <FormControl>
-                            <Input placeholder="25" {...field} className="bg-transparent border-forest/20 focus:border-leaf rounded-xl h-12" />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
                   </div>
 
-                  {/* Availabilities */}
-                  <div className="space-y-8">
-                    <h3 className="text-xl font-display font-black uppercase tracking-widest border-b-2 border-forest/10 pb-2">
-                      02. Disponibilités
-                    </h3>
-                    <FormField
-                      control={form.control}
-                      name="availabilities"
-                      render={() => (
-                        <FormItem>
-                          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                            {[
-                              { id: "montage", label: "Montage (Juin)" },
-                              { id: "samedi", label: "Samedi 4 Juillet" },
-                              { id: "dimanche", label: "Dimanche 5 Juillet" },
-                              { id: "demontage", label: "Démontage" },
-                            ].map((item) => (
-                              <FormField
-                                key={item.id}
-                                control={form.control}
-                                name="availabilities"
-                                render={({ field }) => (
-                                  <FormItem className="flex items-center space-x-3 space-y-0 p-4 rounded-2xl border border-forest/10 hover:border-leaf hover:bg-leaf/5 transition-all cursor-pointer">
-                                    <FormControl>
-                                      <Checkbox
-                                        checked={field.value?.includes(item.id)}
-                                        onCheckedChange={(checked) => {
-                                          return checked
-                                            ? field.onChange([...field.value, item.id])
-                                            : field.onChange(field.value?.filter((val) => val !== item.id));
-                                        }}
-                                      />
-                                    </FormControl>
-                                    <FormLabel className="text-sm font-bold cursor-pointer">{item.label}</FormLabel>
-                                  </FormItem>
-                                )}
-                              />
-                            ))}
-                          </div>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
+                  <Form {...form}>
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-12">
+                      {/* Identity */}
+                      <div className="space-y-8">
+                        <h3 className="text-xl font-display font-black uppercase tracking-widest border-b-2 border-forest/10 pb-2">
+                          01. Identité
+                        </h3>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                          <FormField
+                            control={form.control}
+                            name="firstname"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel className="font-bold uppercase tracking-wider text-xs">Prénom</FormLabel>
+                                <FormControl>
+                                  <Input placeholder="Jean" {...field} disabled={submissionState === "submitting"} className="bg-transparent border-forest/20 focus:border-leaf rounded-xl h-12" />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                          <FormField
+                            control={form.control}
+                            name="name"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel className="font-bold uppercase tracking-wider text-xs">Nom</FormLabel>
+                                <FormControl>
+                                  <Input placeholder="Dupont" {...field} disabled={submissionState === "submitting"} className="bg-transparent border-forest/20 focus:border-leaf rounded-xl h-12" />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                          <FormField
+                            control={form.control}
+                            name="email"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel className="font-bold uppercase tracking-wider text-xs">Email</FormLabel>
+                                <FormControl>
+                                  <Input placeholder="jean@mail.com" {...field} disabled={submissionState === "submitting"} className="bg-transparent border-forest/20 focus:border-leaf rounded-xl h-12" />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                          <FormField
+                            control={form.control}
+                            name="phone"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel className="font-bold uppercase tracking-wider text-xs">Téléphone</FormLabel>
+                                <FormControl>
+                                  <Input placeholder="06 00 00 00 00" {...field} disabled={submissionState === "submitting"} className="bg-transparent border-forest/20 focus:border-leaf rounded-xl h-12" />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                        </div>
+                        <FormField
+                          control={form.control}
+                          name="age"
+                          render={({ field }) => (
+                            <FormItem className="max-w-[200px]">
+                              <FormLabel className="font-bold uppercase tracking-wider text-xs">Âge</FormLabel>
+                              <FormControl>
+                                <Input placeholder="25" {...field} disabled={submissionState === "submitting"} className="bg-transparent border-forest/20 focus:border-leaf rounded-xl h-12" />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
 
-                  {/* Preferences */}
-                  <div className="space-y-8">
-                    <h3 className="text-xl font-display font-black uppercase tracking-widest border-b-2 border-forest/10 pb-2">
-                      03. Poste Souhaité
-                    </h3>
-                    <FormField
-                      control={form.control}
-                      name="assignement"
-                      render={({ field }) => (
-                        <FormItem className="space-y-3">
-                          <FormControl>
-                            <RadioGroup
-                              onValueChange={field.onChange}
-                              defaultValue={field.value}
-                              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
-                            >
-                              {[
-                                { value: "bar", label: "Bar & Resto", icon: Beer },
-                                { value: "eco", label: "Éco-Brigade", icon: Ban },
-                                { value: "accueil", label: "Accueil", icon: Ticket },
-                                { value: "technique", label: "Technique", icon: Wrench },
-                                { value: "polyvalent", label: "Polyvalent", icon: Drum },
-                              ].map((item) => (
-                                <FormItem key={item.value}>
-                                  <FormControl>
-                                    <RadioGroupItem value={item.value} className="sr-only" />
-                                  </FormControl>
-                                  <FormLabel className={`flex items-center gap-3 p-4 rounded-2xl border transition-all cursor-pointer ${field.value === item.value ? 'bg-forest text-cream border-forest' : 'border-forest/10 hover:border-leaf hover:bg-leaf/5'}`}>
-                                    <item.icon className="w-5 h-5" />
-                                    <span className="font-bold text-sm">{item.label}</span>
-                                  </FormLabel>
-                                </FormItem>
-                              ))}
-                            </RadioGroup>
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
+                      {/* Availabilities */}
+                      <div className="space-y-8">
+                        <h3 className="text-xl font-display font-black uppercase tracking-widest border-b-2 border-forest/10 pb-2">
+                          02. Disponibilités
+                        </h3>
+                        <FormField
+                          control={form.control}
+                          name="availabilities"
+                          render={() => (
+                            <FormItem>
+                              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                                {[
+                                  { id: "montage", label: "Montage (Juin)" },
+                                  { id: "samedi", label: "Samedi 4 Juillet" },
+                                  { id: "dimanche", label: "Dimanche 5 Juillet" },
+                                  { id: "demontage", label: "Démontage" },
+                                ].map((item) => (
+                                  <FormField
+                                    key={item.id}
+                                    control={form.control}
+                                    name="availabilities"
+                                    render={({ field }) => (
+                                      <FormItem className="flex items-center space-x-3 space-y-0 p-4 rounded-2xl border border-forest/10 hover:border-leaf hover:bg-leaf/5 transition-all cursor-pointer">
+                                        <FormControl>
+                                          <Checkbox
+                                            checked={field.value?.includes(item.id)}
+                                            disabled={submissionState === "submitting"}
+                                            onCheckedChange={(checked) => {
+                                              return checked
+                                                ? field.onChange([...field.value, item.id])
+                                                : field.onChange(field.value?.filter((val) => val !== item.id));
+                                            }}
+                                          />
+                                        </FormControl>
+                                        <FormLabel className="text-sm font-bold cursor-pointer">{item.label}</FormLabel>
+                                      </FormItem>
+                                    )}
+                                  />
+                                ))}
+                              </div>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
 
-                  {/* Motivation */}
-                  <div className="space-y-8">
-                    <h3 className="text-xl font-display font-black uppercase tracking-widest border-b-2 border-forest/10 pb-2">
-                      04. Motivation
-                    </h3>
-                    <FormField
-                      control={form.control}
-                      name="motivation"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormControl>
-                            <Textarea
-                              placeholder="Pourquoi souhaites-tu nous rejoindre ?"
-                              className="min-h-[150px] bg-transparent border-forest/20 focus:border-leaf rounded-2xl p-6"
-                              {...field}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
+                      {/* Preferences */}
+                      <div className="space-y-8">
+                        <h3 className="text-xl font-display font-black uppercase tracking-widest border-b-2 border-forest/10 pb-2">
+                          03. Poste Souhaité
+                        </h3>
+                        <FormField
+                          control={form.control}
+                          name="assignement"
+                          render={({ field }) => (
+                            <FormItem className="space-y-3">
+                              <FormControl>
+                                <RadioGroup
+                                  onValueChange={field.onChange}
+                                  defaultValue={field.value}
+                                  disabled={submissionState === "submitting"}
+                                  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+                                >
+                                  {[
+                                    { value: "bar", label: "Bar & Resto", icon: Beer },
+                                    { value: "eco", label: "Éco-Brigade", icon: Ban },
+                                    { value: "accueil", label: "Accueil", icon: Ticket },
+                                    { value: "technique", label: "Technique", icon: Wrench },
+                                    { value: "polyvalent", label: "Polyvalent", icon: Drum },
+                                  ].map((item) => (
+                                    <FormItem key={item.value}>
+                                      <FormControl>
+                                        <RadioGroupItem value={item.value} className="sr-only" />
+                                      </FormControl>
+                                      <FormLabel className={`flex items-center gap-3 p-4 rounded-2xl border transition-all cursor-pointer ${field.value === item.value ? 'bg-forest text-cream border-forest' : 'border-forest/10 hover:border-leaf hover:bg-leaf/5'}`}>
+                                        <item.icon className="w-5 h-5" />
+                                        <span className="font-bold text-sm">{item.label}</span>
+                                      </FormLabel>
+                                    </FormItem>
+                                  ))}
+                                </RadioGroup>
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
 
-                  <div className="text-center pt-8">
-                    <Button
-                      type="submit"
-                      className="bg-forest text-cream hover:bg-leaf hover:text-forest h-16 px-12 rounded-2xl text-lg font-display font-black uppercase tracking-widest transition-all duration-500 shadow-xl hover:shadow-leaf/20 group"
-                    >
-                      Envoyer ma candidature
-                      <ArrowRight className="ml-3 w-5 h-5 transition-transform group-hover:translate-x-2" />
-                    </Button>
-                  </div>
-                </form>
-              </Form>
+                      {/* Motivation */}
+                      <div className="space-y-8">
+                        <h3 className="text-xl font-display font-black uppercase tracking-widest border-b-2 border-forest/10 pb-2">
+                          04. Motivation
+                        </h3>
+                        <FormField
+                          control={form.control}
+                          name="motivation"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormControl>
+                                <Textarea
+                                  placeholder="Pourquoi souhaites-tu nous rejoindre ?"
+                                  disabled={submissionState === "submitting"}
+                                  className="min-h-[150px] bg-transparent border-forest/20 focus:border-leaf rounded-2xl p-6"
+                                  {...field}
+                                />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+
+                      <div className="text-center pt-8">
+                        <Button
+                          type="submit"
+                          disabled={submissionState === "submitting"}
+                          className="bg-forest text-cream hover:bg-leaf hover:text-forest h-16 px-12 rounded-2xl text-lg font-display font-black uppercase tracking-widest transition-all duration-500 shadow-xl hover:shadow-leaf/20 group"
+                        >
+                          {submissionState === "submitting" ? (
+                            <>
+                              Envoi en cours...
+                              <Loader2 className="ml-3 w-5 h-5 animate-spin" />
+                            </>
+                          ) : (
+                            <>
+                              Envoyer ma candidature
+                              <ArrowRight className="ml-3 w-5 h-5 transition-transform group-hover:translate-x-2" />
+                            </>
+                          )}
+                        </Button>
+                      </div>
+                    </form>
+                  </Form>
+                </>
+              )}
             </motion.div>
           </div>
         </div>
