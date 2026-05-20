@@ -8,10 +8,10 @@ import { motion } from 'framer-motion';
 
 // Images des artistes (Placeholders)
 const FLOATING_IMAGES = [
-  { src: "/placeholder.svg", top: "12%", left: "5%", rotate: -6 },
-  { src: "/placeholder.svg", top: "18%", right: "8%", rotate: 12 },
-  { src: "/placeholder.svg", bottom: "22%", left: "12%", rotate: -12 },
-  { src: "/placeholder.svg", bottom: "12%", right: "5%", rotate: 6 },
+  { src: "/artists/LOOWS/LOOWS-1.png", top: "12%", left: "5%", rotate: -6 },
+  { src: "/img/3.jpg", top: "18%", right: "8%", rotate: 12 },
+  { src: "/img/4.jpg", bottom: "22%", left: "12%", rotate: -12 },
+  { src: "/img/Photo_1.jpg", bottom: "12%", right: "5%", rotate: 6 },
 ];
 
 // Petites icônes décoratives (Feuilles et Cubes)
