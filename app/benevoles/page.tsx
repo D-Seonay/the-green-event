@@ -63,7 +63,7 @@ const FormSchema = z.object({
   wish3: z.string({ required_error: "Veuillez choisir votre souhait n°3" }),
   motivation: z
     .string()
-    .min(10, "Minimum 10 caractères")
+    .min(0, "Minimum 0 caractères")
     .max(500, "Maximum 500 caractères"),
 });
 
@@ -233,7 +233,7 @@ const BenevolesPage = () => {
                 <div>
                   <h4 className="font-display font-bold uppercase tracking-wider text-sm text-[#00A651]">Disponibilité</h4>
                   <p className="font-body text-base text-[#052013] mt-1">
-                    Être disponible le jour du festival — <span className="font-bold">4 juillet 2026</span> au Parc des Viviers, Vertou
+                    Être disponible le jour du festival - <span className="font-bold">4 juillet 2026</span> au Parc des Viviers, Vertou
                   </p>
                 </div>
               </div>
