@@ -188,16 +188,14 @@ const BenevolesPage = () => {
               transition={{ delay: 0.4 }}
               className="max-w-2xl text-lg md:text-2xl font-body text-cream/80 leading-relaxed"
             >
-              Rejoins la <span className="text-leaf font-bold">Green Team</span>  et participe à l&apos;aventure de l&apos;intérieur.
+              Rejoins la <span className="text-leaf font-bold">Green Team </span>  et participe à l&apos;aventure de l&apos;intérieur.
             </motion.p>
           </motion.div>
         </div>
       </section>
 
-      <WaveDivider variant="forest-to-cream" flip={false} />
-
       {/* Informations Section */}
-      <section className="bg-cream py-16 md:py-32 relative text-forest">
+      <section className="bg-cream py-4 md:py-16 relative text-forest">
         <div className="container mx-auto px-4 max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -258,7 +256,7 @@ const BenevolesPage = () => {
         </div>
       </section>
 
-      <WaveDivider variant="cream-to-forest" flip={false} className="bg-forest" />
+      {/* <WaveDivider variant="cream-to-forest" flip={false} className="bg-forest" /> */}
 
       {/* Form Section */}
       <section className="py-16 md:py-28 relative">
