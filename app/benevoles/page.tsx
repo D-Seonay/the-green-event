@@ -307,7 +307,7 @@ const BenevolesPage = () => {
                       form.reset();
                       setSubmissionState("idle");
                     }}
-                    className="bg-[#0a3f25] text-white hover:bg-[#00A651] h-14 px-8 rounded-xl text-sm font-display font-bold uppercase tracking-wider transition-all duration-300"
+                    className="w-full md:w-auto bg-[#0a3f25] text-white hover:bg-[#00A651] h-12 md:h-14 px-4 md:px-8 rounded-xl text-xs md:text-sm font-display font-bold uppercase tracking-wider transition-all duration-300"
                   >
                     Soumettre une autre candidature
                   </Button>
@@ -584,11 +584,11 @@ const BenevolesPage = () => {
                         />
                       </div>
 
-                      <div className="text-center pt-8">
+                      <div className="text-center pt-8 md:pt-12">
                         <Button
                           type="submit"
                           disabled={submissionState === "submitting"}
-                          className="bg-forest text-cream hover:bg-leaf hover:text-forest h-16 px-12 rounded-2xl text-lg font-display font-black uppercase tracking-widest transition-all duration-500 shadow-xl hover:shadow-leaf/20 group"
+                          className="w-full md:w-auto bg-forest text-cream hover:bg-leaf hover:text-forest h-12 md:h-16 px-6 md:px-12 rounded-xl md:rounded-2xl text-sm md:text-lg font-display font-black uppercase tracking-widest transition-all duration-500 shadow-xl hover:shadow-leaf/20 group justify-center"
                         >
                           {submissionState === "submitting" ? (
                             <>
