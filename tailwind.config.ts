@@ -18,8 +18,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ["Montserrat", "sans-serif"],
-        body: ["Nunito", "sans-serif"],
+        display: ["var(--font-montserrat)", "sans-serif"],
+        body: ["var(--font-nunito)", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",

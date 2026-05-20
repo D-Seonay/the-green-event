@@ -88,6 +88,7 @@ const Lightbox = ({ image, onClose, onNext, onPrev }: LightboxProps) => {
                 fill
                 className="object-contain"
                 priority
+                sizes="(max-width: 1024px) 100vw, 1024px"
               />
             </div>
             

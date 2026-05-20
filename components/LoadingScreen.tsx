@@ -136,7 +136,14 @@ const LoadingScreen = () => {
           }}
         >
           <div className="absolute inset-0 bg-[#0a3f25] mix-blend-color opacity-50 z-10" />
-          <Image src={img.src} alt="Artist Preview" fill className="object-cover grayscale contrast-125" />
+          <Image
+            src={img.src}
+            alt="Artist Preview"
+            fill
+            className="object-cover grayscale contrast-125"
+            sizes="(max-width: 768px) 128px, 192px"
+            priority
+          />
         </motion.div>
       ))}
 
