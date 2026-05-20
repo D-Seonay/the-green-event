@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { ARTISTS } from '@/lib/data';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://thegreenevent.fr';
+  const baseUrl = 'https://thegreenfest.fr';
 
   // Dynamic artist routes
   const artistEntries = ARTISTS.map((artist) => ({
@@ -16,7 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: baseUrl,
       lastModified: new Date(),
-      changeFrequency: 'monthly',
+      changeFrequency: 'daily' as const,
       priority: 1,
     },
     {
@@ -27,6 +27,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/boutique`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/benevoles`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,

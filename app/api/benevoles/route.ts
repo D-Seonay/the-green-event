@@ -126,7 +126,7 @@ export async function POST(request: Request) {
     // 2. Email to the volunteer candidate (acknowledgement)
     const volunteerHtml = `
       <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e2e8f0; border-radius: 8px; background-color: #ffffff;">
-        <div style="background-color: #052013; padding: 20px; border-radius: 6px; text-align: center;">
+        <div style="background-color: #00A651; padding: 20px; border-radius: 6px; text-align: center;">
           <h1 style="color: #FEF7E0; margin: 0; font-size: 24px; font-weight: 800; text-transform: uppercase; tracking-wider">Merci ${data.firstname} !</h1>
         </div>
         <div style="padding: 20px 0;">
