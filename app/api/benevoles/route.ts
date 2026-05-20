@@ -7,25 +7,22 @@ const VolunteerSchema = z.object({
   firstname: z.string().min(2),
   email: z.string().email(),
   phone: z.string().min(10),
-  age: z.string(),
-  availabilities: z.array(z.string()).min(1),
-  assignement: z.string(),
+  birthDate: z.string().min(1),
+  city: z.string().min(2),
+  hasExperience: z.enum(["oui", "non"]),
+  teamPref: z.string().optional(),
+  wish1: z.string(),
+  wish2: z.string(),
+  wish3: z.string(),
   motivation: z.string().min(10).max(500),
 });
 
-const availabilityLabels: Record<string, string> = {
-  montage: "Montage (Juin)",
-  samedi: "Samedi 4 Juillet",
-  dimanche: "Dimanche 5 Juillet",
-  demontage: "Démontage",
-};
-
-const assignmentLabels: Record<string, string> = {
-  bar: "Bar & Resto",
-  eco: "Éco-Brigade",
-  accueil: "Accueil",
-  technique: "Technique",
-  polyvalent: "Polyvalent",
+const wishLabels: Record<string, string> = {
+  brigade_verte: "Brigade Verte avant qu'il fasse nuit du festival à 22h",
+  flyers: "Distribution de flyers avant le festival pendant la fête de la musique (Vertou, nantes... le 21 juin)",
+  bar: "Bar",
+  restauration: "Restauration",
+  maquillage: "Maquillage",
 };
 
 export async function POST(request: Request) {
@@ -55,7 +52,7 @@ export async function POST(request: Request) {
           <h3 style="border-bottom: 2px solid #00A651; padding-bottom: 5px; color: #052013; text-transform: uppercase;">1. Informations Personnelles</h3>
           <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
             <tr>
-              <td style="padding: 8px 0; font-weight: bold; width: 150px; color: #4a5568;">Prénom & Nom :</td>
+              <td style="padding: 8px 0; font-weight: bold; width: 180px; color: #4a5568;">Prénom & Nom :</td>
               <td style="padding: 8px 0; color: #1a202c;">${data.firstname} ${data.name}</td>
             </tr>
             <tr>
@@ -67,28 +64,44 @@ export async function POST(request: Request) {
               <td style="padding: 8px 0; color: #1a202c;"><a href="tel:${data.phone}">${data.phone}</a></td>
             </tr>
             <tr>
-              <td style="padding: 8px 0; font-weight: bold; color: #4a5568;">Âge :</td>
-              <td style="padding: 8px 0; color: #1a202c;">${data.age} ans</td>
+              <td style="padding: 8px 0; font-weight: bold; color: #4a5568;">Date de naissance :</td>
+              <td style="padding: 8px 0; color: #1a202c;">${data.birthDate}</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px 0; font-weight: bold; color: #4a5568;">Ville :</td>
+              <td style="padding: 8px 0; color: #1a202c;">${data.city}</td>
             </tr>
           </table>
 
-          <h3 style="border-bottom: 2px solid #00A651; padding-bottom: 5px; color: #052013; text-transform: uppercase;">2. Préférences & Disponibilités</h3>
+          <h3 style="border-bottom: 2px solid #00A651; padding-bottom: 5px; color: #052013; text-transform: uppercase;">2. Expérience & Binôme</h3>
           <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
             <tr>
-              <td style="padding: 8px 0; font-weight: bold; width: 150px; color: #4a5568;">Poste demandé :</td>
-              <td style="padding: 8px 0; color: #1a202c;"><strong>${assignmentLabels[data.assignement] || data.assignement}</strong></td>
+              <td style="padding: 8px 0; font-weight: bold; width: 180px; color: #4a5568;">Expérience :</td>
+              <td style="padding: 8px 0; color: #1a202c;">${data.hasExperience === "oui" ? "Oui, a déjà eu des expériences" : "Non, pas d'expérience précédente"}</td>
             </tr>
             <tr>
-              <td style="padding: 8px 0; font-weight: bold; vertical-align: top; color: #4a5568;">Disponibilités :</td>
-              <td style="padding: 8px 0; color: #1a202c;">
-                <ul style="margin: 0; padding-left: 20px;">
-                  ${data.availabilities.map((av) => `<li>${availabilityLabels[av] || av}</li>`).join("")}
-                </ul>
-              </td>
+              <td style="padding: 8px 0; font-weight: bold; color: #4a5568;">Binôme souhaité :</td>
+              <td style="padding: 8px 0; color: #1a202c;">${data.teamPref || "Aucune préférence"}</td>
             </tr>
           </table>
 
-          <h3 style="border-bottom: 2px solid #00A651; padding-bottom: 5px; color: #052013; text-transform: uppercase;">3. Motivations</h3>
+          <h3 style="border-bottom: 2px solid #00A651; padding-bottom: 5px; color: #052013; text-transform: uppercase;">3. Préférences de Missions</h3>
+          <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+            <tr>
+              <td style="padding: 8px 0; font-weight: bold; width: 180px; color: #4a5568;">Souhait n°1 :</td>
+              <td style="padding: 8px 0; color: #1a202c;"><strong>${wishLabels[data.wish1] || data.wish1}</strong></td>
+            </tr>
+            <tr>
+              <td style="padding: 8px 0; font-weight: bold; width: 180px; color: #4a5568;">Souhait n°2 :</td>
+              <td style="padding: 8px 0; color: #1a202c;">${wishLabels[data.wish2] || data.wish2}</td>
+            </tr>
+            <tr>
+              <td style="padding: 8px 0; font-weight: bold; width: 180px; color: #4a5568;">Souhait n°3 :</td>
+              <td style="padding: 8px 0; color: #1a202c;">${wishLabels[data.wish3] || data.wish3}</td>
+            </tr>
+          </table>
+
+          <h3 style="border-bottom: 2px solid #00A651; padding-bottom: 5px; color: #052013; text-transform: uppercase;">4. Motivations</h3>
           <div style="background-color: #f7fafc; padding: 15px; border-radius: 6px; border-left: 4px solid #00A651; font-style: italic; color: #2d3748; white-space: pre-line;">
             "${data.motivation}"
           </div>
@@ -120,18 +133,20 @@ export async function POST(request: Request) {
           <p style="font-size: 16px; color: #1a202c; line-height: 1.6;">Salut <strong>${data.firstname}</strong>,</p>
           <p style="font-size: 16px; color: #1a202c; line-height: 1.6;">Toute l'équipe de <strong>The Green Event</strong> te remercie chaleureusement pour ton intérêt et ta candidature pour rejoindre notre Green Team ! 🌿💚</p>
           
-          <p style="font-size: 16px; color: #1a202c; line-height: 1.6;">Nous avons bien reçu tes préférences pour le poste de <strong>${assignmentLabels[data.assignement] || data.assignement}</strong>.</p>
+          <p style="font-size: 16px; color: #1a202c; line-height: 1.6;">Nous avons bien reçu tes souhaits de missions pour le festival.</p>
           
           <div style="background-color: #f7fafc; border: 1px solid #e2e8f0; padding: 15px; border-radius: 6px; margin: 20px 0;">
-            <h4 style="margin-top: 0; color: #052013; text-transform: uppercase;">Récapitulatif de tes choix :</h4>
+            <h4 style="margin-top: 0; color: #052013; text-transform: uppercase;">Récapitulatif de tes souhaits :</h4>
             <ul style="margin: 0; padding-left: 20px; color: #4a5568; line-height: 1.5;">
-              <li><strong>Créneaux :</strong> ${data.availabilities.map((av) => availabilityLabels[av] || av).join(", ")}</li>
-              <li><strong>Poste :</strong> ${assignmentLabels[data.assignement] || data.assignement}</li>
+              <li><strong>Souhait n°1 :</strong> ${wishLabels[data.wish1] || data.wish1}</li>
+              <li><strong>Souhait n°2 :</strong> ${wishLabels[data.wish2] || data.wish2}</li>
+              <li><strong>Souhait n°3 :</strong> ${wishLabels[data.wish3] || data.wish3}</li>
+              ${data.teamPref ? `<li><strong>Souhait de binôme :</strong> ${data.teamPref}</li>` : ""}
             </ul>
           </div>
 
           <p style="font-size: 16px; color: #1a202c; line-height: 1.6;"><strong>Et maintenant ?</strong><br/>
-          Notre coordinateur des bénévoles étudie toutes les propositions de planning. Nous reviendrons vers toi d'ici quelques jours par e-mail ou par téléphone (${data.phone}) pour te confirmer tes créneaux et finaliser ton inscription.</p>
+          Notre coordinateur des bénévoles étudie toutes les propositions. Nous reviendrons vers toi d'ici quelques jours par e-mail ou par téléphone (${data.phone}) pour te proposer une mission et finaliser ton planning.</p>
           
           <p style="font-size: 16px; color: #1a202c; line-height: 1.6;">À très vite en pleine nature !</p>
           
@@ -143,8 +158,7 @@ export async function POST(request: Request) {
       </div>
     `;
 
-    // Try to send confirmation to user (if using custom domain. If using Resend sandbox/onboarding, this might fail unless data.email is verified or it is sent to adminEmail.
-    // To prevent crashing the whole response when in sandbox mode, we can catch failures for the user email send.
+    // Try to send confirmation to user
     try {
       await sendEmail({
         to: data.email,

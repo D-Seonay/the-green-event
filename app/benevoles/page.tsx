@@ -3,14 +3,6 @@
 import React from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
-  Ban,
-  Beer,
-  Drum,
-  HandPlatter,
-  HeartHandshake,
-  Shirt,
-  Ticket,
-  Wrench,
   ArrowRight,
   Info,
   Loader2,
@@ -21,7 +13,6 @@ import { z } from "zod";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
 import {
   Form,
   FormControl,
@@ -34,6 +25,13 @@ import {
 import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Textarea } from "@/components/ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { toast } from "@/components/ui/use-toast";
 import WaveDivider from "@/components/ui/WaveDivider";
 import Cube from "@/components/ui/Cube";
@@ -42,48 +40,32 @@ import Leaf from "@/components/ui/Leaf";
 const FormSchema = z.object({
   name: z.string().min(2, "Le nom est requis"),
   firstname: z.string().min(2, "Le prénom est requis"),
+  birthDate: z
+    .string()
+    .min(1, "La date de naissance est requise")
+    .refine((val) => {
+      const birth = new Date(val);
+      const today = new Date();
+      let age = today.getFullYear() - birth.getFullYear();
+      const monthDiff = today.getMonth() - birth.getMonth();
+      if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birth.getDate())) {
+        age--;
+      }
+      return age >= 18;
+    }, "Tu dois être majeur·e pour être bénévole (18 ans minimum)"),
+  city: z.string().min(2, "La ville est requise"),
   email: z.string().email("Email invalide"),
   phone: z.string().min(10, "Téléphone invalide"),
-  age: z
-    .string()
-    .refine((value) => /^\d+$/.test(value), "L'âge doit être un nombre")
-    .refine((value) => parseInt(value) >= 18, "Minimum 18 ans"),
-  availabilities: z
-    .array(z.string())
-    .refine((value) => value.length > 0, "Sélectionnez au moins un créneau"),
-  assignement: z.string({ required_error: "Choisissez un poste" }),
+  hasExperience: z.enum(["oui", "non"], { required_error: "Veuillez répondre à cette question" }),
+  teamPref: z.string().optional(),
+  wish1: z.string({ required_error: "Veuillez choisir votre souhait n°1" }),
+  wish2: z.string({ required_error: "Veuillez choisir votre souhait n°2" }),
+  wish3: z.string({ required_error: "Veuillez choisir votre souhait n°3" }),
   motivation: z
     .string()
     .min(10, "Minimum 10 caractères")
     .max(500, "Maximum 500 caractères"),
 });
-
-const perks = [
-  {
-    title: "Accès Festival",
-    icon: <Ticket className="w-8 h-8 text-cream" />,
-    description: "Profitez des concerts et de l'ambiance unique.",
-    rotation: -3,
-  },
-  {
-    title: "Repas & Softs",
-    icon: <HandPlatter className="w-8 h-8 text-cream" />,
-    description: "On s'occupe de ton énergie pendant tes shifts.",
-    rotation: 2,
-  },
-  {
-    title: "T-Shirt Crew",
-    icon: <Shirt className="w-8 h-8 text-cream" />,
-    description: "Affiche fièrement ton appartenance à la Green Team.",
-    rotation: -2,
-  },
-  {
-    title: "Aventure Humaine",
-    icon: <HeartHandshake className="w-8 h-8 text-cream" />,
-    description: "Rencontre des passionnés et crée des souvenirs.",
-    rotation: 4,
-  },
-];
 
 const FloatingIcon = ({ children, x, y, className }: { children: React.ReactNode, x: number[], y: number[], className: string }) => {
   const targetRef = React.useRef(null);
@@ -102,20 +84,21 @@ const FloatingIcon = ({ children, x, y, className }: { children: React.ReactNode
   );
 };
 
-const availabilityLabels: Record<string, string> = {
-  montage: "Montage (Juin)",
-  samedi: "Samedi 4 Juillet",
-  dimanche: "Dimanche 5 Juillet",
-  demontage: "Démontage",
+const wishLabels: Record<string, string> = {
+  brigade_verte: "Brigade Verte (avant 22h)",
+  flyers: "Distribution de flyers (21 juin)",
+  bar: "Bar",
+  restauration: "Restauration",
+  maquillage: "Maquillage",
 };
 
-const assignmentLabels: Record<string, string> = {
-  bar: "Bar & Resto",
-  eco: "Éco-Brigade",
-  accueil: "Accueil",
-  technique: "Technique",
-  polyvalent: "Polyvalent",
-};
+const MISSION_WISHES = [
+  { id: "brigade_verte", label: "Brigade Verte avant qu'il fasse nuit du festival à 22h" },
+  { id: "flyers", label: "Distribution de flyers avant le festival pendant la fête de la musique (Vertou, nantes... le 21 juin)" },
+  { id: "bar", label: "Bar" },
+  { id: "restauration", label: "Restauration" },
+  { id: "maquillage", label: "Maquillage" },
+];
 
 type SubmissionState = "idle" | "submitting" | "success" | "error";
 
@@ -128,11 +111,15 @@ const BenevolesPage = () => {
     defaultValues: {
       name: "",
       firstname: "",
+      birthDate: "",
+      city: "",
       email: "",
       phone: "",
-      age: "",
-      availabilities: [],
-      assignement: "polyvalent",
+      hasExperience: undefined,
+      teamPref: "",
+      wish1: "",
+      wish2: "",
+      wish3: "",
       motivation: "",
     },
   });
@@ -190,8 +177,8 @@ const BenevolesPage = () => {
           >
             <div className="relative inline-block mb-8">
               <div className="absolute -inset-4 bg-leaf rounded-lg shadow-xl transform rotate-2"></div>
-              <h1 className="relative bg-cream text-forest px-8 py-4 text-5xl md:text-8xl font-display font-black uppercase tracking-tighter italic">
-                BÉNÉVOLES
+              <h1 className="relative bg-cream text-forest px-8 py-4 text-4xl md:text-8xl font-display font-black uppercase tracking-tighter italic">
+                DEVENIR BÉNÉVOLE
               </h1>
             </div>
 
@@ -201,8 +188,7 @@ const BenevolesPage = () => {
               transition={{ delay: 0.4 }}
               className="max-w-2xl text-lg md:text-2xl font-body text-cream/80 leading-relaxed"
             >
-              Rejoins la <span className="text-leaf font-bold">Green Team</span> et participe à l&apos;aventure
-              éco-responsable du Parc de la Sèvre. On a besoin de ton énergie !
+              Rejoins la <span className="text-leaf font-bold">Green Team</span> et participe à l&apos;aventure de l&apos;intérieur.
             </motion.p>
           </motion.div>
         </div>
@@ -210,31 +196,65 @@ const BenevolesPage = () => {
 
       <WaveDivider variant="forest-to-cream" flip={false} />
 
-      {/* Perks Section */}
-      <section className="bg-cream py-24 md:py-40 relative">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
-            {perks.map((perk, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0, rotate: perk.rotation }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-forest p-8 rounded-3xl shadow-2xl text-center group hover:scale-105 transition-all duration-500"
-              >
-                <div className="flex justify-center items-center h-20 w-20 bg-leaf rounded-2xl mx-auto mb-6 shadow-lg transform group-hover:rotate-12 transition-transform">
-                  {perk.icon}
+      {/* Informations Section */}
+      <section className="bg-cream py-20 md:py-32 relative text-forest">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="space-y-12"
+          >
+            <div>
+              <h2 className="text-3xl md:text-5xl font-display font-black uppercase tracking-tight mb-6 text-[#052013]">
+                Être bénévole au Green Fest
+              </h2>
+              <p className="text-lg font-body leading-relaxed text-forest/90 mb-6">
+                C&apos;est rejoindre une équipe engagée et faire partie de l&apos;aventure de l&apos;intérieur :
+              </p>
+              <ul className="space-y-4 font-body text-base md:text-lg list-disc pl-6 text-forest/80">
+                <li>
+                  Donner de ton énergie et de ton temps pour offrir aux <span className="font-bold text-[#052013]">500 festivalier·es</span> une journée inoubliable dans un cadre naturel préservé.
+                </li>
+                <li>
+                  Vivre le festival autrement, faire des rencontres sincères, partager des moments uniques avec d&apos;autres bénévoles et des passionné·es de culture et d&apos;écologie venu·es de tous horizons.
+                </li>
+                <li>
+                  Porter les valeurs de <span className="font-bold text-[#052013]">THE GREEN EVENT</span> et contribuer concrètement à un projet culturel engagé pour l&apos;environnement.
+                </li>
+              </ul>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-8 border-t border-forest/10">
+              <div className="space-y-6">
+                <div>
+                  <h4 className="font-display font-bold uppercase tracking-wider text-sm text-[#00A651]">Condition</h4>
+                  <p className="font-body text-base text-forest/90 mt-1">Être majeur·e</p>
                 </div>
-                <h3 className="text-2xl font-display font-black text-cream uppercase tracking-tight mb-4">
-                  {perk.title}
-                </h3>
-                <p className="text-cream/70 font-body text-sm leading-relaxed">
-                  {perk.description}
-                </p>
-              </motion.div>
-            ))}
-          </div>
+                <div>
+                  <h4 className="font-display font-bold uppercase tracking-wider text-sm text-[#00A651]">Disponibilité</h4>
+                  <p className="font-body text-base text-[#052013] mt-1">
+                    Être disponible le jour du festival — <span className="font-bold">4 juillet 2026</span> au Parc des Viviers, Vertou
+                  </p>
+                </div>
+              </div>
+              <div className="space-y-6">
+                <div>
+                  <h4 className="font-display font-bold uppercase tracking-wider text-sm text-[#00A651]">Choix des missions</h4>
+                  <p className="font-body text-sm text-forest/80 mt-1 leading-relaxed">
+                    On fera de notre mieux pour tenir compte de tes souhaits, mais on ne peut pas garantir de satisfaire tout le monde. Il est donc possible qu&apos;on te propose une mission différente de celle indiquée. Merci pour ta compréhension !
+                  </p>
+                </div>
+                <div>
+                  <h4 className="font-display font-bold uppercase tracking-wider text-sm text-[#00A651]">Horaires</h4>
+                  <p className="font-body text-sm text-forest/80 mt-1 leading-relaxed">
+                    Les plannings sont organisés selon les besoins des équipes. Si tu veux être sûr·e de profiter pleinement de la programmation, mieux vaut venir en tant que festivalier·ère 🌿
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -262,7 +282,7 @@ const BenevolesPage = () => {
                   <div className="w-24 h-24 bg-leaf rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-lg shadow-leaf/20 transform rotate-3">
                     <CheckCircle2 className="w-12 h-12 text-cream" />
                   </div>
-                  <h2 className="text-4xl md:text-6xl font-display font-black uppercase tracking-tighter mb-6">
+                  <h2 className="text-4xl md:text-6xl font-display font-black uppercase tracking-tighter mb-6 text-[#052013]">
                     BIENVENUE DANS LA TEAM !
                   </h2>
                   <p className="max-w-xl mx-auto font-body text-lg md:text-xl text-forest/80 leading-relaxed mb-10">
@@ -275,8 +295,10 @@ const BenevolesPage = () => {
                     </h3>
                     <div className="space-y-3 font-body text-sm">
                       <p><span className="text-leaf font-bold uppercase tracking-wider text-xs block mb-1">Candidat</span>{form.getValues("firstname")} {form.getValues("name")}</p>
-                      <p><span className="text-leaf font-bold uppercase tracking-wider text-xs block mb-1">Poste</span>{assignmentLabels[form.getValues("assignement")] || form.getValues("assignement")}</p>
-                      <p><span className="text-leaf font-bold uppercase tracking-wider text-xs block mb-1">Créneaux</span>{form.getValues("availabilities")?.map(av => availabilityLabels[av] || av).join(", ")}</p>
+                      <p><span className="text-leaf font-bold uppercase tracking-wider text-xs block mb-1">Ville</span>{form.getValues("city")}</p>
+                      <p><span className="text-leaf font-bold uppercase tracking-wider text-xs block mb-1">Souhait 1</span>{wishLabels[form.getValues("wish1")] || form.getValues("wish1")}</p>
+                      <p><span className="text-leaf font-bold uppercase tracking-wider text-xs block mb-1">Souhait 2</span>{wishLabels[form.getValues("wish2")] || form.getValues("wish2")}</p>
+                      <p><span className="text-leaf font-bold uppercase tracking-wider text-xs block mb-1">Souhait 3</span>{wishLabels[form.getValues("wish3")] || form.getValues("wish3")}</p>
                     </div>
                   </div>
 
@@ -285,7 +307,7 @@ const BenevolesPage = () => {
                       form.reset();
                       setSubmissionState("idle");
                     }}
-                    className="bg-forest text-cream hover:bg-leaf hover:text-forest h-14 px-8 rounded-xl text-sm font-display font-bold uppercase tracking-wider transition-all duration-300"
+                    className="bg-[#0a3f25] text-white hover:bg-[#00A651] h-14 px-8 rounded-xl text-sm font-display font-bold uppercase tracking-wider transition-all duration-300"
                   >
                     Soumettre une autre candidature
                   </Button>
@@ -293,8 +315,8 @@ const BenevolesPage = () => {
               ) : (
                 <>
                   <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-6xl font-display font-black uppercase tracking-tighter mb-4">
-                      REJOINDRE L&apos;ÉQUIPE
+                    <h2 className="text-4xl md:text-6xl font-display font-black uppercase tracking-tighter mb-4 text-[#052013]">
+                      Formulaire d&apos;inscription
                     </h2>
                     <div className="flex flex-col items-center justify-center gap-2">
                       <div className="flex items-center justify-center gap-2 text-forest/60 font-mono uppercase tracking-widest text-sm">
@@ -302,16 +324,16 @@ const BenevolesPage = () => {
                         Formulaire de candidature
                       </div>
                       <div className="text-forest/50 font-body text-xs font-semibold uppercase tracking-wider">
-                        * Tous les champs sont obligatoires
+                        * Les champs avec astérisque sont obligatoires
                       </div>
                     </div>
                   </div>
 
                   <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-12">
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-12 text-[#052013]">
                       {/* Identity */}
                       <div className="space-y-8">
-                        <h3 className="text-xl font-display font-black uppercase tracking-widest border-b-2 border-forest/10 pb-2">
+                        <h3 className="text-xl font-display font-black uppercase tracking-widest border-b-2 border-forest/10 pb-2 text-[#052013]">
                           01. Identité <span className="text-red-500 text-sm">*</span>
                         </h3>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -370,112 +392,177 @@ const BenevolesPage = () => {
                             )}
                           />
                         </div>
-                        <FormField
-                          control={form.control}
-                          name="age"
-                          render={({ field }) => (
-                            <FormItem className="max-w-[200px]">
-                              <FormLabel className="font-bold uppercase tracking-wider text-xs">Âge <span className="text-red-500">*</span></FormLabel>
-                              <FormControl>
-                                <Input placeholder="25" {...field} disabled={submissionState === "submitting"} className="bg-transparent border-forest/20 focus:border-leaf rounded-xl h-12" />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                          <FormField
+                            control={form.control}
+                            name="birthDate"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel className="font-bold uppercase tracking-wider text-xs">Date de naissance <span className="text-red-500">*</span></FormLabel>
+                                <FormControl>
+                                  <Input type="date" {...field} disabled={submissionState === "submitting"} className="bg-transparent border-forest/20 focus:border-leaf rounded-xl h-12" />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                          <FormField
+                            control={form.control}
+                            name="city"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel className="font-bold uppercase tracking-wider text-xs">Ville <span className="text-red-500">*</span></FormLabel>
+                                <FormControl>
+                                  <Input placeholder="Vertou" {...field} disabled={submissionState === "submitting"} className="bg-transparent border-forest/20 focus:border-leaf rounded-xl h-12" />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                        </div>
                       </div>
 
-                      {/* Availabilities */}
+                      {/* Experience and Team Preference */}
                       <div className="space-y-8">
-                        <h3 className="text-xl font-display font-black uppercase tracking-widest border-b-2 border-forest/10 pb-2">
-                          02. Disponibilités <span className="text-red-500 text-sm">*</span>
+                        <h3 className="text-xl font-display font-black uppercase tracking-widest border-b-2 border-forest/10 pb-2 text-[#052013]">
+                          02. Expérience &amp; Binôme
                         </h3>
                         <FormField
                           control={form.control}
-                          name="availabilities"
-                          render={() => (
-                            <FormItem>
-                              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                                {[
-                                  { id: "montage", label: "Montage (Juin)" },
-                                  { id: "samedi", label: "Samedi 4 Juillet" },
-                                  { id: "dimanche", label: "Dimanche 5 Juillet" },
-                                  { id: "demontage", label: "Démontage" },
-                                ].map((item) => (
-                                  <FormField
-                                    key={item.id}
-                                    control={form.control}
-                                    name="availabilities"
-                                    render={({ field }) => (
-                                      <FormItem className="flex items-center space-x-3 space-y-0 p-4 rounded-2xl border border-forest/10 hover:border-leaf hover:bg-leaf/5 transition-all cursor-pointer">
-                                        <FormControl>
-                                          <Checkbox
-                                            checked={field.value?.includes(item.id)}
-                                            disabled={submissionState === "submitting"}
-                                            onCheckedChange={(checked) => {
-                                              return checked
-                                                ? field.onChange([...field.value, item.id])
-                                                : field.onChange(field.value?.filter((val) => val !== item.id));
-                                            }}
-                                          />
-                                        </FormControl>
-                                        <FormLabel className="text-sm font-bold cursor-pointer">{item.label}</FormLabel>
-                                      </FormItem>
-                                    )}
-                                  />
-                                ))}
-                              </div>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-                      </div>
-
-                      {/* Preferences */}
-                      <div className="space-y-8">
-                        <h3 className="text-xl font-display font-black uppercase tracking-widest border-b-2 border-forest/10 pb-2">
-                          03. Poste Souhaité <span className="text-red-500 text-sm">*</span>
-                        </h3>
-                        <FormField
-                          control={form.control}
-                          name="assignement"
+                          name="hasExperience"
                           render={({ field }) => (
                             <FormItem className="space-y-3">
+                              <FormLabel className="font-bold uppercase tracking-wider text-xs">As-tu déjà eu d&apos;autres expériences bénévoles ? <span className="text-red-500">*</span></FormLabel>
                               <FormControl>
                                 <RadioGroup
                                   onValueChange={field.onChange}
-                                  defaultValue={field.value}
+                                  value={field.value}
                                   disabled={submissionState === "submitting"}
-                                  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+                                  className="flex gap-8"
                                 >
-                                  {[
-                                    { value: "bar", label: "Bar & Resto", icon: Beer },
-                                    { value: "eco", label: "Éco-Brigade", icon: Ban },
-                                    { value: "accueil", label: "Accueil", icon: Ticket },
-                                    { value: "technique", label: "Technique", icon: Wrench },
-                                    { value: "polyvalent", label: "Polyvalent", icon: Drum },
-                                  ].map((item) => (
-                                    <FormItem key={item.value}>
-                                      <FormControl>
-                                        <RadioGroupItem value={item.value} className="sr-only" />
-                                      </FormControl>
-                                      <FormLabel className={`flex items-center gap-3 p-4 rounded-2xl border transition-all cursor-pointer ${field.value === item.value ? 'bg-forest text-cream border-forest' : 'border-forest/10 hover:border-leaf hover:bg-leaf/5'}`}>
-                                        <item.icon className="w-5 h-5" />
-                                        <span className="font-bold text-sm">{item.label}</span>
-                                      </FormLabel>
-                                    </FormItem>
-                                  ))}
+                                  <FormItem className="flex items-center space-x-2 space-y-0">
+                                    <FormControl>
+                                      <RadioGroupItem value="oui" className="border-forest text-forest focus:ring-leaf" />
+                                    </FormControl>
+                                    <FormLabel className="font-bold cursor-pointer text-sm">Oui</FormLabel>
+                                  </FormItem>
+                                  <FormItem className="flex items-center space-x-2 space-y-0">
+                                    <FormControl>
+                                      <RadioGroupItem value="non" className="border-forest text-forest focus:ring-leaf" />
+                                    </FormControl>
+                                    <FormLabel className="font-bold cursor-pointer text-sm">Non</FormLabel>
+                                  </FormItem>
                                 </RadioGroup>
                               </FormControl>
                               <FormMessage />
                             </FormItem>
                           )}
                         />
+                        <FormField
+                          control={form.control}
+                          name="teamPref"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel className="font-bold uppercase tracking-wider text-xs">Tu aimerais être dans la même équipe qu&apos;une autre personne ?</FormLabel>
+                              <FormControl>
+                                <Input placeholder="Prénom et nom de ton ami(e)" {...field} disabled={submissionState === "submitting"} className="bg-transparent border-forest/20 focus:border-leaf rounded-xl h-12" />
+                              </FormControl>
+                              <FormDescription className="text-xs text-forest/60">
+                                Laisse vide si tu n&apos;as pas de préférence particulière.
+                              </FormDescription>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+
+                      {/* Wishes */}
+                      <div className="space-y-8">
+                        <h3 className="text-xl font-display font-black uppercase tracking-widest border-b-2 border-forest/10 pb-2 text-[#052013]">
+                          03. Tes souhaits de mission <span className="text-red-500 text-sm">*</span>
+                        </h3>
+                        <p className="text-sm font-body text-forest/70 -mt-4">
+                          Indique-nous tes trois préférences de mission par ordre de priorité.
+                        </p>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                          <FormField
+                            control={form.control}
+                            name="wish1"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel className="font-bold uppercase tracking-wider text-xs">Souhait n°1 <span className="text-red-500">*</span></FormLabel>
+                                <Select onValueChange={field.onChange} value={field.value} disabled={submissionState === "submitting"}>
+                                  <FormControl>
+                                    <SelectTrigger className="bg-transparent border-forest/20 focus:border-leaf rounded-xl h-12 text-[#052013]">
+                                      <SelectValue placeholder="Choisir" />
+                                    </SelectTrigger>
+                                  </FormControl>
+                                  <SelectContent className="bg-[#FEF7E0] text-[#052013] border-forest/20">
+                                    {MISSION_WISHES.map((wish) => (
+                                      <SelectItem key={wish.id} value={wish.id} className="focus:bg-[#00A651]/10 focus:text-[#00A651]">
+                                        {wish.label}
+                                      </SelectItem>
+                                    ))}
+                                  </SelectContent>
+                                </Select>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                          <FormField
+                            control={form.control}
+                            name="wish2"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel className="font-bold uppercase tracking-wider text-xs">Souhait n°2 <span className="text-red-500">*</span></FormLabel>
+                                <Select onValueChange={field.onChange} value={field.value} disabled={submissionState === "submitting"}>
+                                  <FormControl>
+                                    <SelectTrigger className="bg-transparent border-forest/20 focus:border-leaf rounded-xl h-12 text-[#052013]">
+                                      <SelectValue placeholder="Choisir" />
+                                    </SelectTrigger>
+                                  </FormControl>
+                                  <SelectContent className="bg-[#FEF7E0] text-[#052013] border-forest/20">
+                                    {MISSION_WISHES.map((wish) => (
+                                      <SelectItem key={wish.id} value={wish.id} className="focus:bg-[#00A651]/10 focus:text-[#00A651]">
+                                        {wish.label}
+                                      </SelectItem>
+                                    ))}
+                                  </SelectContent>
+                                </Select>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                          <FormField
+                            control={form.control}
+                            name="wish3"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel className="font-bold uppercase tracking-wider text-xs">Souhait n°3 <span className="text-red-500">*</span></FormLabel>
+                                <Select onValueChange={field.onChange} value={field.value} disabled={submissionState === "submitting"}>
+                                  <FormControl>
+                                    <SelectTrigger className="bg-transparent border-forest/20 focus:border-leaf rounded-xl h-12 text-[#052013]">
+                                      <SelectValue placeholder="Choisir" />
+                                    </SelectTrigger>
+                                  </FormControl>
+                                  <SelectContent className="bg-[#FEF7E0] text-[#052013] border-forest/20">
+                                    {MISSION_WISHES.map((wish) => (
+                                      <SelectItem key={wish.id} value={wish.id} className="focus:bg-[#00A651]/10 focus:text-[#00A651]">
+                                        {wish.label}
+                                      </SelectItem>
+                                    ))}
+                                  </SelectContent>
+                                </Select>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                        </div>
                       </div>
 
                       {/* Motivation */}
                       <div className="space-y-8">
-                        <h3 className="text-xl font-display font-black uppercase tracking-widest border-b-2 border-forest/10 pb-2">
+                        <h3 className="text-xl font-display font-black uppercase tracking-widest border-b-2 border-forest/10 pb-2 text-[#052013]">
                           04. Motivation <span className="text-red-500 text-sm">*</span>
                         </h3>
                         <FormField
@@ -487,7 +574,7 @@ const BenevolesPage = () => {
                                 <Textarea
                                   placeholder="Pourquoi souhaites-tu nous rejoindre ?"
                                   disabled={submissionState === "submitting"}
-                                  className="min-h-[150px] bg-transparent border-forest/20 focus:border-leaf rounded-2xl p-6"
+                                  className="min-h-[150px] bg-transparent border-forest/20 focus:border-leaf rounded-2xl p-6 text-[#052013]"
                                   {...field}
                                 />
                               </FormControl>
