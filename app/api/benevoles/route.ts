@@ -100,11 +100,15 @@ export async function POST(request: Request) {
     `;
 
     // Send admin alert email
-    await sendEmail({
-      to: adminEmail,
-      subject: `[Bénévole] Nouvelle candidature - ${data.firstname} ${data.name}`,
-      html: adminHtml,
-    });
+    try {
+      await sendEmail({
+        to: adminEmail,
+        subject: `[Bénévole] Nouvelle candidature - ${data.firstname} ${data.name}`,
+        html: adminHtml,
+      });
+    } catch (err) {
+      console.warn("⚠️ Could not send admin alert email (Resend Sandbox limits may apply):", err);
+    }
 
     // 2. Email to the volunteer candidate (acknowledgement)
     const volunteerHtml = `

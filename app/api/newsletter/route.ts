@@ -35,11 +35,15 @@ export async function POST(request: Request) {
       </div>
     `;
 
-    await sendEmail({
-      to: adminEmail,
-      subject: `[Newsletter] Nouvelle inscription de ${email}`,
-      html: adminHtml,
-    });
+    try {
+      await sendEmail({
+        to: adminEmail,
+        subject: `[Newsletter] Nouvelle inscription de ${email}`,
+        html: adminHtml,
+      });
+    } catch (err) {
+      console.warn("⚠️ Could not send newsletter admin alert email (Resend Sandbox limits may apply):", err);
+    }
 
     // 2. Email confirmation to the subscriber
     const subscriberHtml = `
