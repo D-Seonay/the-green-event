@@ -11,7 +11,7 @@ interface Props {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const artist = ARTISTS.find((a) => a.slug === slug);
-  
+
   if (!artist) {
     return {
       title: "Artiste non trouvé | The Green Event",
@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: `${artist.name} | The Green Event`,
       description: artist.bio.substring(0, 160),
-      url: `https://thegreenevent.fr/programmation/${slug}`,
+      url: `https://thegreenfest.fr/programmation/${slug}`,
       images: [
         {
           url: artist.image,
@@ -51,8 +51,8 @@ const ArtistDetailPage = async ({ params }: Props) => {
     'name': artist.name,
     'description': artist.bio,
     'genre': artist.genre,
-    'image': `https://thegreenevent.fr${artist.image}`,
-    'url': `https://thegreenevent.fr/programmation/${slug}`,
+    'image': `https://thegreenfest.fr${artist.image}`,
+    'url': `https://thegreenfest.fr/programmation/${slug}`,
     'sameAs': Object.values(artist.socials).filter(Boolean),
     'event': {
       '@type': 'Festival',

@@ -17,7 +17,7 @@ The goal of this task is to optimize "The Green Event" website for search engine
   - Add keywords for each artist/product.
 
 ### 2.2 Indexing & Discovery
-- **`public/robots.txt`**: Add `Sitemap: https://thegreenevent.fr/sitemap.xml`.
+- **`public/robots.txt`**: Add `Sitemap: https://thegreenfest.fr/sitemap.xml`.
 - **`public/manifest.json`**: Create a basic web manifest for PWA capabilities and better SEO representation.
 
 ### 2.3 Structured Data (JSON-LD)

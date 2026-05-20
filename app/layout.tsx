@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   keywords: ["Festival", "Électro", "Vertou", "Musique", "Nature", "Éco-responsable", "Nantes", "Parc de la Sèvre", "The Green Event"],
   authors: [{ name: "The Green Event" }],
   creator: "Seonay",
-  metadataBase: new URL('https://thegreenevent.fr'),
+  metadataBase: new URL('https://thegreenfest.fr'),
   alternates: {
     canonical: '/',
   },
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "The Green Event | Festival Électro & Nature à Vertou",
     description: "Le festival électronique intergénérationnel et éco-responsable au cœur du parc de la Sèvre à Vertou.",
-    url: 'https://thegreenevent.fr',
+    url: 'https://thegreenfest.fr',
     siteName: 'The Green Event',
     locale: 'fr_FR',
     type: 'website',
