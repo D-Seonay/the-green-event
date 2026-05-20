@@ -160,7 +160,7 @@ const BenevolesPage = () => {
   return (
     <main className="bg-forest text-cream min-h-screen overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 md:pt-48 md:pb-40 px-4">
+      <section className="relative pt-20 pb-5 md:pt-32 md:pb-20 px-4">
         <FloatingIcon x={[-100, 100]} y={[-50, 50]} className="top-20 left-10">
           <Cube className="w-24 h-24 text-cream" />
         </FloatingIcon>

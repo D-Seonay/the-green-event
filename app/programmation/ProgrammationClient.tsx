@@ -19,7 +19,7 @@ const ProgrammationClient = () => {
           <div className="text-center mb-24">
             <SectionTitle>Programmation</SectionTitle>
           </div>
-          
+
           {/* This could be a reusable ConnectingLine component if needed */}
           <div className="absolute inset-0 w-full h-full overflow-hidden opacity-30">
             <svg width="100%" height="100%" viewBox="0 0 1200 1000" preserveAspectRatio="none">
@@ -39,16 +39,16 @@ const ProgrammationClient = () => {
           <div className="relative max-w-7xl mx-auto z-10">
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-12 sm:gap-x-8 sm:gap-y-24">
               {ARTISTS.slice(0, visibleCount).map((artist, index) => (
-                <ArtistCard key={artist.name} artist={artist} index={index} />
+                <ArtistCard key={artist.slug} artist={artist} index={index} />
               ))}
             </div>
 
             {visibleCount < ARTISTS.length && (
               <div className="mt-24 text-center">
-                <Button 
+                <Button
                   onClick={showMore}
-                  variant="outline" 
-                  size="lg" 
+                  variant="outline"
+                  size="lg"
                   className="bg-cream text-forest hover:bg-cream/90 group"
                 >
                   VOIR TOUT LE MONDE
