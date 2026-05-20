@@ -296,9 +296,14 @@ const BenevolesPage = () => {
                     <h2 className="text-4xl md:text-6xl font-display font-black uppercase tracking-tighter mb-4">
                       REJOINDRE L&apos;ÉQUIPE
                     </h2>
-                    <div className="flex items-center justify-center gap-2 text-forest/60 font-mono uppercase tracking-widest text-sm">
-                      <Info className="w-4 h-4" />
-                      Formulaire de candidature
+                    <div className="flex flex-col items-center justify-center gap-2">
+                      <div className="flex items-center justify-center gap-2 text-forest/60 font-mono uppercase tracking-widest text-sm">
+                        <Info className="w-4 h-4" />
+                        Formulaire de candidature
+                      </div>
+                      <div className="text-forest/50 font-body text-xs font-semibold uppercase tracking-wider">
+                        * Tous les champs sont obligatoires
+                      </div>
                     </div>
                   </div>
 
@@ -307,7 +312,7 @@ const BenevolesPage = () => {
                       {/* Identity */}
                       <div className="space-y-8">
                         <h3 className="text-xl font-display font-black uppercase tracking-widest border-b-2 border-forest/10 pb-2">
-                          01. Identité
+                          01. Identité <span className="text-red-500 text-sm">*</span>
                         </h3>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                           <FormField
@@ -315,7 +320,7 @@ const BenevolesPage = () => {
                             name="firstname"
                             render={({ field }) => (
                               <FormItem>
-                                <FormLabel className="font-bold uppercase tracking-wider text-xs">Prénom</FormLabel>
+                                <FormLabel className="font-bold uppercase tracking-wider text-xs">Prénom <span className="text-red-500">*</span></FormLabel>
                                 <FormControl>
                                   <Input placeholder="Jean" {...field} disabled={submissionState === "submitting"} className="bg-transparent border-forest/20 focus:border-leaf rounded-xl h-12" />
                                 </FormControl>
@@ -328,7 +333,7 @@ const BenevolesPage = () => {
                             name="name"
                             render={({ field }) => (
                               <FormItem>
-                                <FormLabel className="font-bold uppercase tracking-wider text-xs">Nom</FormLabel>
+                                <FormLabel className="font-bold uppercase tracking-wider text-xs">Nom <span className="text-red-500">*</span></FormLabel>
                                 <FormControl>
                                   <Input placeholder="Dupont" {...field} disabled={submissionState === "submitting"} className="bg-transparent border-forest/20 focus:border-leaf rounded-xl h-12" />
                                 </FormControl>
@@ -343,7 +348,7 @@ const BenevolesPage = () => {
                             name="email"
                             render={({ field }) => (
                               <FormItem>
-                                <FormLabel className="font-bold uppercase tracking-wider text-xs">Email</FormLabel>
+                                <FormLabel className="font-bold uppercase tracking-wider text-xs">Email <span className="text-red-500">*</span></FormLabel>
                                 <FormControl>
                                   <Input placeholder="jean@mail.com" {...field} disabled={submissionState === "submitting"} className="bg-transparent border-forest/20 focus:border-leaf rounded-xl h-12" />
                                 </FormControl>
@@ -356,7 +361,7 @@ const BenevolesPage = () => {
                             name="phone"
                             render={({ field }) => (
                               <FormItem>
-                                <FormLabel className="font-bold uppercase tracking-wider text-xs">Téléphone</FormLabel>
+                                <FormLabel className="font-bold uppercase tracking-wider text-xs">Téléphone <span className="text-red-500">*</span></FormLabel>
                                 <FormControl>
                                   <Input placeholder="06 00 00 00 00" {...field} disabled={submissionState === "submitting"} className="bg-transparent border-forest/20 focus:border-leaf rounded-xl h-12" />
                                 </FormControl>
@@ -370,7 +375,7 @@ const BenevolesPage = () => {
                           name="age"
                           render={({ field }) => (
                             <FormItem className="max-w-[200px]">
-                              <FormLabel className="font-bold uppercase tracking-wider text-xs">Âge</FormLabel>
+                              <FormLabel className="font-bold uppercase tracking-wider text-xs">Âge <span className="text-red-500">*</span></FormLabel>
                               <FormControl>
                                 <Input placeholder="25" {...field} disabled={submissionState === "submitting"} className="bg-transparent border-forest/20 focus:border-leaf rounded-xl h-12" />
                               </FormControl>
@@ -383,7 +388,7 @@ const BenevolesPage = () => {
                       {/* Availabilities */}
                       <div className="space-y-8">
                         <h3 className="text-xl font-display font-black uppercase tracking-widest border-b-2 border-forest/10 pb-2">
-                          02. Disponibilités
+                          02. Disponibilités <span className="text-red-500 text-sm">*</span>
                         </h3>
                         <FormField
                           control={form.control}
@@ -429,7 +434,7 @@ const BenevolesPage = () => {
                       {/* Preferences */}
                       <div className="space-y-8">
                         <h3 className="text-xl font-display font-black uppercase tracking-widest border-b-2 border-forest/10 pb-2">
-                          03. Poste Souhaité
+                          03. Poste Souhaité <span className="text-red-500 text-sm">*</span>
                         </h3>
                         <FormField
                           control={form.control}
@@ -471,7 +476,7 @@ const BenevolesPage = () => {
                       {/* Motivation */}
                       <div className="space-y-8">
                         <h3 className="text-xl font-display font-black uppercase tracking-widest border-b-2 border-forest/10 pb-2">
-                          04. Motivation
+                          04. Motivation <span className="text-red-500 text-sm">*</span>
                         </h3>
                         <FormField
                           control={form.control}
