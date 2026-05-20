@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
+import WaveDivider from '../ui/WaveDivider';
 
 const Hero = () => {
   const { scrollY } = useScroll();
@@ -67,8 +68,10 @@ const Hero = () => {
         </motion.div>
       </div>
 
+      <WaveDivider variant="forest-to-cream" className="absolute bottom-0 left-0 w-full" flip />
+
       {/* Layer 3: Solid Mask for section transition */}
-      <div className="absolute bottom-0 left-0 w-full z-15 pointer-events-none">
+      {/* <div className="absolute bottom-0 left-0 w-full z-15 pointer-events-none">
         <svg
           className="relative block w-full h-[120px] md:h-[180px]"
           viewBox="0 0 1440 180"
@@ -78,7 +81,7 @@ const Hero = () => {
         >
           <path d="M0,180 L1440,180 L1440,60 C1200,20 960,120 720,60 C480,0 240,100 0,60 Z" />
         </svg>
-      </div>
+      </div> */}
     </section>
   );
 };

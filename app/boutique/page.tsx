@@ -11,28 +11,28 @@ import { PRODUCTS } from '@/lib/data';
 type Category = 'all' | 'clothes' | 'accessories' | 'goodies';
 
 const categories: { label: string; value: Category }[] = [
-    { label: 'TOUT', value: 'all' },
-    { label: 'VÊTEMENTS', value: 'clothes' },
-    { label: 'ACCESSOIRES', value: 'accessories' },
-    { label: 'GOODIES', value: 'goodies' },
+  { label: 'TOUT', value: 'all' },
+  { label: 'VÊTEMENTS', value: 'clothes' },
+  { label: 'ACCESSOIRES', value: 'accessories' },
+  { label: 'GOODIES', value: 'goodies' },
 ];
 
 const cardVariants = {
   hidden: { opacity: 0, y: 50, scale: 0.95 },
-  visible: { 
-    opacity: 1, 
+  visible: {
+    opacity: 1,
     y: 0,
     scale: 1,
     transition: {
-        type: 'spring',
-        stiffness: 100,
+      type: 'spring',
+      stiffness: 100,
     }
   },
   exit: {
     opacity: 0,
     scale: 0.9,
     transition: {
-        duration: 0.2
+      duration: 0.2
     }
   }
 };
@@ -69,29 +69,29 @@ const BoutiquePage = () => {
             Soutenez le festival avec nos goodies éco-responsables.
           </motion.p>
         </header>
-        
-        <WaveDivider variant="forest-to-cream" />
-        
+
+        {/* <WaveDivider variant="forest-to-cream" /> */}
+
         {/* Filters */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.4 }}
           className="flex flex-wrap justify-center gap-2 md:gap-4 my-8"
         >
           {categories.map((cat) => (
-              <button
-                  key={cat.value}
-                  onClick={() => setActiveCategory(cat.value)}
-                  className={`px-4 py-2 rounded-full font-body font-bold text-sm uppercase tracking-wider transition-all duration-300
-                      ${activeCategory === cat.value 
-                          ? 'bg-[#00A651] text-white shadow-lg' 
-                          : 'bg-transparent border border-[#FEF7E0]/50 text-[#FEF7E0]/80 hover:bg-[#FEF7E0]/10 hover:text-white'
-                      }
+            <button
+              key={cat.value}
+              onClick={() => setActiveCategory(cat.value)}
+              className={`px-4 py-2 rounded-full font-body font-bold text-sm uppercase tracking-wider transition-all duration-300
+                      ${activeCategory === cat.value
+                  ? 'bg-[#00A651] text-white shadow-lg'
+                  : 'bg-transparent border border-[#FEF7E0]/50 text-[#FEF7E0]/80 hover:bg-[#FEF7E0]/10 hover:text-white'
+                }
                   `}
-              >
-                  {cat.label}
-              </button>
+            >
+              {cat.label}
+            </button>
           ))}
         </motion.div>
 
@@ -129,7 +129,7 @@ const BoutiquePage = () => {
                     <h3 className="font-display text-2xl font-bold uppercase truncate">{product.name}</h3>
                     <p className="font-body text-3xl font-black text-[#00A651] my-2">{product.price}</p>
                     <p className="font-body text-sm text-[#052013]/70 mb-4 h-10">{product.description}</p>
-                      <Button asChild className="w-full bg-[#0a3f25] text-white hover:bg-[#00A651] transition-colors font-bold uppercase tracking-wider">
+                    <Button asChild className="w-full bg-[#0a3f25] text-white hover:bg-[#00A651] transition-colors font-bold uppercase tracking-wider">
                       <span>Voir détails</span>
                     </Button>
                   </div>

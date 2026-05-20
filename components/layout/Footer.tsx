@@ -53,7 +53,7 @@ const Footer = () => {
   return (
     <footer className="relative">
       {/* Wave Transition */}
-      <WaveDivider variant="forest-to-cream" className="-mt-1 bg-cream" />
+      <WaveDivider variant="forest-to-cream" className="-mt-1 bg-cream" flip />
 
       <div className="bg-forest py-16 md:py-20">
         <div className="container mx-auto px-4 md:px-6">

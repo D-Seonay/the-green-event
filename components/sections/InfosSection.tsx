@@ -62,7 +62,7 @@ const InfosSection = () => {
   return (
     <section id="infos" className="relative overflow-hidden">
       {/* Wave Transition */}
-      <WaveDivider variant="cream-to-forest" className="-mt-1 bg-forest" />
+      <WaveDivider variant="cream-to-forest" className="-mt-1 bg-forest" flip />
 
       <div className="bg-cream py-20 md:py-40 relative">
         {/* Floating background elements */}
@@ -90,7 +90,7 @@ const InfosSection = () => {
                 PRATIQUE
               </h2>
             </motion.div>
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -113,7 +113,7 @@ const InfosSection = () => {
               {/* Decorative background for map */}
               <div className="absolute -inset-4 bg-leaf/20 blur-3xl rounded-full"></div>
               <div className="absolute inset-0 bg-forest rounded-[2rem] transform rotate-3 scale-105 shadow-xl opacity-10"></div>
-              
+
               <div className="relative aspect-square md:aspect-[4/3] max-w-2xl mx-auto">
                 <div className="absolute inset-0 bg-forest rounded-3xl overflow-hidden border-8 border-forest shadow-2xl">
                   <iframe
@@ -129,7 +129,7 @@ const InfosSection = () => {
                 </div>
 
                 {/* Floating Map Label */}
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -149,22 +149,22 @@ const InfosSection = () => {
                   initial={{ opacity: 0, y: 30, rotate: 0 }}
                   whileInView={{ opacity: 1, y: 0, rotate: info.rotation }}
                   viewport={{ once: true }}
-                  transition={{ 
-                    duration: 0.8, 
+                  transition={{
+                    duration: 0.8,
                     delay: info.delay,
-                    ease: [0.16, 1, 0.3, 1] 
+                    ease: [0.16, 1, 0.3, 1]
                   }}
                   whileHover={{ scale: 1.05, rotate: 0, zIndex: 10 }}
                   className="group relative bg-forest p-8 rounded-2xl shadow-xl transition-all duration-300"
                 >
                   {/* Decorative corner */}
                   <div className="absolute top-0 right-0 w-16 h-16 bg-leaf/10 rounded-bl-full pointer-events-none group-hover:bg-leaf/20 transition-colors"></div>
-                  
+
                   <div className="flex flex-col h-full">
                     <div className="mb-6 w-12 h-12 rounded-xl bg-leaf flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
                       <info.icon className="w-6 h-6 text-cream" />
                     </div>
-                    
+
                     <div className="mt-auto">
                       <p className="font-mono text-leaf/60 text-xs uppercase tracking-[0.2em] mb-2">
                         {info.title}
@@ -185,6 +185,7 @@ const InfosSection = () => {
           </div>
         </div>
       </div>
+      <WaveDivider variant="forest-to-cream" className="-mt-1 bg-cream" flip />
     </section>
   );
 };

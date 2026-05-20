@@ -40,8 +40,6 @@ const SponsorsSection = () => {
 
   return (
     <section id="sponsors" className="relative py-12 overflow-hidden bg-forest md:py-20">
-      <WaveDivider variant="forest-to-cream" className="absolute top-0 w-full" />
-      
       <div className="mb-12 text-center">
         <h2 className="text-4xl font-extrabold md:text-6xl font-display text-cream">
           NOS PARTENAIRES

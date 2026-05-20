@@ -147,14 +147,14 @@ const BenevolesPage = () => {
                 BÉNÉVOLES
               </h1>
             </div>
-            
+
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
               className="max-w-2xl text-lg md:text-2xl font-body text-cream/80 leading-relaxed"
             >
-              Rejoins la <span className="text-leaf font-bold">Green Team</span> et participe à l&apos;aventure 
+              Rejoins la <span className="text-leaf font-bold">Green Team</span> et participe à l&apos;aventure
               éco-responsable du Parc de la Sèvre. On a besoin de ton énergie !
             </motion.p>
           </motion.div>
@@ -199,7 +199,7 @@ const BenevolesPage = () => {
           <div className="relative">
             {/* Form Decorative Background */}
             <div className="absolute inset-0 bg-leaf/20 blur-3xl rounded-full scale-110 opacity-50"></div>
-            
+
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}

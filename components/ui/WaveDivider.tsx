@@ -1,14 +1,35 @@
 interface WaveDividerProps {
   variant: "cream-to-forest" | "forest-to-cream";
   className?: string;
-  flip?: boolean;
+  flip?: boolean; // Rotation à 180° (rétrocompatibilité, équivaut à flipX + flipY)
+  flipX?: boolean; // Flip horizontal (effet miroir gauche-droite)
+  flipY?: boolean; // Flip vertical (effet miroir haut-bas)
 }
 
-const WaveDivider = ({ variant, className = "", flip = false }: WaveDividerProps) => {
+const WaveDivider = ({
+  variant,
+  className = "",
+  flip = false,
+  flipX = false,
+  flipY = false
+}: WaveDividerProps) => {
   const fillColor = variant === "cream-to-forest" ? "fill-cream" : "fill-forest";
-  
+
+  const transformStyles: string[] = [];
+  if (flip) {
+    transformStyles.push("rotate(180deg)");
+  } else {
+    if (flipX) transformStyles.push("scaleX(-1)");
+    if (flipY) transformStyles.push("scaleY(-1)");
+  }
+  const style = transformStyles.length > 0 ? { transform: transformStyles.join(" ") } : undefined;
+
   return (
-    <div className={`w-full overflow-hidden leading-[0] ${flip ? "rotate-180" : ""} ${className}`} aria-hidden="true">
+    <div
+      className={`w-full overflow-hidden leading-[0] ${className}`}
+      style={style}
+      aria-hidden="true"
+    >
       <svg
         className={`relative block w-full h-[80px] md:h-[120px] ${fillColor}`}
         xmlns="http://www.w3.org/2000/svg"
