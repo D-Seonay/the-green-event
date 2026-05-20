@@ -158,7 +158,7 @@ const BenevolesPage = () => {
   };
 
   return (
-    <main className="bg-forest text-cream min-h-screen overflow-hidden">
+    <main className="bg-forest text-cream min-h-screen overflow-x-hidden">
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 md:pt-48 md:pb-40 px-4">
         <FloatingIcon x={[-100, 100]} y={[-50, 50]} className="top-20 left-10">
@@ -175,9 +175,9 @@ const BenevolesPage = () => {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="flex flex-col items-center text-center"
           >
-            <div className="relative inline-block mb-8">
-              <div className="absolute -inset-4 bg-leaf rounded-lg shadow-xl transform rotate-2"></div>
-              <h1 className="relative bg-cream text-forest px-8 py-4 text-4xl md:text-8xl font-display font-black uppercase tracking-tighter italic">
+            <div className="relative inline-block mb-8 max-w-full">
+              <div className="absolute -inset-2 md:-inset-4 bg-leaf rounded-lg shadow-xl transform rotate-2"></div>
+              <h1 className="relative bg-cream text-forest px-4 py-3 md:px-8 md:py-4 text-2xl sm:text-4xl md:text-7xl lg:text-8xl font-display font-black uppercase tracking-tighter italic break-words text-center">
                 DEVENIR BÉNÉVOLE
               </h1>
             </div>
@@ -188,7 +188,7 @@ const BenevolesPage = () => {
               transition={{ delay: 0.4 }}
               className="max-w-2xl text-lg md:text-2xl font-body text-cream/80 leading-relaxed"
             >
-              Rejoins la <span className="text-leaf font-bold">Green Team</span> et participe à l&apos;aventure de l&apos;intérieur.
+              Rejoins la <span className="text-leaf font-bold">Green Team</span>  et participe à l&apos;aventure de l&apos;intérieur.
             </motion.p>
           </motion.div>
         </div>
@@ -197,7 +197,7 @@ const BenevolesPage = () => {
       <WaveDivider variant="forest-to-cream" flip={false} />
 
       {/* Informations Section */}
-      <section className="bg-cream py-20 md:py-32 relative text-forest">
+      <section className="bg-cream py-16 md:py-32 relative text-forest">
         <div className="container mx-auto px-4 max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -207,7 +207,7 @@ const BenevolesPage = () => {
             className="space-y-12"
           >
             <div>
-              <h2 className="text-3xl md:text-5xl font-display font-black uppercase tracking-tight mb-6 text-[#052013]">
+              <h2 className="text-2xl sm:text-3xl md:text-5xl font-display font-black uppercase tracking-tight mb-6 text-[#052013]">
                 Être bénévole au Green Fest
               </h2>
               <p className="text-lg font-body leading-relaxed text-forest/90 mb-6">
@@ -261,7 +261,7 @@ const BenevolesPage = () => {
       <WaveDivider variant="cream-to-forest" flip={false} className="bg-forest" />
 
       {/* Form Section */}
-      <section className="py-24 md:py-40 relative">
+      <section className="py-16 md:py-28 relative">
         <div className="container mx-auto px-4 max-w-5xl">
           <div className="relative">
             {/* Form Decorative Background */}
@@ -271,10 +271,10 @@ const BenevolesPage = () => {
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="relative bg-cream text-forest p-8 md:p-16 rounded-[2rem] shadow-2xl border-4 border-forest transform -rotate-1"
+              className="relative bg-cream text-forest p-5 sm:p-8 md:p-16 rounded-[1.5rem] md:rounded-[2rem] shadow-2xl border-4 border-forest rotate-0 md:-rotate-1"
             >
               {submissionState === "success" ? (
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
                   className="text-center py-12"
@@ -282,14 +282,14 @@ const BenevolesPage = () => {
                   <div className="w-24 h-24 bg-leaf rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-lg shadow-leaf/20 transform rotate-3">
                     <CheckCircle2 className="w-12 h-12 text-cream" />
                   </div>
-                  <h2 className="text-4xl md:text-6xl font-display font-black uppercase tracking-tighter mb-6 text-[#052013]">
+                  <h2 className="text-2xl sm:text-4xl md:text-6xl font-display font-black uppercase tracking-tighter mb-6 text-[#052013]">
                     BIENVENUE DANS LA TEAM !
                   </h2>
                   <p className="max-w-xl mx-auto font-body text-lg md:text-xl text-forest/80 leading-relaxed mb-10">
                     Ta candidature a bien été transmise à notre coordinateur. Un e-mail de confirmation récapitulant tes préférences vient de t'être envoyé !
                   </p>
-                  
-                  <div className="max-w-md mx-auto bg-forest text-cream p-8 rounded-2xl text-left border-2 border-forest shadow-xl mb-10 transform -rotate-1">
+
+                  <div className="max-w-md mx-auto bg-forest text-cream p-5 rounded-xl text-left border-2 border-forest shadow-xl mb-10 rotate-0 md:transform md:-rotate-1">
                     <h3 className="font-display font-bold text-lg uppercase tracking-wider border-b border-cream/20 pb-3 mb-4">
                       Récapitulatif de tes choix
                     </h3>
@@ -314,8 +314,8 @@ const BenevolesPage = () => {
                 </motion.div>
               ) : (
                 <>
-                  <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-6xl font-display font-black uppercase tracking-tighter mb-4 text-[#052013]">
+                  <div className="text-center mb-8 md:mb-16">
+                    <h2 className="text-2xl sm:text-4xl md:text-6xl font-display font-black uppercase tracking-tighter mb-4 text-[#052013]">
                       Formulaire d&apos;inscription
                     </h2>
                     <div className="flex flex-col items-center justify-center gap-2">
@@ -330,13 +330,13 @@ const BenevolesPage = () => {
                   </div>
 
                   <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-12 text-[#052013]">
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 md:space-y-12 text-[#052013]">
                       {/* Identity */}
-                      <div className="space-y-8">
-                        <h3 className="text-xl font-display font-black uppercase tracking-widest border-b-2 border-forest/10 pb-2 text-[#052013]">
+                      <div className="space-y-6 md:space-y-8">
+                        <h3 className="text-lg md:text-xl font-display font-black uppercase tracking-widest border-b-2 border-forest/10 pb-2 text-[#052013]">
                           01. Identité <span className="text-red-500 text-sm">*</span>
                         </h3>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
                           <FormField
                             control={form.control}
                             name="firstname"
@@ -364,7 +364,7 @@ const BenevolesPage = () => {
                             )}
                           />
                         </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
                           <FormField
                             control={form.control}
                             name="email"
@@ -392,7 +392,7 @@ const BenevolesPage = () => {
                             )}
                           />
                         </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
                           <FormField
                             control={form.control}
                             name="birthDate"
@@ -423,8 +423,8 @@ const BenevolesPage = () => {
                       </div>
 
                       {/* Experience and Team Preference */}
-                      <div className="space-y-8">
-                        <h3 className="text-xl font-display font-black uppercase tracking-widest border-b-2 border-forest/10 pb-2 text-[#052013]">
+                      <div className="space-y-6 md:space-y-8">
+                        <h3 className="text-lg md:text-xl font-display font-black uppercase tracking-widest border-b-2 border-forest/10 pb-2 text-[#052013]">
                           02. Expérience &amp; Binôme
                         </h3>
                         <FormField
@@ -477,14 +477,14 @@ const BenevolesPage = () => {
                       </div>
 
                       {/* Wishes */}
-                      <div className="space-y-8">
-                        <h3 className="text-xl font-display font-black uppercase tracking-widest border-b-2 border-forest/10 pb-2 text-[#052013]">
+                      <div className="space-y-6 md:space-y-8">
+                        <h3 className="text-lg md:text-xl font-display font-black uppercase tracking-widest border-b-2 border-forest/10 pb-2 text-[#052013]">
                           03. Tes souhaits de mission <span className="text-red-500 text-sm">*</span>
                         </h3>
-                        <p className="text-sm font-body text-forest/70 -mt-4">
+                        <p className="text-xs md:text-sm font-body text-forest/70 -mt-2 md:-mt-4">
                           Indique-nous tes trois préférences de mission par ordre de priorité.
                         </p>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
                           <FormField
                             control={form.control}
                             name="wish1"
@@ -497,9 +497,9 @@ const BenevolesPage = () => {
                                       <SelectValue placeholder="Choisir" />
                                     </SelectTrigger>
                                   </FormControl>
-                                  <SelectContent className="bg-[#FEF7E0] text-[#052013] border-forest/20">
+                                  <SelectContent className="bg-[#FEF7E0] text-[#052013] border-forest/20 max-w-[calc(100vw-2.5rem)] sm:max-w-xs md:max-w-sm">
                                     {MISSION_WISHES.map((wish) => (
-                                      <SelectItem key={wish.id} value={wish.id} className="focus:bg-[#00A651]/10 focus:text-[#00A651]">
+                                      <SelectItem key={wish.id} value={wish.id} className="focus:bg-[#00A651]/10 focus:text-[#00A651] whitespace-normal break-words py-2">
                                         {wish.label}
                                       </SelectItem>
                                     ))}
@@ -521,9 +521,9 @@ const BenevolesPage = () => {
                                       <SelectValue placeholder="Choisir" />
                                     </SelectTrigger>
                                   </FormControl>
-                                  <SelectContent className="bg-[#FEF7E0] text-[#052013] border-forest/20">
+                                  <SelectContent className="bg-[#FEF7E0] text-[#052013] border-forest/20 max-w-[calc(100vw-2.5rem)] sm:max-w-xs md:max-w-sm">
                                     {MISSION_WISHES.map((wish) => (
-                                      <SelectItem key={wish.id} value={wish.id} className="focus:bg-[#00A651]/10 focus:text-[#00A651]">
+                                      <SelectItem key={wish.id} value={wish.id} className="focus:bg-[#00A651]/10 focus:text-[#00A651] whitespace-normal break-words py-2">
                                         {wish.label}
                                       </SelectItem>
                                     ))}
@@ -545,9 +545,9 @@ const BenevolesPage = () => {
                                       <SelectValue placeholder="Choisir" />
                                     </SelectTrigger>
                                   </FormControl>
-                                  <SelectContent className="bg-[#FEF7E0] text-[#052013] border-forest/20">
+                                  <SelectContent className="bg-[#FEF7E0] text-[#052013] border-forest/20 max-w-[calc(100vw-2.5rem)] sm:max-w-xs md:max-w-sm">
                                     {MISSION_WISHES.map((wish) => (
-                                      <SelectItem key={wish.id} value={wish.id} className="focus:bg-[#00A651]/10 focus:text-[#00A651]">
+                                      <SelectItem key={wish.id} value={wish.id} className="focus:bg-[#00A651]/10 focus:text-[#00A651] whitespace-normal break-words py-2">
                                         {wish.label}
                                       </SelectItem>
                                     ))}
@@ -561,8 +561,8 @@ const BenevolesPage = () => {
                       </div>
 
                       {/* Motivation */}
-                      <div className="space-y-8">
-                        <h3 className="text-xl font-display font-black uppercase tracking-widest border-b-2 border-forest/10 pb-2 text-[#052013]">
+                      <div className="space-y-6 md:space-y-8">
+                        <h3 className="text-lg md:text-xl font-display font-black uppercase tracking-widest border-b-2 border-forest/10 pb-2 text-[#052013]">
                           04. Motivation <span className="text-red-500 text-sm">*</span>
                         </h3>
                         <FormField
