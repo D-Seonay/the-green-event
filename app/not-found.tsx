@@ -2,10 +2,119 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import FloatingElement from '@/components/FloatingElements';
+import Leaf from '@/components/ui/Leaf';
+import Cube from '@/components/ui/Cube';
 
 export default function NotFound() {
   return (
     <main className="min-h-[70vh] flex flex-col items-center justify-center bg-forest text-cream px-4 relative overflow-hidden">
+      {/* Background Atmosphere */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {/* Mist layers */}
+        <motion.div 
+          animate={{ 
+            x: [-100, 100],
+            opacity: [0.1, 0.2, 0.1] 
+          }}
+          transition={{ 
+            duration: 20, 
+            repeat: Infinity, 
+            ease: "linear" 
+          }}
+          className="absolute top-0 left-0 w-[200%] h-full bg-[radial-gradient(circle,rgba(254,247,224,0.1)_0%,transparent_70%)] blur-3xl"
+        />
+        
+        <motion.div 
+          animate={{ 
+            x: [100, -100],
+            opacity: [0.05, 0.15, 0.05] 
+          }}
+          transition={{ 
+            duration: 25, 
+            repeat: Infinity, 
+            ease: "linear" 
+          }}
+          className="absolute bottom-0 right-0 w-[200%] h-full bg-[radial-gradient(circle,rgba(254,247,224,0.08)_0%,transparent_70%)] blur-3xl"
+        />
+
+        {/* Floating elements */}
+        <motion.div
+          animate={{ 
+            y: [0, -20, 0],
+            rotate: [0, 10, 0]
+          }}
+          transition={{ 
+            duration: 5, 
+            repeat: Infinity, 
+            ease: "easeInOut" 
+          }}
+          className="absolute top-[15%] left-[10%]"
+        >
+          <FloatingElement component={Leaf} size="md" blur />
+        </motion.div>
+
+        <motion.div
+          animate={{ 
+            y: [0, 30, 0],
+            rotate: [0, -15, 0]
+          }}
+          transition={{ 
+            duration: 7, 
+            repeat: Infinity, 
+            ease: "easeInOut" 
+          }}
+          className="absolute top-[60%] left-[15%]"
+        >
+          <FloatingElement component={Cube} size="sm" />
+        </motion.div>
+
+        <motion.div
+          animate={{ 
+            y: [0, -40, 0],
+            rotate: [0, 20, 0]
+          }}
+          transition={{ 
+            duration: 8, 
+            repeat: Infinity, 
+            ease: "easeInOut" 
+          }}
+          className="absolute top-[20%] right-[15%]"
+        >
+          <FloatingElement component={Leaf} size="lg" blur />
+        </motion.div>
+
+        <motion.div
+          animate={{ 
+            y: [0, 25, 0],
+            rotate: [0, -10, 0]
+          }}
+          transition={{ 
+            duration: 6, 
+            repeat: Infinity, 
+            ease: "easeInOut" 
+          }}
+          className="absolute bottom-[20%] right-[10%]"
+        >
+          <FloatingElement component={Cube} size="md" blur />
+        </motion.div>
+
+        <motion.div
+          animate={{ 
+            y: [0, -15, 0],
+            rotate: [0, 5, 0]
+          }}
+          transition={{ 
+            duration: 4, 
+            repeat: Infinity, 
+            ease: "easeInOut" 
+          }}
+          className="absolute top-[40%] right-[30%] opacity-20"
+        >
+          <FloatingElement component={Leaf} size="sm" />
+        </motion.div>
+      </div>
+
       <div className="z-10 text-center">
         <motion.h1 
           initial={{ opacity: 0, y: 20 }}
