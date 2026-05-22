@@ -139,17 +139,32 @@ export default function NotFound() {
         >
           Même les meilleurs explorateurs s&apos;égarent parfois. Retrouvez votre chemin vers la scène principale.
         </motion.p>
+        
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
+          className="flex flex-col items-center gap-8 w-full max-w-md mx-auto"
         >
-          <Link 
-            href="/"
-            className="inline-block bg-leaf text-cream font-bold py-3 px-8 rounded-full transition-transform hover:scale-105"
-          >
-            Retour à l&apos;accueil
-          </Link>
+          <div className="relative w-full">
+            <input 
+              type="text" 
+              placeholder="Rechercher un artiste..." 
+              className="w-full bg-cream/10 border-none rounded-full py-4 px-6 text-cream placeholder:text-cream/40 focus:ring-2 focus:ring-leaf outline-none transition-all"
+            />
+            <button className="absolute right-2 top-1/2 -translate-y-1/2 bg-leaf p-2 rounded-full hover:scale-110 transition-transform">
+              <svg className="w-5 h-5 text-cream" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+            </button>
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link href="/" className="bg-leaf text-cream px-8 py-3 rounded-full font-bold hover:scale-105 transition-transform shadow-lg shadow-leaf/20">
+              Retour à l&apos;accueil
+            </Link>
+            <Link href="/programmation" className="border-2 border-cream text-cream px-8 py-3 rounded-full font-bold hover:bg-cream hover:text-forest transition-all">
+              Programmation
+            </Link>
+          </div>
         </motion.div>
       </div>
     </main>
