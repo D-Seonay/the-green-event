@@ -1,12 +1,25 @@
 'use client';
 
+import { useState, useMemo } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ARTISTS } from '@/lib/data';
 import FloatingElement from '@/components/FloatingElements';
 import Leaf from '@/components/ui/Leaf';
 import Cube from '@/components/ui/Cube';
 
 export default function NotFound() {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const filteredArtists = useMemo(() => {
+    if (!searchTerm.trim()) return [];
+    return ARTISTS.filter(artist => 
+      artist.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      artist.genre?.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  }, [searchTerm]);
+
   return (
     <main className="min-h-[70vh] flex flex-col items-center justify-center bg-forest text-cream px-4 relative overflow-hidden">
       {/* Background Atmosphere */}
@@ -150,6 +163,8 @@ export default function NotFound() {
             <input 
               type="text" 
               placeholder="Rechercher un artiste..." 
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full bg-cream/10 border-none rounded-full py-4 px-6 text-cream placeholder:text-cream/40 focus:ring-2 focus:ring-leaf outline-none transition-all"
             />
             <button className="absolute right-2 top-1/2 -translate-y-1/2 bg-leaf p-2 rounded-full hover:scale-110 transition-transform">
