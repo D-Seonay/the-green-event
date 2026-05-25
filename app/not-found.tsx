@@ -128,59 +128,80 @@ export default function NotFound() {
         </motion.div>
       </div>
 
-      <div className="z-10 text-center">
-        <motion.h1 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-8xl md:text-9xl font-black mb-4 font-display"
-        >
-          404
-        </motion.h1>
-        <motion.h2 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="text-2xl md:text-3xl font-bold mb-6 font-display"
-        >
-          Perdu dans la forêt ?
-        </motion.h2>
-        <motion.p 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="max-w-md mx-auto mb-10 opacity-80"
-        >
-          Même les meilleurs explorateurs s&apos;égarent parfois. Retrouvez votre chemin vers la scène principale.
-        </motion.p>
-        
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="flex flex-col items-center gap-8 w-full max-w-md mx-auto"
-        >
-          <div className="relative w-full">
-            <input 
-              type="text" 
-              placeholder="Rechercher un artiste..." 
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-cream/10 border-none rounded-full py-4 px-6 text-cream placeholder:text-cream/40 focus:ring-2 focus:ring-leaf outline-none transition-all"
-            />
-            <button className="absolute right-2 top-1/2 -translate-y-1/2 bg-leaf p-2 rounded-full hover:scale-110 transition-transform">
-              <svg className="w-5 h-5 text-cream" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-            </button>
-          </div>
+      <div className="z-10 text-center w-full max-w-4xl mx-auto py-20">
+        {/* Search Bar (always visible) */}
+        <div className="mb-12 max-w-md mx-auto relative px-4">
+          <input 
+            type="text" 
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            placeholder="Rechercher un artiste..." 
+            className="w-full bg-cream/10 border-2 border-transparent focus:border-leaf rounded-full py-4 px-6 text-cream placeholder:text-cream/40 outline-none transition-all shadow-xl"
+          />
+          <button className="absolute right-6 top-1/2 -translate-y-1/2 bg-leaf p-2 rounded-full hover:scale-110 transition-transform">
+            <svg className="w-5 h-5 text-cream" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+          </button>
+        </div>
 
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/" className="bg-leaf text-cream px-8 py-3 rounded-full font-bold hover:scale-105 transition-transform shadow-lg shadow-leaf/20">
-              Retour à l&apos;accueil
-            </Link>
-            <Link href="/programmation" className="border-2 border-cream text-cream px-8 py-3 rounded-full font-bold hover:bg-cream hover:text-forest transition-all">
-              Programmation
-            </Link>
-          </div>
-        </motion.div>
+        <AnimatePresence mode="wait">
+          {!searchTerm.trim() ? (
+            <motion.div
+              key="error-message"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="flex flex-col items-center"
+            >
+              <h1 className="text-8xl md:text-9xl font-black mb-4 font-display">404</h1>
+              <h2 className="text-2xl md:text-3xl font-bold mb-6 font-display">Perdu dans la forêt ?</h2>
+              <p className="max-w-md mx-auto mb-10 opacity-80">
+                Même les meilleurs explorateurs s&apos;égarent parfois. Retrouvez votre chemin vers la scène principale.
+              </p>
+              <div className="flex flex-wrap justify-center gap-4">
+                <Link href="/" className="bg-leaf text-cream px-8 py-3 rounded-full font-bold hover:scale-105 transition-transform shadow-lg shadow-leaf/20">
+                  Retour à l&apos;accueil
+                </Link>
+                <Link href="/programmation" className="border-2 border-cream text-cream px-8 py-3 rounded-full font-bold hover:bg-cream hover:text-forest transition-all">
+                  Programmation
+                </Link>
+              </div>
+            </motion.div>
+          ) : (
+            <motion.div
+              key="search-results"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="px-4"
+            >
+              {filteredArtists.length > 0 ? (
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                  {filteredArtists.map((artist, idx) => (
+                    <Link 
+                      key={artist.slug} 
+                      href={`/programmation/${artist.slug}`}
+                      className="group relative"
+                    >
+                      <motion.div
+                        initial={{ opacity: 0, rotate: 0 }}
+                        animate={{ opacity: 1, rotate: artist.rotation || (idx % 2 === 0 ? 3 : -3) }}
+                        className="bg-cream p-3 rounded-xl shadow-xl transition-transform group-hover:scale-105"
+                      >
+                        <div className="aspect-square relative overflow-hidden rounded-lg mb-3">
+                          <Image src={artist.image} alt={artist.name} fill className="object-cover" />
+                        </div>
+                        <h3 className="text-forest font-bold text-sm md:text-base">{artist.name}</h3>
+                        <p className="text-forest/60 text-xs uppercase tracking-wider">{artist.genre}</p>
+                      </motion.div>
+                    </Link>
+                  ))}
+                </div>
+              ) : (
+                <p className="text-xl opacity-60">Aucun artiste trouvé pour "{searchTerm}"</p>
+              )}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </main>
   );
