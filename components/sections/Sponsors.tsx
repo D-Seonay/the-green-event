@@ -4,60 +4,43 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import WaveDivider from '../ui/WaveDivider';
-
-const sponsors = [
-  { id: 1, name: 'Sponsor 1', logoSrc: '/partners/laSoupape.png' },
-  { id: 2, name: 'Sponsor 2', logoSrc: '/partners/umami.jpeg' },
-  { id: 3, name: 'Sponsor 3', logoSrc: '/placeholder.svg' },
-  { id: 4, name: 'Sponsor 4', logoSrc: '/placeholder.svg' },
-  { id: 5, name: 'Sponsor 5', logoSrc: '/placeholder.svg' },
-  { id: 6, name: 'Sponsor 6', logoSrc: '/placeholder.svg' },
-];
+import { SPONSORS } from '@/lib/data';
+import SectionTitle from '@/components/ui/SectionTitle';
 
 const SponsorsSection = () => {
-  const duplicatedSponsors = [...sponsors, ...sponsors];
-
-  const marqueeVariants = {
-    animate: {
-      x: [0, -1088], // Adjust this value based on the total width of your logos
-      transition: {
-        x: {
-          repeat: Infinity,
-          repeatType: 'loop',
-          duration: 20,
-          ease: 'linear',
-        },
-      },
-    },
-  };
-
   return (
-    <section id="sponsors" className="relative py-12 overflow-hidden bg-forest md:py-20">
-      <div className="mb-12 text-center">
-        <h2 className="text-4xl font-extrabold md:text-6xl font-display text-cream">
-          NOS PARTENAIRES
-        </h2>
-      </div>
+    <section id="sponsors" className="relative py-20 overflow-hidden bg-forest">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-16">
+          <SectionTitle>
+            NOS PARTENAIRES
+          </SectionTitle>
+          <p className="mt-6 text-cream/60 font-mono uppercase tracking-[0.4em] text-sm md:text-base">
+            Ils nous soutiennent dans cette aventure
+          </p>
+        </div>
 
-      <div className="relative w-full overflow-hidden">
-        <motion.div
-          className="flex"
-          variants={marqueeVariants}
-          animate="animate"
-        >
-          {duplicatedSponsors.map((sponsor, index) => (
-            <div key={index} className="flex-shrink-0 mx-8" style={{ width: '128px' }}>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8 md:gap-12 items-center justify-items-center max-w-6xl mx-auto mt-12">
+          {SPONSORS.map((sponsor, index) => (
+            <motion.div
+              key={sponsor.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
+              whileHover={{ scale: 1.05 }}
+              className="group relative flex items-center justify-center w-full aspect-video md:aspect-square bg-cream/5 rounded-xl p-4 backdrop-blur-sm border border-cream/10 hover:border-cream/20 transition-colors"
+            >
               <Image
                 src={sponsor.logoSrc}
-                alt={sponsor.name}
-                width={128}
-                height={64}
-                className="object-contain"
+                alt={`Logo ${sponsor.name}`}
+                width={160}
+                height={160}
+                className="max-w-full max-h-full object-contain opacity-60 group-hover:opacity-100 transition-all duration-500 grayscale group-hover:grayscale-0"
               />
-            </div>
+            </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
