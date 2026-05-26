@@ -4,7 +4,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import WaveDivider from '../ui/WaveDivider';
 
 const sponsors = [
   { id: 1, name: 'Sponsor 1', logoSrc: '/partners/laSoupape.png' },
@@ -16,22 +15,6 @@ const sponsors = [
 ];
 
 const SponsorsSection = () => {
-  const duplicatedSponsors = [...sponsors, ...sponsors];
-
-  const marqueeVariants = {
-    animate: {
-      x: [0, -1088], // Adjust this value based on the total width of your logos
-      transition: {
-        x: {
-          repeat: Infinity,
-          repeatType: 'loop',
-          duration: 20,
-          ease: 'linear',
-        },
-      },
-    },
-  };
-
   return (
     <section id="sponsors" className="relative py-12 overflow-hidden bg-forest md:py-20">
       <div className="mb-12 text-center">
@@ -40,24 +23,23 @@ const SponsorsSection = () => {
         </h2>
       </div>
 
-      <div className="relative w-full overflow-hidden">
-        <motion.div
-          className="flex"
-          variants={marqueeVariants}
-          animate="animate"
-        >
-          {duplicatedSponsors.map((sponsor, index) => (
-            <div key={index} className="flex-shrink-0 mx-8" style={{ width: '128px' }}>
-              <Image
-                src={sponsor.logoSrc}
-                alt={sponsor.name}
-                width={128}
-                height={64}
-                className="object-contain"
-              />
-            </div>
-          ))}
-        </motion.div>
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 md:gap-12 items-center justify-items-center max-w-6xl mx-auto px-4">
+        {sponsors.map((sponsor) => (
+          <motion.div
+            key={sponsor.id}
+            className="flex-shrink-0 w-32 md:w-40"
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+          >
+            <Image
+              src={sponsor.logoSrc}
+              alt={sponsor.name}
+              width={160}
+              height={80}
+              className="object-contain opacity-80 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 duration-500"
+            />
+          </motion.div>
+        ))}
       </div>
     </section>
   );
