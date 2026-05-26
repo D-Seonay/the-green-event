@@ -11,12 +11,14 @@ const SponsorsSection = () => {
   return (
     <section id="sponsors" className="relative py-20 overflow-hidden bg-forest">
       <div className="container mx-auto px-4">
-        <SectionTitle 
-          title="NOS PARTENAIRES" 
-          subtitle="Ils nous soutiennent dans cette aventure"
-          center
-          light
-        />
+        <div className="text-center mb-16">
+          <SectionTitle>
+            NOS PARTENAIRES
+          </SectionTitle>
+          <p className="mt-6 text-cream/60 font-mono uppercase tracking-[0.4em] text-sm md:text-base">
+            Ils nous soutiennent dans cette aventure
+          </p>
+        </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8 md:gap-12 items-center justify-items-center max-w-6xl mx-auto mt-12">
           {SPONSORS.map((sponsor, index) => (
