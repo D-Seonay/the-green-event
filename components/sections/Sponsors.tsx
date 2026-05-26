@@ -4,42 +4,41 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-
-const sponsors = [
-  { id: 1, name: 'Sponsor 1', logoSrc: '/partners/laSoupape.png' },
-  { id: 2, name: 'Sponsor 2', logoSrc: '/partners/umami.jpeg' },
-  { id: 3, name: 'Sponsor 3', logoSrc: '/placeholder.svg' },
-  { id: 4, name: 'Sponsor 4', logoSrc: '/placeholder.svg' },
-  { id: 5, name: 'Sponsor 5', logoSrc: '/placeholder.svg' },
-  { id: 6, name: 'Sponsor 6', logoSrc: '/placeholder.svg' },
-];
+import { SPONSORS } from '@/lib/data';
+import SectionTitle from '@/components/ui/SectionTitle';
 
 const SponsorsSection = () => {
   return (
-    <section id="sponsors" className="relative py-12 overflow-hidden bg-forest md:py-20">
-      <div className="mb-12 text-center">
-        <h2 className="text-4xl font-extrabold md:text-6xl font-display text-cream">
-          NOS PARTENAIRES
-        </h2>
-      </div>
+    <section id="sponsors" className="relative py-20 overflow-hidden bg-forest">
+      <div className="container mx-auto px-4">
+        <SectionTitle 
+          title="NOS PARTENAIRES" 
+          subtitle="Ils nous soutiennent dans cette aventure"
+          center
+          light
+        />
 
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 md:gap-12 items-center justify-items-center max-w-6xl mx-auto px-4">
-        {sponsors.map((sponsor) => (
-          <motion.div
-            key={sponsor.id}
-            className="flex-shrink-0 w-32 md:w-40"
-            whileHover={{ scale: 1.05 }}
-            transition={{ type: "spring", stiffness: 400, damping: 10 }}
-          >
-            <Image
-              src={sponsor.logoSrc}
-              alt={sponsor.name}
-              width={160}
-              height={80}
-              className="object-contain opacity-80 hover:opacity-100 transition-opacity grayscale hover:grayscale-0 duration-500"
-            />
-          </motion.div>
-        ))}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8 md:gap-12 items-center justify-items-center max-w-6xl mx-auto mt-12">
+          {SPONSORS.map((sponsor, index) => (
+            <motion.div
+              key={sponsor.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
+              whileHover={{ scale: 1.05 }}
+              className="group relative flex items-center justify-center w-full aspect-video md:aspect-square bg-cream/5 rounded-xl p-4 backdrop-blur-sm border border-cream/10 hover:border-cream/20 transition-colors"
+            >
+              <Image
+                src={sponsor.logoSrc}
+                alt={`Logo ${sponsor.name}`}
+                width={160}
+                height={160}
+                className="max-w-full max-h-full object-contain opacity-60 group-hover:opacity-100 transition-all duration-500 grayscale group-hover:grayscale-0"
+              />
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

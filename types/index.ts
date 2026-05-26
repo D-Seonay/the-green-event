@@ -57,3 +57,10 @@ export interface FloatingElement {
 export interface IconProps extends SVGProps<SVGSVGElement> {
   // You can add any custom props for your icons here if needed
 }
+
+export interface Sponsor {
+  id: number;
+  name: string;
+  logoSrc: string;
+  url?: string;
+}

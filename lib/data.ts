@@ -1,4 +1,4 @@
-import type { Product, Artist, NavLink, FloatingElement, GalleryImage } from '@/types';
+import type { Product, Artist, NavLink, FloatingElement, GalleryImage, Sponsor } from '@/types';
 import Cube from '@/components/ui/Cube';
 import Leaf from '@/components/ui/Leaf';
 
@@ -149,5 +149,14 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     tilt: 4,
     speed: 0.35,
     depth: 1
-  }
-];
+    }
+    ];
+
+    export const SPONSORS: Sponsor[] = [
+    { id: 1, name: 'La Soupape', logoSrc: '/partners/laSoupape.png' },
+    { id: 2, name: 'Umami', logoSrc: '/partners/umami.jpeg' },
+    { id: 3, name: 'Sponsor 3', logoSrc: '/placeholder.svg' },
+    { id: 4, name: 'Sponsor 4', logoSrc: '/placeholder.svg' },
+    { id: 5, name: 'Sponsor 5', logoSrc: '/placeholder.svg' },
+    { id: 6, name: 'Sponsor 6', logoSrc: '/placeholder.svg' },
+    ];
