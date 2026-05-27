@@ -4,8 +4,10 @@ import { ARTISTS } from '@/lib/data';
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://thegreenfest.fr';
 
-  // Dynamic artist routes
-  const artistEntries = ARTISTS.map((artist) => ({
+  // Dynamic artist routes (excluding mystery ones)
+  const artistEntries = ARTISTS
+    .filter((artist) => !artist.isMystery)
+    .map((artist) => ({
     url: `${baseUrl}/programmation/${artist.slug}`,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
