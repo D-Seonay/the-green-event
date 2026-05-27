@@ -27,8 +27,13 @@ export default function Home() {
         'addressCountry': 'FR'
       }
     },
-    'description': 'Le festival électronique intergénérationnel et éco-responsable au cœur du parc de la Sèvre à Vertou.',
-    'image': 'https://thegreenfest.fr/logo.png',
+    'description': 'Le festival électronique intergénérationnel et éco-responsable au cœur du parc de la Sèvre à Vertou. Une expérience immersive entre nature et musique.',
+    'image': ['https://thegreenfest.fr/logo.png'],
+    'organizer': {
+      '@type': 'Organization',
+      'name': 'The Green Event',
+      'url': 'https://thegreenfest.fr'
+    },
     'performer': ARTISTS.map(artist => ({
       '@type': 'MusicGroup',
       'name': artist.name,
@@ -37,8 +42,13 @@ export default function Home() {
     'offers': {
       '@type': 'Offer',
       'url': 'https://thegreenfest.fr/boutique',
-      'availability': 'https://schema.org/InStock'
-    }
+      'price': '0',
+      'priceCurrency': 'EUR',
+      'availability': 'https://schema.org/InStock',
+      'validFrom': '2026-03-01'
+    },
+    'eventStatus': 'https://schema.org/EventScheduled',
+    'eventAttendanceMode': 'https://schema.org/OfflineEventAttendanceMode'
   };
 
   return (

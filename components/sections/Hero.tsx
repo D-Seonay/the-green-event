@@ -38,6 +38,7 @@ const Hero = () => {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="text-6xl md:text-9xl font-display font-black text-[#FEF7E0] leading-none mb-4 uppercase tracking-tighter drop-shadow-2xl"
         >
+          <span className="block text-3xl md:text-5xl mb-2 text-leaf opacity-90 tracking-widest">Le Festival</span>
           THE GREEN EVENT
         </motion.h1>
 
@@ -47,7 +48,7 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           className="text-xl md:text-3xl font-display font-bold text-[#00A651] mb-10 tracking-[0.2em] uppercase"
         >
-          L&apos;ÉLECTRO AU GRAND AIR
+          ÉLECTRO & NATURE • VERTOU
         </motion.h2>
 
         {/* Scroll Indicator */}
