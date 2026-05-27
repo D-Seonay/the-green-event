@@ -33,7 +33,7 @@ const SponsorsSection = () => {
             >
               <Image
                 src={sponsor.logoSrc}
-                alt={`Logo ${sponsor.name}`}
+                alt={sponsor.alt}
                 width={160}
                 height={160}
                 className="max-w-full max-h-full object-contain opacity-60 group-hover:opacity-100 transition-all duration-500 grayscale group-hover:grayscale-0"

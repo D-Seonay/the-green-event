@@ -72,7 +72,7 @@ const ArtistCard = ({ artist, index }: ArtistCardProps) => {
             <div className="relative w-full h-40 sm:h-64 overflow-hidden rounded-md">
               <Image
                 src={artist.image}
-                alt={artist.name}
+                alt={artist.imageAlt}
                 fill
                 className="object-cover rounded-md filter grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700 ease-out"
                 sizes="(max-width: 1024px) 50vw, 25vw"

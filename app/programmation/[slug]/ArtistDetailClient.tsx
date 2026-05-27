@@ -83,7 +83,7 @@ const ArtistDetailClient = ({ artist }: Props) => {
             <div className="relative h-full w-full rounded-3xl overflow-hidden border-4 border-cream/10 shadow-2xl">
               <Image
                 src={artist.image}
-                alt={artist.name}
+                alt={artist.imageAlt}
                 fill
                 className="object-cover"
                 priority
@@ -241,7 +241,7 @@ const ArtistDetailClient = ({ artist }: Props) => {
                       >
                         <Image
                           src={image}
-                          alt={`${artist.name} gallery ${idx + 1}`}
+                          alt={`Vue de la galerie pour l'artiste ${artist.name} - image ${idx + 1}`}
                           fill
                           className="object-cover"
                           sizes="(max-width: 768px) 100vw, 50vw"

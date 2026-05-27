@@ -20,6 +20,7 @@ export interface Artist {
   name: string;
   slug: string;
   image: string;
+  imageAlt: string;
   rotation: number;
   bio: string;
   genre: string;
@@ -64,5 +65,6 @@ export interface Sponsor {
   id: number;
   name: string;
   logoSrc: string;
+  alt: string;
   url?: string;
 }

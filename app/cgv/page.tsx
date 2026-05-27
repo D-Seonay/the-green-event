@@ -1,8 +1,15 @@
-'use client';
-
+import { Metadata } from 'next';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import WaveDivider from '@/components/ui/WaveDivider';
+
+export const metadata: Metadata = {
+  title: "Conditions Générales de Vente | The Green Event",
+  description: "Conditions Générales de Vente (CGV) de la boutique The Green Event. Informations sur les produits, prix, paiement et retrait en Click & Collect.",
+  alternates: {
+    canonical: '/cgv',
+  },
+};
 
 export default function CgvPage() {
   return (

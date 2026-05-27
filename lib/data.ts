@@ -56,6 +56,7 @@ export const ARTISTS: Artist[] = [
     name: 'LOOWS',
     slug: 'loows',
     image: '/artists/LOOWS/LOOWS-1.png',
+    imageAlt: 'DJ LOOWS mixant sur des platines vinyles lors d\'une session ensoleillée au Green Fest.',
     rotation: 2.5,
     genre: 'HOUSE',
     timeSlot: '17:15 - 19:00',
@@ -69,6 +70,7 @@ export const ARTISTS: Artist[] = [
     name: 'Artiste Mystère',
     slug: 'mystery-1',
     image: '/placeholder.svg',
+    imageAlt: 'Silhouette d\'un artiste mystère sur fond de végétation luxuriante, prochainement dévoilé.',
     rotation: -3,
     genre: 'À DÉCOUVRIR',
     timeSlot: '',
@@ -80,6 +82,7 @@ export const ARTISTS: Artist[] = [
     name: 'Artiste Mystère',
     slug: 'mystery-2',
     image: '/placeholder.svg',
+    imageAlt: 'Visuel intrigant annonçant un prochain DJ pour le festival The Green Event.',
     rotation: 2,
     genre: 'À DÉCOUVRIR',
     timeSlot: '',
@@ -91,6 +94,7 @@ export const ARTISTS: Artist[] = [
     name: 'Artiste Mystère',
     slug: 'mystery-3',
     image: '/placeholder.svg',
+    imageAlt: 'Cadre naturel et festif attendant l\'annonce d\'un nouvel artiste électro.',
     rotation: 4,
     genre: 'À DÉCOUVRIR',
     timeSlot: '',
@@ -111,7 +115,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   {
     id: '1',
     src: '/img/Photo_1.jpg',
-    alt: 'Ambiance Festival',
+    alt: 'Vue d\'ensemble du festival avec un public joyeux dansant au milieu des arbres du parc de la Sèvre.',
     tilt: -4,
     speed: 0.2,
     depth: 1
@@ -119,7 +123,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   {
     id: '2',
     src: '/img/3.jpg',
-    alt: 'Scène et Lumières',
+    alt: 'Gros plan sur une scène en bois décorée de feuillage, illuminée par des projecteurs aux tons chauds.',
     tilt: 3,
     speed: 0.4,
     depth: 2
@@ -127,7 +131,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   {
     id: '3',
     src: '/img/4.jpg',
-    alt: 'Public en feu',
+    alt: 'Foule de festivaliers levant les bras devant un DJ set énergique sous un ciel de fin d\'après-midi.',
     tilt: -2,
     speed: 0.15,
     depth: 1
@@ -135,7 +139,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   {
     id: '4',
     src: '/img/21062025-IMG_0684.jpg',
-    alt: 'Moment suspendu',
+    alt: 'Détail artistique d\'un élément de décoration suspendu, mêlant matériaux naturels et formes géométriques.',
     tilt: 5,
     speed: 0.3,
     depth: 3
@@ -143,7 +147,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   {
     id: '5',
     src: '/img/image.jpg',
-    alt: 'Nature meeting Electro',
+    alt: 'Installation d\'un Chill Out avec des hamacs et des poufs en toile de jute disposés sous les saules pleureurs.',
     tilt: -3,
     speed: 0.25,
     depth: 2
@@ -151,7 +155,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   {
     id: '6',
     src: '/artists/LOOWS/LOOWS-1.png',
-    alt: 'Performance LOOWS',
+    alt: 'L\'artiste LOOWS concentré derrière ses platines vinyles, entouré d\'une végétation immersive.',
     tilt: 4,
     speed: 0.35,
     depth: 1
@@ -159,10 +163,10 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     ];
 
     export const SPONSORS: Sponsor[] = [
-    { id: 1, name: 'La Soupape', logoSrc: '/partners/laSoupape.png' },
-    { id: 2, name: 'Umami', logoSrc: '/partners/umami.jpeg' },
-    { id: 3, name: 'Sponsor 3', logoSrc: '/placeholder.svg' },
-    { id: 4, name: 'Sponsor 4', logoSrc: '/placeholder.svg' },
-    { id: 5, name: 'Sponsor 5', logoSrc: '/placeholder.svg' },
-    { id: 6, name: 'Sponsor 6', logoSrc: '/placeholder.svg' },
+    { id: 1, name: 'La Soupape', logoSrc: '/partners/laSoupape.png', alt: 'Logo de La Soupape, partenaire local de Vertou.' },
+    { id: 2, name: 'Umami', logoSrc: '/partners/umami.jpeg', alt: 'Logo de Umami, restaurant partenaire engagé.' },
+    { id: 3, name: 'Sponsor 3', logoSrc: '/placeholder.svg', alt: 'Logo d\'un futur partenaire du Green Fest.' },
+    { id: 4, name: 'Sponsor 4', logoSrc: '/placeholder.svg', alt: 'Emplacement pour le logo d\'un partenaire éco-responsable.' },
+    { id: 5, name: 'Sponsor 5', logoSrc: '/placeholder.svg', alt: 'Soutien officiel du festival The Green Event.' },
+    { id: 6, name: 'Sponsor 6', logoSrc: '/placeholder.svg', alt: 'Partenaire de la scène locale et culturelle.' },
     ];
