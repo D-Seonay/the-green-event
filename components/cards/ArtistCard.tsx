@@ -56,7 +56,10 @@ const ArtistCard = ({ artist, index }: ArtistCardProps) => {
       }}
       viewport={{ once: true, margin: "-50px" }}
     >
-      <Link href={`/programmation/${artist.slug}`}>
+      <Link
+        href={`/programmation/${artist.slug}`}
+        className="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-leaf focus-visible:ring-offset-2 focus-visible:ring-offset-forest rounded-lg transition-all"
+      >
         <motion.div
           whileHover={{ y: -15 }}
           transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}

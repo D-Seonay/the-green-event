@@ -49,7 +49,7 @@ const ProgrammationClient = () => {
                   onClick={showMore}
                   variant="outline"
                   size="lg"
-                  className="bg-cream text-forest hover:bg-cream/90 group"
+                  className="bg-cream text-forest hover:bg-cream/90 group focus-visible:ring-2 focus-visible:ring-leaf focus-visible:ring-offset-2 focus-visible:ring-offset-forest"
                 >
                   VOIR TOUT LE MONDE
                   <ArrowDown className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
