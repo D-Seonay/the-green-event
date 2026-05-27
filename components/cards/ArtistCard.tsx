@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { Artist } from '@/types';
 import { useParallax } from '@/hooks/useParallax';
+import MysteryArtistCard from '@/components/ui/MysteryArtistCard';
 
 interface ArtistCardProps {
   artist: Artist;
@@ -21,6 +22,25 @@ const ArtistCard = ({ artist, index }: ArtistCardProps) => {
 
   // Use a different speed based on index for a more dynamic effect
   const y = useParallax(scrollYProgress, (index % 3) * 5 + 5);
+
+  if (artist.isMystery) {
+    return (
+      <motion.div
+        ref={targetRef}
+        style={{ y }}
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 0.8,
+          delay: index * 0.05,
+          ease: [0.16, 1, 0.3, 1]
+        }}
+        viewport={{ once: true, margin: "-50px" }}
+      >
+        <MysteryArtistCard rotation={artist.rotation} />
+      </motion.div>
+    );
+  }
 
   return (
     <motion.div

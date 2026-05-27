@@ -15,7 +15,7 @@ const ProductDetailPage = () => {
   const productId = Number(params.id);
   const product = PRODUCTS.find(p => p.id === productId);
 
-  if (!product) {
+  if (!product || product.isMystery) {
     notFound();
   }
 

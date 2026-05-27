@@ -41,7 +41,7 @@ const ArtistDetailPage = async ({ params }: Props) => {
   const { slug } = await params;
   const artist = ARTISTS.find((a) => a.slug === slug);
 
-  if (!artist) {
+  if (!artist || artist.isMystery) {
     notFound();
   }
 
