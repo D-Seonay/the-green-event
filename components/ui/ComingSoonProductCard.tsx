@@ -8,6 +8,7 @@ import { cn } from '@/lib/utils';
 
 interface ComingSoonProductCardProps {
   className?: string;
+  rotation?: number;
 }
 
 /**
@@ -16,13 +17,14 @@ interface ComingSoonProductCardProps {
  * A premium "Coming Soon" product card for the shop section.
  * Features a tilted layout, floating animations, and mystery visuals.
  */
-const ComingSoonProductCard = ({ className }: ComingSoonProductCardProps) => {
+const ComingSoonProductCard = ({ className, rotation = -2 }: ComingSoonProductCardProps) => {
   return (
     <motion.div
+      initial={{ rotate: rotation }}
       whileHover={{ scale: 1.05, rotate: 0 }}
       transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
       className={cn(
-        "bg-cream p-3 sm:p-4 rounded-lg shadow-lg transition-all duration-500 hover:shadow-2xl hover:bg-cream/95 overflow-hidden rotate-[-2deg] cursor-default",
+        "bg-cream p-3 sm:p-4 rounded-lg shadow-lg transition-all duration-500 hover:shadow-2xl hover:bg-cream/95 overflow-hidden cursor-default",
         className
       )}
     >

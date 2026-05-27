@@ -613,4 +613,4 @@ const BenevolesClient = () => {
   );
 };
 
-export default BenevolesPage;
+export default BenevolesClient;

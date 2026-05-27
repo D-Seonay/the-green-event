@@ -4,13 +4,17 @@ import { motion } from 'framer-motion';
 import Cube from '@/components/ui/Cube';
 import Leaf from '@/components/ui/Leaf';
 
+interface MysteryArtistCardProps {
+  rotation?: number;
+}
+
 /**
  * MysteryArtistCard Component
  * 
  * A premium placeholder card for artists whose identity hasn't been revealed yet.
  * Features floating elements, a silhouette effect, and smooth Framer Motion animations.
  */
-export default function MysteryArtistCard() {
+export default function MysteryArtistCard({ rotation = 3 }: MysteryArtistCardProps) {
   return (
     <motion.div
       whileHover={{ 
@@ -18,7 +22,7 @@ export default function MysteryArtistCard() {
         rotate: 0,
         transition: { duration: 0.3, ease: "easeOut" }
       }}
-      initial={{ rotate: 3 }}
+      initial={{ rotate: rotation }}
       className="bg-cream p-4 rounded-[2.5rem] shadow-2xl overflow-hidden cursor-help group"
     >
       <div className="relative aspect-[4/5] bg-forest rounded-[2rem] overflow-hidden flex flex-col items-center justify-center border-4 border-forest/10">
