@@ -57,9 +57,7 @@ export interface FloatingElement {
   component: React.ComponentType<IconProps>;
 }
 
-export interface IconProps extends SVGProps<SVGSVGElement> {
-  // You can add any custom props for your icons here if needed
-}
+export type IconProps = SVGProps<SVGSVGElement>;
 
 export interface Sponsor {
   id: number;

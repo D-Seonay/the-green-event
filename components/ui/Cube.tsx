@@ -1,5 +1,4 @@
 import { IconProps } from '@/types';
-import { SVGProps } from 'react';
 
 const Cube = (props: IconProps) => (
   <svg

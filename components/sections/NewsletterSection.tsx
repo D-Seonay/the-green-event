@@ -35,9 +35,10 @@ export default function NewsletterSection() {
       }
 
       setFormState('success');
-    } catch (error: any) {
+    } catch (error: unknown) {
       setFormState('error');
-      setErrorMessage(error.message);
+      const message = error instanceof Error ? error.message : 'Une erreur est survenue.';
+      setErrorMessage(message);
     }
   };
 

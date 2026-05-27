@@ -79,7 +79,7 @@ export default function ProgrammationSection() {
     offset: ["start end", "end start"],
   });
 
-  const smoothProgress = useSpring(scrollYProgress, {
+  useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
     restDelta: 0.001

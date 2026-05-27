@@ -197,7 +197,7 @@ export default function NotFound() {
                   ))}
                 </div>
               ) : (
-                <p className="text-xl opacity-60">Aucun artiste trouvé pour "{searchTerm}"</p>
+                <p className="text-xl opacity-60">Aucun artiste trouvé pour &quot;{searchTerm}&quot;</p>
               )}
             </motion.div>
           )}

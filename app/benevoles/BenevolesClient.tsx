@@ -33,7 +33,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { toast } from "@/components/ui/use-toast";
-import WaveDivider from "@/components/ui/WaveDivider";
 import Cube from "@/components/ui/Cube";
 import Leaf from "@/components/ui/Leaf";
 
@@ -104,7 +103,6 @@ type SubmissionState = "idle" | "submitting" | "success" | "error";
 
 const BenevolesClient = () => {
   const [submissionState, setSubmissionState] = React.useState<SubmissionState>("idle");
-  const [errorMessage, setErrorMessage] = React.useState("");
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -126,7 +124,6 @@ const BenevolesClient = () => {
 
   const onSubmit = async (data: z.infer<typeof FormSchema>) => {
     setSubmissionState("submitting");
-    setErrorMessage("");
     try {
       const response = await fetch("/api/benevoles", {
         method: "POST",
@@ -146,13 +143,13 @@ const BenevolesClient = () => {
         title: "Candidature reçue !",
         description: "Merci pour ton engagement ! On revient vers toi très vite.",
       });
-    } catch (err: any) {
+    } catch (err: unknown) {
       setSubmissionState("error");
-      setErrorMessage(err.message || "Une erreur est survenue.");
+      const message = err instanceof Error ? err.message : "Une erreur est survenue.";
       toast({
         variant: "destructive",
         title: "Erreur lors de la soumission",
-        description: err.message || "Impossible d'envoyer la candidature.",
+        description: message,
       });
     }
   };
@@ -284,7 +281,7 @@ const BenevolesClient = () => {
                     BIENVENUE DANS LA TEAM !
                   </h2>
                   <p className="max-w-xl mx-auto font-body text-lg md:text-xl text-forest/80 leading-relaxed mb-10">
-                    Ta candidature a bien été transmise à notre coordinateur. Un e-mail de confirmation récapitulant tes préférences vient de t'être envoyé !
+                    Ta candidature a bien été transmise à notre coordinateur. Un e-mail de confirmation récapitulant tes préférences vient de t&apos;être envoyé !
                   </p>
 
                   <div className="max-w-md mx-auto bg-forest text-cream p-5 rounded-xl text-left border-2 border-forest shadow-xl mb-10 rotate-0 md:transform md:-rotate-1">

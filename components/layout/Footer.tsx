@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Instagram, Facebook, Twitter, Mail, Send, Loader2, CheckCircle2 } from "lucide-react";
+import { Instagram, Facebook, Mail, Send, Loader2, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import WaveDivider from "@/components/ui/WaveDivider";
@@ -44,9 +44,10 @@ const Footer = () => {
       }
 
       setFormState('success');
-    } catch (error: any) {
+    } catch (error: unknown) {
       setFormState('error');
-      setErrorMessage(error.message);
+      const message = error instanceof Error ? error.message : 'Une erreur est survenue.';
+      setErrorMessage(message);
     }
   };
 

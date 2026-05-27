@@ -77,7 +77,7 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json({ success: true, message: 'Subscription successful' }, { status: 200 });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Error in newsletter API route:", error);
     return NextResponse.json({ error: 'Une erreur inattendue est survenue.' }, { status: 500 });
   }

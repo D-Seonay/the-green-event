@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
+import { motion, useTransform, useReducedMotion, MotionValue } from 'framer-motion';
 import Image from 'next/image';
 import { Maximize2 } from 'lucide-react';
 import { GalleryImage } from '@/types';
@@ -10,7 +10,7 @@ interface CollageImageProps {
   image: GalleryImage;
   onClick: (image: GalleryImage) => void;
   index: number;
-  scrollYProgress: any; // Passing the section scroll progress
+  scrollYProgress: MotionValue<number>; // Passing the section scroll progress
   dragConstraints?: React.RefObject<HTMLElement>;
 }
 

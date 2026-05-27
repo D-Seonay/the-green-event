@@ -165,8 +165,4 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     export const SPONSORS: Sponsor[] = [
     { id: 1, name: 'La Soupape', logoSrc: '/partners/laSoupape.png', alt: 'Logo de La Soupape, partenaire local de Vertou.' },
     { id: 2, name: 'Umami', logoSrc: '/partners/umami.jpeg', alt: 'Logo de Umami, restaurant partenaire engagé.' },
-    { id: 3, name: 'Sponsor 3', logoSrc: '/placeholder.svg', alt: 'Logo d\'un futur partenaire du Green Fest.' },
-    { id: 4, name: 'Sponsor 4', logoSrc: '/placeholder.svg', alt: 'Emplacement pour le logo d\'un partenaire éco-responsable.' },
-    { id: 5, name: 'Sponsor 5', logoSrc: '/placeholder.svg', alt: 'Soutien officiel du festival The Green Event.' },
-    { id: 6, name: 'Sponsor 6', logoSrc: '/placeholder.svg', alt: 'Partenaire de la scène locale et culturelle.' },
     ];

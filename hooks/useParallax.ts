@@ -1,5 +1,4 @@
-import { useScroll, useTransform, MotionValue } from 'framer-motion';
-import { RefObject, useState, useEffect } from 'react';
+import { useTransform, MotionValue } from 'framer-motion';
 import useMediaQuery from '../hooks/use-media-query';
 
 /**
@@ -16,11 +15,13 @@ export function useParallax(
 ): MotionValue<string> {
   const isMobile = useMediaQuery('(max-width: 768px)'); // Tailwind's 'md' breakpoint
 
-  if (isMobile) {
-    return useTransform(scrollYProgress, [0, 1], ['0%', '0%']); // Disable parallax on mobile
-  }
+  const transform = useTransform(
+    scrollYProgress, 
+    [0, 1], 
+    [`${-speed * 2}%`, `${speed * 2}%`]
+  );
 
-  // The y-position will move from -speed% to +speed% of the element's height
-  // as the scrollYProgress goes from 0 to 1.
-  return useTransform(scrollYProgress, [0, 1], [`${-speed * 2}%`, `${speed * 2}%`]);
+  const staticValue = useTransform(scrollYProgress, [0, 1], ['0%', '0%']);
+
+  return isMobile ? staticValue : transform;
 }

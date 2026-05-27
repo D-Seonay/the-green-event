@@ -143,7 +143,7 @@ const InfosSection = () => {
 
             {/* Info Cards Column */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 order-1 lg:order-2">
-              {infos.map((info, index) => (
+              {infos.map((info) => (
                 <motion.div
                   key={info.title}
                   initial={{ opacity: 0, y: 30, rotate: 0 }}
