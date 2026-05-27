@@ -14,7 +14,7 @@ const VolunteerSchema = z.object({
   wish1: z.string(),
   wish2: z.string(),
   wish3: z.string(),
-  motivation: z.string().min(10).max(500),
+  motivation: z.string().max(500).optional(),
 });
 
 const wishLabels: Record<string, string> = {
@@ -103,7 +103,7 @@ export async function POST(request: Request) {
 
           <h3 style="border-bottom: 2px solid #00A651; padding-bottom: 5px; color: #052013; text-transform: uppercase;">4. Motivations</h3>
           <div style="background-color: #f7fafc; padding: 15px; border-radius: 6px; border-left: 4px solid #00A651; font-style: italic; color: #2d3748; white-space: pre-line;">
-            "${data.motivation}"
+            ${data.motivation ? `"${data.motivation}"` : "Aucune motivation renseignée."}
           </div>
         </div>
         <div style="border-top: 1px solid #e2e8f0; padding-top: 15px; text-align: center; color: #a0aec0; font-size: 12px;">

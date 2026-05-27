@@ -60,10 +60,7 @@ const FormSchema = z.object({
   wish1: z.string({ required_error: "Veuillez choisir votre souhait n°1" }),
   wish2: z.string({ required_error: "Veuillez choisir votre souhait n°2" }),
   wish3: z.string({ required_error: "Veuillez choisir votre souhait n°3" }),
-  motivation: z
-    .string()
-    .min(0, "Minimum 0 caractères")
-    .max(500, "Maximum 500 caractères"),
+  motivation: z.string().max(500, "Maximum 500 caractères").optional(),
 });
 
 const FloatingIcon = ({ children, x, y, className }: { children: React.ReactNode, x: number[], y: number[], className: string }) => {
@@ -558,7 +555,7 @@ const BenevolesClient = () => {
                       {/* Motivation */}
                       <div className="space-y-6 md:space-y-8">
                         <h3 className="text-lg md:text-xl font-display font-black uppercase tracking-widest border-b-2 border-forest/10 pb-2 text-[#052013]">
-                          04. Motivation <span className="text-red-500 text-sm">*</span>
+                          04. Motivation
                         </h3>
                         <FormField
                           control={form.control}
