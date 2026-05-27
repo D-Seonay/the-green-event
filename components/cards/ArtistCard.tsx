@@ -76,6 +76,7 @@ const ArtistCard = ({ artist, index }: ArtistCardProps) => {
                 fill
                 className="object-cover rounded-md filter grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700 ease-out"
                 sizes="(max-width: 1024px) 50vw, 25vw"
+                quality={75}
               />
             </div>
             <h3 className="mt-3 sm:mt-4 text-center text-sm sm:text-xl font-display font-black text-forest uppercase tracking-tighter transition-colors group-hover:text-leaf line-clamp-2">
