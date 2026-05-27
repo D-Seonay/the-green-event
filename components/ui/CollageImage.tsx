@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
+import { motion, useTransform, useReducedMotion, MotionValue } from 'framer-motion';
 import Image from 'next/image';
 import { Maximize2 } from 'lucide-react';
 import { GalleryImage } from '@/types';
@@ -10,7 +10,7 @@ interface CollageImageProps {
   image: GalleryImage;
   onClick: (image: GalleryImage) => void;
   index: number;
-  scrollYProgress: any; // Passing the section scroll progress
+  scrollYProgress: MotionValue<number>; // Passing the section scroll progress
   dragConstraints?: React.RefObject<HTMLElement>;
 }
 
@@ -71,7 +71,7 @@ const CollageImage = ({ image, onClick, index, scrollYProgress, dragConstraints 
             alt={image.alt}
             fill
             className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
-            sizes="(max-width: 768px) 50vw, 33vw"
+            sizes="(max-width: 1024px) 50vw, 33vw"
           />
           <div className="absolute inset-0 bg-forest/20 mix-blend-multiply transition-opacity group-hover:opacity-0" />
         </div>

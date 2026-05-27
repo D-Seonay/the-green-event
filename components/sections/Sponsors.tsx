@@ -20,7 +20,7 @@ const SponsorsSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8 md:gap-12 items-center justify-items-center max-w-6xl mx-auto mt-12">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-2 gap-8 md:gap-12 items-center justify-items-center max-w-lg mx-auto mt-12">
           {SPONSORS.map((sponsor, index) => (
             <motion.div
               key={sponsor.id}
@@ -33,7 +33,7 @@ const SponsorsSection = () => {
             >
               <Image
                 src={sponsor.logoSrc}
-                alt={`Logo ${sponsor.name}`}
+                alt={sponsor.alt}
                 width={160}
                 height={160}
                 className="max-w-full max-h-full object-contain opacity-60 group-hover:opacity-100 transition-all duration-500 grayscale group-hover:grayscale-0"

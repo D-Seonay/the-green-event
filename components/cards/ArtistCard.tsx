@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { Artist } from '@/types';
 import { useParallax } from '@/hooks/useParallax';
+import MysteryArtistCard from '@/components/ui/MysteryArtistCard';
 
 interface ArtistCardProps {
   artist: Artist;
@@ -22,6 +23,25 @@ const ArtistCard = ({ artist, index }: ArtistCardProps) => {
   // Use a different speed based on index for a more dynamic effect
   const y = useParallax(scrollYProgress, (index % 3) * 5 + 5);
 
+  if (artist.isMystery) {
+    return (
+      <motion.div
+        ref={targetRef}
+        style={{ y }}
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 0.8,
+          delay: index * 0.05,
+          ease: [0.16, 1, 0.3, 1]
+        }}
+        viewport={{ once: true, margin: "-50px" }}
+      >
+        <MysteryArtistCard rotation={artist.rotation} />
+      </motion.div>
+    );
+  }
+
   return (
     <motion.div
       ref={targetRef}
@@ -36,7 +56,10 @@ const ArtistCard = ({ artist, index }: ArtistCardProps) => {
       }}
       viewport={{ once: true, margin: "-50px" }}
     >
-      <Link href={`/programmation/${artist.slug}`}>
+      <Link
+        href={`/programmation/${artist.slug}`}
+        className="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-leaf focus-visible:ring-offset-2 focus-visible:ring-offset-forest rounded-lg transition-all"
+      >
         <motion.div
           whileHover={{ y: -15 }}
           transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
@@ -49,10 +72,10 @@ const ArtistCard = ({ artist, index }: ArtistCardProps) => {
             <div className="relative w-full h-40 sm:h-64 overflow-hidden rounded-md">
               <Image
                 src={artist.image}
-                alt={artist.name}
+                alt={artist.imageAlt}
                 fill
                 className="object-cover rounded-md filter grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700 ease-out"
-                sizes="(max-width: 768px) 50vw, (max-width: 1200px) 50vw, 33vw"
+                sizes="(max-width: 1024px) 50vw, 25vw"
               />
             </div>
             <h3 className="mt-3 sm:mt-4 text-center text-sm sm:text-xl font-display font-black text-forest uppercase tracking-tighter transition-colors group-hover:text-leaf line-clamp-2">

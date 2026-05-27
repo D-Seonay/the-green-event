@@ -1,8 +1,15 @@
-'use client';
-
+import { Metadata } from 'next';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import WaveDivider from '@/components/ui/WaveDivider';
+
+export const metadata: Metadata = {
+  title: "Mentions Légales | The Green Event",
+  description: "Consultez les mentions légales de The Green Event, festival éco-responsable à Vertou. Informations sur l'association, l'hébergement et la propriété intellectuelle.",
+  alternates: {
+    canonical: '/mentions-legales',
+  },
+};
 
 export default function MentionsLegalesPage() {
   return (

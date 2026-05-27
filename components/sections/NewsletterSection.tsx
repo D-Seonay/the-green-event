@@ -35,9 +35,10 @@ export default function NewsletterSection() {
       }
 
       setFormState('success');
-    } catch (error: any) {
+    } catch (error: unknown) {
       setFormState('error');
-      setErrorMessage(error.message);
+      const message = error instanceof Error ? error.message : 'Une erreur est survenue.';
+      setErrorMessage(message);
     }
   };
 
@@ -78,13 +79,13 @@ export default function NewsletterSection() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Votre adresse email..."
-                className="flex-grow px-6 py-4 rounded-full bg-forest text-cream placeholder:text-cream/70 border-none focus:ring-2 focus:ring-leaf outline-none transition-shadow h-12"
+                className="flex-grow px-6 py-4 rounded-full bg-forest text-cream placeholder:text-cream/90 border-none focus:ring-2 focus:ring-leaf focus-visible:ring-2 focus-visible:ring-leaf focus-visible:ring-offset-2 focus-visible:ring-offset-cream outline-none transition-shadow h-12"
                 disabled={formState === 'loading'}
               />
               <button
                 type="submit"
                 aria-label="S'inscrire à la newsletter"
-                className="px-8 py-4 rounded-full bg-forest text-cream font-bold uppercase tracking-widest hover:bg-leaf transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center h-12"
+                className="px-8 py-4 rounded-full bg-forest text-cream font-bold uppercase tracking-widest hover:bg-leaf transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center h-12 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-leaf focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
                 disabled={formState === 'loading'}
               >
                 {formState === 'loading' ? (

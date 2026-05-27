@@ -170,7 +170,7 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json({ success: true, message: "Candidature envoyée" }, { status: 200 });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Error in volunteers API endpoint:", error);
     return NextResponse.json(
       { error: "Une erreur est survenue lors de l'envoi de la candidature." },

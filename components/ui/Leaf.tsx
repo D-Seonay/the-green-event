@@ -1,5 +1,4 @@
 import { IconProps } from '@/types';
-import { SVGProps } from 'react';
 
 const Leaf = (props: IconProps) => (
   <svg

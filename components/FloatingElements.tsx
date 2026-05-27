@@ -1,8 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { IconProps, FloatingElement as FloatingElementInterface } from '@/types';
-import Cube from './ui/Cube';
-import Leaf from './ui/Leaf';
+import { IconProps } from '@/types';
 
 interface FloatingElementProps {
   className?: string;

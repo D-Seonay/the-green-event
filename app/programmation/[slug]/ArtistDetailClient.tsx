@@ -63,7 +63,7 @@ const ArtistDetailClient = ({ artist }: Props) => {
         >
           <Link
             href="/programmation"
-            className="inline-flex items-center gap-2 text-cream/70 hover:text-leaf transition-colors font-body font-bold group"
+            className="inline-flex items-center gap-2 text-cream/70 hover:text-leaf transition-colors font-body font-bold group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-leaf focus-visible:ring-offset-2 focus-visible:ring-offset-forest rounded-lg px-2 -mx-2"
           >
             <ArrowLeft className="w-5 h-5 transition-transform group-hover:-translate-x-1" />
             RETOUR À LA PROGRAMMATION
@@ -83,7 +83,7 @@ const ArtistDetailClient = ({ artist }: Props) => {
             <div className="relative h-full w-full rounded-3xl overflow-hidden border-4 border-cream/10 shadow-2xl">
               <Image
                 src={artist.image}
-                alt={artist.name}
+                alt={artist.imageAlt}
                 fill
                 className="object-cover"
                 priority
@@ -241,7 +241,7 @@ const ArtistDetailClient = ({ artist }: Props) => {
                       >
                         <Image
                           src={image}
-                          alt={`${artist.name} gallery ${idx + 1}`}
+                          alt={`Vue de la galerie pour l'artiste ${artist.name} - image ${idx + 1}`}
                           fill
                           className="object-cover"
                           sizes="(max-width: 768px) 100vw, 50vw"

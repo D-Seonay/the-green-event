@@ -13,12 +13,14 @@ export interface Product {
   ecoSpecs: string[];
   keywords?: string[];
   seoDescription?: string;
+  isMystery?: boolean;
 }
 
 export interface Artist {
   name: string;
   slug: string;
   image: string;
+  imageAlt: string;
   rotation: number;
   bio: string;
   genre: string;
@@ -31,6 +33,7 @@ export interface Artist {
   };
   keywords?: string[];
   seoDescription?: string;
+  isMystery?: boolean;
 }
 
 export interface GalleryImage {
@@ -54,13 +57,12 @@ export interface FloatingElement {
   component: React.ComponentType<IconProps>;
 }
 
-export interface IconProps extends SVGProps<SVGSVGElement> {
-  // You can add any custom props for your icons here if needed
-}
+export type IconProps = SVGProps<SVGSVGElement>;
 
 export interface Sponsor {
   id: number;
   name: string;
   logoSrc: string;
+  alt: string;
   url?: string;
 }

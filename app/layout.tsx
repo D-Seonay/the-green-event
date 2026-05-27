@@ -7,9 +7,9 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import CookieBanner from "@/components/layout/CookieBanner";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const montserrat = Montserrat({ subsets: ["latin"], variable: "--font-montserrat" });
-const nunito = Nunito({ subsets: ["latin"], variable: "--font-nunito" });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: 'swap' });
+const montserrat = Montserrat({ subsets: ["latin"], variable: "--font-montserrat", display: 'swap' });
+const nunito = Nunito({ subsets: ["latin"], variable: "--font-nunito", display: 'swap' });
 
 export const metadata: Metadata = {
   title: "The Green Event | Festival Électro & Nature à Vertou",

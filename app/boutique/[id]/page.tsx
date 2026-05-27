@@ -15,7 +15,7 @@ const ProductDetailPage = () => {
   const productId = Number(params.id);
   const product = PRODUCTS.find(p => p.id === productId);
 
-  if (!product) {
+  if (!product || product.isMystery) {
     notFound();
   }
 
@@ -55,6 +55,7 @@ const ProductDetailPage = () => {
                   src={product.image}
                   alt={product.name}
                   fill
+                  priority
                   className="object-cover rounded-[4rem] mix-blend-multiply"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />

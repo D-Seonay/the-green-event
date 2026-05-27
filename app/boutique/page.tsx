@@ -5,8 +5,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import WaveDivider from '@/components/ui/WaveDivider';
 import { PRODUCTS } from '@/lib/data';
+import ComingSoonProductCard from '@/components/ui/ComingSoonProductCard';
 
 type Category = 'all' | 'clothes' | 'accessories' | 'goodies';
 
@@ -111,29 +111,33 @@ const BoutiquePage = () => {
                 animate="visible"
                 exit="exit"
                 style={{ rotate: product.rotation }}
-                whileHover={{ scale: 1.05, rotate: 0 }}
+                whileHover={product.isMystery ? {} : { scale: 1.05, rotate: 0 }}
                 transition={{ type: 'spring', stiffness: 300 }}
-                className="bg-[#FEF7E0] rounded-2xl shadow-lg text-[#052013] overflow-hidden group"
+                className={product.isMystery ? "" : "bg-[#FEF7E0] rounded-2xl shadow-lg text-[#052013] overflow-hidden group"}
               >
-                <Link href={`/boutique/${product.id}`} className="block">
-                  <div className="relative w-full h-64 overflow-hidden">
-                    <Image
-                      src={product.image}
-                      alt={product.name}
-                      fill
-                      className="object-cover mix-blend-multiply group-hover:scale-110 transition-transform duration-400"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="font-display text-2xl font-bold uppercase truncate">{product.name}</h3>
-                    <p className="font-body text-3xl font-black text-[#00A651] my-2">{product.price}</p>
-                    <p className="font-body text-sm text-[#052013]/70 mb-4 h-10">{product.description}</p>
-                    <Button asChild className="w-full bg-[#0a3f25] text-white hover:bg-[#00A651] transition-colors font-bold uppercase tracking-wider">
-                      <span>Voir détails</span>
-                    </Button>
-                  </div>
-                </Link>
+                {product.isMystery ? (
+                  <ComingSoonProductCard rotation={product.rotation} />
+                ) : (
+                  <Link href={`/boutique/${product.id}`} className="block">
+                    <div className="relative w-full h-64 overflow-hidden">
+                      <Image
+                        src={product.image}
+                        alt={product.name}
+                        fill
+                        className="object-cover mix-blend-multiply group-hover:scale-110 transition-transform duration-400"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      />
+                    </div>
+                    <div className="p-6">
+                      <h3 className="font-display text-2xl font-bold uppercase truncate">{product.name}</h3>
+                      <p className="font-body text-3xl font-black text-[#00A651] my-2">{product.price}</p>
+                      <p className="font-body text-sm text-[#052013]/70 mb-4 h-10">{product.description}</p>
+                      <Button asChild className="w-full bg-[#0a3f25] text-white hover:bg-[#00A651] transition-colors font-bold uppercase tracking-wider">
+                        <span>Voir détails</span>
+                      </Button>
+                    </div>
+                  </Link>
+                )}
               </motion.div>
             ))}
           </AnimatePresence>

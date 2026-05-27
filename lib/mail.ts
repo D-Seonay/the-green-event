@@ -47,7 +47,7 @@ export async function sendEmail({ to, subject, html }: SendEmailParams) {
 
     console.log(`✅ [Resend Mailer] Email sent successfully! ID: ${data.id}`);
     return { success: true, id: data.id };
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("❌ [Resend Mailer] Failed to send email:", error);
     throw error;
   }

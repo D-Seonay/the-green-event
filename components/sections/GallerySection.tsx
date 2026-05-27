@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { motion, useScroll, useSpring } from 'framer-motion';
 import { GALLERY_IMAGES } from '@/lib/data';
 import CollageImage from '../ui/CollageImage';
 import Lightbox from '../ui/Lightbox';

@@ -3,16 +3,14 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
-  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -62,7 +60,7 @@ const Navbar = () => {
           {/* Logo */}
           <Link
             href="/"
-            className="flex items-center gap-2 md:gap-3"
+            className="flex items-center gap-2 md:gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-leaf focus-visible:ring-offset-2 focus-visible:ring-offset-forest rounded-lg px-2 -mx-2 transition-all"
             onClick={(e) => {
               if (pathname === "/") {
                 e.preventDefault();
@@ -71,7 +69,14 @@ const Navbar = () => {
               setIsMobileMenuOpen(false);
             }}
           >
-            <Image src="/logo.png" alt="The Green Event" width={48} height={48} className="h-10 md:h-12 w-auto border-2 border-cream/20 rounded-full" />
+            <Image 
+              src="/logo.png" 
+              alt="The Green Event" 
+              width={48} 
+              height={48} 
+              priority
+              className="h-10 md:h-12 w-auto border-2 border-cream/20 rounded-full" 
+            />
             <span className="font-display font-black text-cream text-sm md:text-lg tracking-tight hidden sm:block">
               THE GREEN EVENT
             </span>
@@ -84,7 +89,7 @@ const Navbar = () => {
                 key={link.href}
                 href={link.href}
                 onClick={(e) => handleLinkClick(e, link.href, link.isAnchor)}
-                className="text-cream/80 hover:text-cream font-body font-semibold text-sm uppercase tracking-wider transition-colors relative group"
+                className="text-cream/80 hover:text-cream font-body font-semibold text-sm uppercase tracking-wider transition-colors relative group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-leaf focus-visible:ring-offset-2 focus-visible:ring-offset-forest rounded-sm"
               >
                 {link.label}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-leaf transition-all duration-300 group-hover:w-full" />
@@ -94,7 +99,7 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-cream p-2 focus:outline-none rounded-lg bg-white/10 backdrop-blur-sm border border-white/10 z-50"
+            className="md:hidden text-cream p-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-leaf focus-visible:ring-offset-2 focus-visible:ring-offset-forest rounded-lg bg-white/10 backdrop-blur-sm border border-white/10 z-50 transition-all"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
