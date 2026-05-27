@@ -115,7 +115,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   {
     id: '1',
     src: '/img/Photo_1.jpg',
-    alt: 'Vue d\'ensemble du festival avec un public joyeux dansant au milieu des arbres du parc de la Sèvre.',
+    alt: 'Vue d\'ensemble du festival avec un public joyeux dansant au milieu des arbres du parc des Viviers.',
     tilt: -4,
     speed: 0.2,
     depth: 1

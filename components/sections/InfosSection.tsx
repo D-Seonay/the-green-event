@@ -37,7 +37,7 @@ const InfosSection = () => {
       icon: MapPin,
       title: "Lieu",
       detail: "Vertou (44)",
-      subtitle: "Parc de la Sèvre",
+      subtitle: "Parc des Viviers",
       rotation: 3,
       delay: 0.2,
     },
@@ -136,7 +136,7 @@ const InfosSection = () => {
                   transition={{ delay: 0.6 }}
                   className="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-leaf text-cream px-8 py-3 rounded-xl shadow-2xl transform -rotate-1 z-10 font-display font-black text-lg md:text-xl uppercase tracking-wider"
                 >
-                  VERTOU • PARC DE LA SÈVRE
+                  VERTOU • PARC DES VIVIERS
                 </motion.div>
               </div>
             </motion.div>

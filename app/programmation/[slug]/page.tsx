@@ -61,7 +61,7 @@ const ArtistDetailPage = async ({ params }: Props) => {
       'endDate': '2026-07-05T01:00:00+02:00',
       'location': {
         '@type': 'Place',
-        'name': 'Parc de la Sèvre',
+        'name': 'Parc des Viviers',
         'address': {
           '@type': 'PostalAddress',
           'addressLocality': 'Vertou',
