@@ -58,7 +58,7 @@ export async function POST(request: Request) {
         <div style="padding: 20px 0;">
           <p style="font-size: 16px; color: #1a202c; line-height: 1.6;">Bonjour,</p>
           <p style="font-size: 16px; color: #1a202c; line-height: 1.6;">Merci de t'être inscrit à la newsletter de <strong>The Green Event</strong> !</p>
-          <p style="font-size: 16px; color: #1a202c; line-height: 1.6;">Tu seras le premier informé des révélations de la programmation, des tarifs exclusifs et de toutes les actualités éco-responsables de notre édition 2026 au Parc de la Sèvre à Vertou.</p>
+          <p style="font-size: 16px; color: #1a202c; line-height: 1.6;">Tu seras le premier informé des révélations de la programmation, des tarifs exclusifs et de toutes les actualités éco-responsables de notre édition 2026 au Parc des Viviers à Vertou.</p>
           
           <p style="font-size: 16px; color: #1a202c; line-height: 1.6;">Ensemble, faisons vibrer la nature au rythme des musiques électroniques ! 🔊💚</p>
           

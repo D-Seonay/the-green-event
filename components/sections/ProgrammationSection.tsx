@@ -79,7 +79,7 @@ export default function ProgrammationSection() {
     offset: ["start end", "end start"],
   });
 
-  useSpring(scrollYProgress, {
+  const smoothProgress = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
     restDelta: 0.001
@@ -134,7 +134,7 @@ export default function ProgrammationSection() {
           transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           className="mt-32 text-center"
         >
-          <Button asChild variant="outline" size="lg" className="h-16 px-10 text-xl font-display font-black group bg-cream text-forest hover:bg-cream/90 transition-all duration-500 hover:scale-110 border-0 shadow-2xl uppercase tracking-widest focus-visible:ring-2 focus-visible:ring-leaf focus-visible:ring-offset-2 focus-visible:ring-offset-forest">
+          <Button asChild variant="outline" size="lg" className="h-16 px-10 text-lg md:text-xl font-display font-black group bg-cream text-forest hover:bg-cream/90 transition-all duration-500 hover:scale-110 border-0 shadow-2xl uppercase tracking-widest">
             <Link href="/programmation">
               VOIR TOUTE LA PROG
               <ArrowRight className="ml-3 h-6 w-6 transition-transform group-hover:translate-x-2" />

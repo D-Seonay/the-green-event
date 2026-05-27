@@ -39,7 +39,7 @@ const ConceptSection = () => {
             </h2>
             <p className="font-body text-forest/80 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
               The Green Event, c&apos;est bien plus qu&apos;un festival. C&apos;est une expérience unique qui marie
-              les sonorités électroniques avec la beauté naturelle du Parc de la Sèvre à Vertou.
+              les sonorités électroniques avec la beauté naturelle du Parc des Viviers à Vertou.
               Un rendez-vous estival pour tous les amoureux de musique et de nature.
             </p>
           </motion.div>
