@@ -1,20 +1,24 @@
 import { NextResponse } from 'next/server';
+import { z } from 'zod';
 import { sendEmail } from '@/lib/mail';
+
+const NewsletterSchema = z.object({
+  email: z.string().email("Format d'email invalide."),
+});
 
 export async function POST(request: Request) {
   try {
-    const { email } = await request.json();
+    const body = await request.json();
+    const result = NewsletterSchema.safeParse(body);
 
-    if (!email) {
-      return NextResponse.json({ error: 'L\'adresse email est requise.' }, { status: 400 });
+    if (!result.success) {
+      return NextResponse.json(
+        { error: result.error.errors[0].message },
+        { status: 400 }
+      );
     }
 
-    // Basic email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      return NextResponse.json({ error: 'Format d\'email invalide.' }, { status: 400 });
-    }
-
+    const { email } = result.data;
     const adminEmail = process.env.CONTACT_EMAIL || "thegreenevent.44@gmail.com";
 
     // 1. Email notification to the admin
