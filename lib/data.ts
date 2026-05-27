@@ -21,6 +21,7 @@ export const PRODUCTS: Product[] = [
     helloAssoUrl: '',
     category: 'goodies',
     ecoSpecs: ['Bientôt'],
+    isMystery: true,
   },
   {
     id: 2,
@@ -33,6 +34,7 @@ export const PRODUCTS: Product[] = [
     helloAssoUrl: '',
     category: 'goodies',
     ecoSpecs: ['Bientôt'],
+    isMystery: true,
   },
   {
     id: 3,
@@ -45,6 +47,7 @@ export const PRODUCTS: Product[] = [
     helloAssoUrl: '',
     category: 'goodies',
     ecoSpecs: ['Bientôt'],
+    isMystery: true,
   },
 ];
 
@@ -63,34 +66,37 @@ export const ARTISTS: Artist[] = [
     seoDescription: 'Découvrez LOOWS, le DJ House de Vertou, pour une performance vinyle exclusive au Green Event 2026.'
   },
   {
-    name: 'Bientôt disponible',
-    slug: 'bientot-disponible-1',
+    name: 'Artiste Mystère',
+    slug: 'mystery-1',
     image: '/placeholder.svg',
     rotation: -3,
-    genre: 'À VENIR',
+    genre: 'À DÉCOUVRIR',
     timeSlot: '',
     bio: "La suite de la programmation sera dévoilée très prochainement. Restez connectés pour découvrir les prochains artistes qui rejoindront l'affiche de The Green Fest !",
-    socials: {}
+    socials: {},
+    isMystery: true,
   },
   {
-    name: 'Bientôt disponible',
-    slug: 'bientot-disponible-2',
+    name: 'Artiste Mystère',
+    slug: 'mystery-2',
     image: '/placeholder.svg',
     rotation: 2,
-    genre: 'À VENIR',
+    genre: 'À DÉCOUVRIR',
     timeSlot: '',
     bio: "La suite de la programmation sera dévoilée très prochainement. Restez connectés pour découvrir les prochains artistes qui rejoindront l'affiche de The Green Fest !",
-    socials: {}
+    socials: {},
+    isMystery: true,
   },
   {
-    name: 'Bientôt disponible',
-    slug: 'bientot-disponible-3',
+    name: 'Artiste Mystère',
+    slug: 'mystery-3',
     image: '/placeholder.svg',
     rotation: 4,
-    genre: 'À VENIR',
+    genre: 'À DÉCOUVRIR',
     timeSlot: '',
     bio: "La suite de la programmation sera dévoilée très prochainement. Restez connectés pour découvrir les prochains artistes qui rejoindront l'affiche de The Green Fest !",
-    socials: {}
+    socials: {},
+    isMystery: true,
   },
 ];
 

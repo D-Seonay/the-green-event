@@ -13,6 +13,7 @@ export interface Product {
   ecoSpecs: string[];
   keywords?: string[];
   seoDescription?: string;
+  isMystery?: boolean;
 }
 
 export interface Artist {
@@ -31,6 +32,7 @@ export interface Artist {
   };
   keywords?: string[];
   seoDescription?: string;
+  isMystery?: boolean;
 }
 
 export interface GalleryImage {
