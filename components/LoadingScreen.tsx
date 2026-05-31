@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 
@@ -42,6 +42,17 @@ const CubeIcon = ({ className }: { className?: string }) => (
 
 
 const LoadingScreen = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   return (
     <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#0a3f25] overflow-hidden text-[#FEF7E0]">
 
@@ -68,30 +79,31 @@ const LoadingScreen = () => {
         className="absolute -bottom-40 -right-40 w-[800px] h-[800px] bg-[#FEF7E0] rounded-full mix-blend-overlay filter blur-[150px] opacity-15 z-0 pointer-events-none"
       />
 
-      {/* 2. Le Lien Serpentin (Wavy Line) */}
-      <svg className="absolute top-0 left-0 w-full h-full z-0 opacity-50 pointer-events-none" viewBox="0 0 1440 800" fill="none" preserveAspectRatio="none">
-        <motion.path
-          // Une grande courbe de Bézier qui traverse l'écran
-          d="M-100,400 C 300,100 800,700 1500,400"
-          stroke="#FEF7E0"
-          strokeWidth="4"
-          strokeDasharray="10 20" // Pointillés style "couture"
-          initial={{ pathLength: 0, opacity: 0 }}
-          animate={{
-            pathLength: 1,
-            opacity: 1,
-            y: [-15, 15, -15] // Légère ondulation verticale
-          }}
-          transition={{
-            pathLength: { duration: 2, ease: "easeInOut" },
-            opacity: { duration: 1 },
-            y: { duration: 8, repeat: Infinity, ease: "easeInOut" }
-          }}
-        />
-      </svg>
+      {/* 2. Le Lien Serpentin (Wavy Line) - Hidden on mobile for performance */}
+      {!isMobile && (
+        <svg className="absolute top-0 left-0 w-full h-full z-0 opacity-50 pointer-events-none" viewBox="0 0 1440 800" fill="none" preserveAspectRatio="none">
+          <motion.path
+            d="M-100,400 C 300,100 800,700 1500,400"
+            stroke="#FEF7E0"
+            strokeWidth="4"
+            strokeDasharray="10 20"
+            initial={{ pathLength: 0, opacity: 0 }}
+            animate={{
+              pathLength: 1,
+              opacity: 1,
+              y: [-15, 15, -15]
+            }}
+            transition={{
+              pathLength: { duration: 2, ease: "easeInOut" },
+              opacity: { duration: 1 },
+              y: { duration: 8, repeat: Infinity, ease: "easeInOut" }
+            }}
+          />
+        </svg>
+      )}
 
-      {/* 3. Petites Icônes Décoratives Flottantes */}
-      {FLOATING_ICONS.map((icon, index) => (
+      {/* 3. Petites Icônes Décoratives Flottantes - Fewer on mobile */}
+      {(isMobile ? FLOATING_ICONS.slice(0, 2) : FLOATING_ICONS).map((icon, index) => (
         <motion.div
           key={`icon-${index}`}
           className="absolute z-0 text-[#FEF7E0] opacity-60"
@@ -115,15 +127,15 @@ const LoadingScreen = () => {
         </motion.div>
       ))}
 
-      {/* 4. Images des Artistes */}
-      {FLOATING_IMAGES.map((img, index) => (
+      {/* 4. Images des Artistes - Hidden on mobile for faster FCP */}
+      {!isMobile && FLOATING_IMAGES.map((img, index) => (
         <motion.div
           key={`img-${index}`}
           className="absolute z-0 w-32 h-32 md:w-48 md:h-48 rounded-xl overflow-hidden shadow-2xl border-2 border-[#FEF7E0]/20"
           style={{ top: img.top, left: img.left, right: img.right, bottom: img.bottom, rotate: img.rotate }}
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{
-            opacity: 0.3, // Subtil
+            opacity: 0.3,
             scale: 1,
             y: [0, -20, 0],
             rotate: [img.rotate, img.rotate + 5, img.rotate]
@@ -141,7 +153,7 @@ const LoadingScreen = () => {
             alt="Artist Preview"
             fill
             className="object-cover grayscale contrast-125"
-            sizes="(max-width: 768px) 128px, 192px"
+            sizes="192px"
             priority
           />
         </motion.div>
@@ -156,7 +168,7 @@ const LoadingScreen = () => {
           transition={{ duration: 0.8 }}
           className="text-5xl md:text-7xl font-black uppercase tracking-tighter text-[#FEF7E0] drop-shadow-lg"
         >
-          The Green <br /> Event
+          The Green <br /> Fest
         </motion.h1>
 
         <motion.p

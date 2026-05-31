@@ -7,8 +7,12 @@ import CollageImage from '../ui/CollageImage';
 import Lightbox from '../ui/Lightbox';
 import WaveDivider from '../ui/WaveDivider';
 import { GalleryImage } from '@/types';
+import useMediaQuery from '@/hooks/use-media-query';
+import { Button } from '../ui/button';
+import Link from 'next/link';
 
 const GallerySection = () => {
+  const isMobile = useMediaQuery('(max-width: 768px)');
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
   const [zIndices, setZIndices] = useState<Record<string, number>>(
     Object.fromEntries(GALLERY_IMAGES.map(img => [img.id, img.depth]))
@@ -47,6 +51,9 @@ const GallerySection = () => {
     const prevIndex = (currentIndex - 1 + GALLERY_IMAGES.length) % GALLERY_IMAGES.length;
     setSelectedImage(GALLERY_IMAGES[prevIndex]);
   };
+
+  // Filter images for mobile to improve performance (display only first 6)
+  const displayedImages = isMobile ? GALLERY_IMAGES.slice(0, 6) : GALLERY_IMAGES;
 
   return (
     <section ref={sectionRef} id="gallery" className="relative py-24 md:py-40 bg-forest overflow-hidden">
@@ -116,9 +123,9 @@ const GallerySection = () => {
             })}
           </div>
 
-          {/* Mobile Layout (Simple 2-column grid) */}
+          {/* Mobile Layout (Simple 2-column grid, limited images) */}
           <div className="grid grid-cols-2 gap-4 md:hidden">
-            {GALLERY_IMAGES.map((image, index) => (
+            {displayedImages.map((image, index) => (
               <div 
                 key={image.id} 
                 className="relative"
@@ -137,6 +144,14 @@ const GallerySection = () => {
               </div>
             ))}
           </div>
+          
+          {isMobile && GALLERY_IMAGES.length > 6 && (
+            <div className="mt-12 text-center md:hidden">
+              <Button asChild variant="outline" className="border-leaf text-leaf hover:bg-leaf hover:text-white">
+                <Link href="/programmation">Voir plus de souvenirs</Link>
+              </Button>
+            </div>
+          )}
         </div>
       </div>
 

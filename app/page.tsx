@@ -1,11 +1,11 @@
-import dynamic from 'next/dynamic';
 import Hero from '@/components/sections/Hero';
 import ConceptSection from '@/components/sections/ConceptSection';
-import GallerySection from '@/components/sections/GallerySection';
-import ProgrammationSection from '@/components/sections/ProgrammationSection';
-import InfosSection from '@/components/sections/InfosSection';
 import { ARTISTS } from '@/lib/data';
+import dynamic from 'next/dynamic';
 
+const GallerySection = dynamic(() => import('@/components/sections/GallerySection'));
+const ProgrammationSection = dynamic(() => import('@/components/sections/ProgrammationSection'));
+const InfosSection = dynamic(() => import('@/components/sections/InfosSection'));
 const SponsorsSection = dynamic(() => import('@/components/sections/Sponsors'));
 const NewsletterSection = dynamic(() => import('@/components/sections/NewsletterSection'));
 

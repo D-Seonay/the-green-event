@@ -32,7 +32,7 @@ export default function MysteryArtistCard({ rotation = 3 }: MysteryArtistCardPro
         
         {/* Floating Background Elements (Cubes & Leaves) */}
         <motion.div
-          animate={{ 
+          whileInView={{ 
             y: [0, -15, 0],
             rotate: [0, 15, 0],
             scale: [1, 1.1, 1]
@@ -42,13 +42,14 @@ export default function MysteryArtistCard({ rotation = 3 }: MysteryArtistCardPro
             repeat: Infinity,
             ease: "easeInOut"
           }}
+          viewport={{ once: false }}
           className="absolute top-12 left-10 text-leaf/20"
         >
           <Cube className="w-10 h-10" />
         </motion.div>
 
         <motion.div
-          animate={{ 
+          whileInView={{ 
             y: [0, 15, 0],
             rotate: [0, -15, 0],
             scale: [1, 0.9, 1]
@@ -59,6 +60,7 @@ export default function MysteryArtistCard({ rotation = 3 }: MysteryArtistCardPro
             ease: "easeInOut",
             delay: 1
           }}
+          viewport={{ once: false }}
           className="absolute bottom-24 right-10 text-leaf/20"
         >
           <Leaf className="w-12 h-12" />
@@ -67,7 +69,7 @@ export default function MysteryArtistCard({ rotation = 3 }: MysteryArtistCardPro
         {/* Mystery Silhouette with Heavy Blur */}
         <div className="relative z-10">
            <motion.div 
-             animate={{ 
+             whileInView={{ 
                scale: [1, 1.05, 1],
                opacity: [0.3, 0.4, 0.3]
              }}
@@ -76,6 +78,7 @@ export default function MysteryArtistCard({ rotation = 3 }: MysteryArtistCardPro
                repeat: Infinity,
                ease: "easeInOut"
              }}
+             viewport={{ once: false }}
              className="blur-3xl"
            >
              <svg

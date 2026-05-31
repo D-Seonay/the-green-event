@@ -20,10 +20,10 @@ const Hero = () => {
         playsInline
         poster="/logo.png"
         aria-hidden="true"
+        preload="metadata"
         className="absolute inset-0 w-full h-full object-cover z-0"
       >
         <source src="/theGreenEvent.MP4" type="video/mp4" />
-        {/* Placeholder if video fails */}
         <div className="absolute inset-0 bg-[#0a3f25]" />
       </video>
 
