@@ -69,13 +69,13 @@ const Footer = () => {
             >
               <Image
                 src="/logo.png"
-                alt="The Green Fest"
+                alt="The Green EVENT Logo"
                 width={80}
                 height={80}
                 className="h-16 md:h-20 w-auto mx-auto md:mx-0 mb-6"
               />
               <h3 className="font-display font-black text-cream text-2xl md:text-3xl mb-3 tracking-tighter uppercase">
-                THE GREEN FEST
+                THE GREEN EVENT
               </h3>
               <p className="font-body text-cream/90 text-lg max-w-xs mx-auto md:mx-0 leading-relaxed">
                 Le festival électronique au cœur de la nature. Vertou, été 2026.

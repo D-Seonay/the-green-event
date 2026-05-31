@@ -71,14 +71,14 @@ const Navbar = () => {
           >
             <Image 
               src="/logo.png" 
-              alt="The Green Fest" 
+              alt="The Green EVENT Logo" 
               width={48} 
               height={48} 
               priority
               className="h-10 md:h-12 w-auto border-2 border-cream/20 rounded-full" 
             />
             <span className="font-display font-black text-cream text-sm md:text-lg tracking-tight hidden sm:block">
-              THE GREEN FEST
+              THE GREEN EVENT
             </span>
           </Link>
 
