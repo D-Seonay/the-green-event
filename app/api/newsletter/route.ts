@@ -42,7 +42,7 @@ export async function POST(request: Request) {
         html: adminHtml,
       });
     } catch (err) {
-      console.warn("⚠️ Could not send newsletter admin alert email (Resend Sandbox limits may apply):", err);
+      console.warn("⚠️ Could not send newsletter admin alert email (Nodemailer limits may apply):", err);
     }
 
     // 2. Email confirmation to the subscriber
@@ -73,7 +73,7 @@ export async function POST(request: Request) {
         html: subscriberHtml,
       });
     } catch (err) {
-      console.warn("⚠️ Could not send confirmation to subscriber (Resend Sandbox limits may apply):", err);
+      console.warn("⚠️ Could not send confirmation to subscriber (Nodemailer limits may apply):", err);
     }
 
     return NextResponse.json({ success: true, message: 'Subscription successful' }, { status: 200 });

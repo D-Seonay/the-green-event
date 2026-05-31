@@ -120,7 +120,7 @@ export async function POST(request: Request) {
         html: adminHtml,
       });
     } catch (err) {
-      console.warn("⚠️ Could not send admin alert email (Resend Sandbox limits may apply):", err);
+      console.warn("⚠️ Could not send admin alert email (Nodemailer limits may apply):", err);
     }
 
     // 2. Email to the volunteer candidate (acknowledgement)
@@ -166,7 +166,7 @@ export async function POST(request: Request) {
         html: volunteerHtml,
       });
     } catch (err) {
-      console.warn("⚠️ Could not send confirmation to candidate (might be due to Resend Sandbox restrictions):", err);
+      console.warn("⚠️ Could not send confirmation to candidate (might be due to Nodemailer restrictions):", err);
     }
 
     return NextResponse.json({ success: true, message: "Candidature envoyée" }, { status: 200 });

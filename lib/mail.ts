@@ -1,3 +1,5 @@
+import nodemailer from 'nodemailer';
+
 interface SendEmailParams {
   to: string | string[];
   subject: string;
@@ -5,15 +7,15 @@ interface SendEmailParams {
 }
 
 export async function sendEmail({ to, subject, html }: SendEmailParams) {
-  const apiKey = process.env.RESEND_API_KEY;
-  const fromAddress = process.env.EMAIL_FROM || "onboarding@resend.dev";
+  const user = process.env.EMAIL_USER;
+  const pass = process.env.EMAIL_PASS;
 
-  // If there's no API key configured, we run in mock mode
-  if (!apiKey || apiKey === "re_your_api_key_here") {
-    console.warn("⚠️ [Resend Mailer] RESEND_API_KEY is not configured or using placeholder. Running in Mock Mode!");
+  // If there are no credentials configured, we run in mock mode
+  if (!user || !pass || pass === "your_16_character_app_password_here") {
+    console.warn("⚠️ [Nodemailer] EMAIL_USER or EMAIL_PASS is not configured. Running in Mock Mode!");
     console.log("---------------- MOCK EMAIL SENT ----------------");
     console.log(`To: ${Array.isArray(to) ? to.join(", ") : to}`);
-    console.log(`From: ${fromAddress}`);
+    console.log(`From: ${user || "not-configured@gmail.com"}`);
     console.log(`Subject: ${subject}`);
     console.log(`HTML Length: ${html.length} chars`);
     console.log("-------------------------------------------------");
@@ -24,31 +26,30 @@ export async function sendEmail({ to, subject, html }: SendEmailParams) {
   }
 
   try {
-    const res = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${apiKey}`,
-        "Content-Type": "application/json",
+    // 1. Configurer le "transporteur" (la connexion à ton Gmail)
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: user,
+        pass: pass,
       },
-      body: JSON.stringify({
-        from: fromAddress,
-        to: Array.isArray(to) ? to : [to],
-        subject,
-        html,
-      }),
     });
 
-    const data = await res.json();
+    // 2. Préparer l'e-mail
+    const mailOptions = {
+      from: `"The Green Event" <${user}>`, // Expéditeur
+      to: Array.isArray(to) ? to.join(', ') : to,
+      subject: subject,
+      html: html,
+    };
 
-    if (!res.ok) {
-      console.error("❌ [Resend Mailer] Error response from Resend API:", data);
-      throw new Error(data.message || "Failed to send email via Resend");
-    }
+    // 3. Envoyer l'e-mail
+    const info = await transporter.sendMail(mailOptions);
 
-    console.log(`✅ [Resend Mailer] Email sent successfully! ID: ${data.id}`);
-    return { success: true, id: data.id };
+    console.log(`✅ [Nodemailer] Email sent successfully! Message ID: ${info.messageId}`);
+    return { success: true, id: info.messageId };
   } catch (error: unknown) {
-    console.error("❌ [Resend Mailer] Failed to send email:", error);
+    console.error("❌ [Nodemailer] Failed to send email:", error);
     throw error;
   }
 }
