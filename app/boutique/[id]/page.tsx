@@ -28,8 +28,27 @@ const ProductDetailPage = () => {
     }
   };
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    'name': product.name,
+    'description': product.longDescription,
+    'image': product.image.startsWith('http') ? product.image : `https://thegreenfest.fr${product.image}`,
+    'offers': {
+      '@type': 'Offer',
+      'url': `https://thegreenfest.fr/boutique/${product.id}`,
+      'price': product.price.replace(/[^\d.]/g, '') || '0',
+      'priceCurrency': 'EUR',
+      'availability': 'https://schema.org/InStock'
+    }
+  };
+
   return (
     <main className="bg-[#0a3f25] text-[#FEF7E0] min-h-screen pt-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="container mx-auto px-4 py-24 sm:py-32">
         <motion.div
           initial={{ opacity: 0 }}

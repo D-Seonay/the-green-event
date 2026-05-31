@@ -21,6 +21,7 @@ export default function Home() {
       'name': 'Parc de la Sèvre',
       'address': {
         '@type': 'PostalAddress',
+        'streetAddress': 'Boulevard Guichet Serex',
         'addressLocality': 'Vertou',
         'postalCode': '44120',
         'addressRegion': 'Loire-Atlantique',
@@ -28,11 +29,15 @@ export default function Home() {
       }
     },
     'description': 'Le festival électronique intergénérationnel et éco-responsable au cœur du parc de la Sèvre à Vertou. Une expérience immersive entre nature et musique.',
-    'image': ['https://thegreenfest.fr/logo.png'],
+    'image': [
+      'https://thegreenfest.fr/logo.png',
+      'https://thegreenfest.fr/img/Photo_1.jpg'
+    ],
     'organizer': {
       '@type': 'Organization',
       'name': 'The Green Event',
-      'url': 'https://thegreenfest.fr'
+      'url': 'https://thegreenfest.fr',
+      'logo': 'https://thegreenfest.fr/logo.png'
     },
     'performer': ARTISTS.map(artist => ({
       '@type': 'MusicGroup',

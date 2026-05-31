@@ -56,19 +56,46 @@ const ArtistDetailPage = async ({ params }: Props) => {
     'sameAs': Object.values(artist.socials).filter(Boolean),
     'event': {
       '@type': 'Festival',
-      'name': 'The Green Event 2026',
+      'name': 'The Green Fest 2026',
       'startDate': '2026-07-04T14:00:00+02:00',
       'endDate': '2026-07-05T01:00:00+02:00',
+      'eventStatus': 'https://schema.org/EventScheduled',
+      'eventAttendanceMode': 'https://schema.org/OfflineEventAttendanceMode',
       'location': {
         '@type': 'Place',
         'name': 'Parc de la Sèvre',
         'address': {
           '@type': 'PostalAddress',
+          'streetAddress': 'Boulevard Guichet Serex',
           'addressLocality': 'Vertou',
           'postalCode': '44120',
           'addressRegion': 'Loire-Atlantique',
           'addressCountry': 'FR'
         }
+      },
+      'description': 'Le festival électronique intergénérationnel et éco-responsable au cœur du parc de la Sèvre à Vertou. Une expérience immersive entre nature et musique.',
+      'image': [
+        'https://thegreenfest.fr/logo.png',
+        'https://thegreenfest.fr/img/Photo_1.jpg'
+      ],
+      'organizer': {
+        '@type': 'Organization',
+        'name': 'The Green Event',
+        'url': 'https://thegreenfest.fr',
+        'logo': 'https://thegreenfest.fr/logo.png'
+      },
+      'offers': {
+        '@type': 'Offer',
+        'url': 'https://thegreenfest.fr/boutique',
+        'price': '0',
+        'priceCurrency': 'EUR',
+        'availability': 'https://schema.org/InStock',
+        'validFrom': '2026-03-01'
+      },
+      'performer': {
+        '@type': 'MusicGroup',
+        'name': artist.name,
+        'url': `https://thegreenfest.fr/programmation/${slug}`
       }
     }
   };
