@@ -39,7 +39,7 @@ const Hero = () => {
           className="text-6xl md:text-9xl font-display font-black text-[#FEF7E0] leading-none mb-4 uppercase tracking-tighter drop-shadow-2xl"
         >
           <span className="block text-3xl md:text-5xl mb-2 text-leaf opacity-90 tracking-widest">Le Festival</span>
-          THE GREEN EVENT
+          THE GREEN FEST
         </motion.h1>
 
         <motion.h2

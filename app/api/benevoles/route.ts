@@ -131,7 +131,7 @@ export async function POST(request: Request) {
         </div>
         <div style="padding: 20px 0;">
           <p style="font-size: 16px; color: #1a202c; line-height: 1.6;">Salut <strong>${data.firstname}</strong>,</p>
-          <p style="font-size: 16px; color: #1a202c; line-height: 1.6;">Toute l'équipe de <strong>The Green Event</strong> te remercie chaleureusement pour ton intérêt et ta candidature pour rejoindre notre Green Team ! 🌿💚</p>
+          <p style="font-size: 16px; color: #1a202c; line-height: 1.6;">Toute l'équipe de l'association <strong>The Green Event</strong> te remercie chaleureusement pour ton intérêt et ta candidature pour rejoindre la Green Team du festival <strong>The Green Fest</strong> ! 🌿💚</p>
           
           <p style="font-size: 16px; color: #1a202c; line-height: 1.6;">Nous avons bien reçu tes souhaits de missions pour le festival.</p>
           
@@ -150,10 +150,10 @@ export async function POST(request: Request) {
           
           <p style="font-size: 16px; color: #1a202c; line-height: 1.6;">À très vite en pleine nature !</p>
           
-          <p style="font-size: 16px; font-weight: bold; color: #00A651; margin-top: 30px;">L'équipe The Green Event</p>
+          <p style="font-size: 16px; font-weight: bold; color: #00A651; margin-top: 30px;">L'équipe The Green Fest</p>
         </div>
         <div style="border-top: 1px solid #e2e8f0; padding-top: 15px; text-align: center; color: #a0aec0; font-size: 12px;">
-          Vous recevez ce message car vous avez soumis une demande d'inscription bénévole sur le site The Green Event.
+          Vous recevez ce message car vous avez soumis une demande d'inscription bénévole sur le site du festival The Green Fest.
         </div>
       </div>
     `;
@@ -162,7 +162,7 @@ export async function POST(request: Request) {
     try {
       await sendEmail({
         to: data.email,
-        subject: `[The Green Event] Confirmation de ta candidature bénévole 🌿`,
+        subject: `[The Green Fest] Confirmation de ta candidature bénévole 🌿`,
         html: volunteerHtml,
       });
     } catch (err) {

@@ -58,7 +58,7 @@ const HeroSection = () => {
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           className="text-5xl md:text-8xl font-display font-black text-cream drop-shadow-lg leading-tight"
         >
-          THE GREEN EVENT
+          THE GREEN FEST
         </motion.h1>
         <motion.h2
           initial={{ opacity: 0, y: 20 }}

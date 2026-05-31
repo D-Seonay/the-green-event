@@ -4,11 +4,8 @@ import { Button } from '@/components/ui/button';
 import WaveDivider from '@/components/ui/WaveDivider';
 
 export const metadata: Metadata = {
-  title: "Mentions Légales | The Green Event",
-  description: "Consultez les mentions légales de The Green Event, festival éco-responsable à Vertou. Informations sur l'association, l'hébergement et la propriété intellectuelle.",
-  alternates: {
-    canonical: '/mentions-legales',
-  },
+  title: "Mentions Légales | The Green Fest",
+  description: "Consultez les mentions légales de The Green Fest, festival éco-responsable à Vertou. Informations sur l'association, l'hébergement et la propriété intellectuelle.",
 };
 
 export default function MentionsLegalesPage() {
@@ -38,7 +35,7 @@ export default function MentionsLegalesPage() {
 
           <h2 className="text-leaf text-3xl font-display font-bold mb-4 mt-8">2. Hébergement</h2>
           <p>
-            Le site internet &quot;The Green Event&quot; est hébergé par Vercel Inc., dont le siège social est situé :
+            Le site internet &quot;thegreenfest.fr&quot; est hébergé par Vercel Inc., dont le siège social est situé :
           </p>
           <p>
             340 S Lemon Ave #4133<br />
@@ -48,7 +45,7 @@ export default function MentionsLegalesPage() {
 
           <h2 className="text-leaf text-3xl font-display font-bold mb-4 mt-8">3. Propriété intellectuelle</h2>
           <p>
-            L&apos;intégralité du site &quot;The Green Event&quot;, y compris la conception, les textes, les images, les éléments graphiques, le logo et les animations, sont la propriété exclusive de l&apos;association &quot;The Green Event&quot;. Toute reproduction, représentation, modification, publication, adaptation de tout ou partie des éléments du site, quel que soit le moyen ou le procédé utilisé, est interdite, sauf autorisation écrite préalable de l&apos;association.
+            L&apos;intégralité du site &quot;thegreenfest.fr&quot;, y compris la conception, les textes, les images, les éléments graphic, le logo et les animations, sont la propriété exclusive de l&apos;association &quot;The Green Event&quot;. Toute reproduction, représentation, modification, publication, adaptation de tout ou partie des éléments du site, quel que soit le moyen ou le procédé utilisé, est interdite, sauf autorisation écrite préalable de l&apos;association.
           </p>
 
           <h2 className="text-leaf text-3xl font-display font-bold mb-4 mt-8">4. Politique de confidentialité (RGPD)</h2>

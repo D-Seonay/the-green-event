@@ -14,15 +14,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!artist) {
     return {
-      title: "Artiste non trouvé | The Green Event",
+      title: "Artiste non trouvé | The Green Fest",
     };
   }
 
   return {
-    title: `${artist.name} | Programmation The Green Event 2026`,
-    description: `Découvrez ${artist.name} au Green Event 2026. ${artist.bio.substring(0, 150)}...`,
+    title: `${artist.name} | Programmation The Green Fest 2026`,
+    description: `Découvrez ${artist.name} au Green Fest 2026. ${artist.bio.substring(0, 150)}...`,
     openGraph: {
-      title: `${artist.name} | The Green Event`,
+      title: `${artist.name} | The Green Fest`,
       description: artist.bio.substring(0, 160),
       url: `https://thegreenfest.fr/programmation/${slug}`,
       images: [

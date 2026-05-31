@@ -12,9 +12,9 @@ const montserrat = Montserrat({ subsets: ["latin"], variable: "--font-montserrat
 const nunito = Nunito({ subsets: ["latin"], variable: "--font-nunito", display: 'swap' });
 
 export const metadata: Metadata = {
-  title: "The Green Event | Festival Électro & Nature à Vertou",
+  title: "The Green Fest | Festival Électro & Nature à Vertou",
   description: "Le festival électronique intergénérationnel et éco-responsable au cœur du parc de la Sèvre à Vertou. Musique, nature et partage.",
-  keywords: ["Festival", "Électro", "Vertou", "Musique", "Nature", "Éco-responsable", "Nantes", "Parc de la Sèvre", "The Green Event"],
+  keywords: ["Festival", "The Green Fest", "Électro", "Vertou", "Musique", "Nature", "Éco-responsable", "Nantes", "Parc de la Sèvre", "The Green Event"],
   authors: [{ name: "The Green Event" }],
   creator: "Seonay",
   metadataBase: new URL('https://thegreenfest.fr'),
@@ -27,10 +27,10 @@ export const metadata: Metadata = {
   },
   manifest: '/manifest.json',
   openGraph: {
-    title: "The Green Event | Festival Électro & Nature à Vertou",
+    title: "The Green Fest | Festival Électro & Nature à Vertou",
     description: "Le festival électronique intergénérationnel et éco-responsable au cœur du parc de la Sèvre à Vertou.",
     url: 'https://thegreenfest.fr',
-    siteName: 'The Green Event',
+    siteName: 'The Green Fest',
     locale: 'fr_FR',
     type: 'website',
     images: [
@@ -38,13 +38,13 @@ export const metadata: Metadata = {
         url: '/logo.png',
         width: 1200,
         height: 630,
-        alt: 'The Green Event Logo',
+        alt: 'The Green Fest Logo',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: "The Green Event | Festival Électro & Nature à Vertou",
+    title: "The Green Fest | Festival Électro & Nature à Vertou",
     description: "Le festival électronique intergénérationnel et éco-responsable au cœur du parc de la Sèvre à Vertou.",
     images: ['/logo.png'],
   },

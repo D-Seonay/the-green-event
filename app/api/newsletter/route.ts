@@ -24,13 +24,13 @@ export async function POST(request: Request) {
           <h1 style="color: #FEF7E0; margin: 0; font-size: 24px; font-weight: 800; text-transform: uppercase;">Nouvelle inscription Newsletter</h1>
         </div>
         <div style="padding: 20px 0;">
-          <p style="font-size: 16px; color: #1a202c; line-height: 1.5;">Un nouvel utilisateur s'est inscrit à la newsletter de <strong>The Green Event</strong> :</p>
+          <p style="font-size: 16px; color: #1a202c; line-height: 1.5;">Un nouvel utilisateur s'est inscrit à la newsletter du festival <strong>The Green Fest</strong> (géré par l'association <strong>The Green Event</strong>) :</p>
           <p style="font-size: 18px; color: #00A651; font-weight: bold; background-color: #f7fafc; padding: 15px; border-radius: 6px; border-left: 4px solid #00A651; text-align: center;">
             <a href="mailto:${email}" style="color: #00A651; text-decoration: none;">${email}</a>
           </p>
         </div>
         <div style="border-top: 1px solid #e2e8f0; padding-top: 15px; text-align: center; color: #a0aec0; font-size: 12px;">
-          Ce message a été envoyé automatiquement depuis le site The Green Event.
+          Ce message a été envoyé automatiquement depuis le site The Green Fest.
         </div>
       </div>
     `;
@@ -53,15 +53,15 @@ export async function POST(request: Request) {
         </div>
         <div style="padding: 20px 0;">
           <p style="font-size: 16px; color: #1a202c; line-height: 1.6;">Bonjour,</p>
-          <p style="font-size: 16px; color: #1a202c; line-height: 1.6;">Merci de t'être inscrit à la newsletter de <strong>The Green Event</strong> !</p>
+          <p style="font-size: 16px; color: #1a202c; line-height: 1.6;">Merci de t'être inscrit à la newsletter du festival <strong>The Green Fest</strong> !</p>
           <p style="font-size: 16px; color: #1a202c; line-height: 1.6;">Tu seras le premier informé des révélations de la programmation, des tarifs exclusifs et de toutes les actualités éco-responsables de notre édition 2026 au Parc de la Sèvre à Vertou.</p>
           
           <p style="font-size: 16px; color: #1a202c; line-height: 1.6;">Ensemble, faisons vibrer la nature au rythme des musiques électroniques ! 🔊💚</p>
           
-          <p style="font-size: 16px; font-weight: bold; color: #00A651; margin-top: 30px;">L'équipe The Green Event</p>
+          <p style="font-size: 16px; font-weight: bold; color: #00A651; margin-top: 30px;">L'équipe The Green Fest</p>
         </div>
         <div style="border-top: 1px solid #e2e8f0; padding-top: 15px; text-align: center; color: #a0aec0; font-size: 12px;">
-          Vous recevez ce message car vous vous êtes inscrit à la newsletter sur le site The Green Event.
+          Vous recevez ce message car vous vous êtes inscrit à la newsletter sur le site thegreenfest.fr.
         </div>
       </div>
     `;
@@ -69,7 +69,7 @@ export async function POST(request: Request) {
     try {
       await sendEmail({
         to: email,
-        subject: `[The Green Event] Inscription validée ! 🌿`,
+        subject: `[The Green Fest] Inscription validée ! 🌿`,
         html: subscriberHtml,
       });
     } catch (err) {

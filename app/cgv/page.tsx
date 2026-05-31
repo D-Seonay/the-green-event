@@ -4,11 +4,8 @@ import { Button } from '@/components/ui/button';
 import WaveDivider from '@/components/ui/WaveDivider';
 
 export const metadata: Metadata = {
-  title: "Conditions Générales de Vente | The Green Event",
-  description: "Conditions Générales de Vente (CGV) de la boutique The Green Event. Informations sur les produits, prix, paiement et retrait en Click & Collect.",
-  alternates: {
-    canonical: '/cgv',
-  },
+  title: "Conditions Générales de Vente | The Green Fest",
+  description: "Conditions Générales de Vente (CGV) de la boutique The Green Fest. Informations sur les produits, prix, paiement et retrait en Click & Collect.",
 };
 
 export default function CgvPage() {
@@ -57,7 +54,7 @@ export default function CgvPage() {
           </p>
           <ul>
             <li>
-              <strong>Retrait pendant le festival :</strong> Les commandes pourront être retirées au stand &quot;Boutique&quot; de l&apos;événement &quot;The Green Event&quot; aux dates et heures d&apos;ouverture du festival.
+              <strong>Retrait pendant le festival :</strong> Les commandes pourront être retirées au stand &quot;Boutique&quot; de l&apos;événement &quot;The Green Fest&quot; aux dates et heures d&apos;ouverture du festival.
             </li>
             <li>
               <strong>Retrait au siège de l&apos;association :</strong> En dehors des périodes de festival, le retrait des commandes pourra s&apos;effectuer sur rendez-vous au siège de l&apos;association à 44120 Vertou.

@@ -213,7 +213,7 @@ const BenevolesClient = () => {
                   Vivre le festival autrement, faire des rencontres sincères, partager des moments uniques avec d&apos;autres bénévoles et des passionné·es de culture et d&apos;écologie venu·es de tous horizons.
                 </li>
                 <li>
-                  Porter les valeurs de <span className="font-bold text-[#052013]">THE GREEN EVENT</span> et contribuer concrètement à un projet culturel engagé pour l&apos;environnement.
+                  Participer à la réussite de <span className="font-bold text-[#052013]">THE GREEN FEST</span> et contribuer concrètement à un projet culturel engagé pour l&apos;environnement.
                 </li>
               </ul>
             </div>

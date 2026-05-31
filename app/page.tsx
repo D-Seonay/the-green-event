@@ -13,7 +13,7 @@ export default function Home() {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Festival',
-    'name': 'The Green Event 2026',
+    'name': 'The Green Fest 2026',
     'startDate': '2026-07-04T14:00:00+02:00',
     'endDate': '2026-07-05T01:00:00+02:00',
     'location': {
