@@ -69,7 +69,7 @@ export default function CgvPage() {
             Conformément aux dispositions légales en vigueur (article L221-18 du Code de la Consommation), l&apos;acheteur dispose d&apos;un délai de quatorze (14) jours à compter de la réception des produits pour exercer son droit de rétractation, sans avoir à justifier de motifs ni à payer de pénalités.
           </p>
           <p>
-            Pour exercer ce droit, l&apos;acheteur doit informer l&apos;association de sa décision au moyen d&apos;une déclaration dénuée d&apos;ambiguïté (par email à &lt;a href=&quot;mailto:thegreenevent.44@gmail.com&quot; className=&quot;text-leaf hover:underline&quot;&gt;thegreenevent.44@gmail.com&lt;/a&gt;). Les produits doivent être retournés dans leur état d&apos;origine et complets. Les frais de retour sont à la charge de l&apos;acheteur. Le remboursement sera effectué dans un délai de quatorze (14) jours à compter de la réception des produits retournés.
+            Pour exercer ce droit, l&apos;acheteur doit informer l&apos;association de sa décision au moyen d&apos;une déclaration dénuée d&apos;ambiguïté (par email à &lt;a href=&quot;mailto:thegreenevent.44@gmail.com&quot; className=&quot;text-leaf hover:underline&quot;&gt;thegreenevent.44@gmail.com&lt;/a&gt;). Les produits doivent être retournés dans leur état d&apos;origine et complets. Les frais de retour sont à la charge de l&apos;acheteur. Le retrait peut également se faire sur rendez-vous au siège de l&apos;association : <strong>36 rue des jonquilles, 44120 Vertou</strong>. Le remboursement sera effectué dans un délai de quatorze (14) jours à compter de la réception des produits retournés.
           </p>
 
           <h2 className="text-leaf text-3xl font-display font-bold mb-4 mt-8">7. Responsabilité</h2>
