@@ -71,7 +71,7 @@ const Navbar = () => {
           >
             <Image 
               src="/logo.png" 
-              alt="The Green EVENT Logo" 
+              alt="The Green Event Logo" 
               width={48} 
               height={48} 
               priority

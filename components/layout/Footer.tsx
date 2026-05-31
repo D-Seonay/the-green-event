@@ -69,7 +69,7 @@ const Footer = () => {
             >
               <Image
                 src="/logo.png"
-                alt="The Green EVENT Logo"
+                alt="The Green Event Logo"
                 width={80}
                 height={80}
                 className="h-16 md:h-20 w-auto mx-auto md:mx-0 mb-6"
