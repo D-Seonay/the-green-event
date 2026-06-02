@@ -101,15 +101,15 @@ END:VCALENDAR`;
                 M&apos;en souvenir
               </button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="bg-cream border-2 border-forest/10 rounded-xl p-2 min-w-[200px] z-50">
+            <DropdownMenuContent className="bg-[#FEF7E0] border-2 border-forest/20 rounded-xl p-2 min-w-[200px] z-50">
               <DropdownMenuItem 
-                className="font-display font-bold uppercase tracking-tight p-3 cursor-pointer hover:bg-leaf hover:text-cream rounded-lg transition-colors focus:bg-leaf focus:text-cream"
+                className="font-display font-bold uppercase tracking-tight p-3 cursor-pointer text-forest hover:bg-leaf hover:text-cream rounded-lg transition-colors focus:bg-leaf focus:text-cream"
                 onClick={() => window.open(googleCalendarUrl, '_blank')}
               >
                 Google Calendar
               </DropdownMenuItem>
               <DropdownMenuItem 
-                className="font-display font-bold uppercase tracking-tight p-3 cursor-pointer hover:bg-leaf hover:text-cream rounded-lg transition-colors focus:bg-leaf focus:text-cream"
+                className="font-display font-bold uppercase tracking-tight p-3 cursor-pointer text-forest hover:bg-leaf hover:text-cream rounded-lg transition-colors focus:bg-leaf focus:text-cream"
                 onClick={downloadICal}
               >
                 Apple / Outlook (.ics)
