@@ -53,18 +53,18 @@ export const PRODUCTS: Product[] = [
 
 export const ARTISTS: Artist[] = [
   {
-    name: 'LOOWS',
-    slug: 'loows',
-    image: '/artists/LOOWS/LOOWS-1.png',
-    imageAlt: 'DJ LOOWS mixant sur des platines vinyles lors d\'une session ensoleillée au Green Fest.',
+    name: 'BLACK ANGER',
+    slug: 'black-anger',
+    image: '/placeholder.svg',
+    imageAlt: 'Le groupe Black Anger en session pop-rock.',
     rotation: 2.5,
-    genre: 'HOUSE',
+    genre: 'POP-ROCK',
     timeSlot: '17:15 - 19:00',
-    bio: "LOOWS, jeune DJ passionné de vinyles originaire de Vertou, fera son grand retour pour la deuxième édition de The Green Fest. Amoureux des sons dansants et des rythmes envoûtants, il vous embarquera dans un voyage musical vibrant, où les sonorités house réchaufferont l'atmosphère et feront rayonner l'esprit de l'été. Avec une sélection soigneusement élaborée, mêlant classiques intemporels et pépites ensoleillées, LOOWS promet une expérience immersive et festive, idéale pour célébrer la musique et la convivialité.",
-    gallery: ['/artists/LOOWS/LOOWS-1.png', '/artists/LOOWS/LOOWS-2.png'],
+    bio: "Black Anger est un groupe de rock amateur composé de deux guitaristes, d'un bassiste et d'un batteur. Sans prétention, le groupe reprend avec plaisir des classiques pop-rock français et anglais, dans une ambiance conviviale et énergique. Entre riffs entraînants et bonne humeur, Black Anger partage avant tout la passion de la musique et le plaisir de jouer ensemble.",
+    gallery: [],
     socials: {},
-    keywords: ['LOOWS', 'House Music', 'DJ Vertou', 'Vinyl'],
-    seoDescription: 'Découvrez LOOWS, le DJ House de Vertou, pour une performance vinyle exclusive au Green Event 2026.'
+    keywords: ['Black Anger', 'Rock', 'Pop-Rock', 'Groupe Amateur'],
+    seoDescription: 'Découvrez Black Anger, groupe de pop-rock amateur, en concert au Green Fest 2026.'
   },
   {
     name: 'Artiste Mystère',
@@ -155,7 +155,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   {
     id: '6',
     src: '/artists/LOOWS/LOOWS-1.png',
-    alt: 'L\'artiste LOOWS concentré derrière ses platines vinyles, entouré d\'une végétation immersive.',
+    alt: 'Ambiance festive et végétale lors d\'un concert au Green Fest.',
     tilt: 4,
     speed: 0.35,
     depth: 1
