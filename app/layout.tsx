@@ -13,8 +13,8 @@ const nunito = Nunito({ subsets: ["latin"], variable: "--font-nunito", display: 
 
 export const metadata: Metadata = {
   title: "The Green Fest | Festival Électro & Nature à Vertou",
-  Le festival électronique intergénérationnel et éco-responsable au cœur du parc des Viviers à Vertou. Musique, nature et partage.",
-      keywords: ["Festival", "The Green Fest", "Électro", "Vertou", "Musique", "Nature", "Éco-responsable", "Nantes", "Parc des Viviers", "The Green Event"],
+  description: "Le festival électronique intergénérationnel et éco-responsable au cœur du parc des Viviers à Vertou. Musique, nature et partage.",
+  keywords: ["Festival", "The Green Fest", "Électro", "Vertou", "Musique", "Nature", "Éco-responsable", "Nantes", "Parc des Viviers", "The Green Event"],
   authors: [{ name: "The Green Event" }],
   creator: "Seonay",
   metadataBase: new URL('https://thegreenfest.fr'),
