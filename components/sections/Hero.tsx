@@ -2,13 +2,51 @@
 
 import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowDown } from 'lucide-react';
+import { ArrowDown, Calendar, Ticket } from 'lucide-react';
 import WaveDivider from '../ui/WaveDivider';
+import Link from 'next/link';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const Hero = () => {
   const { scrollY } = useScroll();
   const opacity = useTransform(scrollY, [0, 100], [1, 0]);
   const yTranslate = useTransform(scrollY, [0, 100], [0, 20]);
+
+  const eventDetails = {
+    title: "The Green Fest 2026",
+    description: "Festival électronique intergénérationnel et éco-responsable au cœur du parc des Viviers à Vertou.",
+    location: "Parc des Viviers, Boulevard Guichet Serex, 44120 Vertou",
+    startTime: "20260704T140000Z",
+    endTime: "20260705T010000Z",
+  };
+
+  const googleCalendarUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventDetails.title)}&details=${encodeURIComponent(eventDetails.description)}&location=${encodeURIComponent(eventDetails.location)}&dates=${eventDetails.startTime}/${eventDetails.endTime}`;
+
+  const iCalContent = `BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+DTSTART:${eventDetails.startTime}
+DTEND:${eventDetails.endTime}
+SUMMARY:${eventDetails.title}
+DESCRIPTION:${eventDetails.description}
+LOCATION:${eventDetails.location}
+END:VEVENT
+END:VCALENDAR`;
+
+  const downloadICal = () => {
+    const blob = new Blob([iCalContent], { type: 'text/calendar;charset=utf-8' });
+    const link = document.createElement('a');
+    link.href = window.URL.createObjectURL(blob);
+    link.setAttribute('download', 'the-green-fest.ics');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <section className="relative h-screen w-full overflow-hidden bg-[#0a3f25]">
@@ -46,10 +84,47 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="text-xl md:text-3xl font-display font-bold text-[#00A651] mb-10 tracking-[0.2em] uppercase"
+          className="text-xl md:text-3xl font-display font-bold text-[#00A651] mb-12 tracking-[0.2em] uppercase"
         >
-          ÉLECTRO & NATURE • VERTOU
+          4 JUILLET 2026 • VERTOU
         </motion.h2>
+
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="flex flex-col sm:flex-row gap-4 items-center justify-center z-30"
+        >
+          <Link href="/boutique" className="group">
+            <button className="bg-leaf hover:bg-leaf/90 text-cream px-8 py-4 rounded-xl font-display font-black uppercase tracking-wider flex items-center gap-3 shadow-xl transition-all hover:scale-105 active:scale-95">
+              <Ticket className="w-5 h-5 group-hover:rotate-12 transition-transform" />
+              Billetterie
+            </button>
+          </Link>
+
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <button className="bg-cream hover:bg-cream/90 text-forest px-8 py-4 rounded-xl font-display font-black uppercase tracking-wider flex items-center gap-3 shadow-xl transition-all hover:scale-105 active:scale-95 border-2 border-forest/10">
+                <Calendar className="w-5 h-5" />
+                M&apos;en souvenir
+              </button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="bg-cream border-2 border-forest/10 rounded-xl p-2 min-w-[200px] z-50">
+              <DropdownMenuItem 
+                className="font-display font-bold uppercase tracking-tight p-3 cursor-pointer hover:bg-leaf hover:text-cream rounded-lg transition-colors focus:bg-leaf focus:text-cream"
+                onClick={() => window.open(googleCalendarUrl, '_blank')}
+              >
+                Google Calendar
+              </DropdownMenuItem>
+              <DropdownMenuItem 
+                className="font-display font-bold uppercase tracking-tight p-3 cursor-pointer hover:bg-leaf hover:text-cream rounded-lg transition-colors focus:bg-leaf focus:text-cream"
+                onClick={downloadICal}
+              >
+                Apple / Outlook (.ics)
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </motion.div>
 
         {/* Scroll Indicator */}
         <motion.div

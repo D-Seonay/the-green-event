@@ -56,7 +56,7 @@ git commit -m "data: add SEO fields to artists"
 // app/layout.tsx
 export const metadata: Metadata = {
   // ... existing
-  keywords: ["Festival", "Électro", "Vertou", "Musique", "Nature", "Éco-responsable", "Nantes", "Parc de la Sèvre", "The Green Event"],
+  keywords: ["Festival", "Électro", "Vertou", "Musique", "Nature", "Éco-responsable", "Nantes", "Parc des Viviers", "The Green Event"],
   icons: {
     icon: '/favicon.ico',
     apple: '/logo.png', // Ideally apple-touch-icon.png

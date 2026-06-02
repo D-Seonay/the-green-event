@@ -18,7 +18,7 @@ export default function Home() {
     'endDate': '2026-07-05T01:00:00+02:00',
     'location': {
       '@type': 'Place',
-      'name': 'Parc de la Sèvre',
+      'name': 'Parc des Viviers',
       'address': {
         '@type': 'PostalAddress',
         'streetAddress': 'Boulevard Guichet Serex',
@@ -28,7 +28,7 @@ export default function Home() {
         'addressCountry': 'FR'
       }
     },
-    'description': 'Le festival électronique intergénérationnel et éco-responsable au cœur du parc de la Sèvre à Vertou. Une expérience immersive entre nature et musique.',
+    'description': 'Le festival électronique intergénérationnel et éco-responsable au cœur du parc des Viviers à Vertou. Une expérience immersive entre nature et musique.',
     'image': [
       'https://thegreenfest.fr/logo.png',
       'https://thegreenfest.fr/img/Photo_1.jpg'

@@ -13,8 +13,8 @@ const nunito = Nunito({ subsets: ["latin"], variable: "--font-nunito", display: 
 
 export const metadata: Metadata = {
   title: "The Green Fest | Festival Électro & Nature à Vertou",
-  description: "Le festival électronique intergénérationnel et éco-responsable au cœur du parc de la Sèvre à Vertou. Musique, nature et partage.",
-  keywords: ["Festival", "The Green Fest", "Électro", "Vertou", "Musique", "Nature", "Éco-responsable", "Nantes", "Parc de la Sèvre", "The Green Event"],
+  Le festival électronique intergénérationnel et éco-responsable au cœur du parc des Viviers à Vertou. Musique, nature et partage.",
+      keywords: ["Festival", "The Green Fest", "Électro", "Vertou", "Musique", "Nature", "Éco-responsable", "Nantes", "Parc des Viviers", "The Green Event"],
   authors: [{ name: "The Green Event" }],
   creator: "Seonay",
   metadataBase: new URL('https://thegreenfest.fr'),
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   manifest: '/manifest.json',
   openGraph: {
     title: "The Green Fest | Festival Électro & Nature à Vertou",
-    description: "Le festival électronique intergénérationnel et éco-responsable au cœur du parc de la Sèvre à Vertou.",
+    description: "Le festival électronique intergénérationnel et éco-responsable au cœur du parc des Viviers à Vertou.",
     url: 'https://thegreenfest.fr',
     siteName: 'The Green Fest',
     locale: 'fr_FR',
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: "The Green Fest | Festival Électro & Nature à Vertou",
-    description: "Le festival électronique intergénérationnel et éco-responsable au cœur du parc de la Sèvre à Vertou.",
+    description: "Le festival électronique intergénérationnel et éco-responsable au cœur du parc des Viviers à Vertou.",
     images: ['/logo.png'],
   },
   robots: {
