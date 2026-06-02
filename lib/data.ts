@@ -61,7 +61,7 @@ export const ARTISTS: Artist[] = [
     genre: 'POP-ROCK',
     timeSlot: '17:15 - 19:00',
     bio: "Black Anger est un groupe de rock amateur composé de deux guitaristes, d'un bassiste et d'un batteur. Sans prétention, le groupe reprend avec plaisir des classiques pop-rock français et anglais, dans une ambiance conviviale et énergique. Entre riffs entraînants et bonne humeur, Black Anger partage avant tout la passion de la musique et le plaisir de jouer ensemble.",
-    gallery: ['/artists/blackAngers/blackAngers-1.png', '/artists/blackAngers/blackAngers-2.HEIC'],
+    gallery: ['/artists/blackAngers/blackAngers-1.png', '/artists/blackAngers/blackAngers-2.jpg'],
     socials: {},
     keywords: ['Black Anger', 'Rock', 'Pop-Rock', 'Groupe Amateur'],
     seoDescription: 'Découvrez Black Anger, groupe de pop-rock amateur, en concert au Green Fest 2026.'
