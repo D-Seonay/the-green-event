@@ -2,9 +2,8 @@
 
 import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowDown, Calendar, Ticket } from 'lucide-react';
+import { ArrowDown, Calendar } from 'lucide-react';
 import WaveDivider from '../ui/WaveDivider';
-import Link from 'next/link';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -95,17 +94,10 @@ END:VCALENDAR`;
           transition={{ duration: 0.8, delay: 0.4 }}
           className="flex flex-col sm:flex-row gap-4 items-center justify-center z-30"
         >
-          <Link href="/boutique" className="group">
-            <button className="bg-leaf hover:bg-leaf/90 text-cream px-8 py-4 rounded-xl font-display font-black uppercase tracking-wider flex items-center gap-3 shadow-xl transition-all hover:scale-105 active:scale-95">
-              <Ticket className="w-5 h-5 group-hover:rotate-12 transition-transform" />
-              Billetterie
-            </button>
-          </Link>
-
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <button className="bg-cream hover:bg-cream/90 text-forest px-8 py-4 rounded-xl font-display font-black uppercase tracking-wider flex items-center gap-3 shadow-xl transition-all hover:scale-105 active:scale-95 border-2 border-forest/10">
-                <Calendar className="w-5 h-5" />
+              <button className="bg-leaf hover:bg-leaf/90 text-cream px-10 py-5 rounded-xl font-display font-black uppercase tracking-wider flex items-center gap-3 shadow-xl transition-all hover:scale-105 active:scale-95">
+                <Calendar className="w-6 h-6" />
                 M&apos;en souvenir
               </button>
             </DropdownMenuTrigger>
