@@ -110,22 +110,45 @@ const ProductDetailPage = () => {
               </ul>
             </div>
 
-            {/* CTA */}
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              className="mt-auto"
-            >
-                <Button asChild size="lg" className="w-full h-auto py-3 bg-[#00A651] text-white hover:bg-[#00A651]/90 transition-colors text-lg font-bold uppercase tracking-wider shadow-lg">
-                  <Link href={product.helloAssoUrl} target="_blank" rel="noopener noreferrer">
-                      <motion.span
-                        animate={{ y: [-2, 2] }}
-                        transition={bounceTransition}
-                      >
-                      Acheter sur HelloAsso
-                      </motion.span>
-                  </Link>
-                </Button>
-            </motion.div>
+            {/* CTA or Widget */}
+            {product.helloAssoSlug ? (
+              <div className="mt-8 space-y-6">
+                <iframe 
+                  id="haWidget" 
+                  allowTransparency={true} 
+                  scrolling="auto" 
+                  src={`https://www.helloasso.com/associations/the-green-event/boutiques/${product.helloAssoSlug}/widget`}
+                  style={{ width: '100%', height: '750px', border: 'none' }}
+                  onLoad={() => {
+                    if (typeof window !== 'undefined') {
+                      window.addEventListener('message', (e) => {
+                        const dataHeight = e.data.height;
+                        const haWidgetElement = document.getElementById('haWidget');
+                        if (haWidgetElement && dataHeight > parseFloat(haWidgetElement.style.height || '0')) {
+                          haWidgetElement.style.height = dataHeight + 'px';
+                        }
+                      });
+                    }
+                  }}
+                />
+              </div>
+            ) : (
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  className="mt-auto"
+                >
+                    <Button asChild size="lg" className="w-full h-auto py-3 bg-[#00A651] text-white hover:bg-[#00A651]/90 transition-colors text-lg font-bold uppercase tracking-wider shadow-lg">
+                    <Link href={product.helloAssoUrl} target="_blank" rel="noopener noreferrer">
+                        <motion.span
+                            animate={{ y: [-2, 2] }}
+                            transition={bounceTransition}
+                        >
+                        Acheter sur HelloAsso
+                        </motion.span>
+                    </Link>
+                    </Button>
+                </motion.div>
+            )}
           </motion.div>
         </div>
       </div>

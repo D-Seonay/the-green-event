@@ -49,6 +49,20 @@ export const PRODUCTS: Product[] = [
     ecoSpecs: ['Bientôt'],
     isMystery: true,
   },
+  {
+    id: 4,
+    name: 'T-shirt Green Fest 2026',
+    price: '25€',
+    description: 'T-shirt collector 100% coton bio.',
+    longDescription: "Affichez votre soutien au festival avec notre t-shirt officiel 2026. Fabriqué en coton 100% biologique et issu du commerce équitable.",
+    image: '/placeholder.svg', // I should probably have an image for this, but user didn't provide one. Placeholder for now.
+    rotation: 2,
+    helloAssoUrl: 'https://www.helloasso.com/associations/the-green-event/boutiques/tee-shirt-tge-green-fest-2026',
+    helloAssoSlug: 'tee-shirt-tge-green-fest-2026',
+    category: 'clothes',
+    ecoSpecs: ['100% Coton Biologique', 'Commerce Équitable'],
+    isMystery: false,
+  },
 ];
 
 export const ARTISTS: Artist[] = [
