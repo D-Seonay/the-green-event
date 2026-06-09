@@ -11,6 +11,20 @@ export const NAV_LINKS: NavLink[] = [
 
 export const PRODUCTS: Product[] = [
   {
+    id: 4,
+    name: 'T-shirt Green Fest 2026',
+    price: '25€',
+    description: 'T-shirt collector 100% coton bio.',
+    longDescription: "Affichez votre soutien au festival avec notre t-shirt officiel 2026. Fabriqué en coton 100% biologique et issu du commerce équitable.",
+    image: '/products/t-shirt/face-avant.jpg',
+    rotation: 2,
+    helloAssoUrl: 'https://www.helloasso.com/associations/the-green-event/boutiques/tee-shirt-tge-green-fest-2026',
+    helloAssoSlug: 'tee-shirt-tge-green-fest-2026',
+    category: 'clothes',
+    ecoSpecs: ['100% Coton Biologique', 'Commerce Équitable'],
+    isMystery: false,
+  },
+  {
     id: 1,
     name: 'Bientôt disponible',
     price: '-',
@@ -48,20 +62,6 @@ export const PRODUCTS: Product[] = [
     category: 'goodies',
     ecoSpecs: ['Bientôt'],
     isMystery: true,
-  },
-  {
-    id: 4,
-    name: 'T-shirt Green Fest 2026',
-    price: '25€',
-    description: 'T-shirt collector 100% coton bio.',
-    longDescription: "Affichez votre soutien au festival avec notre t-shirt officiel 2026. Fabriqué en coton 100% biologique et issu du commerce équitable.",
-    image: '/placeholder.svg', // I should probably have an image for this, but user didn't provide one. Placeholder for now.
-    rotation: 2,
-    helloAssoUrl: 'https://www.helloasso.com/associations/the-green-event/boutiques/tee-shirt-tge-green-fest-2026',
-    helloAssoSlug: 'tee-shirt-tge-green-fest-2026',
-    category: 'clothes',
-    ecoSpecs: ['100% Coton Biologique', 'Commerce Équitable'],
-    isMystery: false,
   },
 ];
 
