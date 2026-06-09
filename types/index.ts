@@ -9,6 +9,7 @@ export interface Product {
   image: string;
   rotation: number;
   helloAssoUrl: string;
+  helloAssoSlug?: string;
   category: 'clothes' | 'accessories' | 'goodies';
   ecoSpecs: string[];
   keywords?: string[];
