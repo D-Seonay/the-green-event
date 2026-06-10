@@ -17,6 +17,10 @@ export const PRODUCTS: Product[] = [
     description: 'T-shirt collector 100% coton bio.',
     longDescription: "Affichez votre soutien au festival avec notre t-shirt officiel 2026. Fabriqué en coton 100% biologique et issu du commerce équitable.",
     image: '/products/t-shirt/face-avant.jpg',
+    gallery: [
+      '/products/t-shirt/face-avant.jpg',
+      '/products/t-shirt/face-arriere.jpg'
+    ],
     rotation: 2,
     helloAssoUrl: 'https://www.helloasso.com/associations/the-green-event/boutiques/tee-shirt-tge-green-fest-2026',
     helloAssoSlug: 'tee-shirt-tge-green-fest-2026',
