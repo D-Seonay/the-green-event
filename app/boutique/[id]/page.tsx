@@ -9,11 +9,34 @@ import { notFound } from 'next/navigation';
 import { ArrowLeft, CheckCircle } from 'lucide-react';
 import { PRODUCTS } from '@/lib/data';
 import { Button } from '@/components/ui/button';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  type CarouselApi,
+} from "@/components/ui/carousel";
 
 const ProductDetailPage = () => {
   const params = useParams();
   const productId = Number(params.id);
   const product = PRODUCTS.find(p => p.id === productId);
+
+  const [api, setApi] = React.useState<CarouselApi>();
+  const [current, setCurrent] = React.useState(0);
+
+  React.useEffect(() => {
+    if (!api) {
+      return;
+    }
+
+    setCurrent(api.selectedScrollSnap());
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap());
+    });
+  }, [api]);
 
   if (!product || product.isMystery) {
     notFound();
@@ -62,23 +85,71 @@ const ProductDetailPage = () => {
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-          {/* Left Column: Image */}
+          {/* Left Column: Image/Carousel */}
           <motion.div 
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, ease: 'easeOut' }}
-            className="relative aspect-square"
+            className="relative"
           >
-            <div className="absolute inset-0 bg-[#FEF7E0] rounded-[4rem] transform -rotate-6 transition-all duration-500 hover:rotate-0 hover:scale-105 shadow-2xl">
-                <Image
-                  src={product.image}
-                  alt={product.name}
-                  fill
-                  priority
-                  className="object-cover rounded-[4rem] mix-blend-multiply"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-            </div>
+            {product.gallery && product.gallery.length > 0 ? (
+              <div className="relative group">
+                <Carousel setApi={setApi} className="w-full">
+                  <CarouselContent>
+                    {product.gallery.map((src, index) => (
+                      <CarouselItem key={index}>
+                        <div className="relative aspect-square bg-[#FEF7E0] rounded-[4rem] overflow-hidden shadow-2xl">
+                            <Image
+                              src={src}
+                              alt={`${product.name} - image ${index + 1}`}
+                              fill
+                              priority={index === 0}
+                              className="object-cover mix-blend-multiply"
+                              sizes="(max-width: 1024px) 100vw, 50vw"
+                            />
+                        </div>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  {product.gallery.length > 1 && (
+                    <>
+                      <CarouselPrevious className="left-4 bg-[#00A651] text-white border-none hover:bg-[#00A651]/90 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <CarouselNext className="right-4 bg-[#00A651] text-white border-none hover:bg-[#00A651]/90 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </>
+                  )}
+                </Carousel>
+                {/* Dots indicator */}
+                {product.gallery.length > 1 && (
+                  <div className="flex justify-center gap-2 mt-6">
+                    {product.gallery.map((_, i) => (
+                      <button 
+                        key={i} 
+                        onClick={() => api?.scrollTo(i)}
+                        className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                          current === i 
+                            ? "bg-[#00A651] w-8" 
+                            : "bg-[#FEF7E0]/30 hover:bg-[#FEF7E0]/50"
+                        }`}
+                        aria-label={`Go to slide ${i + 1}`}
+                      />
+                    ))}
+                  </div>
+                )}
+              </div>
+            ) : (
+              <div className="relative aspect-square">
+                <div className="absolute inset-0 bg-[#FEF7E0] rounded-[4rem] transform -rotate-6 transition-all duration-500 hover:rotate-0 hover:scale-105 shadow-2xl">
+                    <Image
+                      src={product.image}
+                      alt={product.name}
+                      fill
+                      priority
+                      className="object-cover rounded-[4rem] mix-blend-multiply"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                    />
+                </div>
+              </div>
+            )}
           </motion.div>
 
           {/* Right Column: Info */}
