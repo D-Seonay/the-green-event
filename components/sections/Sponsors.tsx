@@ -20,7 +20,7 @@ const SponsorsSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-5 gap-8 md:gap-12 items-center justify-items-center max-w-lg mx-auto mt-12">
+        <div className="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-5 gap-8 md:gap-12 items-center justify-items-center max-w-6xl mx-auto mt-12">
           {SPONSORS.map((sponsor, index) => (
             <motion.div
               key={sponsor.id}
