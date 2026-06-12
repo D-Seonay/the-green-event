@@ -186,7 +186,6 @@ const ProductDetailPage = () => {
               <div className="mt-8 space-y-6">
                 <iframe 
                   id="haWidget" 
-                  allowTransparency={true} 
                   scrolling="auto" 
                   src={`https://www.helloasso.com/associations/the-green-event/boutiques/${product.helloAssoSlug}/widget`}
                   style={{ width: '100%', height: '750px', border: 'none' }}

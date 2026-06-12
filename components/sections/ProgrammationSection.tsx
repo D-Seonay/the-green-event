@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Cube from '@/components/ui/Cube';
@@ -74,16 +74,6 @@ const FloatingIcon = ({ children, x, y, className }: { children: React.ReactNode
 
 export default function ProgrammationSection() {
   const sectionRef = React.useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-
-  const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
 
   return (
     <section ref={sectionRef} className="relative py-12 px-4 md:py-32 md:px-8 overflow-hidden bg-forest">
