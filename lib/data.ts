@@ -194,6 +194,6 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     { id: 1, name: 'La Soupape', logoSrc: '/partners/laSoupape.png', alt: 'Logo de La Soupape, partenaire local de Vertou.' },
     { id: 2, name: 'Umami', logoSrc: '/partners/umami.jpeg', alt: 'Logo de Umami, restaurant partenaire engagé.' },
     { id: 3, name: 'Crédit Mutuel', logoSrc: '/partners/creditMutuel.jpeg', alt: 'Logo du Crédit Mutuel, partenaire financier du festival.' },
-    { id: 4, name: 'Katanga', logoSrc: '/partners/28.png', alt: 'Logo de Katanga, partenaire du festival.' },
-    { id: 5, name: 'Min Nantes Métropole', logoSrc: '/partners/29.png', alt: 'Logo de Min Nantes Métropole, partenaire du festival.' },
-    ];
+    { id: 4, name: 'Katanga', logoSrc: '/partners/katanga.png', alt: 'Logo de Katanga, partenaire du festival.' },
+    { id: 5, name: 'Min Nantes Métropole', logoSrc: '/partners/minNantesMétropole.png', alt: 'Logo de Min Nantes Métropole, partenaire du festival.' },
+    ];  
