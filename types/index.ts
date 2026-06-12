@@ -7,6 +7,7 @@ export interface Product {
   description: string;
   longDescription: string;
   image: string;
+  gallery?: string[];
   rotation: number;
   helloAssoUrl: string;
   helloAssoSlug?: string;
