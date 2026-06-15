@@ -40,73 +40,84 @@ export async function POST(request: Request) {
     const data = result.data;
     const adminEmail = process.env.CONTACT_EMAIL || "thegreenevent.44@gmail.com";
 
+    // Design System Colors for Emails
+    const COLORS = {
+      forest: "#052013",
+      leaf: "#00A651",
+      cream: "#FEF7E0",
+      white: "#ffffff",
+      border: "#e2e8f0",
+      text: "#1a202c",
+      textMuted: "#4a5568",
+    };
+
     // 1. Email to administrator
     const adminHtml = `
-      <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e2e8f0; border-radius: 8px; background-color: #ffffff;">
-        <div style="background-color: #052013; padding: 20px; border-radius: 6px; text-align: center;">
-          <h1 style="color: #FEF7E0; margin: 0; font-size: 24px; font-weight: 800; text-transform: uppercase; tracking-wider">Nouvelle Candidature Bénévole</h1>
+      <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid ${COLORS.border}; border-radius: 8px; background-color: ${COLORS.white};">
+        <div style="background-color: ${COLORS.forest}; padding: 20px; border-radius: 6px; text-align: center;">
+          <h1 style="color: ${COLORS.cream}; margin: 0; font-size: 24px; font-weight: 800; text-transform: uppercase; tracking-wider">Nouvelle Candidature Bénévole</h1>
         </div>
         <div style="padding: 20px 0;">
-          <p style="font-size: 16px; color: #1a202c; line-height: 1.5;">Une nouvelle candidature pour rejoindre la <strong>Green Team</strong> a été reçue !</p>
+          <p style="font-size: 16px; color: ${COLORS.text}; line-height: 1.5;">Une nouvelle candidature pour rejoindre la <strong>Green Team</strong> a été reçue !</p>
           
-          <h3 style="border-bottom: 2px solid #00A651; padding-bottom: 5px; color: #052013; text-transform: uppercase;">1. Informations Personnelles</h3>
+          <h3 style="border-bottom: 2px solid ${COLORS.leaf}; padding-bottom: 5px; color: ${COLORS.forest}; text-transform: uppercase;">1. Informations Personnelles</h3>
           <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
             <tr>
-              <td style="padding: 8px 0; font-weight: bold; width: 180px; color: #4a5568;">Prénom & Nom :</td>
-              <td style="padding: 8px 0; color: #1a202c;">${data.firstname} ${data.name}</td>
+              <td style="padding: 8px 0; font-weight: bold; width: 180px; color: ${COLORS.textMuted};">Prénom & Nom :</td>
+              <td style="padding: 8px 0; color: ${COLORS.text};">${data.firstname} ${data.name}</td>
             </tr>
             <tr>
-              <td style="padding: 8px 0; font-weight: bold; color: #4a5568;">Email :</td>
-              <td style="padding: 8px 0; color: #1a202c;"><a href="mailto:${data.email}">${data.email}</a></td>
+              <td style="padding: 8px 0; font-weight: bold; color: ${COLORS.textMuted};">Email :</td>
+              <td style="padding: 8px 0; color: ${COLORS.text};"><a href="mailto:${data.email}">${data.email}</a></td>
             </tr>
             <tr>
-              <td style="padding: 8px 0; font-weight: bold; color: #4a5568;">Téléphone :</td>
-              <td style="padding: 8px 0; color: #1a202c;"><a href="tel:${data.phone}">${data.phone}</a></td>
+              <td style="padding: 8px 0; font-weight: bold; color: ${COLORS.textMuted};">Téléphone :</td>
+              <td style="padding: 8px 0; color: ${COLORS.text};"><a href="tel:${data.phone}">${data.phone}</a></td>
             </tr>
             <tr>
-              <td style="padding: 8px 0; font-weight: bold; color: #4a5568;">Date de naissance :</td>
-              <td style="padding: 8px 0; color: #1a202c;">${data.birthDate}</td>
+              <td style="padding: 8px 0; font-weight: bold; color: ${COLORS.textMuted};">Date de naissance :</td>
+              <td style="padding: 8px 0; color: ${COLORS.text};">${data.birthDate}</td>
             </tr>
             <tr>
-              <td style="padding: 8px 0; font-weight: bold; color: #4a5568;">Ville :</td>
-              <td style="padding: 8px 0; color: #1a202c;">${data.city}</td>
+              <td style="padding: 8px 0; font-weight: bold; color: ${COLORS.textMuted};">Ville :</td>
+              <td style="padding: 8px 0; color: ${COLORS.text};">${data.city}</td>
             </tr>
           </table>
 
-          <h3 style="border-bottom: 2px solid #00A651; padding-bottom: 5px; color: #052013; text-transform: uppercase;">2. Expérience & Binôme</h3>
+          <h3 style="border-bottom: 2px solid ${COLORS.leaf}; padding-bottom: 5px; color: ${COLORS.forest}; text-transform: uppercase;">2. Expérience & Binôme</h3>
           <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
             <tr>
-              <td style="padding: 8px 0; font-weight: bold; width: 180px; color: #4a5568;">Expérience :</td>
-              <td style="padding: 8px 0; color: #1a202c;">${data.hasExperience === "oui" ? "Oui, a déjà eu des expériences" : "Non, pas d'expérience précédente"}</td>
+              <td style="padding: 8px 0; font-weight: bold; width: 180px; color: ${COLORS.textMuted};">Expérience :</td>
+              <td style="padding: 8px 0; color: ${COLORS.text};">${data.hasExperience === "oui" ? "Oui, a déjà eu des expériences" : "Non, pas d'expérience précédente"}</td>
             </tr>
             <tr>
-              <td style="padding: 8px 0; font-weight: bold; color: #4a5568;">Binôme souhaité :</td>
-              <td style="padding: 8px 0; color: #1a202c;">${data.teamPref || "Aucune préférence"}</td>
+              <td style="padding: 8px 0; font-weight: bold; color: ${COLORS.textMuted};">Binôme souhaité :</td>
+              <td style="padding: 8px 0; color: ${COLORS.text};">${data.teamPref || "Aucune préférence"}</td>
             </tr>
           </table>
 
-          <h3 style="border-bottom: 2px solid #00A651; padding-bottom: 5px; color: #052013; text-transform: uppercase;">3. Préférences de Missions</h3>
+          <h3 style="border-bottom: 2px solid ${COLORS.leaf}; padding-bottom: 5px; color: ${COLORS.forest}; text-transform: uppercase;">3. Préférences de Missions</h3>
           <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
             <tr>
-              <td style="padding: 8px 0; font-weight: bold; width: 180px; color: #4a5568;">Souhait n°1 :</td>
-              <td style="padding: 8px 0; color: #1a202c;"><strong>${wishLabels[data.wish1] || data.wish1}</strong></td>
+              <td style="padding: 8px 0; font-weight: bold; width: 180px; color: ${COLORS.textMuted};">Souhait n°1 :</td>
+              <td style="padding: 8px 0; color: ${COLORS.text};"><strong>${wishLabels[data.wish1] || data.wish1}</strong></td>
             </tr>
             <tr>
-              <td style="padding: 8px 0; font-weight: bold; width: 180px; color: #4a5568;">Souhait n°2 :</td>
-              <td style="padding: 8px 0; color: #1a202c;">${wishLabels[data.wish2] || data.wish2}</td>
+              <td style="padding: 8px 0; font-weight: bold; width: 180px; color: ${COLORS.textMuted};">Souhait n°2 :</td>
+              <td style="padding: 8px 0; color: ${COLORS.text};">${wishLabels[data.wish2] || data.wish2}</td>
             </tr>
             <tr>
-              <td style="padding: 8px 0; font-weight: bold; width: 180px; color: #4a5568;">Souhait n°3 :</td>
-              <td style="padding: 8px 0; color: #1a202c;">${wishLabels[data.wish3] || data.wish3}</td>
+              <td style="padding: 8px 0; font-weight: bold; width: 180px; color: ${COLORS.textMuted};">Souhait n°3 :</td>
+              <td style="padding: 8px 0; color: ${COLORS.text};">${wishLabels[data.wish3] || data.wish3}</td>
             </tr>
           </table>
 
-          <h3 style="border-bottom: 2px solid #00A651; padding-bottom: 5px; color: #052013; text-transform: uppercase;">4. Motivations</h3>
-          <div style="background-color: #f7fafc; padding: 15px; border-radius: 6px; border-left: 4px solid #00A651; font-style: italic; color: #2d3748; white-space: pre-line;">
+          <h3 style="border-bottom: 2px solid ${COLORS.leaf}; padding-bottom: 5px; color: ${COLORS.forest}; text-transform: uppercase;">4. Motivations</h3>
+          <div style="background-color: #f7fafc; padding: 15px; border-radius: 6px; border-left: 4px solid ${COLORS.leaf}; font-style: italic; color: #2d3748; white-space: pre-line;">
             ${data.motivation ? `"${data.motivation}"` : "Aucune motivation renseignée."}
           </div>
         </div>
-        <div style="border-top: 1px solid #e2e8f0; padding-top: 15px; text-align: center; color: #a0aec0; font-size: 12px;">
+        <div style="border-top: 1px solid ${COLORS.border}; padding-top: 15px; text-align: center; color: #a0aec0; font-size: 12px;">
           Ce message a été envoyé automatiquement depuis le site The Green Event.
         </div>
       </div>
@@ -125,19 +136,19 @@ export async function POST(request: Request) {
 
     // 2. Email to the volunteer candidate (acknowledgement)
     const volunteerHtml = `
-      <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e2e8f0; border-radius: 8px; background-color: #ffffff;">
-        <div style="background-color: #00A651; padding: 20px; border-radius: 6px; text-align: center;">
-          <h1 style="color: #FEF7E0; margin: 0; font-size: 24px; font-weight: 800; text-transform: uppercase; tracking-wider">Merci ${data.firstname} !</h1>
+      <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid ${COLORS.border}; border-radius: 8px; background-color: ${COLORS.white};">
+        <div style="background-color: ${COLORS.leaf}; padding: 20px; border-radius: 6px; text-align: center;">
+          <h1 style="color: ${COLORS.cream}; margin: 0; font-size: 24px; font-weight: 800; text-transform: uppercase; tracking-wider">Merci ${data.firstname} !</h1>
         </div>
         <div style="padding: 20px 0;">
-          <p style="font-size: 16px; color: #1a202c; line-height: 1.6;">Salut <strong>${data.firstname}</strong>,</p>
-          <p style="font-size: 16px; color: #1a202c; line-height: 1.6;">Toute l'équipe de l'association <strong>The Green Event</strong> te remercie chaleureusement pour ton intérêt et ta candidature pour rejoindre la Green Team du festival <strong>The Green Fest</strong> ! 🌿💚</p>
+          <p style="font-size: 16px; color: ${COLORS.text}; line-height: 1.6;">Salut <strong>${data.firstname}</strong>,</p>
+          <p style="font-size: 16px; color: ${COLORS.text}; line-height: 1.6;">Toute l'équipe de l'association <strong>The Green Event</strong> te remercie chaleureusement pour ton intérêt et ta candidature pour rejoindre la Green Team du festival <strong>The Green Fest</strong> ! 🌿💚</p>
           
-          <p style="font-size: 16px; color: #1a202c; line-height: 1.6;">Nous avons bien reçu tes souhaits de missions pour le festival.</p>
+          <p style="font-size: 16px; color: ${COLORS.text}; line-height: 1.6;">Nous avons bien reçu tes souhaits de missions pour le festival.</p>
           
-          <div style="background-color: #f7fafc; border: 1px solid #e2e8f0; padding: 15px; border-radius: 6px; margin: 20px 0;">
-            <h4 style="margin-top: 0; color: #052013; text-transform: uppercase;">Récapitulatif de tes souhaits :</h4>
-            <ul style="margin: 0; padding-left: 20px; color: #4a5568; line-height: 1.5;">
+          <div style="background-color: #f7fafc; border: 1px solid ${COLORS.border}; padding: 15px; border-radius: 6px; margin: 20px 0;">
+            <h4 style="margin-top: 0; color: ${COLORS.forest}; text-transform: uppercase;">Récapitulatif de tes souhaits :</h4>
+            <ul style="margin: 0; padding-left: 20px; color: ${COLORS.textMuted}; line-height: 1.5;">
               <li><strong>Souhait n°1 :</strong> ${wishLabels[data.wish1] || data.wish1}</li>
               <li><strong>Souhait n°2 :</strong> ${wishLabels[data.wish2] || data.wish2}</li>
               <li><strong>Souhait n°3 :</strong> ${wishLabels[data.wish3] || data.wish3}</li>
@@ -145,14 +156,14 @@ export async function POST(request: Request) {
             </ul>
           </div>
 
-          <p style="font-size: 16px; color: #1a202c; line-height: 1.6;"><strong>Et maintenant ?</strong><br/>
+          <p style="font-size: 16px; color: ${COLORS.text}; line-height: 1.6;"><strong>Et maintenant ?</strong><br/>
           Notre coordinateur des bénévoles étudie toutes les propositions. Nous reviendrons vers toi d'ici quelques jours par e-mail ou par téléphone (${data.phone}) pour te proposer une mission et finaliser ton planning.</p>
           
-          <p style="font-size: 16px; color: #1a202c; line-height: 1.6;">À très vite en pleine nature !</p>
+          <p style="font-size: 16px; color: ${COLORS.text}; line-height: 1.6;">À très vite en pleine nature !</p>
           
-          <p style="font-size: 16px; font-weight: bold; color: #00A651; margin-top: 30px;">L'équipe The Green Fest</p>
+          <p style="font-size: 16px; font-weight: bold; color: ${COLORS.leaf}; margin-top: 30px;">L'équipe The Green Fest</p>
         </div>
-        <div style="border-top: 1px solid #e2e8f0; padding-top: 15px; text-align: center; color: #a0aec0; font-size: 12px;">
+        <div style="border-top: 1px solid ${COLORS.border}; padding-top: 15px; text-align: center; color: #a0aec0; font-size: 12px;">
           Vous recevez ce message car vous avez soumis une demande d'inscription bénévole sur le site du festival The Green Fest.
         </div>
       </div>
