@@ -1,5 +1,6 @@
 import React from 'react';
 import { Metadata } from 'next';
+import { getArtists } from '@/lib/strapi';
 import ProgrammationClient from './ProgrammationClient';
 
 export const metadata: Metadata = {
@@ -12,8 +13,9 @@ export const metadata: Metadata = {
   }
 };
 
-const ProgrammationPage = () => {
-  return <ProgrammationClient />;
+const ProgrammationPage = async () => {
+  const artists = await getArtists();
+  return <ProgrammationClient artists={artists} />;
 };
 
 export default ProgrammationPage;

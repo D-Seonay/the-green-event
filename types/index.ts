@@ -27,6 +27,8 @@ export interface Artist {
   bio: string;
   genre: string;
   timeSlot: string;
+  style?: string;
+  experience?: string;
   gallery?: string[];
   socials: {
     instagram?: string;
@@ -36,6 +38,29 @@ export interface Artist {
   keywords?: string[];
   seoDescription?: string;
   isMystery?: boolean;
+}
+
+export interface AccessItem {
+  icon: 'calendar' | 'map-pin' | 'bus' | 'car';
+  title: string;
+  detail: string;
+  subtitle?: string;
+}
+
+export interface EventInfo {
+  name: string;
+  startDate: string;
+  endDate?: string;
+  locationName?: string;
+  address?: string;
+  mapEmbedUrl?: string;
+  description?: string;
+  accessItems: AccessItem[];
+}
+
+export interface Slot {
+  start: string;
+  end: string;
 }
 
 export interface GalleryImage {

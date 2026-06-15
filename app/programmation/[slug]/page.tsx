@@ -1,16 +1,22 @@
 import React from 'react';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { ARTISTS } from '@/lib/data';
+import { getArtists, getArtistBySlug } from '@/lib/strapi';
 import ArtistDetailClient from './ArtistDetailClient';
 
 interface Props {
   params: Promise<{ slug: string }>;
 }
 
+// Pré-génère les routes des artistes non-mystères au build (SSG).
+export async function generateStaticParams() {
+  const artists = await getArtists();
+  return artists.filter((a) => !a.isMystery).map((a) => ({ slug: a.slug }));
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const artist = ARTISTS.find((a) => a.slug === slug);
+  const artist = await getArtistBySlug(slug);
 
   if (!artist) {
     return {
@@ -39,11 +45,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 const ArtistDetailPage = async ({ params }: Props) => {
   const { slug } = await params;
-  const artist = ARTISTS.find((a) => a.slug === slug);
+  const artist = await getArtistBySlug(slug);
 
   if (!artist || artist.isMystery) {
     notFound();
   }
+
+  // L'image peut être une URL absolue (Cloudinary) ou un chemin local.
+  const imageUrl = artist.image.startsWith('http')
+    ? artist.image
+    : `https://thegreenfest.fr${artist.image}`;
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -51,7 +62,7 @@ const ArtistDetailPage = async ({ params }: Props) => {
     'name': artist.name,
     'description': artist.bio,
     'genre': artist.genre,
-    'image': `https://thegreenfest.fr${artist.image}`,
+    'image': imageUrl,
     'url': `https://thegreenfest.fr/programmation/${slug}`,
     'sameAs': Object.values(artist.socials).filter(Boolean),
     'event': {

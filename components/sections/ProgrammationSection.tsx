@@ -10,10 +10,7 @@ import Leaf from '@/components/ui/Leaf';
 import useMediaQuery from '@/hooks/use-media-query';
 import WaveDivider from '../ui/WaveDivider';
 import ArtistCard from '@/components/cards/ArtistCard';
-
-import { ARTISTS } from '@/lib/data';
-
-const featuredArtists = ARTISTS.slice(0, 8);
+import type { Artist } from '@/types';
 
 const ConnectingLine = () => {
   const targetRef = React.useRef(null);
@@ -72,8 +69,13 @@ const FloatingIcon = ({ children, x, y, className }: { children: React.ReactNode
   );
 };
 
-export default function ProgrammationSection() {
+interface ProgrammationSectionProps {
+  artists?: Artist[];
+}
+
+export default function ProgrammationSection({ artists = [] }: ProgrammationSectionProps) {
   const sectionRef = React.useRef(null);
+  const featuredArtists = artists.slice(0, 8);
 
   return (
     <section ref={sectionRef} className="relative py-12 px-4 md:py-32 md:px-8 overflow-hidden bg-forest">

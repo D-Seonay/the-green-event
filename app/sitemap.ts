@@ -1,11 +1,12 @@
 import { MetadataRoute } from 'next';
-import { ARTISTS } from '@/lib/data';
+import { getArtists } from '@/lib/strapi';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://thegreenfest.fr';
 
   // Dynamic artist routes (excluding mystery ones)
-  const artistEntries = ARTISTS
+  const artists = await getArtists();
+  const artistEntries = artists
     .filter((artist) => !artist.isMystery)
     .map((artist) => ({
     url: `${baseUrl}/programmation/${artist.slug}`,

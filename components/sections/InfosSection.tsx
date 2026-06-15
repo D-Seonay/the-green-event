@@ -6,6 +6,14 @@ import { Calendar, MapPin, Bus, Car } from "lucide-react";
 import WaveDivider from "../ui/WaveDivider";
 import Cube from "../ui/Cube";
 import Leaf from "../ui/Leaf";
+import type { EventInfo } from "@/types";
+import { FALLBACK_EVENT } from "@/lib/fallback";
+
+// Association icône CMS -> composant lucide.
+const ICON_MAP = { calendar: Calendar, "map-pin": MapPin, bus: Bus, car: Car } as const;
+
+// Rotations / délais déterministes appliqués aux cartes d'infos (cosmétique géré côté front).
+const CARD_ROTATIONS = [-2, 3, -3, 2];
 
 const FloatingIcon = ({ children, x, y, className }: { children: React.ReactNode, x: number[], y: number[], className: string }) => {
   const targetRef = React.useRef(null);
@@ -24,40 +32,21 @@ const FloatingIcon = ({ children, x, y, className }: { children: React.ReactNode
   );
 };
 
-const InfosSection = () => {
-  const infos = [
-    {
-      icon: Calendar,
-      title: "Date",
-      detail: "4 Juillet 2026",
-      rotation: -2,
-      delay: 0.1,
-    },
-    {
-      icon: MapPin,
-      title: "Lieu",
-      detail: "Vertou (44)",
-      subtitle: "Parc des Viviers",
-      rotation: 3,
-      delay: 0.2,
-    },
-    {
-      icon: Bus,
-      title: "Transports",
-      detail: "Bus 28",
-      subtitle: "Dépose à 3 min",
-      rotation: -3,
-      delay: 0.3,
-    },
-    {
-      icon: Car,
-      title: "Accès",
-      detail: "Covoiturage",
-      subtitle: "💡 Pensez-y ! Parking Super U à proximité.",
-      rotation: 2,
-      delay: 0.4,
-    },
-  ];
+interface InfosSectionProps {
+  event?: EventInfo;
+}
+
+const InfosSection = ({ event = FALLBACK_EVENT }: InfosSectionProps) => {
+  const infos = event.accessItems.map((item, index) => ({
+    icon: ICON_MAP[item.icon] ?? MapPin,
+    title: item.title,
+    detail: item.detail,
+    subtitle: item.subtitle,
+    rotation: CARD_ROTATIONS[index % CARD_ROTATIONS.length],
+    delay: 0.1 * (index + 1),
+  }));
+
+  const mapLabel = [event.locationName].filter(Boolean).join(" • ").toUpperCase();
 
   return (
     <section id="infos" className="relative overflow-hidden">
@@ -117,7 +106,7 @@ const InfosSection = () => {
               <div className="relative aspect-square md:aspect-[4/3] max-w-2xl mx-auto">
                 <div className="absolute inset-0 bg-forest rounded-3xl overflow-hidden border-8 border-forest shadow-2xl">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2712.151791606953!2d-1.4845670873775743!3d47.17446457103324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4805e900623215b5%3A0xcabb2b7c631ca41b!2sTHE%20GREEN%20EVENT!5e0!3m2!1sfr!2sfr!4v1772036758885!5m2!1sfr!2sfr"
+                    src={event.mapEmbedUrl ?? FALLBACK_EVENT.mapEmbedUrl}
                     width="100%"
                     height="100%"
                     style={{ border: 0, filter: 'grayscale(0.1) contrast(1.1) brightness(0.95)' }}
@@ -136,7 +125,7 @@ const InfosSection = () => {
                   transition={{ delay: 0.6 }}
                   className="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-leaf text-cream px-8 py-3 rounded-xl shadow-2xl transform -rotate-1 z-10 font-display font-bold text-lg md:text-xl uppercase tracking-wider"
                 >
-                  VERTOU • PARC DES VIVIERS
+                  {mapLabel}
                 </motion.div>
               </div>
             </motion.div>
