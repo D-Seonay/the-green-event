@@ -107,7 +107,7 @@ export default function MysteryArtistCard({ rotation = 3 }: MysteryArtistCardPro
           <span className="text-cream/90 font-bold text-[10px] sm:text-xs tracking-[0.4em] uppercase block mb-1 drop-shadow-sm">
             Identité révélée
           </span>
-          <span className="text-leaf font-black text-xs sm:text-sm tracking-[0.5em] uppercase">
+          <span className="text-leaf font-bold text-xs sm:text-sm tracking-[0.5em] uppercase">
             Bientôt
           </span>
         </div>

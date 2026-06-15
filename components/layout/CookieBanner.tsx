@@ -48,7 +48,7 @@ const CookieBanner = () => {
                 <div className="w-10 h-10 rounded-xl bg-leaf/20 flex items-center justify-center">
                   <Cookie className="w-6 h-6 text-leaf" />
                 </div>
-                <h3 className="font-display font-black text-cream text-xl uppercase tracking-tighter">
+                <h3 className="font-display font-bold text-cream text-xl uppercase tracking-tighter">
                   Cookies & Nature
                 </h3>
               </div>

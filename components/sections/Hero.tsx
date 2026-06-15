@@ -92,11 +92,22 @@ END:VCALENDAR`;
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="flex flex-col sm:flex-row gap-4 items-center justify-center z-30"
+          className="flex flex-col sm:flex-row gap-6 items-center justify-center z-30"
         >
+          {/* Primary CTA */}
+          <a 
+            href="/programmation"
+            className="group relative bg-cream hover:bg-cream/90 text-forest px-10 py-5 rounded-xl font-display font-bold uppercase tracking-widest flex items-center gap-3 shadow-2xl transition-all hover:scale-105 active:scale-95 overflow-hidden"
+          >
+            <span className="relative z-10">Voir la programmation</span>
+            <ArrowDown className="w-6 h-6 -rotate-90 group-hover:translate-x-1 transition-transform relative z-10" />
+            <div className="absolute inset-0 bg-leaf/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+          </a>
+
+          {/* Secondary CTA (Calendar) */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <button className="bg-leaf hover:bg-leaf/90 text-cream px-10 py-5 rounded-xl font-display font-black uppercase tracking-wider flex items-center gap-3 shadow-xl transition-all hover:scale-105 active:scale-95">
+              <button className="bg-transparent hover:bg-cream/10 text-cream border-2 border-cream/30 px-10 py-5 rounded-xl font-display font-bold uppercase tracking-wider flex items-center gap-3 shadow-xl transition-all hover:scale-105 active:scale-95">
                 <Calendar className="w-6 h-6" />
                 M&apos;en souvenir
               </button>

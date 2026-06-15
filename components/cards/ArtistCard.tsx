@@ -79,7 +79,7 @@ const ArtistCard = ({ artist, index }: ArtistCardProps) => {
                 quality={75}
               />
             </div>
-            <h3 className="mt-3 sm:mt-4 text-center text-sm sm:text-xl font-display font-black text-forest uppercase tracking-tighter transition-colors group-hover:text-leaf line-clamp-2">
+            <h3 className="mt-3 sm:mt-4 text-center text-sm sm:text-xl font-display font-bold text-forest uppercase tracking-tighter transition-colors group-hover:text-leaf line-clamp-2">
               {artist.name}
             </h3>
             {artist.timeSlot && (

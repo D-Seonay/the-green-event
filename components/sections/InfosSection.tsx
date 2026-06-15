@@ -134,7 +134,7 @@ const InfosSection = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.6 }}
-                  className="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-leaf text-cream px-8 py-3 rounded-xl shadow-2xl transform -rotate-1 z-10 font-display font-black text-lg md:text-xl uppercase tracking-wider"
+                  className="absolute -bottom-6 left-1/2 -translate-x-1/2 bg-leaf text-cream px-8 py-3 rounded-xl shadow-2xl transform -rotate-1 z-10 font-display font-bold text-lg md:text-xl uppercase tracking-wider"
                 >
                   VERTOU • PARC DES VIVIERS
                 </motion.div>
@@ -169,7 +169,7 @@ const InfosSection = () => {
                       <p className="font-mono text-leaf/60 text-xs uppercase tracking-[0.2em] mb-2">
                         {info.title}
                       </p>
-                      <h3 className="font-display font-black text-cream text-2xl md:text-3xl leading-tight mb-2 uppercase tracking-tighter">
+                      <h3 className="font-display font-bold text-cream text-2xl md:text-3xl leading-tight mb-2 uppercase tracking-tighter">
                         {info.detail}
                       </h3>
                       {info.subtitle && (

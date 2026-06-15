@@ -94,7 +94,7 @@ const Lightbox = ({ image, onClose, onNext, onPrev }: LightboxProps) => {
             
             {/* Metadata (Stealth style) */}
             <div className="mt-8 text-center space-y-2">
-              <h3 className="text-xl font-display font-black text-cream uppercase tracking-widest italic">
+              <h3 className="text-xl font-display font-bold text-cream uppercase tracking-widest italic">
                 {image.alt}
               </h3>
               <p className="text-sm font-mono text-leaf uppercase tracking-[0.3em]">

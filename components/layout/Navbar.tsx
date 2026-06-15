@@ -131,7 +131,7 @@ const Navbar = () => {
                   >
                     <Link
                       href={link.href}
-                      className="text-cream font-display font-black text-4xl uppercase tracking-tighter hover:text-leaf transition-colors text-center block"
+                      className="text-cream font-display font-bold text-4xl uppercase tracking-tighter hover:text-leaf transition-colors text-center block"
                       onClick={(e) => handleLinkClick(e, link.href, link.isAnchor)}
                     >
                       {link.label}

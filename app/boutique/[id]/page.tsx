@@ -67,7 +67,7 @@ const ProductDetailPage = () => {
   };
 
   return (
-    <main className="bg-[#0a3f25] text-[#FEF7E0] min-h-screen pt-20">
+    <main className="bg-forest text-cream min-h-screen pt-20">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -78,7 +78,7 @@ const ProductDetailPage = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <Link href="/boutique" className="inline-flex items-center gap-2 font-body text-[#FEF7E0]/80 hover:text-white transition-colors group mb-8">
+          <Link href="/boutique" className="inline-flex items-center gap-2 font-body text-cream/80 hover:text-white transition-colors group mb-8">
             <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
             Retour à la boutique
           </Link>
@@ -98,7 +98,7 @@ const ProductDetailPage = () => {
                   <CarouselContent>
                     {product.gallery.map((src, index) => (
                       <CarouselItem key={index}>
-                        <div className="relative aspect-square bg-[#FEF7E0] rounded-[4rem] overflow-hidden shadow-2xl">
+                        <div className="relative aspect-square bg-cream rounded-[4rem] overflow-hidden shadow-2xl">
                             <Image
                               src={src}
                               alt={`${product.name} - image ${index + 1}`}
@@ -113,8 +113,8 @@ const ProductDetailPage = () => {
                   </CarouselContent>
                   {product.gallery.length > 1 && (
                     <>
-                      <CarouselPrevious className="left-4 bg-[#00A651] text-white border-none hover:bg-[#00A651]/90 opacity-0 group-hover:opacity-100 transition-opacity" />
-                      <CarouselNext className="right-4 bg-[#00A651] text-white border-none hover:bg-[#00A651]/90 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <CarouselPrevious className="left-4 bg-leaf text-cream border-none hover:bg-leaf/90 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <CarouselNext className="right-4 bg-leaf text-cream border-none hover:bg-leaf/90 opacity-0 group-hover:opacity-100 transition-opacity" />
                     </>
                   )}
                 </Carousel>
@@ -127,8 +127,8 @@ const ProductDetailPage = () => {
                         onClick={() => api?.scrollTo(i)}
                         className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
                           current === i 
-                            ? "bg-[#00A651] w-8" 
-                            : "bg-[#FEF7E0]/30 hover:bg-[#FEF7E0]/50"
+                            ? "bg-leaf w-8" 
+                            : "bg-cream/30 hover:bg-cream/50"
                         }`}
                         aria-label={`Go to slide ${i + 1}`}
                       />
@@ -138,7 +138,7 @@ const ProductDetailPage = () => {
               </div>
             ) : (
               <div className="relative aspect-square">
-                <div className="absolute inset-0 bg-[#FEF7E0] rounded-[4rem] transform -rotate-6 transition-all duration-500 hover:rotate-0 hover:scale-105 shadow-2xl">
+                <div className="absolute inset-0 bg-cream rounded-[4rem] transform -rotate-6 transition-all duration-500 hover:rotate-0 hover:scale-105 shadow-2xl">
                     <Image
                       src={product.image}
                       alt={product.name}
@@ -162,19 +162,19 @@ const ProductDetailPage = () => {
             <h1 className="font-display text-4xl md:text-6xl font-extrabold uppercase break-words">
               {product.name}
             </h1>
-            <p className="font-body text-4xl font-black text-[#00A651] my-3" dangerouslySetInnerHTML={{ __html: product.price }} />
+            <p className="font-body text-4xl font-bold text-leaf my-3" dangerouslySetInnerHTML={{ __html: product.price }} />
             
-            <p className="font-body text-base text-[#FEF7E0]/80 leading-relaxed my-3">
+            <p className="font-body text-base text-cream/80 leading-relaxed my-3">
               {product.longDescription}
             </p>
 
             {/* Eco-Impact Section */}
-            <div className="bg-[#FEF7E0]/10 rounded-lg p-4 my-5">
+            <div className="bg-cream/10 rounded-lg p-4 my-5">
               <h3 className="font-display font-bold text-base mb-2">Impact Écologique</h3>
               <ul className="space-y-1">
                   {product.ecoSpecs.map((spec, index) => (
                       <li key={index} className="flex items-center gap-2 font-body text-sm">
-                          <CheckCircle className="w-4 h-4 text-[#00A651]" />
+                          <CheckCircle className="w-4 h-4 text-leaf" />
                           <span>{spec}</span>
                       </li>
                   ))}
@@ -207,7 +207,7 @@ const ProductDetailPage = () => {
                   whileHover={{ scale: 1.02 }}
                   className="mt-auto"
                 >
-                    <Button asChild size="lg" className="w-full h-auto py-3 bg-[#00A651] text-white hover:bg-[#00A651]/90 transition-colors text-lg font-bold uppercase tracking-wider shadow-lg">
+                    <Button asChild size="lg" className="w-full h-auto py-3 bg-leaf text-cream hover:bg-leaf/90 transition-colors text-lg font-bold uppercase tracking-wider shadow-lg">
                     <Link href={product.helloAssoUrl} target="_blank" rel="noopener noreferrer">
                         <motion.span
                             animate={{ y: [-2, 2] }}

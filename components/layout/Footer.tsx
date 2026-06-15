@@ -90,7 +90,7 @@ const Footer = () => {
               transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="text-center md:text-left lg:mx-auto"
             >
-              <h4 className="font-display font-black text-cream text-xl mb-6 uppercase tracking-tighter">
+              <h4 className="font-display font-bold text-cream text-xl mb-6 uppercase tracking-tighter">
                 Newsletter
               </h4>
               <p className="font-body text-cream/90 mb-6 text-base leading-relaxed">
@@ -138,7 +138,7 @@ const Footer = () => {
               transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
               className="text-center md:text-left lg:text-right"
             >
-              <h4 className="font-display font-black text-cream text-xl mb-6 uppercase tracking-tighter">
+              <h4 className="font-display font-bold text-cream text-xl mb-6 uppercase tracking-tighter">
                 Suivez-nous
               </h4>
               <div className="flex gap-4 justify-center md:justify-start lg:justify-end mb-8">
