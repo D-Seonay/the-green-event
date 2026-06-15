@@ -100,7 +100,7 @@ const ArtistDetailClient = ({ artist }: Props) => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             >
-              <div className="inline-block px-4 py-1 bg-leaf text-cream font-display font-black text-sm uppercase tracking-widest rounded-full mb-6 shadow-lg">
+              <div className="inline-block px-4 py-1 bg-leaf text-cream font-display font-bold text-sm uppercase tracking-widest rounded-full mb-6 shadow-lg">
                 {artist.genre} • {artist.timeSlot}
               </div>
 
@@ -179,7 +179,7 @@ const ArtistDetailClient = ({ artist }: Props) => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            <h2 className="text-3xl md:text-4xl font-display font-black text-leaf mb-10 uppercase tracking-tighter">
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-leaf mb-10 uppercase tracking-tighter">
               À PROPOS DE L&apos;ARTISTE
             </h2>
             <div className="prose prose-invert prose-lg max-w-none">
@@ -219,7 +219,7 @@ const ArtistDetailClient = ({ artist }: Props) => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            <h2 className="text-3xl md:text-4xl font-display font-black text-leaf mb-12 text-center uppercase tracking-tighter">
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-leaf mb-12 text-center uppercase tracking-tighter">
               Galerie
             </h2>
             

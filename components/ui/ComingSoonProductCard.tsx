@@ -72,7 +72,7 @@ const ComingSoonProductCard = ({ className, rotation = -2 }: ComingSoonProductCa
           <motion.span 
             animate={{ opacity: [0.4, 0.8, 0.4] }}
             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            className="text-cream/60 font-display font-black text-[10px] sm:text-xs tracking-[0.2em] uppercase italic"
+            className="text-cream/60 font-display font-bold text-[10px] sm:text-xs tracking-[0.2em] uppercase italic"
           >
             BIENTÔT DISPONIBLE
           </motion.span>
@@ -85,7 +85,7 @@ const ComingSoonProductCard = ({ className, rotation = -2 }: ComingSoonProductCa
 
       {/* Product Info (Skeleton Style for Mystery) */}
       <div className="mt-4 space-y-2 px-1">
-        <h3 className="text-sm sm:text-lg font-display font-black text-forest uppercase tracking-tighter">
+        <h3 className="text-sm sm:text-lg font-display font-bold text-forest uppercase tracking-tighter">
           Objet Mystère
         </h3>
         <div className="flex justify-between items-center">

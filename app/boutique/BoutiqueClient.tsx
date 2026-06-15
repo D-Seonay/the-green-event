@@ -128,7 +128,7 @@ const BoutiqueClient = () => {
                     </div>
                     <div className="p-6">
                       <h3 className="font-display text-2xl font-bold uppercase truncate">{product.name}</h3>
-                      <p className="font-body text-3xl font-black text-leaf my-2" dangerouslySetInnerHTML={{ __html: product.price }} />
+                      <p className="font-body text-3xl font-bold text-leaf my-2" dangerouslySetInnerHTML={{ __html: product.price }} />
                       <p className="font-body text-sm text-forest/70 mb-4 h-10">{product.description}</p>
                       <Button asChild className="w-full bg-forest text-cream hover:bg-leaf transition-colors font-bold uppercase tracking-wider">
                         <span>Voir détails</span>

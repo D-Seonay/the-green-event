@@ -325,7 +325,7 @@ const BenevolesClient = () => {
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 md:space-y-12 text-[var(--forest)]">
                       {/* Identity */}
                       <div className="space-y-6 md:space-y-8">
-                        <h3 className="text-lg md:text-xl font-display font-black uppercase tracking-widest border-b-2 border-forest/10 pb-2 text-[var(--forest)]">
+                        <h3 className="text-lg md:text-xl font-display font-bold uppercase tracking-widest border-b-2 border-forest/10 pb-2 text-[var(--forest)]">
                           01. Identité <span className="text-red-500 text-sm">*</span>
                         </h3>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
@@ -416,7 +416,7 @@ const BenevolesClient = () => {
 
                       {/* Experience and Team Preference */}
                       <div className="space-y-6 md:space-y-8">
-                        <h3 className="text-lg md:text-xl font-display font-black uppercase tracking-widest border-b-2 border-forest/10 pb-2 text-[var(--forest)]">
+                        <h3 className="text-lg md:text-xl font-display font-bold uppercase tracking-widest border-b-2 border-forest/10 pb-2 text-[var(--forest)]">
                           02. Expérience &amp; Binôme
                         </h3>
                         <FormField
@@ -470,7 +470,7 @@ const BenevolesClient = () => {
 
                       {/* Wishes */}
                       <div className="space-y-6 md:space-y-8">
-                        <h3 className="text-lg md:text-xl font-display font-black uppercase tracking-widest border-b-2 border-forest/10 pb-2 text-[var(--forest)]">
+                        <h3 className="text-lg md:text-xl font-display font-bold uppercase tracking-widest border-b-2 border-forest/10 pb-2 text-[var(--forest)]">
                           03. Tes souhaits de mission <span className="text-red-500 text-sm">*</span>
                         </h3>
                         <p className="text-xs md:text-sm font-body text-forest/70 -mt-2 md:-mt-4">
@@ -554,7 +554,7 @@ const BenevolesClient = () => {
 
                       {/* Motivation */}
                       <div className="space-y-6 md:space-y-8">
-                        <h3 className="text-lg md:text-xl font-display font-black uppercase tracking-widest border-b-2 border-forest/10 pb-2 text-[var(--forest)]">
+                        <h3 className="text-lg md:text-xl font-display font-bold uppercase tracking-widest border-b-2 border-forest/10 pb-2 text-[var(--forest)]">
                           04. Motivation
                         </h3>
                         <FormField
@@ -580,7 +580,7 @@ const BenevolesClient = () => {
                         <Button
                           type="submit"
                           disabled={submissionState === "submitting"}
-                          className="w-full md:w-auto bg-forest text-cream hover:bg-leaf hover:text-forest h-12 md:h-16 px-6 md:px-12 rounded-xl md:rounded-2xl text-sm md:text-lg font-display font-black uppercase tracking-widest transition-all duration-500 shadow-xl hover:shadow-leaf/20 group justify-center"
+                          className="w-full md:w-auto bg-forest text-cream hover:bg-leaf hover:text-forest h-12 md:h-16 px-6 md:px-12 rounded-xl md:rounded-2xl text-sm md:text-lg font-display font-bold uppercase tracking-widest transition-all duration-500 shadow-xl hover:shadow-leaf/20 group justify-center"
                         >
                           {submissionState === "submitting" ? (
                             <>
@@ -608,4 +608,3 @@ const BenevolesClient = () => {
 };
 
 export default BenevolesClient;
-sClient;

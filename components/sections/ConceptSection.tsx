@@ -62,7 +62,7 @@ const ConceptSection = () => {
                 <div className="inline-flex items-center justify-center w-24 h-24 md:w-32 md:h-32 rounded-3xl bg-forest mb-8 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg group-hover:shadow-2xl">
                   <value.icon className="w-12 h-12 md:w-16 md:h-16 text-cream" />
                 </div>
-                <h3 className="font-display font-black text-forest text-2xl md:text-3xl mb-4 uppercase tracking-tighter">
+                <h3 className="font-display font-bold text-forest text-2xl md:text-3xl mb-4 uppercase tracking-tighter">
                   {value.title}
                 </h3>
                 <p className="font-body text-forest/70 text-lg leading-relaxed">

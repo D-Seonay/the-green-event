@@ -92,7 +92,7 @@ export default function NewsletterSection() {
                 viewport={{ once: true }}
                 className="mb-6 inline-block"
               >
-                <Badge className="bg-leaf text-cream hover:bg-leaf text-sm md:text-base px-4 py-1 rounded-full uppercase font-black tracking-widest border-none">
+                <Badge className="bg-leaf text-cream hover:bg-leaf text-sm md:text-base px-4 py-1 rounded-full uppercase font-bold tracking-widest border-none">
                   <Gift className="w-4 h-4 mr-2 inline" />
                   Jeu Concours
                 </Badge>
@@ -149,7 +149,7 @@ export default function NewsletterSection() {
                     >
                       <CheckCircle2 className="w-20 h-20 text-leaf" />
                     </motion.div>
-                    <h3 className="font-display mt-6 text-3xl font-black text-cream uppercase tracking-tighter">C'est validé !</h3>
+                    <h3 className="font-display mt-6 text-3xl font-bold text-cream uppercase tracking-tighter">C'est validé !</h3>
                     <p className="font-body mt-2 text-cream/70 text-lg">Bonne chance pour le tirage au sort.</p>
                   </div>
                 ) : (
@@ -167,7 +167,7 @@ export default function NewsletterSection() {
                     <button
                       type="submit"
                       disabled={formState === 'loading'}
-                      className="w-full py-5 rounded-2xl bg-leaf text-cream font-display font-black text-xl uppercase tracking-widest hover:bg-leaf/90 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 disabled:opacity-50 disabled:scale-100 flex items-center justify-center shadow-xl shadow-leaf/20"
+                      className="w-full py-5 rounded-2xl bg-leaf text-cream font-display font-bold text-xl uppercase tracking-widest hover:bg-leaf/90 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 disabled:opacity-50 disabled:scale-100 flex items-center justify-center shadow-xl shadow-leaf/20"
                     >
                       {formState === 'loading' ? (
                         <Loader2 className="animate-spin w-8 h-8" />

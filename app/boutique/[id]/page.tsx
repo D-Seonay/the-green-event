@@ -162,7 +162,7 @@ const ProductDetailPage = () => {
             <h1 className="font-display text-4xl md:text-6xl font-extrabold uppercase break-words">
               {product.name}
             </h1>
-            <p className="font-body text-4xl font-black text-leaf my-3" dangerouslySetInnerHTML={{ __html: product.price }} />
+            <p className="font-body text-4xl font-bold text-leaf my-3" dangerouslySetInnerHTML={{ __html: product.price }} />
             
             <p className="font-body text-base text-cream/80 leading-relaxed my-3">
               {product.longDescription}
