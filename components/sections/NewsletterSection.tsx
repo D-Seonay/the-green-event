@@ -93,8 +93,8 @@ export default function NewsletterSection() {
                 className="mb-6 inline-block"
               >
                 <Badge className="bg-leaf text-cream hover:bg-leaf text-sm md:text-base px-4 py-1 rounded-full uppercase font-bold tracking-widest border-none">
-                  <Gift className="w-4 h-4 mr-2 inline" />
-                  Jeu Concours
+                  <Sparkles className="w-4 h-4 mr-2 inline" />
+                  Avant-première
                 </Badge>
               </motion.div>
 
@@ -105,8 +105,8 @@ export default function NewsletterSection() {
                 transition={{ duration: 0.6 }}
                 className="font-display text-4xl md:text-6xl font-black text-cream uppercase leading-none tracking-tighter"
               >
-                Gagnez votre <br />
-                <span className="text-leaf italic">Pass 2 Jours</span>
+                Restez <br />
+                <span className="text-leaf italic">Branchés</span>
               </motion.h2>
               
               <motion.p 
@@ -116,19 +116,8 @@ export default function NewsletterSection() {
                 transition={{ duration: 0.6, delay: 0.1 }}
                 className="font-body mt-6 text-cream/80 text-lg md:text-xl leading-relaxed"
               >
-                Inscrivez-vous à la newsletter pour tenter de remporter 2 pass VIP et recevoir toute la programmation en exclusivité.
+                Inscrivez-vous à la newsletter pour recevoir la programmation en exclusivité et les dernières actualités du festival.
               </motion.p>
-
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.5 }}
-                className="mt-6 flex items-center justify-center lg:justify-start gap-2 text-leaf font-bold text-sm uppercase tracking-widest"
-              >
-                <Sparkles className="w-5 h-5" />
-                <span>Tirage au sort en Juin</span>
-              </motion.div>
             </div>
 
             {/* Form Side */}
@@ -150,7 +139,7 @@ export default function NewsletterSection() {
                       <CheckCircle2 className="w-20 h-20 text-leaf" />
                     </motion.div>
                     <h3 className="font-display mt-6 text-3xl font-bold text-cream uppercase tracking-tighter">C'est validé !</h3>
-                    <p className="font-body mt-2 text-cream/70 text-lg">Bonne chance pour le tirage au sort.</p>
+                    <p className="font-body mt-2 text-cream/70 text-lg">Vous ferez partie des premiers informés.</p>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-4">
