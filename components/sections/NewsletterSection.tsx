@@ -172,7 +172,7 @@ export default function NewsletterSection() {
                       {formState === 'loading' ? (
                         <Loader2 className="animate-spin w-8 h-8" />
                       ) : (
-                        "Je tente ma chance"
+                        "S'inscrire"
                       )}
                     </button>
                     <p className="text-cream/40 text-xs text-center font-body mt-4">
