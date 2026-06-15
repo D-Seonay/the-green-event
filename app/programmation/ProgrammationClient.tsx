@@ -4,13 +4,17 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { ARTISTS } from '@/lib/data';
+import type { Artist } from '@/types';
 import ArtistCard from '@/components/cards/ArtistCard';
 import SectionTitle from '@/components/ui/SectionTitle';
 
-const ProgrammationClient = () => {
+interface ProgrammationClientProps {
+  artists?: Artist[];
+}
+
+const ProgrammationClient = ({ artists = [] }: ProgrammationClientProps) => {
   const [visibleCount, setVisibleCount] = React.useState(8);
-  const showMore = () => setVisibleCount(ARTISTS.length);
+  const showMore = () => setVisibleCount(artists.length);
 
   return (
     <main className="bg-forest text-cream pt-20">
@@ -38,12 +42,12 @@ const ProgrammationClient = () => {
 
           <div className="relative max-w-7xl mx-auto z-10">
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-12 sm:gap-x-8 sm:gap-y-24">
-              {ARTISTS.slice(0, visibleCount).map((artist, index) => (
+              {artists.slice(0, visibleCount).map((artist, index) => (
                 <ArtistCard key={artist.slug} artist={artist} index={index} />
               ))}
             </div>
 
-            {visibleCount < ARTISTS.length && (
+            {visibleCount < artists.length && (
               <div className="mt-24 text-center">
                 <Button
                   onClick={showMore}

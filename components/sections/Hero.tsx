@@ -10,18 +10,41 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import type { EventInfo } from '@/types';
+import { FALLBACK_EVENT } from '@/lib/fallback';
 
-const Hero = () => {
+// Convertit une datetime ISO au format iCal UTC (ex. 20260704T120000Z).
+const toICalDate = (iso: string) => new Date(iso).toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+
+// Extrait la ville d'une adresse "rue, 44120 Vertou" -> "Vertou" (fallback : locationName).
+const cityFromAddress = (address?: string, fallback = '') => {
+  const match = address?.match(/\d{5}\s+(.+)$/);
+  return (match ? match[1] : fallback).trim();
+};
+
+interface HeroProps {
+  event?: EventInfo;
+}
+
+const Hero = ({ event = FALLBACK_EVENT }: HeroProps) => {
   const { scrollY } = useScroll();
   const opacity = useTransform(scrollY, [0, 100], [1, 0]);
   const yTranslate = useTransform(scrollY, [0, 100], [0, 20]);
 
+  const city = cityFromAddress(event.address, event.locationName ?? '');
+  const dateLabel = new Intl.DateTimeFormat('fr-FR', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+    timeZone: 'Europe/Paris',
+  }).format(new Date(event.startDate)).toUpperCase();
+
   const eventDetails = {
-    title: "The Green Fest 2026",
-    description: "Festival électronique intergénérationnel et éco-responsable au cœur du parc des Viviers à Vertou.",
-    location: "Parc des Viviers, Boulevard Guichet Serex, 44120 Vertou",
-    startTime: "20260704T140000Z",
-    endTime: "20260705T010000Z",
+    title: event.name,
+    description: event.description ?? '',
+    location: [event.locationName, event.address].filter(Boolean).join(', '),
+    startTime: toICalDate(event.startDate),
+    endTime: toICalDate(event.endDate ?? event.startDate),
   };
 
   const googleCalendarUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventDetails.title)}&details=${encodeURIComponent(eventDetails.description)}&location=${encodeURIComponent(eventDetails.location)}&dates=${eventDetails.startTime}/${eventDetails.endTime}`;
@@ -85,7 +108,7 @@ END:VCALENDAR`;
           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           className="text-xl md:text-3xl font-display font-bold text-[#00A651] mb-12 tracking-[0.2em] uppercase"
         >
-          4 JUILLET 2026 • VERTOU
+          {dateLabel}{city ? ` • ${city.toUpperCase()}` : ''}
         </motion.h2>
 
         <motion.div 

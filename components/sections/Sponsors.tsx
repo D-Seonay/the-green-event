@@ -4,10 +4,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { SPONSORS } from '@/lib/data';
+import type { Sponsor } from '@/types';
 import SectionTitle from '@/components/ui/SectionTitle';
 
-const SponsorsSection = () => {
+interface SponsorsSectionProps {
+  sponsors?: Sponsor[];
+}
+
+const SponsorsSection = ({ sponsors = [] }: SponsorsSectionProps) => {
   return (
     <section id="sponsors" className="relative py-20 overflow-hidden bg-forest">
       <div className="container mx-auto px-4">
@@ -21,7 +25,7 @@ const SponsorsSection = () => {
         </div>
 
         <div className="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-5 gap-8 md:gap-12 items-center justify-items-center max-w-6xl mx-auto mt-12">
-          {SPONSORS.map((sponsor, index) => (
+          {sponsors.map((sponsor, index) => (
             <motion.div
               key={sponsor.id}
               initial={{ opacity: 0, y: 20 }}

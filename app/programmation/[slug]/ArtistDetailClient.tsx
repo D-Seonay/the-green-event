@@ -191,17 +191,15 @@ const ArtistDetailClient = ({ artist }: Props) => {
                 <div>
                   <h3 className="font-display font-bold text-cream text-xl mb-4 uppercase">Le Style</h3>
                   <p className="text-cream/70 font-body leading-relaxed">
-                    Un mélange unique de sonorités organiques et de rythmes contemporains,
-                    parfaitement adapté au cadre naturel du festival. Chaque performance est
-                    une exploration sonore qui dialogue avec l&apos;environnement.
+                    {artist.style ||
+                      "Un mélange unique de sonorités organiques et de rythmes contemporains, parfaitement adapté au cadre naturel du festival. Chaque performance est une exploration sonore qui dialogue avec l'environnement."}
                   </p>
                 </div>
                 <div>
                   <h3 className="font-display font-bold text-cream text-xl mb-4 uppercase">L&apos;Expérience</h3>
                   <p className="text-cream/70 font-body leading-relaxed">
-                    Attendez-vous à une immersion totale. Entre virtuosité technique et
-                    émotion brute, cet artiste propose une vision moderne et respectueuse
-                    des racines musicales, pour un moment de partage inoubliable.
+                    {artist.experience ||
+                      "Attendez-vous à une immersion totale. Entre virtuosité technique et émotion brute, cet artiste propose une vision moderne et respectueuse des racines musicales, pour un moment de partage inoubliable."}
                   </p>
                 </div>
               </div>

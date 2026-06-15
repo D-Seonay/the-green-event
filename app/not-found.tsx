@@ -4,7 +4,7 @@ import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ARTISTS } from '@/lib/data';
+import { FALLBACK_ARTISTS as ARTISTS } from '@/lib/fallback';
 import FloatingElement from '@/components/FloatingElements';
 import Leaf from '@/components/ui/Leaf';
 import Cube from '@/components/ui/Cube';

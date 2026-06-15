@@ -1,4 +1,4 @@
-import type { Product, Artist, NavLink, FloatingElement, GalleryImage, Sponsor } from '@/types';
+import type { Product, NavLink, FloatingElement, GalleryImage } from '@/types';
 import Cube from '@/components/ui/Cube';
 import Leaf from '@/components/ui/Leaf';
 
@@ -69,73 +69,6 @@ export const PRODUCTS: Product[] = [
   },
 ];
 
-export const ARTISTS: Artist[] = [
-  {
-    name: 'BLACK ANGER',
-    slug: 'black-anger',
-    image: '/artists/blackAngers/blackAngers-1.png',
-    imageAlt: 'Le groupe Black Anger en session pop-rock.',
-    rotation: 2.5,
-    genre: 'POP-ROCK',
-    timeSlot: '16:00 - 17:00',
-    bio: "Black Anger est un groupe de rock amateur composé de deux guitaristes, d'un bassiste et d'un batteur. Sans prétention, le groupe reprend avec plaisir des classiques pop-rock français et anglais, dans une ambiance conviviale et énergique. Entre riffs entraînants et bonne humeur, Black Anger partage avant tout la passion de la musique et le plaisir de jouer ensemble.",
-    gallery: ['/artists/blackAngers/blackAngers-1.png', '/artists/blackAngers/blackAngers-2.jpg'],
-    socials: {},
-    keywords: ['Black Anger', 'Rock', 'Pop-Rock', 'Groupe Amateur'],
-    seoDescription: 'Découvrez Black Anger, groupe de pop-rock amateur, en concert au Green Fest 2026.'
-  },
-  {
-    name: 'LOOWS',
-    slug: 'loows',
-    image: '/artists/LOOWS/LOOWS-1.png',
-    imageAlt: 'LOOWS, jeune DJ passionné de vinyles originaire de Vertou.',
-    rotation: -2.5,
-    genre: 'HOUSE',
-    timeSlot: '17:15 - 19:00',
-    bio: "LOOWS, jeune DJ passionné de vinyles originaire de Vertou, fera son grand retour pour la troisième édition de The Green Fest. Amoureux des sons dansants et des rythmes envoûtants, il vous embarquera dans un voyage musical vibrant, où les sonorités house réchaufferont l'atmosphère et feront rayonner l'esprit de l'été. Avec une sélection soigneusement élaborée, mêlant classiques intemporels et pépites ensoleillées, LOOWS promet une expérience immersive et festive, idéale pour célébrer la musique et la convivialité.",
-    gallery: ['/artists/LOOWS/LOOWS-1.png', '/artists/LOOWS/LOOWS-2.png', '/artists/LOOWS/LOOWS-3.png'],
-    socials: {},
-    keywords: ['LOOWS', 'DJ', 'House', 'Vinyl', 'Vertou'],
-    seoDescription: 'Découvrez LOOWS, DJ house passionné de vinyles, en concert au Green Fest 2026.'
-  },
-  {
-    name: 'Artiste Mystère',
-    slug: 'mystery-1',
-    image: '/placeholder.svg',
-    imageAlt: 'Silhouette d\'un artiste mystère sur fond de végétation luxuriante, prochainement dévoilé.',
-    rotation: -3,
-    genre: 'À DÉCOUVRIR',
-    timeSlot: '',
-    bio: "La suite de la programmation sera dévoilée très prochainement. Restez connectés pour découvrir les prochains artistes qui rejoindront l'affiche de The Green Fest !",
-    socials: {},
-    isMystery: true,
-  },
-  {
-    name: 'Artiste Mystère',
-    slug: 'mystery-2',
-    image: '/placeholder.svg',
-    imageAlt: 'Visuel intrigant annonçant un prochain DJ pour le festival The Green Event.',
-    rotation: 2,
-    genre: 'À DÉCOUVRIR',
-    timeSlot: '',
-    bio: "La suite de la programmation sera dévoilée très prochainement. Restez connectés pour découvrir les prochains artistes qui rejoindront l'affiche de The Green Fest !",
-    socials: {},
-    isMystery: true,
-  },
-  {
-    name: 'Artiste Mystère',
-    slug: 'mystery-3',
-    image: '/placeholder.svg',
-    imageAlt: 'Cadre naturel et festif attendant l\'annonce d\'un nouvel artiste électro.',
-    rotation: 4,
-    genre: 'À DÉCOUVRIR',
-    timeSlot: '',
-    bio: "La suite de la programmation sera dévoilée très prochainement. Restez connectés pour découvrir les prochains artistes qui rejoindront l'affiche de The Green Fest !",
-    socials: {},
-    isMystery: true,
-  },
-];
-
 export const FLOATING_ELEMENTS: FloatingElement[] = [
   { x: [-100, 100], y: [-50, 50], className: "top-1/4 left-1/4", component: Cube },
   { x: [50, -50], y: [20, -20], className: "top-1/2 right-1/4", component: Leaf },
@@ -193,11 +126,3 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     depth: 1
   }
 ];
-
-    export const SPONSORS: Sponsor[] = [
-    { id: 1, name: 'La Soupape', logoSrc: '/partners/laSoupape.png', alt: 'Logo de La Soupape, partenaire local de Vertou.' },
-    { id: 2, name: 'Umami', logoSrc: '/partners/umami.jpeg', alt: 'Logo de Umami, restaurant partenaire engagé.' },
-    { id: 3, name: 'Crédit Mutuel', logoSrc: '/partners/creditMutuel.jpeg', alt: 'Logo du Crédit Mutuel, partenaire financier du festival.' },
-    { id: 4, name: 'Katanga', logoSrc: '/partners/katanga.png', alt: 'Logo de Katanga, partenaire du festival.' },
-    { id: 5, name: 'Min Nantes Métropole', logoSrc: '/partners/minNantesMétropole.png', alt: 'Logo de Min Nantes Métropole, partenaire du festival.' },
-    ];  
