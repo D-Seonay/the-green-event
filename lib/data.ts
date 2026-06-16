@@ -99,16 +99,27 @@ export const ARTISTS: Artist[] = [
     seoDescription: 'Découvrez LOOWS, DJ house passionné de vinyles, en concert au Green Fest 2026.'
   },
   {
-    name: 'Artiste Mystère',
-    slug: 'mystery-1',
-    image: '/placeholder.svg',
-    imageAlt: 'Silhouette d\'un artiste mystère sur fond de végétation luxuriante, prochainement dévoilé.',
-    rotation: -3,
-    genre: 'À DÉCOUVRIR',
-    timeSlot: '',
-    bio: "La suite de la programmation sera dévoilée très prochainement. Restez connectés pour découvrir les prochains artistes qui rejoindront l'affiche de The Green Fest !",
+    name: 'B-OKIN',
+    slug: 'b-okin',
+    image: '/artists/b-okin/b-okin-1.jpeg',
+    imageAlt: 'B-OKIN, DJ electro nantais passionné par le son sous toutes ses formes.',
+    rotation: 3,
+    genre: 'ELECTRO / TECH HOUSE',
+    timeSlot: '19:00 - 20:15',
+    bio: "DJ electro nantais passionné par le son sous toutes ses formes, B-okin est là pour vous faire découvrir son univers electro. Avec des inspirations de la tech house, drum and Bass et des années 2010, préparés vous à des moments de nostalgies mais surtout d'unicités. Ici pas de dj stars les seules stars c'est vous !",
+    gallery: [
+      '/artists/b-okin/b-okin-1.jpeg',
+      '/artists/b-okin/b-okin-2.jpeg',
+      '/artists/b-okin/b-okin-3.jpeg',
+      '/artists/b-okin/b-okin-4.jpeg',
+      '/artists/b-okin/b-okin-5.jpeg',
+      '/artists/b-okin/b-okin-6.jpeg',
+      '/artists/b-okin/b-okin-7.jpeg',
+      '/artists/b-okin/b-okin-8.jpeg'
+    ],
     socials: {},
-    isMystery: true,
+    keywords: ['B-OKIN', 'DJ', 'Electro', 'Tech House', 'Nantes'],
+    seoDescription: 'Découvrez B-OKIN, DJ electro nantais passionné, en concert au Green Fest 2026.'
   },
   {
     name: 'Artiste Mystère',
