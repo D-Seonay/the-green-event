@@ -16,10 +16,17 @@ export const PRODUCTS: Product[] = [
     price: '<s>25€</s> 20€ en précommande',
     description: 'T-shirt collector 100% coton bio.',
     longDescription: "Affichez votre soutien au festival avec notre t-shirt officiel 2026. Fabriqué en coton 100% biologique et issu du commerce équitable.",
-    image: '/products/t-shirt/face-avant.jpg',
+    image: '/products/t-shirt/t-shirt-2026-face.jpeg',
     gallery: [
-      '/products/t-shirt/face-avant.jpg',
-      '/products/t-shirt/face-arriere.jpg'
+      '/products/t-shirt/t-shirt-2026-face.jpeg',
+      '/products/t-shirt/t-shirt-2026-back.jpeg',
+      '/products/t-shirt/t-shirt-2026-label.jpeg',
+      '/products/t-shirt/t-shirt-2026-texture.jpeg',
+      '/products/t-shirt/t-shirt-2026-sleeve.jpeg',
+      '/products/t-shirt/t-shirt-2026-detail-1.jpeg',
+      '/products/t-shirt/t-shirt-2026-detail-2.jpeg',
+      '/products/t-shirt/t-shirt-2026-folded.jpeg',
+      '/products/t-shirt/t-shirt-2026-vibe.jpeg'
     ],
     rotation: 2,
     helloAssoUrl: 'https://www.helloasso.com/associations/the-green-event/boutiques/tee-shirt-tge-green-fest-2026',
