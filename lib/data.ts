@@ -40,7 +40,7 @@ export const PRODUCTS: Product[] = [
     name: 'Eco Cup THE GREEN FEST 2026',
     price: '2€',
     description: 'Le gobelet réutilisable collector de la dernière édition.',
-    longDescription: "Notre gobelet réutilisable THE GREEN FEST 2026 — une édition collector unique. C'est la dernière occasion de repartir avec ce gobelet emblématique du festival. Zéro déchet, 100% souvenir.",
+    longDescription: "Notre gobelet réutilisable THE GREEN FEST 2026 une édition collector unique. C'est la dernière occasion de repartir avec ce gobelet emblématique du festival. Zéro déchet, 100% souvenir.",
     image: '/products/eco-cup/eco-cup-1.jpg',
     gallery: [
       '/products/eco-cup/eco-cup-1.jpg',

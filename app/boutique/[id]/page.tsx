@@ -106,18 +106,19 @@ const ProductDetailPage = () => {
             {/* CTA or Widget */}
             {product.helloAssoSlug ? (
               <div className="mt-8 space-y-6">
-                <iframe 
-                  id="haWidget" 
-                  scrolling="auto" 
+                <iframe
+                  id="haWidget"
+                  allowTransparency={true}
+                  scrolling="auto"
                   src={`https://www.helloasso.com/associations/the-green-event/boutiques/${product.helloAssoSlug}/widget`}
                   style={{ width: '100%', height: '750px', border: 'none' }}
                   onLoad={() => {
                     if (typeof window !== 'undefined') {
                       window.addEventListener('message', (e) => {
                         const dataHeight = e.data.height;
-                        const haWidgetElement = document.getElementById('haWidget');
-                        if (haWidgetElement && dataHeight > parseFloat(haWidgetElement.style.height || '0')) {
-                          haWidgetElement.style.height = dataHeight + 'px';
+                        const haWidgetElement = document.getElementById('haWidget') as HTMLIFrameElement | null;
+                        if (haWidgetElement && dataHeight > parseFloat(haWidgetElement.height || '0')) {
+                          haWidgetElement.height = dataHeight + 'px';
                         }
                       });
                     }
