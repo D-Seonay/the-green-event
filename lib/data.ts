@@ -148,16 +148,18 @@ export const ARTISTS: Artist[] = [
     seoDescription: 'Découvrez B-OKIN, DJ electro nantais passionné, en concert au Green Fest 2026.'
   },
   {
-    name: 'Artiste Mystère',
-    slug: 'mystery-2',
-    image: '/placeholder.svg',
-    imageAlt: 'Visuel intrigant annonçant un prochain DJ pour le festival The Green Event.',
+    name: 'RoXas',
+    slug: 'roxas',
+    image: '/artists/Roxas/roxas-1.jpeg',
+    imageAlt: 'Portrait de RoXas, artiste hip-hop et rap aux multiples influences.',
     rotation: 2,
-    genre: 'À DÉCOUVRIR',
-    timeSlot: '',
-    bio: "La suite de la programmation sera dévoilée très prochainement. Restez connectés pour découvrir les prochains artistes qui rejoindront l'affiche de The Green Fest !",
+    genre: 'RAP / HIP-HOP',
+    timeSlot: '21:40 - 22:55',
+    bio: "RoXas, passionné de musique et profondément ancré dans l'univers du hip-hop, vous embarquera pour une performance intense et immersive. Préparez-vous à découvrir toute sa polyvalence: un mélange explosif de rap old school, de textes marquants, d'ambiances sombres et de sonorités variées mêlant Hip-Hop, Bossa Nova, Electronique, Drum and Bass, House. Entre énergie brute et influences éclectiques, RoXaS vous fera voyager à travers les multiples facettes du rap actuel.",
+    gallery: ['/artists/Roxas/roxas-1.jpeg'],
     socials: {},
-    isMystery: true,
+    keywords: ['RoXas', 'Hip-Hop', 'Rap', 'Drum and Bass', 'House', 'Bossa Nova', 'Electronique'],
+    seoDescription: 'Découvrez RoXas, artiste de rap et hip-hop aux multiples influences, en concert au Green Fest 2026.'
   },
   {
     name: 'Artiste Mystère',
