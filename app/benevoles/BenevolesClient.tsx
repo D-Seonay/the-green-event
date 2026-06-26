@@ -213,7 +213,7 @@ const BenevolesClient = () => {
                   Vivre le festival autrement, faire des rencontres sincères, partager des moments uniques avec d&apos;autres bénévoles et des passionné·es de culture et d&apos;écologie venu·es de tous horizons.
                 </li>
                 <li>
-                  Participer à la réussite de <span className="font-bold text-forest">THE GREEN FEST</span> et contribuer concrètement à un projet culturel engagé pour l&apos;environnement.
+                  Participer à la réussite de <span className="font-bold text-forest">THE GREEN FEST </span> et contribuer concrètement à un projet culturel engagé pour l&apos;environnement.
                 </li>
               </ul>
             </div>
@@ -491,7 +491,7 @@ const BenevolesClient = () => {
                                   </FormControl>
                                   <SelectContent className="bg-cream text-forest border-forest/20 max-w-[calc(100vw-2.5rem)] sm:max-w-xs md:max-w-sm">
                                     {MISSION_WISHES.map((wish) => (
-                                      <SelectItem key={wish.id} value={wish.id} className="focus:bg-leaf/10 focus:text-leaf whitespace-normal break-words py-2">
+                                      <SelectItem key={wish.id} value={wish.id} className="text-forest focus:bg-leaf/10 focus:text-leaf whitespace-normal break-words py-2">
                                         {wish.label}
                                       </SelectItem>
                                     ))}
@@ -515,7 +515,7 @@ const BenevolesClient = () => {
                                   </FormControl>
                                   <SelectContent className="bg-cream text-forest border-forest/20 max-w-[calc(100vw-2.5rem)] sm:max-w-xs md:max-w-sm">
                                     {MISSION_WISHES.map((wish) => (
-                                      <SelectItem key={wish.id} value={wish.id} className="focus:bg-leaf/10 focus:text-leaf whitespace-normal break-words py-2">
+                                      <SelectItem key={wish.id} value={wish.id} className="text-forest focus:bg-leaf/10 focus:text-leaf whitespace-normal break-words py-2">
                                         {wish.label}
                                       </SelectItem>
                                     ))}
@@ -539,7 +539,7 @@ const BenevolesClient = () => {
                                   </FormControl>
                                   <SelectContent className="bg-cream text-forest border-forest/20 max-w-[calc(100vw-2.5rem)] sm:max-w-xs md:max-w-sm">
                                     {MISSION_WISHES.map((wish) => (
-                                      <SelectItem key={wish.id} value={wish.id} className="focus:bg-leaf/10 focus:text-leaf whitespace-normal break-words py-2">
+                                      <SelectItem key={wish.id} value={wish.id} className="text-forest focus:bg-leaf/10 focus:text-leaf whitespace-normal break-words py-2">
                                         {wish.label}
                                       </SelectItem>
                                     ))}
