@@ -13,7 +13,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 4,
     name: 'T-shirt Green Fest 2026',
-    price: '<s>25€</s> 20€ en précommande',
+    price: '25€',
     description: 'T-shirt collector 100% coton bio.',
     longDescription: "Affichez votre soutien au festival avec notre t-shirt officiel 2026. Fabriqué en coton 100% biologique et issu du commerce équitable.",
     image: '/products/t-shirt/t-shirt-2026-face.jpeg',
