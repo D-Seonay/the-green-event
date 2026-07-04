@@ -162,16 +162,21 @@ export const ARTISTS: Artist[] = [
     seoDescription: 'Découvrez RoXas, artiste de rap et hip-hop aux multiples influences, en concert au Green Fest 2026.'
   },
   {
-    name: 'Artiste Mystère',
-    slug: 'mystery-3',
-    image: '/placeholder.svg',
-    imageAlt: 'Cadre naturel et festif attendant l\'annonce d\'un nouvel artiste électro.',
+    name: 'Hors-Theme',
+    slug: 'hors-theme',
+    image: '/artists/hors-theme/hors-theme-1.jpeg',
+    imageAlt: 'Le collectif Hors-Theme en session mix.',
     rotation: 4,
-    genre: 'À DÉCOUVRIR',
-    timeSlot: '',
-    bio: "La suite de la programmation sera dévoilée très prochainement. Restez connectés pour découvrir les prochains artistes qui rejoindront l'affiche de The Green Fest !",
+    genre: 'HYBRID TEKNO',
+    timeSlot: '22:55 - 01:00',
+    bio: "Toujours à la recherche des meilleures transitions et sonorités électroniques, Hors-Theme réunit Eliø, Sitam, Jedam et Oni23 autour d'une passion commune pour les textures brutes et les sets immersifs. Le collectif mixera de l'Hybrid Tekno mêlant Tekno, Mentalcore, Acidcore... dans une énergie intense, entre rythmes hypnotiques, textures acides et montées explosives, pour faire vibrer le public jusqu'au bout de la nuit.",
+    gallery: [
+      '/artists/hors-theme/hors-theme-1.jpeg',
+      '/artists/hors-theme/hors-theme-2.jpeg'
+    ],
     socials: {},
-    isMystery: true,
+    keywords: ['Hors-Theme', 'Tekno', 'Hybrid Tekno', 'Mentalcore', 'Acidcore', 'Eliø', 'Sitam', 'Jedam', 'Oni23'],
+    seoDescription: 'Découvrez Hors-Theme, collectif d\'Hybrid Tekno, en concert au Green Fest 2026.'
   },
 ];
 
