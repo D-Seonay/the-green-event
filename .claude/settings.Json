@@ -1,0 +1,73 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git log*)",
+      "Bash(git status*)",
+      "Bash(git diff*)",
+      "Bash(git show*)",
+      "Bash(git branch*)",
+      "Bash(git stash list*)",
+      "Bash(git fetch*)",
+      "Bash(grep *)",
+      "Bash(find *)",
+      "Bash(ls *)",
+      "Bash(cat *)",
+      "Bash(head *)",
+      "Bash(tail *)",
+      "Bash(wc *)",
+      "Bash(rtk git*)",
+      "Bash(rtk grep*)",
+      "Bash(rtk find*)",
+      "Bash(rtk ls*)",
+      "Bash(rtk read*)",
+      "Bash(rtk gh*)",
+      "Bash(yarn type-check*)",
+      "Bash(yarn lint*)",
+      "Bash(yarn test*)",
+      "Bash(yarn vitest*)",
+      "Bash(yarn build*)",
+      "WebFetch(domain:vuejs.org)",
+      "WebFetch(domain:pinia.vuejs.org)",
+      "WebFetch(domain:vueuse.org)",
+      "WebFetch(domain:primevue.org)",
+      "WebFetch(domain:docs.anthropic.com)"
+    ],
+    "deny": [
+      "Bash(git rebase*)",
+      "Bash(git merge*)",
+      "Bash(git add*)",
+      "Bash(git commit*)",
+      "Bash(git push*)",
+      "Bash(git reset --hard*)",
+      "Bash(git clean*)",
+      "Bash(git restore .)",
+      "Bash(git checkout -- *)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Read",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "pwsh -NonInteractive -File .claude/hooks/pre_read_cache_check.ps1",
+            "shell": "powershell"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Read",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "pwsh -NonInteractive -File .claude/hooks/post_read_cache_update.ps1",
+            "shell": "powershell"
+          }
+        ]
+      }
+    ]
+  }
+}
