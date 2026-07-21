@@ -8,13 +8,14 @@ import { Button } from '@/components/ui/button';
 import { PRODUCTS } from '@/lib/data';
 import ComingSoonProductCard from '@/components/ui/ComingSoonProductCard';
 
-type Category = 'all' | 'clothes' | 'accessories' | 'goodies';
+type Category = 'all' | 'clothes' | 'accessories' | 'goodies' | 'mobilier';
 
 const categories: { label: string; value: Category }[] = [
   { label: 'TOUT', value: 'all' },
   { label: 'VÊTEMENTS', value: 'clothes' },
   { label: 'ACCESSOIRES', value: 'accessories' },
   { label: 'GOODIES', value: 'goodies' },
+  { label: 'MOBILIER', value: 'mobilier' },
 ];
 
 const cardVariants = {
