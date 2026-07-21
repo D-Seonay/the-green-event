@@ -11,7 +11,7 @@ export interface Product {
   rotation: number;
   helloAssoUrl: string;
   helloAssoSlug?: string;
-  category: 'clothes' | 'accessories' | 'goodies';
+  category: 'clothes' | 'accessories' | 'goodies' | 'mobilier';
   ecoSpecs: string[];
   keywords?: string[];
   seoDescription?: string;
